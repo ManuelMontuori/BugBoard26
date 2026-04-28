@@ -583,12 +583,6 @@
         <mxCell id="lpVO-pZX2U590rWxZou2-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Server" vertex="1">
           <mxGeometry height="40" width="90" x="535" y="640" as="geometry" />
         </mxCell>
-        <mxCell id="SfXbysxgIUXbYvxzeAp_-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="60" width="120" x="940" y="3630" as="geometry" />
-        </mxCell>
-        <mxCell id="SfXbysxgIUXbYvxzeAp_-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="60" width="120" x="1289.5" y="3630" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
