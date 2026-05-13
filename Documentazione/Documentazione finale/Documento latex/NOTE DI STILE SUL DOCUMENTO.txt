@@ -1,0 +1,42 @@
+PER FONT CLASSICO COME QUELLO CHE STA SU TEAMS
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\geometry{margin=2.5cm}
+
+PER FONT TIMES CONSIGLIATO DA CHATGPT 
+\documentclass[a4paper,12pt]{article}
+
+% ---------- Lingua e codifica ----------
+\usepackage[utf8]{inputenc}    % Codifica UTF-8
+\usepackage[T1]{fontenc}       % Codifica font
+\usepackage[italian]{babel}    % Lingua italiana
+
+% ---------- Font ----------
+\usepackage{times}             % Times New Roman
+
+% ---------- Layout pagina ----------
+\usepackage{geometry}
+\geometry{margin=2.5cm}        % Margini
+
+% ---------- Grafica e immagini ----------
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+% ---------- Link e riferimenti ----------
+\usepackage[hidelinks]{hyperref}
+% ---------- Stile titoli ----------
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% ---------- Spaziatura e interlinea ----------
+\usepackage{setspace}
+\onehalfspacing % interlinea 1.5

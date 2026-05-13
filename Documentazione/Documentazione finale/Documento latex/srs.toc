@@ -1,0 +1,47 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Scopo del documento}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Campo di applicazione del sistema}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Definizioni, sinonimi adottati e abbreviazioni}{4}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Definizioni (Glossario)}{4}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Sinonimi adottati}{6}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Abbreviazioni}{6}{subsubsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.4}Riferimenti}{6}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Panoramica del documento}{6}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Descrizione generale}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Prospettiva del prodotto}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Funzionalità del prodotto}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Utenti e attori del sistema}{8}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Requisiti specifici}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Requisiti funzionali}{9}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}RE01 - Log in utente}{9}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}RE02 - Nuova utenza (Amministratore)}{10}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}RE03 - Segnala issue}{10}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}RE04 - Assegna issue}{11}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}RE05 - Visualizza riepilogo issue}{12}{subsubsection.3.1.5}%
+\contentsline {subsubsection}{\numberline {3.1.6}RE06 - Visualizza report team}{12}{subsubsection.3.1.6}%
+\contentsline {subsubsection}{\numberline {3.1.7}RE07 - Utente visualizza le proprie issue assegnate}{13}{subsubsection.3.1.7}%
+\contentsline {subsubsection}{\numberline {3.1.8}RE08 - Filtra issue}{13}{subsubsection.3.1.8}%
+\contentsline {subsubsection}{\numberline {3.1.9}RE09 - Ordina issue}{14}{subsubsection.3.1.9}%
+\contentsline {subsubsection}{\numberline {3.1.10}RE010 - Ricerca issue}{15}{subsubsection.3.1.10}%
+\contentsline {subsubsection}{\numberline {3.1.11}RE011 - Modifica stato issue}{16}{subsubsection.3.1.11}%
+\contentsline {subsubsection}{\numberline {3.1.12}RE012 - Nuova utenza (Utente)}{17}{subsubsection.3.1.12}%
+\contentsline {subsection}{\numberline {3.2}Requisiti non funzionali}{17}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Modellazione dei casi d'uso tramite Use Case Diagram}{18}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Use Case Diagram}{18}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Use Case Diagram parziale 1}{18}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Use Case Diagram parziale 2}{19}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Use Case Diagram parziale 3}{20}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}Use Case Diagram parziale 4}{21}{subsubsection.3.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.6}Use Case Diagram parziale 5}{22}{subsubsection.3.3.6}%
+\contentsline {subsubsection}{\numberline {3.3.7}Use Case Diagram parziale 6}{23}{subsubsection.3.3.7}%
+\contentsline {subsection}{\numberline {3.4}Formalizzazione di casi d'uso significativi}{23}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Tabella di Cockburn 1}{23}{subsubsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.5}Prototipazione visuale del caso d'uso 3.3.3 Segnala Issue}{25}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Segnala Issue - Mockup 1}{25}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Segnala Issue - Mockup 2}{26}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Segnala Issue - Mockup 3}{26}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Segnala Issue - Mockup 4}{27}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}Segnala Issue - Mockup 5}{27}{subsubsection.3.5.5}%
+\contentsline {section}{Indice analitico}{28}{section*.1}%

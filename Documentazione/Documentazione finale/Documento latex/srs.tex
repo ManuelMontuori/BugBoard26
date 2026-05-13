@@ -1,0 +1,824 @@
+\documentclass[a4paper,12pt]{article}
+
+% ---------- Lingua e codifica ----------
+\usepackage[utf8]{inputenc}    % Codifica UTF-8
+\usepackage[T1]{fontenc}       % Codifica font
+\usepackage[italian]{babel}    % Lingua italiana
+
+% ---------- Font ----------
+\usepackage{times}             % Times New Roman
+
+% ---------- Layout pagina ----------
+\usepackage{geometry}
+\geometry{margin=2.5cm}        % Margini
+
+% ---------- Grafica e immagini ----------
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+
+% ---------- tabelle più stabili con link ---------
+\usepackage{tabularx}
+
+
+% ------------------------ fancyhdr ------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Cancella intestazioni e piè di pagina predefiniti
+\fancyhf{}
+
+% Intestazione
+\fancyhead[R]{\textcolor{gray}{\nouppercase{\leftmark}}} % nome della sezione/paragrafo corrente
+%\fancyhead[C]{}         % centro (vuoto)
+%\fancyhead[R]{}         % destra (vuoto)
+
+% Piè di pagina
+\fancyfoot[L]{\textcolor{gray}{Software Requirements Specifications - \textit{BugBoard26}} \hfill\thepage}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+
+
+
+% ---------- Stile titoli ----------
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% ---------- Spaziatura e interlinea ----------
+\usepackage{setspace}
+\onehalfspacing % interlinea 1.5
+
+
+
+\usepackage{imakeidx}  % più moderno
+\makeindex[title=Indice analitico, intoc]  % aggiunge il titolo e l'inserimento nel sommario
+
+% per checkbox
+\usepackage{amssymb} 
+
+% ---------- Link e riferimenti ----------
+%\usepackage[hidelinks]{hyperref} questo era per il classico tutto nero
+% i due package sotto sono per impostare i link colorati
+% Attenzione deve essere l'ultimo pacchetto!!!
+\usepackage[x11names]{xcolor} % serve per i colori nuovi, come forestgreen
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            citecolor=ForestGreen,
+            urlcolor=DarkOrange3]{hyperref}
+
+
+\title{\textbf{Software Requirements Specifications (SRS)} \\ {\Huge BugBoard26} \\ \large Ver. 1.0  }
+\author{Gruppo di Progetto: ID25\\
+\begin{minipage}[t]{0.45\textwidth}
+\raggedright
+Luca Santangelo\\
+\textit{N86002450}\\
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\raggedleft
+Manuel Montuori\\
+\textit{N86001690}\\
+\end{minipage}
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+\hypersetup{linkcolor=black} % serve per impedire che si colorino i link del sommario
+\tableofcontents
+\hypersetup{linkcolor=blue} % serve per ripristinare i colori dei link
+\newpage
+
+\section{Introduzione}
+\subsection{Scopo del documento}
+Questo documento si rivolge a membri e amministratori dei team di sviluppo
+di progetti software, oltre che a stakeholders esterni. Ha lo scopo di illustrare il funzionamento dell'applicativo al quale fa riferimento. Esso è una piattaforma di gestione di issue in progetti software.
+La piattaforma consente ad utenti autenticati di segnalare problemi in un progetto, 
+monitorarne lo stato, assegnarli a membri del team e tenere traccia delle attività di risoluzione. 
+I membri del team di sviluppo sono i soli a dover utilizzare il software.
+\subsection{Campo di applicazione del sistema}
+Il sistema software in fase di sviluppo sarà indicato come System Under Development (SUD) o semplicemente come \textit{BugBoard26}.
+\textit{BugBoard26} dovrà svolgere le seguenti funzionalità \index{Funzionalità}:
+\begin{enumerate}
+    \item Provvederà all'autenticazione \index{Autenticazione} dell'utente, consentendogli di accedere solo a quelle funzionalità che gli competono.
+    \item Tutti gli utenti autenticati potranno segnalare una issue.
+    \item La piattaforma sarà provvista di una vista riepilogativa \index{Vista!Riepilogo issue} delle issue, con possibilità di filtrare, ordinare e ricercare.
+    \item Il sistema permetterà ad utenti amministratori di assegnare \index{Issue!Assegnazione issue} issue specifiche ad un membro del team.
+    \item Il sistema potrà inviare notifiche agli utenti.
+    \item Il sistema genererà report mensili sull'attività del team.
+    \item Il sistema permetterà agli amministratori di visualizzare \index{Vista!Report mensile} i report sul team.
+\end{enumerate}
+\subsection{Definizioni, sinonimi adottati e abbreviazioni}
+\subsubsection{Definizioni (Glossario)}
+\index{Glossario}
+\begin{itemize}
+    \item Allegare: aggiungere un'immagine ad una issue, affinchè sia inclusa e consultabile assieme ad essa.
+    \item Amministratore: persona che gestisce il team. Può fare tutto ciò che può fare un utente con permessi aggiuntivi.
+    \item Attore: rappresenta un'entità esterna che sta interagendo con il SUD.
+    \item Bug: malfuznionamento tecnico del prodotto software.
+
+    \item Issue: problema ad un software, viene segnalato da un utente e può essere di quattro tipologie: 
+      \begin{itemize}
+        \item Question: per richieste di chiarimenti.
+        \item Bug: per segnalare malfunzionamento del sistema.
+        \item Documentation: problemi relativi alla documentazione.
+        \item Feature: richiesta o suggerimento di nuove funzionalità.
+    \end{itemize}
+    \item Metrica: le metriche a cui si fa riferimento in questo documento sono: Numero di issue segnalate, numero di issue gestite, 
+    tempo di risoluzione medio.
+    \item Mock-up: rappresentazione visiva di un'interfaccia grafica o di una schermata del sistema.
+    \item Notifica: sistema con cui la piattaforma comunica ad utenti autenticati alcune informazioni.
+    \item Prorità: parametro di una issue. Se inserita in una issue richiede che la sua risoluzione debba essere considerata prioritaria dal team di sviluppo.
+    \item Report: visualizzazione che sintetizza dati o informazioni sulle attività svolte.
+    \item Scenario: sequenza di eventi che descrive l'interazione tra attori e sistema in un caso d'uso specifico.
+    \item Segretezza: garantisce che le informazioni, i dati sensibili e le risorse di un sistema siano accessibili esclusivamente agli utenti che dispongono dell'autorizzazione esplicita.
+    \item Semplice: intuituvo abbastanza da permette di interagire con il software senza la necessità di supporto.
+    \item Sicuro: soddisfa requisiti atti a proteggere l'accesso non autorizzato alle risorse e a garantire l'integrità dei dati.
+    \item Stakeholders: persona che ha un interesse nel prodotto software.
+
+    \item Stato: la condizine in un dato momento della issue. Lo stato può assumere i seguenti valori:
+    \begin{itemize}
+        \item Todo: è inteso come stato inziale di una issue, è il valore dello stato nel momento della creazione. 
+        \item In Progress: è inteso come stato intermedio nella risoluzione di una issue. Lo stato è impostato a \textit{In Progress} quando è stato assegnato ad un utente che ci dovrà lavorare.
+        \item Done: è inteso come stato finale. Lo stato è impostato a \textit{Done} quanto la issue è stata risolta.
+    \end{itemize}
+    \item System under development: riferimento al sistema software che si sta progettando.
+    \item Utente autenticato: persona membro del team autenticata nel sistema.
+    \item Utente generico: persona del team che non ha ancora effettuato l'accesso al sistema.
+    \item Vista: La vista è l'insieme di informazioni accessibile per il ogni utente.
+\end{itemize}
+\subsubsection{Sinonimi adottati}
+\begin{itemize}
+    \item Utente, utente generico, membro del team.
+    \item Lista, elenco
+    \item Ospite, stakeholder esterno.
+    \item Sistema software, applicativo software, prodotto software, sud, piattaforma. 
+    \item Autenticazione, log in
+\end{itemize}
+\subsubsection{Abbreviazioni}
+\begin{itemize}
+    \item Admin: abbreviazione di utente amministratore
+    \item SUD: System under development
+\end{itemize}
+\subsection{Riferimenti}
+Il presente documento è stato redatto in conformità allo standard IEEE Std 830-1998. \index{IEEE Std 830-1998}
+Per la definizione dettagliata dei casi d’uso si è fatto riferimento alle tabelle di Alistair Cockburn.\index{Cockburn}\\
+Riferimenti bibliografici per la stesura del documento:
+\begin{itemize}
+    \item \textit{IEEE Std 830-1998 (Revision of IEEE Std 830-1993) – IEEE Recommended Practice for Software Requirements Specifications.}
+    \item \textit{Cockburn, A. (2001). Writing Effective Use Cases. Addison-Wesley.}
+\end{itemize}
+\subsection{Panoramica del documento}
+La restante parte di questo documento è suddivisa in due ulteriori capitoli che descrivono le caratteristiche funzionali di \textit{BugBoard26}.\\
+Il capitolo immediatamente seguente: "Descrizione generale" è composto dai seguenti paragrafi.
+\begin{longtable}{|p{5cm}|p{9cm}|}
+\hline
+Prospettiva del prodotto & Illustra l'ambito in cui \textit{BugBoard26} si va ad inquadrare e sarà utilizzato\\ \hline
+Funzionalità del prodotto & Esplicita le funzioni implementate da \textit{BugBoard26} \\ \hline
+Utenti e attori del sistema & Individuazione e caratterizzazione di tutti gli utenti (attori) del sistema \\ \hline
+Vincoli generali e assunzioni & Indica ciò a cui deve essere vincolato il prodotto software \\ \hline
+\end{longtable}
+Nel terzo capitolo "Requisiti specifici" saranno dettagliate tutte le funzionalità che \textit{BugBoard26} realizza.
+Questo capitolo è composto dai seguenti paragrafi.
+\begin{longtable}{|p{5cm}|p{9cm}|}
+\hline
+Requisiti funzionali & Si scende ad un livello di maggior dettaglio nella descrizione delle funzioni del prodotto software.\\ \hline
+Requisiti non funzionali & Esplicita i requisiti non funzionali del prodotto software \textit{BugBoard26} \\ \hline
+Modellazione dei casi d’uso & Si modellano, tramite UseCase Diagram, tutti i casi d'uso del prodotto software. \\ \hline
+Formalizzazione di casi d’uso significativi & Si scende ad un livello di maggiore dettagio nella descrizione dei casi d'uso
+utilizzando le tabelle di Cockburn. \\ \hline
+Prototipazione visuale & Si descriveranno visualmente le risposte del sistema nel suo utilizzo attraversando il flusso dei casi d'uso. \\ \hline
+\end{longtable}
+
+\section{Descrizione generale}
+\subsection{Prospettiva del prodotto}
+Il sistema \textit{BugBoard26} è un prodotto software autonomo progettato per la gestione interna delle issue nei team di sviluppo software.
+Non fa parte di un sistema più grande e funziona indipendentemente.\\
+Tutti gli utenti devono autenticarsi prima di accedere alle funzionalità.
+
+\subsection{Funzionalità del prodotto}
+\textit{BugBoard26} deve fornire le funzionalità \index{Funzionalità} di seguito riportate, che per motivi di chiarezza sono state organizzate in categorie:
+\begin{itemize}
+    \item Categoria Autenticazione\index{Autenticazione} - \textit{BugBoard26} consente l'autenticazione dell'utente, consentedogli di accedere solo alle funzionalità che gli competono.
+    \begin{itemize}
+        \item \hyperref[sec:RE01]{Autenticazione:} \textit{BugBoard26} contente l'autenticazione dell'utente.
+        \item \hyperref[sec:RE12]{Registrazione nuova utenza (Utente):} Un utente non registrato si registra al sistema.\index{Nuova utenza (Utente)} 
+        \item \hyperref[sec:RE02]{Registrazione nuova utenza (Amministratore):} Un amministratore registra una nuova utenza.\index{Nuova utenza (Amministratore)} 
+    \end{itemize}
+    \item Categoria issue\index{Issue} - \textit{BugBoard26} gestisce la segnalazione e l'assegnazione di issue.
+    \begin{itemize}
+        \item \hyperref[sec:RE03]{Segnala issue:}\index{Issue!Segnalazione}\index{Issue!Filtra}\index{Issue!Ordina}\index{Issue!Ricerca} Un utente autenticato può segnalare una issue, della quale deve inserire un titolo e una descrizione. Può anche aggiungere immagini allegate e impostare una priorità.
+        \item \hyperref[sec:RE04]{Assegna issue:}\index{Assegna} Un amministratore può assegnare una issue ad un membro del team (utente).
+        \item \hyperref[sec:RE11]{Modifica stato issue:} Un utente cui è stata assegnata una issue ne modifica lo stato.\index{Issue!Modifica} 
+    \end{itemize}
+    \item Categoria visualizzazioni\index{Vista} -  \textit{BugBoard26} permette di visualizzare informazioni su issue e membri del team.
+    \begin{itemize}
+        \item \hyperref[sec:RE05]{Visualizza issue:}\index{Vista!Riepilogo isseu} gli utenti autenticati possono visualizzare la lista delle issue.
+        \item \hyperref[sec:RE06]{Visualizza report team:}\index{Vista!Report mensile} Gli amministratori hanno accesso ai report mensili del team.
+        \item \hyperref[sec:RE07]{Visualizza issue utente:}\index{Vista!Issue personali} Gli utenti autenticati possono visualizzare le issue assegnategli da un amministratore.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Utenti e attori del sistema}
+La seguente tabella definisce gli utenti principali del sistema, descrivendone il possibile utilizzo e la competenza tecnica richiesta. L'insieme risulta esaustivo, non è 
+previsto, quindi, che utenti non specificati in questa sezione utilizzino il sistema. Per "competenze basilari di utilizzo di applicativi software" si intende 
+una media familiarità con strumenti informatici di base. Non è prevista una curva di apprendimento sull'utilizzo di \textit{BugBoard26}.\\ 
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Membro del team autenticato}} \\ \hline
+\textbf{Descrizione} & \textbf{Esperienza e competenze tecniche} & \textbf{Principali interazioni con il sistema} \\ \hline
+È un membro del team di sviluppo software. Può autenticarsi per segnalare nuove issue, visualizzarle e modificare quelle che gli sono state
+assegnate. & Conoscenza base del dominio del software. Competenze basilari di utilizzo di applicativi software. & Segnala issue; visualizzare riepilogo issue; 
+visualizzare le issue che gli sono state assegnate; ricevere notifiche dal sistema \\ \hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\multicolumn{3}{|c|}{\textbf{Amministratore}} \\ \hline
+\textbf{Descrizione} & \textbf{Esperienza e competenze tecniche} & \textbf{Principali interazioni con il sistema} \\ \hline
+È un utente autenticato con privilegi estesi. Oltre alle funzionalità dell’utente, può creare nuove utenze, assegnare issue ai membri del team 
+e visualizzare report mensili sui membri del team. & Conoscenza base del dominio del software. Competenze basilari di utilizzo di applicativi software. &
+Tutte le interazioni di un membro del team; assegna issue; visualizza report mensili \\ \hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\multicolumn{3}{|c|}{\textbf{Membro del team non autenticato}} \\ \hline
+\textbf{Descrizione} & \textbf{Esperienza e competenze tecniche} & \textbf{Principali interazioni con il sistema} \\ \hline
+È un utente che non ha effettuato l'accesso al sistema & Competenze basilari di utilizzo di applicativi software. &
+Effettuare il log in; registrare nuova utenza \\ \hline
+\end{tabularx}
+
+\section{Requisiti specifici}
+
+\subsection{Requisiti funzionali}
+
+\subsubsection{RE01 - Log in utente}\index{Autenticazione}
+\label{sec:RE01}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+\checkmark &  &  \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Gestione dell'autenticazione utente \\ \hline
+Descrizione & Il sistema deve permettere agli utenti di accedere al sistema tramite email e password. Solo utenti con credenziali
+valide possono accedere al sistema \\ \hline
+Input & Email e password \\ \hline
+Fonte & Interfaccia di autenticazione \\ \hline
+Output & Accesso al sistema con vista personalizzata o messaggio di errore \\ \hline
+Azione & Verifica la validità delle credenziali permettendo l'accesso all'utente \\ \hline
+Precondizione & L'utenza registrata \\ \hline
+Effetti collaterali & Non ci sono effetti collaterali \\ \hline 
+Use Case & \hyperref[sec:UC01]{Vedi Use Case relativo a RE01} \\
+\end{tabularx}
+
+
+\subsubsection{RE02 - Nuova utenza (Amministratore)}\index{Nuova utenza (Amministratore)}
+\label{sec:RE02}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ &  & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Registrazione nuova utenza \\ \hline
+Descrizione & Il sistema deve permettere di registrare nuove utenze all'interno del sistema software. \\ \hline
+Input & Email e password \\ \hline
+Fonte & Interfaccia con vista dedicata agli utenti amministratori \\ \hline
+Output & Visualizza messaggio di avvenuta registrazione della nuova utenza o visualizza messaggio di errore \\ \hline
+Azione & Attivazione della nuova utenza con possibilità di autenticazione \\ \hline
+Richiede & Credenziali conformi alle regole imposte dal sistema software \\ \hline
+Precondizione & L'utente deve essere autenticato con permessi di amministratore \\ \hline
+Effetti collaterali & Il sistema inserisce un nuovo utente con credenziali riservate nel sistema \\ \hline 
+Use Case & \hyperref[sec:UC05]{Vedi Use Case relativo a RE02} \\ \hline
+\end{tabularx}
+
+
+
+
+\subsubsection{RE03 - Segnala issue}\index{Issue!Segnalazione}
+\label{sec:RE03}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ & \checkmark & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Segnalazione di una nuova issue \\ \hline
+Descrizione & Il sistema deve permettere ad un utente di segnalare una nuova issue, specificando titolo, descrizione e, eventualmente, 
+impostare una priorità e allegare immagini \\ \hline
+Input & Titolo, descrizione e opzionalmente immagini e priorità \\ \hline
+Fonte & Interfaccia utente di segnalazione issue \\ \hline
+Output & Visualizza un messaggio di avventua segnalazione della nuova issue o un messaggio di errore \\ \hline
+Azione & Il sistema crea la nuova issue \\ \hline
+Richiede & Titolo e descrizione \\ \hline
+Precondizione & L'utente deve essere autenticato \\ \hline
+Effetti collaterali & Il sistema impostato lo stato della nuova issue a \textit{Todo}. \\ \hline 
+Use Case & \hyperref[sec:UC02]{Vedi Use Case relativo a RE03} \\ \hline
+Descrizione dettagliata Cockburn & \hyperref[sec:CKB01]{Vedi la descrizione dettagliata con le tabelle di Cockburn} \\ \hline
+\end{tabularx}
+
+\subsubsection{RE04 - Assegna issue}\index{Issue!Assegnazione}
+\label{sec:RE04}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ & & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Assegnazione di una issue ad un membro del team registrato nel sistema \\ \hline
+Descrizione & Il sistema deve permettere di assegnare issue a membri del team \\ \hline
+Input & Identificativo issue e Identificativo utente a cui è assegnata la issue \\ \hline
+Fonte & Interfaccia utente di assegnazione issue \\ \hline
+Output & Visualizza messaggio di avventa assegnazione della issue o messaggio di errore \\ \hline
+Azione & Il sistema deve assegnare la issue all'utente segnalato \\ \hline
+Precondizione & L'utente deve essere autenticato con permessi di amministratore e la issue non deve essere stata già assegnata ad altri utenti \\ \hline
+Effetti collaterali & Il sistema deve inviare una notifica all'utente cui è stata assegnata la issue e deve modificare lo 
+stato della issue da \textit{Todo} a \textit{In Progress}. \\ \hline 
+Use Case & \hyperref[sec:UC03]{Vedi Use Case relativo a RE04} \\ \hline
+\end{tabularx}
+
+
+\subsubsection{RE05 - Visualizza riepilogo issue}\index{Vista!Riepilogo issue}
+\label{sec:RE05}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ & \checkmark & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Visualizzazione del riepilogo delle issue \\ \hline
+Descrizione & Il sistema deve permettere la visualizzazione di tutte le issue \\ \hline
+Input & Richiesta di visualizzazione dell'elenco delle issue \\ \hline
+Fonte & Interfaccia utente \\ \hline
+Output & Elenco di tutte le issue presenti nel sistema \\ \hline
+Azione & Il sistema deve gestire la visualizzazione delle issue presenti nel sistema \\ \hline
+Richiede & Che sia presente almeno una issue nel sistema \\ \hline
+Precondizione & L'utente deve essere autenticato \\ \hline
+Effetti collaterali & Nessuno \\ \hline 
+Use Case & \hyperref[sec:UC04]{Vedi Use Case relativo a RE05} \\ \hline
+\end{tabularx}
+
+
+\subsubsection{RE06 - Visualizza report team}\index{Vista!Report mensile}
+\label{sec:RE06}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ & & \checkmark \\
+\hline
+\end{tabular} \\
+
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+
+Funzione & Visualizzazione del report mensile del team \\ \hline
+Descrizione & Il sistema deve permettere la visualizzazione di metriche aggregate e dettagliate per ogni singolo utente \\ \hline
+Input & Mese richiesto \\ \hline
+Fonte & Interfaccia utente amministratore \\ \hline
+Output & Elenco del report mensile \\ \hline
+Azione & Il sistema deve visualizzare il report \\ \hline
+Richiede & Che sia presente almeno una issue nel sistema assegnata ad un membro del team per il mese selezionato \\ \hline
+Precondizione & L'utente deve essere autenticato con permessi di amministratore \\ \hline
+Effetti collaterali & Nessuno \\ \hline 
+Use Case & \hyperref[sec:UC04]{Vedi Use Case relativo a RE06} \\ \hline
+\end{tabularx}
+
+\subsubsection{RE07 - Utente visualizza le proprie issue assegnate}\index{Vista!Issue personali}
+\label{sec:RE07}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ & \checkmark & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Visualizzazione delle issue assegnate ad un utente \\ \hline
+Descrizione & Il sistema deve permettere la visualizzazione ad un utente delle issue che gli sono state assegnate \\ \hline
+Input & Richiesta di visualizzazione \\ \hline
+Fonte & Interfaccia utente \\ \hline
+Output & Elenco delle issue \\ \hline
+Azione & Il sistema deve permettere la visualizzazione l'elenco \\ \hline
+Richiede & Che sia presente almeno una issue assegnata all'utente che fa richiesta della lista \\ \hline
+Precondizione & L'utente deve essere autenticato \\ \hline
+Effetti collaterali & Nessuno \\ \hline
+Use Case & \hyperref[sec:UC03]{Vedi Use Case relativo a RE07} \\ \hline
+\end{tabularx}
+
+
+\subsubsection{RE08 - Filtra issue}\index{Issue!Filtra}
+\label{sec:RE08}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+  & \checkmark & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Filtraggio delle issue \\ \hline
+Descrizione & Il sistema deve permettere all'utente che intende visualizzare le issue di
+applicare un filtro in base ai seguenti criteri:
+\begin{itemize}
+    \item Titolo
+    \item Tipologia
+    \item Priorità
+    \item Data
+    \item Utente che l'ha segnalata
+\end{itemize}
+\\ \hline
+Input & Seleziona il criterio \\ \hline
+Fonte & Interfaccia utente nella vista di visualizzazione delle issue \\ \hline
+Output & Elenco delle issue filtrate \\ \hline
+Azione & Il sistema deve applicare il filtro e aggiornare l'elenco delle issue \\ \hline
+Precondizione & L'utente deve essere autenticato e deve esistere almeno una issue nel sistema \\ \hline
+Effetti collaterali & Nessuno \\ \hline
+Use Case & Incluso in \hyperref[sec:UC04]{Visualizza riepilogo issue - RE05} \\ \hline
+\end{tabularx}
+
+\subsubsection{RE09 - Ordina issue}\index{Issue!Ordine}
+\label{sec:RE09}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ & \checkmark & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Ordinamento delle issue \\ \hline
+Descrizione & Il sistema deve permettere all'utente di ordinare le issue visualizzate secondo i seguenti criteri:
+\begin{itemize}
+    \item Titolo
+    \item Tipologia
+    \item Priorità
+    \item Data
+    \item Utente che l'ha segnalata
+\end{itemize}
+\\ \hline
+Input & Seleziona il criterio di ordinamento \\ \hline
+Fonte & Interfaccia utente nella vista di visualizzazione delle issue \\ \hline
+Output & Elenco delle issue ordinate \\ \hline
+Azione & Il sistema deve mostrare l'elenco delle issue ordinate \\ \hline
+Precondizione & L'utente deve essere autenticato e deve esistere almeno una issue nel sistema \\ \hline
+Effetti collaterali & Nessuno \\ \hline
+Use Case & Incluso in \hyperref[sec:UC04]{Visualizza riepilogo issue - RE05} \\ \hline
+\end{tabularx}
+
+\subsubsection{RE010 - Ricerca issue}\index{Issue!Ricerca}
+\label{sec:RE10}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ & \checkmark & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Ricerca delle issue \\ \hline
+Descrizione & Il sistema deve permettere all'utente di effettuare una ricerca delle issue secondo i seguenti criteri: 
+\begin{itemize}
+    \item Titolo
+    \item Tipologia
+    \item Priorità
+    \item Data
+    \item Utente che l'ha segnalata
+\end{itemize}
+\\ \hline
+Input & Chiave di ricerca \\ \hline
+Fonte & Interfaccia utente nella vista di visualizzazione delle issue \\ \hline
+Output & Elenco delle issue trovate \\ \hline
+Azione & Il sistema deve mostrare l'elenco delle issue ritenute pertinenti con la ricerca \\ \hline
+Precondizione & L'utente deve essere autenticato e deve esistere almeno una issue nel sistema \\ \hline
+Effetti collaterali & Nessuno \\ \hline
+Use Case & Incluso in \hyperref[sec:UC04]{Visualizza riepilogo issue - RE05} \\ \hline
+\end{tabularx}
+
+\subsubsection{RE011 - Modifica stato issue}\index{Issue!Modifica}
+\label{sec:RE11}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+ & \checkmark & \checkmark \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Modifica lo stato di una issue \\ \hline
+Descrizione & Il sistema deve permettere all'utente autenticato cui è stata assegnata una issue di modificarne lo stato da \textit{In Progress} a \textit{Done}, 
+una volta risolta \\ \hline
+Input & Selezione modifica issue \\ \hline
+Fonte & Interfaccia utente nella vista di visualizzazione delle proprie issue \\ \hline
+Output & Stato issue modificato \\ \hline
+Azione & Il sistema deve modificare il valore dello stato della issue da \textit{In Progress} a \textit{Done} \\ \hline
+Precondizione & L'utente deve essere autenticato, deve avere almeno una issue assegnata e lo stato della issue deve essere \textit{In Progress}. \\ \hline
+Effetti collaterali & Il sistema invia una notifica all'utente che ha segnalato la issue, avvertendolo che il problema è stato risolto. \\ \hline
+Use Case & \hyperref[sec:UC06]{Vedi Use Case Modifica stato issue - RE06} \\ \hline
+\end{tabularx}
+
+\subsubsection{RE012 - Nuova utenza (Utente)}\index{Nuova utenza (Utente)}
+\label{sec:RE12}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Utenti per funzionalità} \\ \hline
+\textbf{Utente} & \textbf{Utente autenticato} & \textbf{Amministratore} \\ \hline
+\checkmark &  &  \\
+\hline
+\end{tabular} \\
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+Funzione & Registrazione nuova utenza \\ \hline
+Descrizione & Il sistema deve permettere di registrare nuove utenze
+all’interno del sistema software. \\ \hline
+Input & Email e password \\ \hline
+Fonte & Interfaccia utente \\ \hline
+Output & Visualizza messaggio di avventua registrazione della nuova
+utenza o visualizza messaggio di errore \\ \hline
+Azione & Attivazione della nuova utenza con possibilità di autenticazione \\ \hline
+Richiede & Credenziali conformi alle regole imposte dal sistema software \\ \hline
+Precondizione & Nessuna \\ \hline
+Effetti collaterali & Nessuno \\ \hline
+Use Case & Incluso in \hyperref[sec:UC01]{Log in - RE01} \\ \hline
+\end{tabularx}
+
+\subsection{Requisiti non funzionali}
+Questa sezione è lasciata momentaneamente vuota.
+
+\subsection{Modellazione dei casi d'uso tramite Use Case Diagram}
+
+\subsubsection{Use Case Diagram}\index{Use Case}
+\label{sec:UCD}
+Di seguito è riportato il diagramma dei casi d’uso del System Under Development. Le prossime sezioni del documento  (3.3.1 - 3.3.5) presenteranno 
+alcuni Use Case Diagram parziali, estratti dal diagramma complessivo, con l’unico scopo di facilitare la lettura e la comprensione 
+dei singoli casi d’uso.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/BugBoard26.png}
+    \caption{Use Case Diagram}
+    \label{fig:etichetta}
+\end{figure}
+
+
+\subsubsection{Use Case Diagram parziale 1}\index{Use Case!Autenticazione}
+\label{sec:UC01}
+Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
+I casi d'uso mostrati sono due: \textit{Log in e Registra nuova utenza (Utente)}. 
+\begin{itemize}
+    \item \textit{Log in}. L'attore principale è un Utente, esso può effettuare un Log in per autenticarsi nel sistema ed 
+avere accesso alle funzionalità garantite dai privilegi della sua utenza. Per effettuare il Log in necessita di una email e una password corrispondenti ad un utente 
+registrato e attivo nel sistema. 
+    \item \textit{Registra nuova utenza (Utente)}. L'attore principale è un utente non registrato. Esso può registrarsi al sistema
+specificando una email e una password. 
+\end{itemize} 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_login.png}
+    \caption{Use Case1 - \hyperref[sec:RE01]{Requisito funzionale 3.1.1 - Log in utente} e \hyperref[sec:RE12]{Requisito funzionale 3.1.12 -  Crea nuova utenza (Utente)}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsubsection{Use Case Diagram parziale 2}\index{Use Case!Segnala issue}
+\label{sec:UC02}
+Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
+In particolare, si pone l'attenzione sulla segnalazione di una issue. L'attore principale è un utente autenticato. Esso può segnalare una issue, specificando un titolo e una descrizione.
+Può anche impostare una priorità e allegare immagini. La issue verrà inserita nel sistema e sarà visibile nell'elenco delle issue. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_SegnalaIssue.png}
+    \caption{Use Case2 - \hyperref[sec:RE03]{Requisito funzionale 3.1.3 -  Segnala issue}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsubsection{Use Case Diagram parziale 3}\index{Use Case!Assegna issue} \index{Use Case!Visualizza issue assegnate}
+\label{sec:UC03}
+Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
+I casi d'uso mostrati sono due: \textit{Segnala issue e Visualizza issue assegnate}. 
+\begin{itemize}
+    \item \textit{Assegna issue}. L'attore principale è un amministratore. Esso può assegnare una issue a membri del team, ammesso che la issue non risulti già assegnata.
+    Il sistema modificherà lo stato della issue da \textit{Todo} a \textit{In Progress} e invierà una notifica all'utente al quale è stata assegata la issue. 
+    \item \textit{Visualizza issue assegnate}. L'attore principale è un utente autenticato. Esso può visualizzare l'elenco delle issue che gli sono state assegnate.
+\end{itemize} 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_Visualizza&Assegna.png}
+    \caption{Use Case3 - \hyperref[sec:RE04]{Requisito funzionale 3.1.4 - Assegna issue} e \hyperref[sec:RE07]{Requisito funzionale 3.1.7 - Visualizza issue assegnate}}
+    \label{fig:etichetta}
+\end{figure}
+
+
+
+\subsubsection{Use Case Diagram parziale 4}\index{Use Case!Visualizza riepilogo} \index{Use Case!Visualizza report team}
+\label{sec:UC04}
+Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
+I casi d'uso mostrati sono due: \textit{Visualizza riepilogo issue e Visualizza report attività team}. 
+\begin{itemize}
+    \item \textit{Visualizza riepilogo}. L'attore principale è un utente autenticato. Esso può visualizzare un elenco di tutte le issue e relativi commenti, presenti nel sistema.
+    L'elenco è dinamico, nel senso che è possibile ottenere una vista personalizzata delle issue, filtrando, ordinando o ricercando per parametri e perole chiave.
+    \item \textit{Visualizza report attività team}. L'attore principale è un amministratore. Esso può visualizzare i report mensili del team, con le metriche e i dettagli per singolo utente. 
+\end{itemize}  
+Il seguente caso d'uso integra i requisiti funzionali \hyperref[sec:RE08]{RE08}, \hyperref[sec:RE09]{RE09} e \hyperref[sec:RE10]{RE10}, che non
+sono rappresentate come casi d'uso autonomi.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_VisualizzaReport&VisualizzaRiepilogo.png}
+    \caption{Use Case4 - \hyperref[sec:RE05]{Requisito funzionale 3.1.5 -  Visualizza riepilogo issue} e \hyperref[sec:RE06]{ Requisito funzionale 3.1.6 -  Visualizza report team}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsubsection{Use Case Diagram parziale 5}\index{Use Case!Creazione nuova utenza (Amministratore)}
+\label{sec:UC05}
+Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
+In particolare, si pone l'attenzione sulla registrazione di una nuova utenza da parte di un amministratore. L'attore principale è un amministratore. Esso può inserire nel sistema un nuovo utente. 
+Deve specificare le credenziali di accesso (email e password) e impostare una tipologia all'utenza (utente normale o amministratore). 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_CreaNuovaUtenza.png}
+    \caption{Use Case5 - \hyperref[sec:RE02]{Requisito funzionale 3.1.2 -  Crea nuova utenza (Amministratore)}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsubsection{Use Case Diagram parziale 6}\index{Use Case!Modifica stato issue}
+\label{sec:UC06}
+Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
+In particolare, si pone l'attenzione sulla modifica dello stato di una issue. L'attore principale è un utente autenticato. Esso può modificare lo stato di una issue 
+assegnatagli, portandola dallo stato \textit{In Progress} allo stato \textit{Done}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_ModificaStatoIssue.png}
+    \caption{Use Case6 - \hyperref[sec:RE11]{Requisito funzionale 3.1.11 - Modifica stato issue}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsection{Formalizzazione di casi d'uso significativi}
+Descrizione tramite tabelle di Cockburn dei casi d'uso significativi.\index{Cockburn}
+
+\subsubsection{Tabella di Cockburn 1}
+\label{sec:CKB01}
+Tabella di Cockburn del caso d'uso \hyperref[sec:RE03]{Requisito funzionale 3.1.2 - Segnala issue}\index{Issue!Segnalazione}
+
+\begin{longtable}{|p{4cm}|p{12cm}|}
+\hline
+\textbf{Use Case x} & \textbf{Nome UC} \\ \hline
+Goal in Context & Permette agli utenti autenticati di creare una issue con titolo e descrizione. Facoltativamente, 
+di inserire un'immagine in allegato e assegnare un livello di priorità  \\ \hline
+Preconditions & L'utente ha effettuato l'autenticazione nel sistema \\ \hline
+Success End Condition &  L'issue viene registrata nel sistema, risultando visibile con lo stato iniziale di \textit{Todo} \\ \hline
+Failed End Condition & L'issue non viene registrata nel sistema e viene visualizzato il messaggio di Errore: \textit{Issue non creata}  \\ \hline
+Primary Actor & Utente autenticato  \\ \hline
+Trigger & L'utente autenticato sceglie di creare una nuova issue \\ \hline 
+Main Scenario & 
+\begin{minipage}[t]{\linewidth}
+\begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
+\textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
+1 & Accede alla sezione \textit{Crea nuova issue} &   \\ \hline
+2 & & \hyperref[sec:MU01]{Mostra MU\_1} \\ \hline
+3 & Inserisce i campi obbligatori: titolo descrizione e tipo di Issue \textit{(question, bug, documentation, feature)} & \\ \hline
+4 & Clicca \textit{Crea} &  \\ \hline
+5 & & \hyperref[sec:MU02]{Mostra MU\_2} \\ \hline
+6 & Clicca \textit{Si} & \\ \hline
+7 &  & Crea la issue e \hyperref[sec:MU03]{Mostra MU\_3} \\ \hline
+\end{tabularx}
+\end{minipage}
+
+\strut \\ \hline
+Extension \textit{\#1} - Imposta una priorità (campo opzionale) & 
+\begin{minipage}[t]{\linewidth}
+\begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
+\textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
+3.a & Sceglie di selezionare una priorità &  \\ \hline
+4.a & & Torna allo step 4 del \textit{Main Scenario}
+\end{tabularx}
+\end{minipage} \strut \\ \hline
+Extension \textit{\#2} - Allega un'immagine (campo opzionale)  & 
+\begin{minipage}[t]{\linewidth}
+\begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
+\textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
+3.b & Clicca su \textit{Allega img} &  \\ \hline
+4.b & Clicca \textit{Crea} & \\ \hline
+5.b & & Consente la scelta dell'immagine e torna allo step 4 del \textit{Main Scenario} 
+\end{tabularx}
+\end{minipage}\strut \\ \hline
+
+Extension \textit{\#3} - Gestione Errore caricamento immagine  & 
+\begin{minipage}[t]{\linewidth}
+\begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
+\textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
+3.b.1 & Clicca su \textit{Allega img} &  \\ \hline
+4.b.1 & & \hyperref[sec:MU04]{Mostra MU\_4} e torna allo step 4 del \textit{Main Scenario}
+\end{tabularx}
+\end{minipage}\strut \\ \hline
+
+Extension \textit{\#4} - Campo obbligatorio non specificato  & 
+\begin{minipage}[t]{\linewidth}
+\begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
+\textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
+4.c & Clicca su \textit{Crea} &  \\ \hline
+5.c & & \hyperref[sec:MU05]{Mostra MU\_5} e torna allo step 3 del \textit{Main Scenario}
+\end{tabularx}
+\end{minipage}\strut \\ \hline
+
+Extension \textit{\#5} - L'utente non conferma la creazione  & 
+\begin{minipage}[t]{\linewidth}
+\begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
+\textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
+6.e & Clicca \textit{No} &  \\ \hline
+7.e & & Torna allo step 3 del \textit{Main Scenario}
+\end{tabularx}
+\end{minipage}\strut \\ \hline
+
+\end{longtable}
+
+\subsection{Prototipazione visuale del caso d'uso 3.3.3 Segnala Issue}
+\index{Mockup}
+Le seguenti figure rappresentano la prototipazione visuale via Mock-up delle relative interfacce utente. Non sono da intendersi come rappresentativi dell'aspetto finele 
+della schermata, ma solamente un mezzo per comunicare l'idea dell'interfaccia grafica del prodotto software.
+
+\subsubsection{Segnala Issue - Mockup 1}
+\label{sec:MU01}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_1.png}
+    \caption{Mockup 1 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 2 del Main Scenario}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsubsection{Segnala Issue - Mockup 2}
+\label{sec:MU02}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_2.png}
+    \caption{Mockup 2 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 5}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsubsection{Segnala Issue - Mockup 3}
+\label{sec:MU03}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_3.png}
+    \caption{Mockup 3 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 7}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsubsection{Segnala Issue - Mockup 4}
+\label{sec:MU04}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_4.png}
+    \caption{Mockup 4 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 4.b.1}}
+    \label{fig:etichetta}
+\end{figure}
+
+\subsubsection{Segnala Issue - Mockup 5}
+\label{sec:MU05}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_5.png}
+    \caption{Mockup 5 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 5.c}}
+    \label{fig:etichetta}
+\end{figure}
+
+
+\printindex
+
+
+\end{document}
