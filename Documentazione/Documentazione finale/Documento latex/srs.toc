@@ -44,4 +44,8 @@
 \contentsline {subsubsection}{\numberline {3.5.3}Segnala Issue - Mockup 3}{26}{subsubsection.3.5.3}%
 \contentsline {subsubsection}{\numberline {3.5.4}Segnala Issue - Mockup 4}{27}{subsubsection.3.5.4}%
 \contentsline {subsubsection}{\numberline {3.5.5}Segnala Issue - Mockup 5}{27}{subsubsection.3.5.5}%
-\contentsline {section}{Indice analitico}{28}{section*.1}%
+\contentsline {section}{\numberline {4}Documento di design del sistema}{28}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Analisi dell'Architettura}{28}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Client}{28}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Server}{28}{subsubsection.4.1.2}%
+\contentsline {section}{Indice analitico}{29}{section*.1}%
