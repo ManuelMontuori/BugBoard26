@@ -819,11 +819,26 @@ della schermata, ma solamente un mezzo per comunicare l'idea dell'interfaccia gr
 
 \section{Documento di design del sistema}
 \subsection{Analisi dell'Architettura}
-Per questo progetto è stata scelta un'architettura client server
+Il progetto BugBoard26 è stato sviluppato con un'architettura \textit{\textbf{client-server}} (fig. 1) organizzata su tre livelli. Tale organizzazione è suddivisa in: 
+\begin{itemize}
+    \item Presentation Layer (Client)
+    \item Bussines Logic Layer (Server)
+    \item Data Layer (Persistenza)
+\end{itemize}
+
+Tale scelta permette di beneficiare di molteplici vantaggi pratici. 
+Tra i principali troviamo la centralizzazione dei dati, in quanto i dati gestiti dal Server vengono distribuiti al Client che li richiede, una maggiore sicurezza, specialmente la gestione da parte del Server dell'autenticazione degli utenti. Altro vantaggio particolarmente significativo risiede nella scalabilità, il modello garantisce la possibilità di aggiungere nuovi client e nuovi server senza modificare il sistema. Per tutti questi motivi, la decisione di utilizzare il modello Client-Server rappresenta la soluzione più coerente per lo sviluppo del software. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/Architettura/Client-Server.png}
+    \caption{Schema architetturale 1 - Architettura Client-Server}
+    \label{fig:etichetta}
+\end{figure}
+
 \subsubsection{Client}
 Il client...
 \subsubsection{Server}
-Il server...
+Il server è stato sviluppato utilizzando il pattern architetturale 3-tier. 
 
 
 
