@@ -826,8 +826,10 @@ Il progetto BugBoard26 è stato sviluppato con un'architettura \textit{\textbf{c
     \item Data Layer (Persistenza)
 \end{itemize}
 
-Tale scelta permette di beneficiare di molteplici vantaggi pratici. 
-Tra i principali troviamo la centralizzazione dei dati, in quanto i dati gestiti dal Server vengono distribuiti al Client che li richiede, una maggiore sicurezza, specialmente la gestione da parte del Server dell'autenticazione degli utenti. Altro vantaggio particolarmente significativo risiede nella scalabilità, il modello garantisce la possibilità di aggiungere nuovi client e nuovi server senza modificare il sistema. Per tutti questi motivi, la decisione di utilizzare il modello Client-Server rappresenta la soluzione più coerente per lo sviluppo del software. 
+Questa scelta consente di ottenere numerosi vantaggi pratici. Tra i principali si evidenzia la centralizzazione dei dati: le informazioni vengono gestite dal server e distribuite ai client che ne fanno richiesta, garantendo così maggiore controllo e coerenza. Un ulteriore beneficio riguarda la sicurezza, in particolare per quanto concerne la gestione dell’autenticazione degli utenti, che è affidata al server e risulta quindi più efficace e affidabile.
+Un altro aspetto particolarmente rilevante è la scalabilità: il modello permette infatti di aggiungere nuovi client o server senza apportare modifiche sostanziali all’intero sistema.
+Per tutti questi motivi, la decisione di utilizzare il modello Client-Server rappresenta
+la soluzione più coerente per lo sviluppo del software. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/Architettura/Client-Server.png}
@@ -838,13 +840,37 @@ Tra i principali troviamo la centralizzazione dei dati, in quanto i dati gestiti
 \subsubsection{Client}
 Il client...
 \subsubsection{Server}
-Il server è stato sviluppato utilizzando il pattern architetturale 3-tier. 
+Per la creazione del \textbf{backend} abbiamo utilizzato Spring Boot 3.2.2, un framework Java che facilita la creazione di API REST grazie al supportos per la gestione di richieste HTTP e l'integrazioni di componenti Spring come Spring MVC. 
+
+Il sistema adotta un’architettura basata sul \textbf{pattern MVC} (Model-View-Controller), estesa attraverso l’introduzione di ulteriori livelli applicativi, come Service, DTO, Mapper e moduli di autenticazione. Questa organizzazione consente una separazione ancora più marcata delle responsabilità: i \textbf{Controller} si occupano della gestione delle richieste HTTP, i \textbf{Services} della logica di business, i \textbf{DTO} e \textbf{Mapper} facilitano lo scambio e la trasformazione dei dati, la componente \textbf{View} è rappresentata dal processo di serializzazione (da Object a JSON) e deserializzazione (da JSON a Object) dei dati trasferiti dal o verso il client, mentre la componente \textbf{Repositories} rappresenta l'interfaccia che fornisce i servizi per la comunicazione con il sistema di persistenza dei dati. In particolare, grazie all'integrazione di Spring Data JPA (Jakarta Persistence API) e Hibernate, i Repositories si occupano delle operazione di lettura e scrittura dei dati (CRUD), delegando al sistema di persistenza la sola gestione fisica delle informazioni.
+Tale approccio migliora la manutenibilità, la scalabilità e la chiarezza del codice.
+
+L'architettura appena illustrata è rappresentata dal seguente Component Diagram UML.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/Architettura/ComponentDiagramServer.png}
+    \caption{Schema architetturale 2 - Component Diagram del backend}
+    \label{fig:etichetta}
+\end{figure}
 
 
+\subsubsection{Persistenza}
+La persistenza fisica dei dati è realizzata mediante l'utilizzo di un database relazionale, in particolare \textbf{PostgreSQL}. Questo sistema consente la memorizzazione dei dati attraverso l'uso del linguaggio \textbf{SQL}, utilizzato per definire, manipolare e interrogare le informazioni all'interno del database.
+PostgreSQL è stato scelto per diversi fattori. In primo luogo, è un sistema \textit{open-source}, affidabile e altamente stabile. Inoltre, PostgreSQL si integra facilmente con il framework Spring Boot e tecnologie JPA/Hibernate. 
+Il database relazionale garantisce la persistenza dei dati in modo sicuro. L'interazione con esso avviene tramite il livello \textbf{Repositories}, che incapsula le operazioni di accesso ai dati, mantenendo separata la logica applicativa dalla persistenza dei dati.
 
 
+\subsection{Scelte tecnologiche adottate}
+Descrizione e motivazione delle scelte tecnologiche adottate.
 
-
+\subsubsection{Descrizione dello schema di persistenza dei dati}
+Nella Figura 15 viene mostrato il diagramma UML del database.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/Architettura/Database.png}
+    \caption{Schema architetturale 3 - Diagramma UML Database}
+    \label{fig:etichetta}
+\end{figure}
 
 \printindex
 
