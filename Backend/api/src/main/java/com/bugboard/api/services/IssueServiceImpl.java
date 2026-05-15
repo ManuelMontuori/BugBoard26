@@ -11,6 +11,7 @@ import com.bugboard.api.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,7 +64,7 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public List<IssueDTO> getIssues(IssueStatus status, IssuePriority priority, IssueType type) {
+    public List<IssueDTO> getIssues(SummaryView view, IssueStatus status, IssuePriority priority, IssueType type) {
         List<Issue> issues;
 
         if (status != null && priority != null && type != null) {
@@ -93,6 +94,36 @@ public class IssueServiceImpl implements IssueService {
 
         } else {
             issues = issueRepository.findAll();
+        }
+
+
+        if(view!=null){
+            switch(view) {
+                case STATUS_ASC:
+                    issues.sort(Comparator.comparing(Issue::getStatus));
+                    break;
+                case STATUS_DESC:
+                    issues.sort(Comparator.comparing(Issue::getStatus).reversed());
+                    break;
+                case PRIORITY_ASC:
+                    issues.sort(Comparator.comparing(Issue::getPriority));
+                    break;
+                case PRIORITY_DESC:
+                    issues.sort(Comparator.comparing(Issue::getPriority).reversed());
+                    break;
+                case  TYPE_ASC:
+                    issues.sort(Comparator.comparing(Issue::getType));
+                    break;
+                case TYPE_DESC:
+                    issues.sort(Comparator.comparing(Issue::getType).reversed());
+                    break;
+                case DATE_ASC:
+                    issues.sort(Comparator.comparing(Issue::getCreatedAt));
+                    break;
+                case DATE_DESC:
+                    issues.sort(Comparator.comparing(Issue::getCreatedAt).reversed());
+                    break;
+            }
         }
 
         return issues.stream()

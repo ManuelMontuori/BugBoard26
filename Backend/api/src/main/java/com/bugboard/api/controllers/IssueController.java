@@ -5,6 +5,7 @@ import com.bugboard.api.dto.IssueDTO;
 import com.bugboard.api.models.IssuePriority;
 import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.IssueType;
+import com.bugboard.api.models.SummaryView;
 import com.bugboard.api.services.IssueService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +28,11 @@ public class IssueController {
     }
 
     @GetMapping
-    public List<IssueDTO> getIssues(@RequestParam(required = false) IssueStatus status,
+    public List<IssueDTO> getIssues(@RequestParam(required = false) SummaryView view,
+                                    @RequestParam(required = false) IssueStatus status,
                                     @RequestParam(required = false) IssuePriority priority,
                                     @RequestParam(required = false) IssueType type) {
-        return issueService.getIssues(status, priority, type);
+        return issueService.getIssues(view, status, priority, type);
     }
 
     @GetMapping("/search")
