@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.16)  14 MAY 2026 12:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.16)  15 MAY 2026 13:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -871,7 +871,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 442--449
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 469--470
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 468--469
 [][] 
  []
 
@@ -883,12 +883,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 474--481
+Underfull \hbox (badness 10000) in paragraph at lines 473--480
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 500--501
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 499--500
 [][] 
  []
 
@@ -900,18 +900,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 505--512
+Underfull \hbox (badness 10000) in paragraph at lines 504--511
 
  []
 
 
-Underfull \hbox (badness 2617) in paragraph at lines 531--531
+Underfull \hbox (badness 2617) in paragraph at lines 530--530
 []|\T1/ptm/m/n/12 Il si-ste-ma de-ve mo-stra-re l'e-len-co del-le is-sue ri-te-
 nu-te
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 531--532
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 530--531
 [][] 
  []
 
@@ -923,12 +923,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 536--543
+Underfull \hbox (badness 10000) in paragraph at lines 535--542
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 555--556
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 554--555
 [][] 
  []
 
@@ -940,31 +940,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 560--567
+Underfull \hbox (badness 10000) in paragraph at lines 559--566
 
  []
 
 
-Underfull \hbox (badness 2326) in paragraph at lines 581--581
+Underfull \hbox (badness 2326) in paragraph at lines 580--580
 []|\T1/ptm/m/n/12 Il si-ste-ma de-ve per-met-te-re di re-gi-stra-re nuo-ve uten
 -ze
  []
 
 
-Underfull \hbox (badness 3536) in paragraph at lines 581--581
+Underfull \hbox (badness 3536) in paragraph at lines 580--580
 []|\T1/ptm/m/n/12 Credenziali con-for-mi al-le re-go-le im-po-ste dal si-ste-ma
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 581--582
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 580--581
 [][] 
  []
 
 <images/BugBoard26.png, id=391, 704.6325pt x 680.7834pt>
 File: images/BugBoard26.png Graphic file (type png)
 <use images/BugBoard26.png>
-Package pdftex.def Info: images/BugBoard26.png  used on input line 595.
+Package pdftex.def Info: images/BugBoard26.png  used on input line 594.
 (pdftex.def)             Requested size: 455.24411pt x 439.83427pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -986,13 +986,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: images/Parziali/BugBoard26_login.png Graphic file (type png)
 <use images/Parziali/BugBoard26_login.png>
 Package pdftex.def Info: images/Parziali/BugBoard26_login.png  used on input li
-ne 614.
+ne 613.
 (pdftex.def)             Requested size: 364.19667pt x 193.9274pt.
 <images/Parziali/BugBoard26_SegnalaIssue.png, id=406, 424.2249pt x 329.5512pt>
 File: images/Parziali/BugBoard26_SegnalaIssue.png Graphic file (type png)
 <use images/Parziali/BugBoard26_SegnalaIssue.png>
 Package pdftex.def Info: images/Parziali/BugBoard26_SegnalaIssue.png  used on i
-nput line 626.
+nput line 625.
 (pdftex.def)             Requested size: 364.19667pt x 282.92072pt.
 
 
@@ -1009,7 +1009,7 @@ File: images/Parziali/BugBoard26_Visualizza&Assegna.png Graphic file (type png)
 
 <use images/Parziali/BugBoard26_Visualizza&Assegna.png>
 Package pdftex.def Info: images/Parziali/BugBoard26_Visualizza&Assegna.png  use
-d on input line 642.
+d on input line 641.
 (pdftex.def)             Requested size: 364.19667pt x 130.03093pt.
 
 
@@ -1026,7 +1026,7 @@ File: images/Parziali/BugBoard26_VisualizzaReport&VisualizzaRiepilogo.png Graph
 ic file (type png)
 <use images/Parziali/BugBoard26_VisualizzaReport&VisualizzaRiepilogo.png>
 Package pdftex.def Info: images/Parziali/BugBoard26_VisualizzaReport&Visualizza
-Riepilogo.png  used on input line 662.
+Riepilogo.png  used on input line 661.
 (pdftex.def)             Requested size: 364.19667pt x 246.29257pt.
 
 
@@ -1042,7 +1042,7 @@ t>
 File: images/Parziali/BugBoard26_CreaNuovaUtenza.png Graphic file (type png)
 <use images/Parziali/BugBoard26_CreaNuovaUtenza.png>
 Package pdftex.def Info: images/Parziali/BugBoard26_CreaNuovaUtenza.png  used o
-n input line 674.
+n input line 673.
 (pdftex.def)             Requested size: 364.19667pt x 185.88947pt.
 <images/Parziali/BugBoard26_ModificaStatoIssue.png, id=441, 355.5684pt x 177.78
 42pt>
@@ -1050,7 +1050,7 @@ File: images/Parziali/BugBoard26_ModificaStatoIssue.png Graphic file (type png)
 
 <use images/Parziali/BugBoard26_ModificaStatoIssue.png>
 Package pdftex.def Info: images/Parziali/BugBoard26_ModificaStatoIssue.png  use
-d on input line 686.
+d on input line 685.
 (pdftex.def)             Requested size: 364.19667pt x 182.09973pt.
 
 
@@ -1062,58 +1062,58 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [22 <./images/Parziali/BugBoard26_VisualizzaReport&VisualizzaRiepilogo.png (PNG
  copy)> <./images/Parziali/BugBoard26_CreaNuovaUtenza.png (PNG copy)>]
-Underfull \hbox (badness 2253) in paragraph at lines 705--705
+Underfull \hbox (badness 2253) in paragraph at lines 704--704
 []|\T1/ptm/m/n/12 L'issue non vie-ne re-gi-stra-ta nel si-ste-ma e vie-ne vi-su
 a-liz-za-to il
  []
 
 
-Underfull \hbox (badness 4403) in paragraph at lines 719--719
+Underfull \hbox (badness 4403) in paragraph at lines 718--718
 []|\T1/ptm/m/n/12 Accede al-la se-zio-ne \T1/ptm/m/it/12 Crea
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 719--719
+Underfull \hbox (badness 1371) in paragraph at lines 718--718
 \T1/ptm/m/n/12 ri: ti-to-lo de-scri-zio-ne e ti-
  []
 
 
-Underfull \hbox (badness 2671) in paragraph at lines 729--729
+Underfull \hbox (badness 2671) in paragraph at lines 728--728
 []|\T1/ptm/m/n/12 Sceglie di se-le-zio-na-re una
  []
 
 
-Underfull \hbox (badness 2671) in paragraph at lines 731--731
+Underfull \hbox (badness 2671) in paragraph at lines 730--730
 []|\T1/ptm/m/n/12 Extension \T1/ptm/m/it/12 #2 \T1/ptm/m/n/12 - Al-le-
  []
 
 
-Overfull \hbox (0.75783pt too wide) in paragraph at lines 747--747
+Overfull \hbox (0.75783pt too wide) in paragraph at lines 746--746
 []|\T1/ptm/m/n/12 3.b.1| 
  []
 
 
-Overfull \hbox (0.75783pt too wide) in paragraph at lines 747--747
+Overfull \hbox (0.75783pt too wide) in paragraph at lines 746--746
 []|\T1/ptm/m/n/12 4.b.1| 
  []
 
 
-Underfull \hbox (badness 1019) in paragraph at lines 747--747
+Underfull \hbox (badness 1019) in paragraph at lines 746--746
 []|[][]\T1/ptm/m/n/12 Mostra MU_4[][] e tor-na al-lo
  []
 
 
-Underfull \hbox (badness 1019) in paragraph at lines 756--756
+Underfull \hbox (badness 1019) in paragraph at lines 755--755
 []|[][]\T1/ptm/m/n/12 Mostra MU_5[][] e tor-na al-lo
  []
 
 
-Underfull \hbox (badness 5533) in paragraph at lines 759--759
+Underfull \hbox (badness 5533) in paragraph at lines 758--758
 []|\T1/ptm/m/n/12 Extension \T1/ptm/m/it/12 #5 \T1/ptm/m/n/12 - L'u-
  []
 
 
-Overfull \hbox (25.19995pt too wide) in alignment at lines 698--768
+Overfull \hbox (25.19995pt too wide) in alignment at lines 697--767
  [] [] 
  []
 
@@ -1137,13 +1137,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: images/SegnalaIssueMockup/MU_1.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_1.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_1.png  used on input line
- 779.
+ 778.
 (pdftex.def)             Requested size: 455.24411pt x 246.42702pt.
 <images/SegnalaIssueMockup/MU_2.png, id=480, 691.821pt x 374.49pt>
 File: images/SegnalaIssueMockup/MU_2.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_2.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_2.png  used on input line
- 788.
+ 787.
 (pdftex.def)             Requested size: 455.24411pt x 246.42702pt.
 
 
@@ -1158,13 +1158,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: images/SegnalaIssueMockup/MU_3.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_3.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_3.png  used on input line
- 797.
+ 796.
 (pdftex.def)             Requested size: 455.24411pt x 246.42702pt.
 <images/SegnalaIssueMockup/MU_4.png, id=492, 691.821pt x 374.49pt>
 File: images/SegnalaIssueMockup/MU_4.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_4.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_4.png  used on input line
- 806.
+ 805.
 (pdftex.def)             Requested size: 455.24411pt x 246.42702pt.
 
 
@@ -1180,7 +1180,7 @@ g>]
 File: images/SegnalaIssueMockup/MU_5.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_5.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_5.png  used on input line
- 815.
+ 814.
 (pdftex.def)             Requested size: 455.24411pt x 246.42702pt.
 
 
@@ -1196,7 +1196,7 @@ g>]
 File: images/Architettura/Client-Server.png Graphic file (type png)
 <use images/Architettura/Client-Server.png>
 Package pdftex.def Info: images/Architettura/Client-Server.png  used on input l
-ine 835.
+ine 834.
 (pdftex.def)             Requested size: 455.24411pt x 58.43939pt.
 
 
@@ -1212,13 +1212,13 @@ pt>
 File: images/Architettura/ComponentDiagramServer.png Graphic file (type png)
 <use images/Architettura/ComponentDiagramServer.png>
 Package pdftex.def Info: images/Architettura/ComponentDiagramServer.png  used o
-n input line 851.
+n input line 850.
 (pdftex.def)             Requested size: 455.24411pt x 126.81125pt.
 <images/Architettura/Database.png, id=521, 444.66125pt x 492.84125pt>
 File: images/Architettura/Database.png Graphic file (type png)
 <use images/Architettura/Database.png>
 Package pdftex.def Info: images/Architettura/Database.png  used on input line 8
-70.
+69.
 (pdftex.def)             Requested size: 318.66948pt x 353.1985pt.
 
 
@@ -1267,7 +1267,7 @@ imes/utmb8a.pfb><C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
 imes/utmbi8a.pfb><C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
 times/utmr8a.pfb><C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on srs.pdf (31 pages, 1833076 bytes).
+Output written on srs.pdf (31 pages, 1833056 bytes).
 PDF statistics:
  635 PDF objects out of 1000 (max. 8388607)
  109 named destinations out of 1000 (max. 500000)
