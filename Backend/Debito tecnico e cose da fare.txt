@@ -1,0 +1,18 @@
+1) Ho utilizzato un po' ovunque eccezioni molto generiche. RunTimeException, IllegalStateException... si dovrebbero creare di personalizzate, tipo 
+public class UserAlreadyDisabledException 
+        extends IllegalStateException {...} ect.
+
+
+2) Nella entity Issue ho inizializzato il valore di created_at a LocalDateTime.now() in fase di dichiarazione. Copilot consiglia di usare la direttiva Hibernate 
+@PrePersist
+protected void prePersist() {
+    if (this.uuid == null) {
+        this.uuid = UUID.randomUUID();
+    }
+cosi il metodo viene richiamato prima di ogni Insert. Ma alla fine è solo un controllo sul null, ma sarà sempre null quindi secondo me è meglio la versione dichiarazione/inizializzazione. Controllare.
+
+3) In IssueServiceImpl, nel metodo getIssue() ci sono una cascata di if-else per applicare dinamicamente i filtri. Con questo approccio l'endpoint è unico per qualsiasi tipo di filtro si voglia inserire, basta aggiungere il parametro al path, senza parametri la risposta è tutte le issue. Il problema è la scalabilità, se si dovesse voler aggiungere un altro filtro in futuro andrebbe ripensata l'intera cascata di if-else, non è il massimo. 
+
+4) Ricordarsi dopo aver aggiunto la vera autenticazione con cognito di modificare i class diagram aggiungendo le classi di autenticazione iniettate per dipendenza
+
+5) Gestire il caricamento dell'immagine, per ora salva solo il path

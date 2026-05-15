@@ -1,6 +1,6 @@
 package com.bugboard.api.models;
 
-public enum SummaryView {
+public enum Order {
     STATUS_ASC,
     STATUS_DESC,
     PRIORITY_ASC,

@@ -11,7 +11,7 @@ import java.util.UUID;
 public interface IssueService {
     IssueDTO createIssue(CreateIssueDTO dto);
 
-    List<IssueDTO> getIssues(SummaryView view, IssueStatus status, IssuePriority priority, IssueType type);
+    List<IssueDTO> getIssues(Order view, IssueStatus status, IssuePriority priority, IssueType type);
 
     IssueDTO getIssueByUuid(UUID id);
 
