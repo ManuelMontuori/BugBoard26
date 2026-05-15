@@ -64,7 +64,7 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public List<IssueDTO> getIssues(SummaryView view, IssueStatus status, IssuePriority priority, IssueType type) {
+    public List<IssueDTO> getIssues(Order view, IssueStatus status, IssuePriority priority, IssueType type) {
         List<Issue> issues;
 
         if (status != null && priority != null && type != null) {
