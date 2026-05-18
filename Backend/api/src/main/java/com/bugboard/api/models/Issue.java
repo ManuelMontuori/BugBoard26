@@ -41,7 +41,7 @@ public class Issue {
     private User reporter;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ssigned_to")
+    @JoinColumn(name = "assigned_to")
     private User assignedTo;
 
     @Column(nullable = false, updatable = false, name = "created_at")
