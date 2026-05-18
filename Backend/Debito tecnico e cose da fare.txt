@@ -10,6 +10,12 @@ protected void prePersist() {
         this.uuid = UUID.randomUUID();
     }
 cosi il metodo viene richiamato prima di ogni Insert. Ma alla fine è solo un controllo sul null, ma sarà sempre null quindi secondo me è meglio la versione dichiarazione/inizializzazione. Controllare.
+Dovrei anche usare 
+@PrePersist
+   protected void onCreate() {
+       this.createdAt = LocalDateTime.now();
+   }
+per generare il valore di dafult di createdAt. Perche se in futuro si dovesse aggiungere una riga direttamente da SQL la colonna rimarrebbe vuota. Noi teoricamente non vogliamo che si possa toccare il db senza passare dal backend ma controlla anche questo.
 
 3) In IssueServiceImpl, nel metodo getIssue() ci sono una cascata di if-else per applicare dinamicamente i filtri. Con questo approccio l'endpoint è unico per qualsiasi tipo di filtro si voglia inserire, basta aggiungere il parametro al path, senza parametri la risposta è tutte le issue. Il problema è la scalabilità, se si dovesse voler aggiungere un altro filtro in futuro andrebbe ripensata l'intera cascata di if-else, non è il massimo. 
 
