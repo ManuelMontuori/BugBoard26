@@ -6,8 +6,7 @@ import com.bugboard.api.dto.IssueDTO;
 import com.bugboard.api.mapper.IssueMapper;
 
 import com.bugboard.api.models.*;
-import com.bugboard.api.repositories.IssueRepository;
-import com.bugboard.api.repositories.UserRepository;
+import com.bugboard.api.repositories.UserRepositoryAdaptee;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -19,19 +18,19 @@ import java.util.UUID;
 @Transactional
 public class IssueServiceImpl implements IssueService {
 
-    private final IssueRepository issueRepository;
+    private final IssueServiceTarget issueServiceTarget;
     private final AuthService authService;
     private final IssueMapper issueMapper;
-    private final UserRepository userRepository;
+    private final UserRepositoryAdaptee userRepositoryAdaptee;
 
-    public IssueServiceImpl(IssueRepository issueRepository,
+    public IssueServiceImpl(IssueServiceTarget issueServiceTarget,
                             AuthService authService,
                             IssueMapper issueMapper,
-                            UserRepository userRepository) {
-        this.issueRepository = issueRepository;
+                            UserRepositoryAdaptee userRepositoryAdaptee) {
+        this.issueServiceTarget=issueServiceTarget;
         this.authService = authService;
         this.issueMapper = issueMapper;
-        this.userRepository = userRepository;
+        this.userRepositoryAdaptee = userRepositoryAdaptee;
     }
 
     @Override
@@ -53,12 +52,12 @@ public class IssueServiceImpl implements IssueService {
 
 
         if (dto.assignedToUuid() != null) {
-            User assignedTo = userRepository.findByUuid(
+            User assignedTo = userRepositoryAdaptee.findByUuid(
                     UUID.fromString(dto.assignedToUuid())).orElseThrow(
                     () -> new IllegalArgumentException("Assigned user not found"));
             issue.setAssignedTo(assignedTo);
         }
-            Issue saved= issueRepository .save(issue);
+            Issue saved= issueServiceTarget.save(issue);
 
             return issueMapper.mapToDTO(saved);
     }
@@ -68,32 +67,32 @@ public class IssueServiceImpl implements IssueService {
         List<Issue> issues;
 
         if (status != null && priority != null && type != null) {
-            issues = issueRepository
+            issues = issueServiceTarget
                     .findByStatusAndPriorityAndType(status, priority, type);
 
         } else if (status != null && priority != null) {
-            issues = issueRepository
+            issues = issueServiceTarget
                     .findByStatusAndPriority(status, priority);
 
         } else if (status != null && type != null) {
-            issues = issueRepository
+            issues = issueServiceTarget
                     .findByStatusAndType(status, type);
 
         } else if (priority != null && type != null) {
-            issues = issueRepository
+            issues = issueServiceTarget
                     .findByPriorityAndType(priority, type);
 
         } else if (status != null) {
-            issues = issueRepository.findByStatus(status);
+            issues = issueServiceTarget.findByStatus(status);
 
         } else if (priority != null) {
-            issues = issueRepository.findByPriority(priority);
+            issues = issueServiceTarget.findByPriority(priority);
 
         } else if (type != null) {
-            issues = issueRepository.findByType(type);
+            issues = issueServiceTarget.findByType(type);
 
         } else {
-            issues = issueRepository.findAll();
+            issues = issueServiceTarget.findAll();
         }
 
 
@@ -142,7 +141,7 @@ public class IssueServiceImpl implements IssueService {
             throw new IllegalArgumentException("Keyword is required");
         }
 
-        List<Issue> issues = issueRepository
+        List<Issue> issues = issueServiceTarget
                 .findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(keyword, keyword);
 
         return issues.stream()

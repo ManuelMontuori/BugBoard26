@@ -4,12 +4,10 @@ import com.bugboard.api.dto.UserDTO;
 import com.bugboard.api.mapper.UserMapper;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
-import com.bugboard.api.repositories.UserRepository;
+import com.bugboard.api.repositories.UserRepositoryAdaptee;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -19,10 +17,10 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     // la dependency injection sostituisce l'Autowired. Il been container gentisce automaticamentel'inejction
-    private final UserRepository userRepository;
+    private final UserServiceTarget userServiceTarget;
     private final UserMapper userMapper;
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
-        this.userRepository=userRepository;
+    public UserServiceImpl(UserServiceTarget userServiceTarget, UserMapper userMapper) {
+        this.userServiceTarget = userServiceTarget;
         this.userMapper=userMapper;
     }
 
@@ -31,32 +29,32 @@ public class UserServiceImpl implements UserService {
     public UserDTO create(UserDTO dto) {
         User user = new User();
         userMapper.mapToEntity(dto, user);
-        User saved = userRepository.save(user);
+        User saved = userServiceTarget.save(user);
         return userMapper.mapToDTO(saved);
     }
 
     @Override
     public List<UserDTO> findAll() {
-        return userRepository.findAll().stream()
+        return userServiceTarget.findAll().stream()
                 .map(userMapper::mapToDTO)
                 .toList();
     }
 
     @Override
     public void disableUser(UUID uuid) {
-        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
+        User user = userServiceTarget.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
         user.disable();
     }
 
     @Override
     public void enableUser(UUID uuid) {
-        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
+        User user = userServiceTarget.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
         user.enable();
     }
 
     @Override
     public List<UserDTO> findAllDisabledUsers() {
-        return userRepository.findAllByStatus(UserStatus.DISABLED).stream()
+        return userServiceTarget.findAllByStatus(UserStatus.DISABLED).stream()
                 .map(userMapper::mapToDTO)
                 .toList();
     }
@@ -64,7 +62,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserDTO> findByUuid(UUID uuid) {
 //        UUID userUuid = UUID.fromString(uuid); // converto la stringa in UUID
-        return userRepository.findByUuidAndStatus(uuid, UserStatus.ACTIVE).map(userMapper::mapToDTO);
+        return userServiceTarget.findByUuidAndStatus(uuid, UserStatus.ACTIVE).map(userMapper::mapToDTO);
     }
 
     @Override

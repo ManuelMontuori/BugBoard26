@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IssueRepository extends JpaRepository<Issue, Long> {
+public interface IssueRepositoryAdaptee extends JpaRepository<Issue, Long> {
     // soliti metodi CRUD sono già disponibili grazie a JpaRepository
 
     List<Issue> findByStatus(IssueStatus status);

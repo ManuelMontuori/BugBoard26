@@ -1,7 +1,7 @@
 package com.bugboard.api.auth;
 
 import com.bugboard.api.models.User;
-import com.bugboard.api.repositories.UserRepository;
+import com.bugboard.api.repositories.UserRepositoryAdaptee;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +11,10 @@ import java.util.Optional;
 @Profile("prod")
 public class ProdAuthService implements AuthService {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryAdaptee userRepositoryAdaptee;
 
-    public ProdAuthService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public ProdAuthService(UserRepositoryAdaptee userRepositoryAdaptee) {
+        this.userRepositoryAdaptee = userRepositoryAdaptee;
     }
 
     @Override
