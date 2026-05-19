@@ -1,5 +1,6 @@
 package com.bugboard.api.repositories;
 
+import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
 import com.bugboard.api.services.UserServiceTarget;
@@ -53,7 +54,7 @@ public class UserRepositoryAdapter implements UserServiceTarget {
     }
 
     @Override
-    public List<User> findByWorkload() {
+    public List<WorkloadDTO> findByWorkload() {
         return userRepositoryAdaptee.findByWorkload();
     }
 }

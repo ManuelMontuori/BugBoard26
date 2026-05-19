@@ -1,6 +1,10 @@
 package com.bugboard.api.controllers;
 
+import com.bugboard.api.dto.IssueDTO;
 import com.bugboard.api.dto.UserDTO;
+import com.bugboard.api.dto.UserWorkloadOutDTO;
+import com.bugboard.api.dto.WorkloadDTO;
+import com.bugboard.api.services.IssueService;
 import com.bugboard.api.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +20,7 @@ public class  UserController {
 //    private UserServiceImpl userServiceImpl;
 
     private final UserService userService;
-    public UserController(UserService userService) {
+    public UserController(UserService userService, IssueService issueService) {
         this.userService=userService;
     }
 
@@ -38,7 +42,7 @@ public class  UserController {
     }
 
     @GetMapping("/workload")
-    public List<UserDTO> findByWorkload() {
+    public List<UserWorkloadOutDTO> findByWorkload() {
         return userService.findByWorkload();
     }
 
@@ -60,6 +64,7 @@ public class  UserController {
     public void enable(@PathVariable UUID uuid) {
         userService.enableUser(uuid);
     }
+
 
 
 

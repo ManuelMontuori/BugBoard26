@@ -1,6 +1,8 @@
 package com.bugboard.api.services;
 
 import com.bugboard.api.dto.UserDTO;
+import com.bugboard.api.dto.UserWorkloadOutDTO;
+import com.bugboard.api.dto.WorkloadDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,6 @@ public interface UserService {
 
     List<UserDTO> findAllDisabledUsers();
 
-    List<UserDTO> findByWorkload();
+    List<UserWorkloadOutDTO> findByWorkload();
 
 }

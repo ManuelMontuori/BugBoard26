@@ -8,6 +8,8 @@ import com.bugboard.api.services.IssueServiceTarget;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
+
 @Component
 public class IssueRepositoryAdapter implements IssueServiceTarget {
 
@@ -68,6 +70,11 @@ public class IssueRepositoryAdapter implements IssueServiceTarget {
     @Override
     public Issue save(Issue issue) {
         return issueRepositoryAdaptee.save(issue);
+    }
+
+    @Override
+    public List<Issue> findByAssignedToUuid(UUID assignedTo) {
+        return issueRepositoryAdaptee.findByAssignedToUuid(assignedTo);
     }
 
 }

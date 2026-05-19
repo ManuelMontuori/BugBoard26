@@ -17,4 +17,5 @@ public interface IssueService {
 
     List<IssueDTO> searchIssueByTitleOrDescription(String keyword);
 
+    List<IssueDTO> findByAssignedToUuid(UUID assignedTo);
 }

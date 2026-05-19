@@ -1,6 +1,8 @@
 package com.bugboard.api.services;
 
 import com.bugboard.api.dto.UserDTO;
+import com.bugboard.api.dto.UserWorkloadOutDTO;
+import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.mapper.UserMapper;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
@@ -60,10 +62,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> findByWorkload() {
-        return userServiceTarget.findByWorkload().stream().
-                map(userMapper::mapToDTO).
-                toList();
+    public List<UserWorkloadOutDTO> findByWorkload() {
+        return userServiceTarget.findByWorkload()
+                .stream()
+                .map(userMapper::mapWorkloadToWorkloadOut)
+                .toList();
     }
 
     @Override

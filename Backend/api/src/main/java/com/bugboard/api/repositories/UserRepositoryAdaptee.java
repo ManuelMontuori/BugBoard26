@@ -1,5 +1,6 @@
 package com.bugboard.api.repositories;
 
+import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -35,5 +36,5 @@ public interface UserRepositoryAdaptee extends JpaRepository<User, Long> {
         GROUP BY u.id, u.uuid, u.email, u.role, u.status, u.lastLogin, u.createdAt
         ORDER BY COUNT(i) ASC
     """)
-    List<User> findByWorkload();
+    List<WorkloadDTO> findByWorkload();
 }

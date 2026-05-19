@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public interface IssueRepositoryAdaptee extends JpaRepository<Issue, Long> {
@@ -36,5 +37,6 @@ public interface IssueRepositoryAdaptee extends JpaRepository<Issue, Long> {
             String descriptionKeyword
     );
 
+    List<Issue> findByAssignedToUuid(UUID assignedTo);
 
 }

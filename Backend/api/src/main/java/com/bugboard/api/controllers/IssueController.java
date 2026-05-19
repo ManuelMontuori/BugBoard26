@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/issues")
@@ -39,5 +40,10 @@ public class IssueController {
     @GetMapping("/search")
     public List<IssueDTO> searchIssues(@RequestParam String keyword) {
         return issueService.searchIssueByTitleOrDescription(keyword);
+    }
+
+    @GetMapping("/assigned")
+    public List<IssueDTO> getAssignedIssues(@RequestParam UUID assignedTo) {
+        return issueService.findByAssignedToUuid(assignedTo);
     }
 }

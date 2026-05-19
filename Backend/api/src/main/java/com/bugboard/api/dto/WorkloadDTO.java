@@ -1,6 +1,8 @@
-package com.bugboard.api.dto;
+    package com.bugboard.api.dto;
 
-public record WorkloadDTO(
-        UserDTO user,
-        Long issuesCount
-) { }
+    import com.bugboard.api.models.User;
+
+    public record WorkloadDTO(
+            User user,
+            Long issuesCount
+    ) { }

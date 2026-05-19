@@ -149,4 +149,12 @@ public class IssueServiceImpl implements IssueService {
                 .toList();
     }
 
+    @Override
+    public List<IssueDTO> findByAssignedToUuid(UUID assignedTo) {
+        return issueServiceTarget.findByAssignedToUuid(assignedTo)
+                .stream()
+                .map(issueMapper::mapToDTO)
+                .toList();
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.bugboard.api.services;
 
+import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
 
@@ -22,5 +23,5 @@ public interface UserServiceTarget {
 
     User save(User user);
 
-    List<User> findByWorkload();
+    List<WorkloadDTO> findByWorkload();
 }

@@ -6,6 +6,7 @@ import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.IssueType;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface IssueServiceTarget {
     List<Issue> findByStatus(IssueStatus status);
@@ -29,4 +30,6 @@ public interface IssueServiceTarget {
 
     List<Issue> findAll();
     Issue save(Issue issue);
+
+    List<Issue> findByAssignedToUuid(UUID assignedTo);
 }
