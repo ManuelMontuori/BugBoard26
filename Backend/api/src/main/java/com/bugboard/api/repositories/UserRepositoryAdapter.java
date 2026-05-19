@@ -51,4 +51,9 @@ public class UserRepositoryAdapter implements UserServiceTarget {
     public User save(User user) {
         return userRepositoryAdaptee.save(user);
     }
+
+    @Override
+    public List<User> findByWorkload() {
+        return userRepositoryAdaptee.findByWorkload();
+    }
 }

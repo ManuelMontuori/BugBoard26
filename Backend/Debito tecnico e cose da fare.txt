@@ -22,3 +22,5 @@ per generare il valore di dafult di createdAt. Perche se in futuro si dovesse ag
 4) Ricordarsi dopo aver aggiunto la vera autenticazione con cognito di modificare i class diagram aggiungendo le classi di autenticazione iniettate per dipendenza
 
 5) Gestire il caricamento dell'immagine, per ora salva solo il path
+
+6) Inserire nei class diagram le classi target e adapter e modificare i nomi dei repository in adaptee; aggiungere i parametri nome e cognome ai model user e cambiare anche il database con questi attributi di users

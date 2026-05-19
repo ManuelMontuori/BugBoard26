@@ -24,4 +24,6 @@ public interface UserService {
 
     List<UserDTO> findAllDisabledUsers();
 
+    List<UserDTO> findByWorkload();
+
 }

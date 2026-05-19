@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record UserDTO(
+        String firstName,
+        String lastName,
         String uuid,
         String email,
         String role,

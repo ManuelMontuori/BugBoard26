@@ -60,6 +60,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserDTO> findByWorkload() {
+        return userServiceTarget.findByWorkload().stream().
+                map(userMapper::mapToDTO).
+                toList();
+    }
+
+    @Override
     public Optional<UserDTO> findByUuid(UUID uuid) {
 //        UUID userUuid = UUID.fromString(uuid); // converto la stringa in UUID
         return userServiceTarget.findByUuidAndStatus(uuid, UserStatus.ACTIVE).map(userMapper::mapToDTO);

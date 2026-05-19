@@ -5,6 +5,8 @@ CREATE TYPE user_status AS ENUM ('ACTIVE', 'DISABLED');
 CREATE TABLE Users (
 	id BIGSERIAL PRIMARY KEY,
 	uuid UUID NOT NULL UNIQUE,
+	firstName VARCHAR(30) NOT NULL,
+	lastName VARCHAR(30) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	role user_role NOT NULL,
 	status user_status NOT NULL DEFAULT 'ACTIVATE',
@@ -67,27 +69,28 @@ CREATE INDEX idx_issues_assigned_to
 ON issues(assigned_to);
 
 
-INSERT INTO Users (uuid, email, role, last_login, created_at) VALUES
-(gen_random_uuid(), 'admin@system.com', 'ADMIN', '2026-04-01', NOW()),
-(gen_random_uuid(), 'mario.rossi@provider.it', 'USER', '2026-04-15', NOW()),
-(gen_random_uuid(), 'luca.bianchi@gmail.com', 'USER', '2026-04-10', NOW()),
-(gen_random_uuid(), 'sofia.verdi@tech.io', 'ADMIN', '2026-04-16', NOW()),
-(gen_random_uuid(), 'giulia.neri@azienda.com', 'USER', '2026-03-20', NOW()),
-(gen_random_uuid(), 'marco.bruni@web.net', 'USER', '2026-04-12', NOW()),
-(gen_random_uuid(), 'elena.gallo@startup.com', 'USER', '2026-04-14', NOW()),
-(gen_random_uuid(), 'stefano.rizzi@dev.com', 'USER', '2026-04-11', NOW()),
-(gen_random_uuid(), 'anna.ferrari@cloud.it', 'USER', '2026-04-05', NOW()),
-(gen_random_uuid(), 'paolo.costa@logic.com', 'ADMIN', '2026-04-16', NOW()),
-(gen_random_uuid(), 'chiara.longo@mail.it', 'USER', '2026-04-08', NOW()),
-(gen_random_uuid(), 'alessio.marini@code.org', 'USER', '2026-04-02', NOW()),
-(gen_random_uuid(), 'valentina.serra@db.com', 'USER', '2026-04-09', NOW()),
-(gen_random_uuid(), 'roberto.greco@it.com', 'USER', '2026-04-03', NOW()),
-(gen_random_uuid(), 'federica.valli@web.com', 'USER', '2026-03-28', NOW()),
-(gen_random_uuid(), 'matteo.ponti@dev.io', 'USER', '2026-04-13', NOW()),
-(gen_random_uuid(), 'silvia.donati@corp.com', 'USER', '2026-04-14', NOW()),
-(gen_random_uuid(), 'andrea.sala@service.it', 'USER', '2026-04-15', NOW()),
-(gen_random_uuid(), 'beatrice.moretti@lab.it', 'USER', '2026-04-11', NOW()),
-(gen_random_uuid(), 'davide.esposito@tech.com', 'ADMIN', '2026-04-16', NOW());
+INSERT INTO Users (uuid, email, role, firstName, lastName, last_login, created_at) VALUES
+(gen_random_uuid(), 'admin@system.com', 'ADMIN', 'System', 'Admin', '2026-04-01', NOW()),
+(gen_random_uuid(), 'mario.rossi@provider.it', 'USER', 'Mario', 'Rossi', '2026-04-15', NOW()),
+(gen_random_uuid(), 'luca.bianchi@gmail.com', 'USER', 'Luca', 'Bianchi', '2026-04-10', NOW()),
+(gen_random_uuid(), 'sofia.verdi@tech.io', 'ADMIN', 'Sofia', 'Verdi', '2026-04-16', NOW()),
+(gen_random_uuid(), 'giulia.neri@azienda.com', 'USER', 'Giulia', 'Neri', '2026-03-20', NOW()),
+(gen_random_uuid(), 'marco.bruni@web.net', 'USER', 'Marco', 'Bruni', '2026-04-12', NOW()),
+(gen_random_uuid(), 'elena.gallo@startup.com', 'USER', 'Elena', 'Gallo', '2026-04-14', NOW()),
+(gen_random_uuid(), 'stefano.rizzi@dev.com', 'USER', 'Stefano', 'Rizzi', '2026-04-11', NOW()),
+(gen_random_uuid(), 'anna.ferrari@cloud.it', 'USER', 'Anna', 'Ferrari', '2026-04-05', NOW()),
+(gen_random_uuid(), 'paolo.costa@logic.com', 'ADMIN', 'Paolo', 'Costa', '2026-04-16', NOW()),
+(gen_random_uuid(), 'chiara.longo@mail.it', 'USER', 'Chiara', 'Longo', '2026-04-08', NOW()),
+(gen_random_uuid(), 'alessio.marini@code.org', 'USER', 'Alessio', 'Marini', '2026-04-02', NOW()),
+(gen_random_uuid(), 'valentina.serra@db.com', 'USER', 'Valentina', 'Serra', '2026-04-09', NOW()),
+(gen_random_uuid(), 'roberto.greco@it.com', 'USER', 'Roberto', 'Greco', '2026-04-03', NOW()),
+(gen_random_uuid(), 'federica.valli@web.com', 'USER', 'Federica', 'Valli', '2026-03-28', NOW()),
+(gen_random_uuid(), 'matteo.ponti@dev.io', 'USER', 'Matteo', 'Ponti', '2026-04-13', NOW()),
+(gen_random_uuid(), 'silvia.donati@corp.com', 'USER', 'Silvia', 'Donati', '2026-04-14', NOW()),
+(gen_random_uuid(), 'andrea.sala@service.it', 'USER', 'Andrea', 'Sala', '2026-04-15', NOW()),
+(gen_random_uuid(), 'beatrice.moretti@lab.it', 'USER', 'Beatrice', 'Moretti', '2026-04-11', NOW()),
+(gen_random_uuid(), 'davide.esposito@tech.com', 'ADMIN', 'Davide', 'Esposito', '2026-04-16', NOW());
+
 
 INSERT INTO Notifications (message, read, user_id) VALUES
 ('Benvenuto nel sistema!', true, 1),
@@ -136,5 +139,6 @@ INSERT INTO issues (uuid, title, description, is_type, is_priority, is_status, r
 (gen_random_uuid(), 'Test Unitari', 'Aumentare copertura al 80%', 'FEATURE', 'MEDIUM', 'TODO', 20, NULL, NULL, NOW(), NULL);
 
 
-INSERT INTO Users (uuid, email, role, last_login, created_at) VALUES
-(gen_random_uuid(), 'test@bugboard.local', 'ADMIN', '2026-04-01', NOW());
+INSERT INTO Users (uuid, email, firstName, lastName, role, last_login, created_at) VALUES
+(gen_random_uuid(), 'test@bugboard.local', 'Valerio', 'Valeri', 'ADMIN', '2026-04-01', NOW());
+

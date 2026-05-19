@@ -21,4 +21,6 @@ public interface UserServiceTarget {
     List<User> findAll();
 
     User save(User user);
+
+    List<User> findByWorkload();
 }

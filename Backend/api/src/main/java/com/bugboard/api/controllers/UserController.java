@@ -37,6 +37,11 @@ public class  UserController {
         return userService.findAllDisabledUsers();
     }
 
+    @GetMapping("/workload")
+    public List<UserDTO> findByWorkload() {
+        return userService.findByWorkload();
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO create(@RequestBody UserDTO dto) {

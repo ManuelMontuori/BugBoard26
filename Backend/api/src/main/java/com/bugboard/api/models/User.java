@@ -27,6 +27,12 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
+    @Column(nullable = false, length = 30, name="firstname")
+    private String firstName;
+
+    @Column(nullable = false, length = 30, name="lastname")
+    private String lastName;
+
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 10)
@@ -120,6 +126,22 @@ public class User {
             throw new IllegalStateException("User is already active");
         }
         this.status = UserStatus.ACTIVE;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public boolean isActive() {
