@@ -7,6 +7,7 @@ import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.IssueType;
 import com.bugboard.api.models.Order;
 import com.bugboard.api.models.Order;
+import com.bugboard.api.observer.NotificationObserver;
 import com.bugboard.api.services.IssueService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +46,12 @@ public class IssueController {
     @GetMapping("/assigned")
     public List<IssueDTO> getAssignedIssues(@RequestParam UUID assignedTo) {
         return issueService.findByAssignedToUuid(assignedTo);
+    }
+
+    @PatchMapping("/assigned")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void assignIssue(@RequestParam UUID issueUuid, @RequestParam UUID userUuid) {
+        issueService.attach(new NotificationObserver());
+        issueService.assignIssue(issueUuid, userUuid);
     }
 }

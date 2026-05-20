@@ -77,4 +77,9 @@ public class IssueRepositoryAdapter implements IssueServiceTarget {
         return issueRepositoryAdaptee.findByAssignedToUuid(assignedTo);
     }
 
+    @Override
+    public Issue findByUuid(UUID uuid) {
+        return issueRepositoryAdaptee.findByUuid(uuid);
+    }
+
 }

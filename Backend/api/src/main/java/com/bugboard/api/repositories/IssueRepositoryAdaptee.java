@@ -39,4 +39,6 @@ public interface IssueRepositoryAdaptee extends JpaRepository<Issue, Long> {
 
     List<Issue> findByAssignedToUuid(UUID assignedTo);
 
+    Issue findByUuid(UUID uuid);
+
 }

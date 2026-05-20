@@ -32,4 +32,6 @@ public interface IssueServiceTarget {
     Issue save(Issue issue);
 
     List<Issue> findByAssignedToUuid(UUID assignedTo);
+
+    Issue findByUuid(UUID uuid);
 }

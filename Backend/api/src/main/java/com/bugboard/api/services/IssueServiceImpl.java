@@ -6,10 +6,12 @@ import com.bugboard.api.dto.IssueDTO;
 import com.bugboard.api.mapper.IssueMapper;
 
 import com.bugboard.api.models.*;
+import com.bugboard.api.observer.Observer;
 import com.bugboard.api.repositories.UserRepositoryAdaptee;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
@@ -19,15 +21,18 @@ import java.util.UUID;
 public class IssueServiceImpl implements IssueService {
 
     private final IssueServiceTarget issueServiceTarget;
+    private final UserServiceTarget userServiceTarget;
     private final AuthService authService;
     private final IssueMapper issueMapper;
     private final UserRepositoryAdaptee userRepositoryAdaptee;
 
     public IssueServiceImpl(IssueServiceTarget issueServiceTarget,
+                            UserServiceTarget userServiceTarget,
                             AuthService authService,
                             IssueMapper issueMapper,
                             UserRepositoryAdaptee userRepositoryAdaptee) {
         this.issueServiceTarget=issueServiceTarget;
+        this.userServiceTarget=userServiceTarget;
         this.authService = authService;
         this.issueMapper = issueMapper;
         this.userRepositoryAdaptee = userRepositoryAdaptee;
@@ -155,6 +160,33 @@ public class IssueServiceImpl implements IssueService {
                 .stream()
                 .map(issueMapper::mapToDTO)
                 .toList();
+    }
+
+    @Override
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void detach(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers(Issue issue, User user) {
+        for (Observer observer : observers) {
+            observer.update(issue, user);
+        }
+    }
+
+    @Override
+    public void assignIssue(UUID issueUuid, UUID userUuid) {
+        Issue issue = issueServiceTarget.findByUuid(issueUuid);
+        User user = userServiceTarget.findByUuid(userUuid)
+                .orElseThrow(()->new IllegalArgumentException("User not found"));
+        issue.setAssignedTo(user);
+//        User reporter=authService.getCurrentUser();\
+        notifyObservers(issue, user); // aggiungi anche reporter
     }
 
 }
