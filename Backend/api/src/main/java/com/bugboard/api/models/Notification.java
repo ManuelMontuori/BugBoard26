@@ -3,6 +3,9 @@ package com.bugboard.api.models;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
+
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Table(name = "notifications")
@@ -10,6 +13,10 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @UuidGenerator
+    @Column(nullable = false, unique = true, updatable = false)
+    private UUID uuid;
 
     @Column(nullable = false, length = 5000)
     private String message;
