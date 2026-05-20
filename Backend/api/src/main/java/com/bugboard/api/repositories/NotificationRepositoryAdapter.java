@@ -1,9 +1,11 @@
 package com.bugboard.api.repositories;
 
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import com.bugboard.api.dto.NotificationDTO;
 import org.springframework.stereotype.Component;
 
 import com.bugboard.api.models.Notification;
@@ -27,6 +29,10 @@ public class NotificationRepositoryAdapter implements NotificationServiceTarget 
         return notificationRepositoryAdaptee.findByUuid(uuid);
     }
 
+    @Override
+    public List<Notification> findByUserId(Long userId) {
+        return notificationRepositoryAdaptee.findByUserId(userId);
+    }
 
 
 }

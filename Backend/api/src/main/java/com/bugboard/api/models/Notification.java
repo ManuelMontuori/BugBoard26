@@ -45,10 +45,6 @@ public class Notification {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getMessage() {
         return message;
     }
@@ -80,4 +76,13 @@ public class Notification {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
 }

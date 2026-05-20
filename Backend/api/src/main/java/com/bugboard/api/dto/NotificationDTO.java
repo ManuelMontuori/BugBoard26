@@ -6,6 +6,5 @@ public record NotificationDTO(
         String uuid,
         String message,
         boolean read,
-        String userUuid,
-        LocalDateTime createdAt) {
-}
+        LocalDateTime createdAt)
+{}
