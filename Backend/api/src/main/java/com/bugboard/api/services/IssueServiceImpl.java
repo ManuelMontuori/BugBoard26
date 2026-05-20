@@ -24,18 +24,16 @@ public class IssueServiceImpl implements IssueService {
     private final UserServiceTarget userServiceTarget;
     private final AuthService authService;
     private final IssueMapper issueMapper;
-    private final UserRepositoryAdaptee userRepositoryAdaptee;
 
     public IssueServiceImpl(IssueServiceTarget issueServiceTarget,
                             UserServiceTarget userServiceTarget,
                             AuthService authService,
-                            IssueMapper issueMapper,
-                            UserRepositoryAdaptee userRepositoryAdaptee) {
+                            IssueMapper issueMapper) {
         this.issueServiceTarget=issueServiceTarget;
         this.userServiceTarget=userServiceTarget;
         this.authService = authService;
         this.issueMapper = issueMapper;
-        this.userRepositoryAdaptee = userRepositoryAdaptee;
+        
     }
 
     @Override
@@ -57,7 +55,7 @@ public class IssueServiceImpl implements IssueService {
 
 
         if (dto.assignedToUuid() != null) {
-            User assignedTo = userRepositoryAdaptee.findByUuid(
+            User assignedTo = userServiceTarget.findByUuid(
                     UUID.fromString(dto.assignedToUuid())).orElseThrow(
                     () -> new IllegalArgumentException("Assigned user not found"));
             issue.setAssignedTo(assignedTo);
