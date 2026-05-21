@@ -17,3 +17,4 @@ public interface NotificationRepositoryAdaptee extends JpaRepository<Notificatio
     public List<Notification> findByUserId(Long userId);
     
 }
+
