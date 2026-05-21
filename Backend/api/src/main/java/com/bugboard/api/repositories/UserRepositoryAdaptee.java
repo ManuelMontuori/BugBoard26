@@ -1,9 +1,9 @@
 package com.bugboard.api.repositories;
 
-import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
+import com.bugboard.api.repositories.projection.UserReportProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -88,7 +88,7 @@ LEFT JOIN issues i
 GROUP BY u.id, u.uuid, u.firstname, u.lastname, u.email
 
 """, nativeQuery = true)
-    List<UserReportDTO> getUserReports(
+    List<UserReportProjection> getUserReports(
             @Param("startDate") LocalDateTime startDate,
             @Param("endDate") LocalDateTime endDate
     );

@@ -4,6 +4,7 @@ import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
+import com.bugboard.api.repositories.projection.UserReportProjection;
 import com.bugboard.api.services.UserServiceTarget;
 import org.springframework.stereotype.Component;
 
@@ -61,7 +62,7 @@ public class UserRepositoryAdapter implements UserServiceTarget {
     }
 
     @Override
-    public List<UserReportDTO> getUserReports(LocalDateTime startDate, LocalDateTime endDate) {
+    public List<UserReportProjection> getUserReports(LocalDateTime startDate, LocalDateTime endDate) {
         return userRepositoryAdaptee.getUserReports(startDate, endDate);
     }
 

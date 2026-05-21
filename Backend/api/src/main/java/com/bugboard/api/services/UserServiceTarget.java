@@ -4,6 +4,7 @@ import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
+import com.bugboard.api.repositories.projection.UserReportProjection;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
@@ -28,7 +29,7 @@ public interface UserServiceTarget {
 
     List<WorkloadDTO> findByWorkload();
 
-    List<UserReportDTO> getUserReports(
+    List<UserReportProjection> getUserReports(
             @Param("startDate") LocalDateTime startDate,
             @Param("endDate") LocalDateTime endDate
     );

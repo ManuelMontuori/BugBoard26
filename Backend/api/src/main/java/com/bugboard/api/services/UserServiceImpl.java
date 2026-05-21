@@ -3,11 +3,12 @@ package com.bugboard.api.services;
 import com.bugboard.api.dto.UserDTO;
 import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.dto.UserWorkloadOutDTO;
-import com.bugboard.api.dto.WorkloadDTO;
+
 import com.bugboard.api.mapper.UserMapper;
+import com.bugboard.api.mapper.UserReportMapper;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
-import com.bugboard.api.repositories.UserRepositoryAdaptee;
+
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -91,7 +92,10 @@ public class UserServiceImpl implements UserService {
     public List<UserReportDTO> getMonthlyReport(int year, int month) {
         LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
         LocalDateTime endDate = startDate.plusMonths(1);
-        return userServiceTarget.getUserReports(startDate, endDate);
+        return userServiceTarget.getUserReports(startDate, endDate)
+                .stream()
+                .map(UserReportMapper::mapToDTO)
+                .toList();
     }
 
 
