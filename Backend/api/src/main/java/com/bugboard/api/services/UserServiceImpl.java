@@ -13,6 +13,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.lang.System;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -24,9 +25,11 @@ public class UserServiceImpl implements UserService {
     // la dependency injection sostituisce l'Autowired. Il been container gentisce automaticamentel'inejction
     private final UserServiceTarget userServiceTarget;
     private final UserMapper userMapper;
-    public UserServiceImpl(UserServiceTarget userServiceTarget, UserMapper userMapper) {
+    private final UserReportMapper userReportMapper;
+    public UserServiceImpl(UserServiceTarget userServiceTarget, UserMapper userMapper, UserReportMapper userReportMapper) {
         this.userServiceTarget = userServiceTarget;
         this.userMapper=userMapper;
+        this.userReportMapper = userReportMapper;
     }
 
 
@@ -92,12 +95,11 @@ public class UserServiceImpl implements UserService {
     public List<UserReportDTO> getMonthlyReport(int year, int month) {
         LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
         LocalDateTime endDate = startDate.plusMonths(1);
+        System.out.println("inizio: "+ startDate);
+        System.out.println("fine: "+ endDate);
         return userServiceTarget.getUserReports(startDate, endDate)
                 .stream()
-                .map(UserReportMapper::mapToDTO)
+                .map(userReportMapper::mapToDTO)
                 .toList();
     }
-
-
-
 }

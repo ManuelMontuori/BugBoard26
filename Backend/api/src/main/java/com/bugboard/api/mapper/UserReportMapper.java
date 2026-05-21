@@ -19,7 +19,7 @@ public class UserReportMapper {
                 report.getTotResolvedIssue(),
                 report.getTotWorkloadIssue(),
                 report.getAverageIssue(),
-                report.getTotHightPriorityIssue()
+                report.getTotHighPriorityIssue()
 
         );
     }

@@ -43,7 +43,7 @@ public interface UserRepositoryAdaptee extends JpaRepository<User, Long> {
 
     @Query(value = """
 SELECT 
-    u.uuid AS userUuid,
+    u.uuid AS uuid,
     u.firstname AS firstName,
     u.lastname AS lastName,
     u.email AS email,
