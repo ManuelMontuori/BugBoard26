@@ -3,6 +3,7 @@ package com.bugboard.api.mapper;
 import org.springframework.stereotype.Component;
 
 import com.bugboard.api.dto.UserReportDTO;
+import com.bugboard.api.repositories.projection.UserReportProjection;
 
 @Component
 public class UserReportMapper {
