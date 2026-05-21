@@ -20,7 +20,7 @@ public class UserReportMapper {
                 report.getAverageResolutionTime(),
                 report.getTotHightPriorityIssue()
 
-        )
+        );
     }
 
 }
