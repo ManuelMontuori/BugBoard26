@@ -18,7 +18,7 @@ public class UserReportMapper {
                 report.getTotCreatedIssue(),
                 report.getTotResolvedIssue(),
                 report.getTotWorkloadIssue(),
-                report.getAverageResolutionTime(),
+                report.getAverageIssue(),
                 report.getTotHightPriorityIssue()
 
         );
