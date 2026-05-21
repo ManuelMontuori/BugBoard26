@@ -1,10 +1,13 @@
 package com.bugboard.api.services;
 
+import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.IssuePriority;
 import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.IssueType;
+import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 

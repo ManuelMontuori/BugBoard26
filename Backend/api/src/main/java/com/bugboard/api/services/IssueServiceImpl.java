@@ -3,6 +3,7 @@ package com.bugboard.api.services;
 import com.bugboard.api.auth.AuthService;
 import com.bugboard.api.dto.CreateIssueDTO;
 import com.bugboard.api.dto.IssueDTO;
+import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.mapper.IssueMapper;
 
 import com.bugboard.api.models.*;
@@ -11,6 +12,7 @@ import com.bugboard.api.repositories.UserRepositoryAdaptee;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

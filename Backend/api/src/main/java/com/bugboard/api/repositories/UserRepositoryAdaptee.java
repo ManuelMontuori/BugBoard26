@@ -1,12 +1,15 @@
 package com.bugboard.api.repositories;
 
+import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -37,4 +40,56 @@ public interface UserRepositoryAdaptee extends JpaRepository<User, Long> {
         ORDER BY COUNT(i) ASC
     """)
     List<WorkloadDTO> findByWorkload();
+
+    @Query(value = """
+SELECT 
+    u.uuid AS userUuid,
+    u.firstname AS firstName,
+    u.lastname AS lastName,
+    u.email AS email,
+
+    COUNT(i.id) AS totIssues,
+
+    SUM(CASE 
+        WHEN i.reporter = u.id THEN 1 
+        ELSE 0 
+    END) AS totCreatedIssues,
+
+    SUM(CASE 
+        WHEN i.assigned_to = u.id AND i.is_status = 'DONE' THEN 1 
+        ELSE 0 
+    END) AS totResolvedIssues,
+
+    SUM(CASE 
+        WHEN i.assigned_to = u.id THEN 1 
+        ELSE 0 
+    END) AS totWorkloadIssues,
+
+    ROUND(AVG(
+    CASE
+    WHEN i.resolved_at IS NOT NULL
+    THEN EXTRACT(EPOCH FROM (i.resolved_at - i.created_at)) / 3600
+    END), 2) AS averageIssues,
+
+    SUM(CASE 
+        WHEN i.assigned_to = u.id 
+             AND i.is_priority = 'HIGH' 
+             AND i.is_status = 'DONE'
+        THEN 1 
+        ELSE 0 
+    END) AS totHighPriorityIssues
+
+FROM users u
+LEFT JOIN issues i 
+    ON (i.assigned_to = u.id OR i.reporter = u.id)
+    AND i.created_at >= :startDate
+    AND i.created_at < :endDate
+
+GROUP BY u.id, u.uuid, u.firstname, u.lastname, u.email
+
+""", nativeQuery = true)
+    List<UserReportDTO> getUserReports(
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate
+    );
 }

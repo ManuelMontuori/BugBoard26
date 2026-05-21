@@ -1,9 +1,6 @@
 package com.bugboard.api.controllers;
 
-import com.bugboard.api.dto.IssueDTO;
-import com.bugboard.api.dto.UserDTO;
-import com.bugboard.api.dto.UserWorkloadOutDTO;
-import com.bugboard.api.dto.WorkloadDTO;
+import com.bugboard.api.dto.*;
 import com.bugboard.api.services.IssueService;
 import com.bugboard.api.services.UserService;
 import org.springframework.http.HttpStatus;
@@ -65,9 +62,10 @@ public class  UserController {
         userService.enableUser(uuid);
     }
 
-
-
-
-
-
+    @GetMapping("/report")
+    public List<UserReportDTO> getMonthlyReport(
+            @RequestParam int year,
+            @RequestParam int month){
+        return userService.getMonthlyReport(year, month);
+    }
 }

@@ -1,6 +1,7 @@
 package com.bugboard.api.services;
 
 import com.bugboard.api.dto.UserDTO;
+import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.dto.UserWorkloadOutDTO;
 import com.bugboard.api.dto.WorkloadDTO;
 
@@ -27,5 +28,8 @@ public interface UserService {
     List<UserDTO> findAllDisabledUsers();
 
     List<UserWorkloadOutDTO> findByWorkload();
+
+    public List<UserReportDTO> getMonthlyReport(int year, int month);
+
 
 }

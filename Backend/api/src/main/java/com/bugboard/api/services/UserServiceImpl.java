@@ -1,6 +1,7 @@
 package com.bugboard.api.services;
 
 import com.bugboard.api.dto.UserDTO;
+import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.dto.UserWorkloadOutDTO;
 import com.bugboard.api.dto.WorkloadDTO;
 import com.bugboard.api.mapper.UserMapper;
@@ -10,6 +11,7 @@ import com.bugboard.api.repositories.UserRepositoryAdaptee;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -85,34 +87,13 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public List<UserReportDTO> getMonthlyReport(int year, int month) {
+        LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
+        LocalDateTime endDate = startDate.plusMonths(1);
+        return userServiceTarget.getUserReports(startDate, endDate);
+    }
 
 
-//    @Autowired
-//    private UserRepository userRepository;
-//
-//    public List<UserDTO> getAllUsers() {
-//        List<User> users = userRepository.findAll();
-//        List<UserDTO> result = new ArrayList<>();
-//        for(User user : users) {
-//            UserDTO dto = toDTO(user);
-//            result.add(dto);
-//        }
-//        return result;
-//    }
-//
-//    private UserDTO toDTO(User user) {
-//        return new UserDTO(
-//                user.getId(),
-//                user.getEmail(),
-//                user.getRole().name()
-//        );
-//    }
-//
-//    public Optional<UserDTO> getUserById(Long id) { // dava troppi problemi con Optional<UserDTO> e non capivo perché,
-//        // alla fine ho deciso di restituire un Optional<User> e poi mappare a DTO, ma bisogna capire come
-//        // funziona la map
-//        return userRepository.findById(id)
-//                .map(this::toDTO);
-//
-//    }
+
 }

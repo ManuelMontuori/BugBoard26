@@ -9,7 +9,7 @@ CREATE TABLE Users (
 	lastName VARCHAR(30) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	role user_role NOT NULL,
-	status user_status NOT NULL DEFAULT 'ACTIVATE',
+	status user_status NOT NULL DEFAULT 'ACTIVE',
 	last_login DATE,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

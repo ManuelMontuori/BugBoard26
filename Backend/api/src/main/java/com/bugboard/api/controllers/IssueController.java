@@ -54,4 +54,6 @@ public class IssueController {
         issueService.attach(new NotificationObserver());
         issueService.assignIssue(issueUuid, userUuid);
     }
+
+
 }

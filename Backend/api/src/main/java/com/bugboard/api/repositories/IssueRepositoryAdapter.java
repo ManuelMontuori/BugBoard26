@@ -1,5 +1,6 @@
 package com.bugboard.api.repositories;
 
+import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.IssuePriority;
 import com.bugboard.api.models.IssueStatus;
@@ -7,6 +8,7 @@ import com.bugboard.api.models.IssueType;
 import com.bugboard.api.services.IssueServiceTarget;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -81,5 +83,7 @@ public class IssueRepositoryAdapter implements IssueServiceTarget {
     public Issue findByUuid(UUID uuid) {
         return issueRepositoryAdaptee.findByUuid(uuid);
     }
+
+
 
 }
