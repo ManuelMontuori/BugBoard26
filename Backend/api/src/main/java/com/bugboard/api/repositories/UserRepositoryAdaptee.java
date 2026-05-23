@@ -69,7 +69,7 @@ SELECT
   AVG(
     CASE
       WHEN i.resolved_at IS NOT NULL
-      THEN EXTRACT(EPOCH FROM (i.resolved_at - i.created_at)) / 3600
+      THEN EXTRACT(EPOCH FROM (i.resolved_at - i.assigned_at)) / 3600
     END
   )::numeric, 2) AS averageIssues,
 

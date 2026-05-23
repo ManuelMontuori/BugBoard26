@@ -44,6 +44,9 @@ public class Issue {
     @JoinColumn(name = "assigned_to")
     private User assignedTo;
 
+    @Column(name="assigned_at")
+    private LocalDateTime assigned_at;
+
     @Column(nullable = false, updatable = false, name = "created_at")
         private LocalDateTime createdAt = LocalDateTime.now();
 

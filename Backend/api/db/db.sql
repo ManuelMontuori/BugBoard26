@@ -50,7 +50,8 @@ CREATE TABLE issues (
     assigned_to BIGINT,
     img_path VARCHAR(255),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    resolved_at TIMESTAMP
+    resolved_at TIMESTAMP,
+    assigned_at TIMESTAMP
 );
 
 ALTER TABLE Issues
@@ -116,29 +117,27 @@ INSERT INTO Notifications (message, read, user_id) VALUES
 ('Configurazione completata.', false, 20);
 
 
-
-INSERT INTO issues (uuid, title, description, is_type, is_priority, is_status, reporter, assigned_to, img_path, created_at, resolved_at) VALUES
-(gen_random_uuid(), 'Bug Login', 'Errore 500 al login social', 'BUG', 'HIGH', 'IN_PROGRESS', 2, 1, '/assets/bug01.png', NOW(), NULL),
-(gen_random_uuid(), 'Aggiornare Manuale', 'Manca sezione API v2', 'DOCUMENTATION', 'LOW', 'DONE', 3, 4, NULL, '2026-04-10', '2026-04-12'),
-(gen_random_uuid(), 'Dark Mode', 'Richiesta implementazione tema scuro', 'FEATURE', 'MEDIUM', 'TODO', 5, 10, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Query lenta', 'La dashboard impiega 10s a caricare', 'BUG', 'HIGH', 'IN_PROGRESS', 6, 20, '/img/slow_query.jpg', NOW(), NULL),
-(gen_random_uuid(), 'Domanda permessi', 'Come cambio il ruolo degli utenti?', 'QUESTION', 'LOW', 'DONE', 7, 1, NULL, '2026-04-05', '2026-04-05'),
-(gen_random_uuid(), 'Export CSV', 'Aggiungere export nella tabella utenti', 'FEATURE', 'MEDIUM', 'TODO', 8, NULL, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Refactoring Auth', 'Pulizia codice modulo autenticazione', 'FEATURE', 'LOW', 'IN_PROGRESS', 10, 4, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Icona mancante', 'Manca l''icona nel footer', 'BUG', 'LOW', 'DONE', 11, 20, '/assets/footer_err.png', '2026-04-01', '2026-04-03'),
-(gen_random_uuid(), 'Fix typo', 'Errore di battitura nella home', 'DOCUMENTATION', 'LOW', 'DONE', 12, 1, NULL, '2026-04-14', '2026-04-14'),
-(gen_random_uuid(), 'Integrazione Stripe', 'Aggiungere pagamenti ricorrenti', 'FEATURE', 'HIGH', 'TODO', 13, 10, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Crash mobile', 'App crasha su iOS 17', 'BUG', 'HIGH', 'IN_PROGRESS', 14, 20, '/logs/crash.log', NOW(), NULL),
-(gen_random_uuid(), 'Setup SSL', 'Rinnovare certificati scaduti', 'BUG', 'HIGH', 'DONE', 1, 4, NULL, '2026-04-15', '2026-04-16'),
-(gen_random_uuid(), 'Miglioramento SEO', 'Aggiunta meta tag dinamici', 'FEATURE', 'MEDIUM', 'TODO', 16, NULL, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Info Docker', 'Quale versione di node usare?', 'QUESTION', 'LOW', 'DONE', 17, 1, NULL, '2026-04-10', '2026-04-10'),
-(gen_random_uuid(), 'Validazione Mail', 'RegEx troppo permissiva', 'BUG', 'MEDIUM', 'IN_PROGRESS', 18, 10, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Traduzione EN', 'Mancano stringhe in inglese', 'DOCUMENTATION', 'MEDIUM', 'TODO', 19, 4, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Bottone disabilitato', 'Il tasto invio non risponde', 'BUG', 'HIGH', 'TODO', 2, 20, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Audit Sicurezza', 'Controllare vulnerabilità pacchetti', 'FEATURE', 'HIGH', 'IN_PROGRESS', 4, 1, NULL, NOW(), NULL),
-(gen_random_uuid(), 'Report Mensile', 'Generare PDF automatico', 'FEATURE', 'LOW', 'DONE', 6, 10, '/reports/template.pdf', '2026-03-01', '2026-03-05'),
-(gen_random_uuid(), 'Test Unitari', 'Aumentare copertura al 80%', 'FEATURE', 'MEDIUM', 'TODO', 20, NULL, NULL, NOW(), NULL);
-
+INSERT INTO issues (uuid, title, description, is_type, is_priority, is_status, reporter, assigned_to, img_path, assigned_at, created_at, resolved_at) VALUES
+(gen_random_uuid(), 'Bug Login', 'Errore 500 al login social', 'BUG', 'HIGH', 'IN_PROGRESS', 2, 1, '/assets/bug01.png', NOW(), NOW(), NULL), -- Aggiunto NOW()
+(gen_random_uuid(), 'Aggiornare Manuale', 'Manca sezione API v2', 'DOCUMENTATION', 'LOW', 'DONE', 3, 4, NULL, '2026-04-11 10:00:00', '2026-04-10', '2026-04-12'), -- Aggiunta data stringa
+(gen_random_uuid(), 'Dark Mode', 'Richiesta implementazione tema scuro', 'FEATURE', 'MEDIUM', 'TODO', 5, 10, NULL, NULL, NOW(), NULL),
+(gen_random_uuid(), 'Query lenta', 'La dashboard impiega 10s a caricare', 'BUG', 'HIGH', 'IN_PROGRESS', 6, 20, '/img/slow_query.jpg', NOW(), NOW(), NULL), -- Aggiunto NOW()
+(gen_random_uuid(), 'Domanda permessi', 'Come cambio il ruolo degli utenti?', 'QUESTION', 'LOW', 'DONE', 7, 1, NULL, '2026-04-05 09:15:00', '2026-04-05', '2026-04-05'), -- Aggiunta data stringa
+(gen_random_uuid(), 'Export CSV', 'Aggiungere export nella tabella utenti', 'FEATURE', 'MEDIUM', 'TODO', 8, NULL, NULL, NULL, NOW(), NULL),
+(gen_random_uuid(), 'Refactoring Auth', 'Pulizia codice modulo autenticazione', 'FEATURE', 'LOW', 'IN_PROGRESS', 10, 4, NULL, NOW(), NOW(), NULL), -- Aggiunto NOW()
+(gen_random_uuid(), 'Icona mancante', 'Manca l''icona nel footer', 'BUG', 'LOW', 'DONE', 11, 20, '/assets/footer_err.png', NULL, '2026-04-01', '2026-04-03'),
+(gen_random_uuid(), 'Fix typo', 'Errore di battitura nella home', 'DOCUMENTATION', 'LOW', 'DONE', 12, 1, NULL, NULL, '2026-04-14', '2026-04-14'),
+(gen_random_uuid(), 'Integrazione Stripe', 'Aggiungere pagamenti ricorrenti', 'FEATURE', 'HIGH', 'TODO', 13, 10, NULL, NULL, NOW(), NULL),
+(gen_random_uuid(), 'Crash mobile', 'App crasha su iOS 17', 'BUG', 'HIGH', 'IN_PROGRESS', 14, 20, '/logs/crash.log', NOW(), NOW(), NULL), -- Aggiunto NOW()
+(gen_random_uuid(), 'Setup SSL', 'Rinnovare certificati scaduti', 'BUG', 'HIGH', 'DONE', 1, 4, NULL, NULL, '2026-04-15', '2026-04-16'),
+(gen_random_uuid(), 'Miglioramento SEO', 'Aggiunta meta tag dinamici', 'FEATURE', 'MEDIUM', 'TODO', 16, NULL, NULL, NULL, NOW(), NULL),
+(gen_random_uuid(), 'Info Docker', 'Quale versione di node usare?', 'QUESTION', 'LOW', 'DONE', 17, 1, NULL, NULL, '2026-04-10', '2026-04-10'),
+(gen_random_uuid(), 'Validazione Mail', 'RegEx troppo permissiva', 'BUG', 'MEDIUM', 'IN_PROGRESS', 18, 10, NULL, NULL, NOW(), NULL),
+(gen_random_uuid(), 'Traduzione EN', 'Mancano stringhe in inglese', 'DOCUMENTATION', 'MEDIUM', 'TODO', 19, 4, NULL, NULL, NOW(), NULL),
+(gen_random_uuid(), 'Bottone disabilitato', 'Il tasto invio non risponde', 'BUG', 'HIGH', 'TODO', 2, 20, NULL, NULL, NOW(), NULL),
+(gen_random_uuid(), 'Audit Sicurezza', 'Controllare vulnerabilità pacchetti', 'FEATURE', 'HIGH', 'IN_PROGRESS', 4, 1, NULL, NOW(), NOW(), NULL), -- Aggiunto NOW()
+(gen_random_uuid(), 'Report Mensile', 'Generare PDF automatico', 'FEATURE', 'LOW', 'DONE', 6, 10, '/reports/template.pdf', NULL, '2026-03-01', '2026-03-05'),
+(gen_random_uuid(), 'Test Unitari', 'Aumentare copertura al 80%', 'FEATURE', 'MEDIUM', 'TODO', 20, NULL, NULL, NULL, NOW(), NULL);
 
 INSERT INTO Users (uuid, email, firstName, lastName, role, last_login, created_at) VALUES
 (gen_random_uuid(), 'test@bugboard.local', 'Valerio', 'Valeri', 'ADMIN', '2026-04-01', NOW());
