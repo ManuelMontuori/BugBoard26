@@ -1,14 +1,24 @@
 package com.bugboard.api.repositories.projection;
 
+import java.math.BigDecimal;
+
 public interface UserReportProjection {
     String getUuid();
     String getFirstName();
     String getLastName();
     String getEmail();
-    Integer getTotIssue();
-    Integer getTotCreatedIssue();
-    Integer getTotResolvedIssue();
-    Integer getTotWorkloadIssue();
-    Double getAverageIssue();
-    Integer getTotHighPriorityIssue();
+    //Ho messo al plurale Issues e cambiato double in BigDecimal
+    Integer getTotIssues();
+    Integer getTotCreatedIssues();
+    Integer getTotResolvedIssues();
+    Integer getTotWorkloadIssues();
+    BigDecimal getAverageIssues();
+    Integer getTotHighPriorityIssues();
+
+    
+
+   
+
+    
+    
 }
