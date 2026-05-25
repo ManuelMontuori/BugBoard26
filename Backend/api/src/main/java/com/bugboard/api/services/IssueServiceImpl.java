@@ -3,18 +3,14 @@ package com.bugboard.api.services;
 import com.bugboard.api.auth.AuthService;
 import com.bugboard.api.dto.CreateIssueDTO;
 import com.bugboard.api.dto.IssueDTO;
-import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.mapper.IssueMapper;
 
 import com.bugboard.api.models.*;
 import com.bugboard.api.observer.Observer;
-import com.bugboard.api.repositories.UserRepositoryAdaptee;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -68,7 +64,7 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public List<IssueDTO> getIssues(Order view, IssueStatus status, IssuePriority priority, IssueType type) {
+    public List<IssueDTO> getIssues(IssueStatus status, IssuePriority priority, IssueType type) {
         List<Issue> issues;
 
         if (status != null && priority != null && type != null) {
@@ -101,34 +97,34 @@ public class IssueServiceImpl implements IssueService {
         }
 
 
-        if(view!=null){
-            switch(view) {
-                case STATUS_ASC:
-                    issues.sort(Comparator.comparing(Issue::getStatus));
-                    break;
-                case STATUS_DESC:
-                    issues.sort(Comparator.comparing(Issue::getStatus).reversed());
-                    break;
-                case PRIORITY_ASC:
-                    issues.sort(Comparator.comparing(Issue::getPriority));
-                    break;
-                case PRIORITY_DESC:
-                    issues.sort(Comparator.comparing(Issue::getPriority).reversed());
-                    break;
-                case  TYPE_ASC:
-                    issues.sort(Comparator.comparing(Issue::getType));
-                    break;
-                case TYPE_DESC:
-                    issues.sort(Comparator.comparing(Issue::getType).reversed());
-                    break;
-                case DATE_ASC:
-                    issues.sort(Comparator.comparing(Issue::getCreatedAt));
-                    break;
-                case DATE_DESC:
-                    issues.sort(Comparator.comparing(Issue::getCreatedAt).reversed());
-                    break;
-            }
-        }
+//        if(view!=null){
+//            switch(view) {
+//                case STATUS_ASC:
+//                    issues.sort(Comparator.comparing(Issue::getStatus));
+//                    break;
+//                case STATUS_DESC:
+//                    issues.sort(Comparator.comparing(Issue::getStatus).reversed());
+//                    break;
+//                case PRIORITY_ASC:
+//                    issues.sort(Comparator.comparing(Issue::getPriority));
+//                    break;
+//                case PRIORITY_DESC:
+//                    issues.sort(Comparator.comparing(Issue::getPriority).reversed());
+//                    break;
+//                case  TYPE_ASC:
+//                    issues.sort(Comparator.comparing(Issue::getType));
+//                    break;
+//                case TYPE_DESC:
+//                    issues.sort(Comparator.comparing(Issue::getType).reversed());
+//                    break;
+//                case DATE_ASC:
+//                    issues.sort(Comparator.comparing(Issue::getCreatedAt));
+//                    break;
+//                case DATE_DESC:
+//                    issues.sort(Comparator.comparing(Issue::getCreatedAt).reversed());
+//                    break;
+//            }
+//        }
 
         return issues.stream()
                 .map(issueMapper::mapToDTO)

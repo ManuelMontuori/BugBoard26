@@ -2,13 +2,8 @@ package com.bugboard.api.services;
 
 import com.bugboard.api.dto.CreateIssueDTO;
 import com.bugboard.api.dto.IssueDTO;
-import com.bugboard.api.dto.UserDTO;
-import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.models.*;
 import com.bugboard.api.observer.Observer;
-import org.springframework.data.repository.query.Param;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -19,7 +14,7 @@ public interface IssueService {
 
     IssueDTO createIssue(CreateIssueDTO dto);
 
-    List<IssueDTO> getIssues(Order view, IssueStatus status, IssuePriority priority, IssueType type);
+    List<IssueDTO> getIssues(IssueStatus status, IssuePriority priority, IssueType type);
 
     IssueDTO getIssueByUuid(UUID id);
 
