@@ -61,7 +61,7 @@ SELECT
     END) AS totResolvedIssues,
 
     SUM(CASE 
-        WHEN i.assigned_to = u.id THEN 1 
+        WHEN i.assigned_to = u.id AND i.is_status <> 'DONE' THEN 1 
         ELSE 0 
     END) AS totWorkloadIssues,
 

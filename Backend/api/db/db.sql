@@ -64,6 +64,10 @@ FOREIGN KEY (assigned_to)
 REFERENCES users(id)
 ON DELETE RESTRICT;
 
+ALTER TABLE issues
+ADD CONSTRAINT issues_assigned_at
+CHECK (assigned_to IS NULL OR assigned_at IS NOT NULL);
+
 CREATE INDEX idx_issues_reporter
 ON issues(reporter);
 
