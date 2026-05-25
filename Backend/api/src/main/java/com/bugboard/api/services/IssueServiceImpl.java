@@ -185,6 +185,7 @@ public class IssueServiceImpl implements IssueService {
         User user = userServiceTarget.findByUuid(userUuid)
                 .orElseThrow(()->new IllegalArgumentException("User not found"));
         issue.setAssignedTo(user);
+        issue.setAssigned_at(LocalDateTime.now());
 //        User reporter=authService.getCurrentUser();\
         notifyObservers(issue, user); // aggiungi anche reporter
     }
