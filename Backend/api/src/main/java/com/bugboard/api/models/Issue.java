@@ -147,4 +147,12 @@ public class Issue {
     }
 
     public void setUuid(UUID uuid) { this.uuid = uuid; }
+
+    public LocalDateTime getAssigned_at() {
+        return assigned_at;
+    }
+
+    public void setAssigned_at(LocalDateTime assigned_at) {
+        this.assigned_at = assigned_at;
+    }
 }
