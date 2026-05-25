@@ -65,13 +65,25 @@ SELECT
         ELSE 0 
     END) AS totWorkloadIssues,
 
-    ROUND(
+   /* ROUND(
   AVG(
     CASE
       WHEN i.resolved_at IS NOT NULL
       THEN EXTRACT(EPOCH FROM (i.resolved_at - i.assigned_at)) / 3600
     END
-  )::numeric, 2) AS averageIssues,
+  )::numeric, 2) AS averageIssues,*/
+
+  ROUND(
+  AVG (
+    CASE
+      WHEN i.assigned_to = u.id
+       AND i.resolved_at IS NOT NULL
+       AND i.assigned_at IS NOT NULL
+      THEN EXTRACT(EPOCH FROM (i.resolved_at - i.assigned_at)) / 3600
+    END
+  )::numeric, 2
+) AS averageIssues,
+ 
 
     SUM(CASE 
         WHEN i.assigned_to = u.id 
