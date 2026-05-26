@@ -9,6 +9,7 @@ import com.bugboard.api.mapper.UserReportMapper;
 import com.bugboard.api.models.User;
 import com.bugboard.api.models.UserStatus;
 
+import com.bugboard.api.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +24,11 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     // la dependency injection sostituisce l'Autowired. Il been container gentisce automaticamentel'inejction
-    private final UserServiceTarget userServiceTarget;
+    private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final UserReportMapper userReportMapper;
-    public UserServiceImpl(UserServiceTarget userServiceTarget, UserMapper userMapper, UserReportMapper userReportMapper) {
-        this.userServiceTarget = userServiceTarget;
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, UserReportMapper userReportMapper) {
+        this.userRepository = userRepository;
         this.userMapper=userMapper;
         this.userReportMapper = userReportMapper;
     }
@@ -37,39 +38,39 @@ public class UserServiceImpl implements UserService {
     public UserDTO create(UserDTO dto) {
         User user = new User();
         userMapper.mapToEntity(dto, user);
-        User saved = userServiceTarget.save(user);
+        User saved = userRepository.save(user);
         return userMapper.mapToDTO(saved);
     }
 
     @Override
     public List<UserDTO> findAll() {
-        return userServiceTarget.findAll().stream()
+        return userRepository.findAll().stream()
                 .map(userMapper::mapToDTO)
                 .toList();
     }
 
     @Override
     public void disableUser(UUID uuid) {
-        User user = userServiceTarget.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
+        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
         user.disable();
     }
 
     @Override
     public void enableUser(UUID uuid) {
-        User user = userServiceTarget.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
+        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
         user.enable();
     }
 
     @Override
     public List<UserDTO> findAllDisabledUsers() {
-        return userServiceTarget.findAllByStatus(UserStatus.DISABLED).stream()
+        return userRepository.findAllByStatus(UserStatus.DISABLED).stream()
                 .map(userMapper::mapToDTO)
                 .toList();
     }
 
     @Override
     public List<UserWorkloadOutDTO> findByWorkload() {
-        return userServiceTarget.findByWorkload()
+        return userRepository.findByWorkload()
                 .stream()
                 .map(userMapper::mapWorkloadToWorkloadOut)
                 .toList();
@@ -78,7 +79,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserDTO> findByUuid(UUID uuid) {
 //        UUID userUuid = UUID.fromString(uuid); // converto la stringa in UUID
-        return userServiceTarget.findByUuidAndStatus(uuid, UserStatus.ACTIVE).map(userMapper::mapToDTO);
+        return userRepository.findByUuidAndStatus(uuid, UserStatus.ACTIVE).map(userMapper::mapToDTO);
     }
 
     @Override
@@ -97,7 +98,7 @@ public class UserServiceImpl implements UserService {
         LocalDateTime endDate = startDate.plusMonths(1);
         System.out.println("inizio: "+ startDate);
         System.out.println("fine: "+ endDate);
-        return userServiceTarget.getUserReports(startDate, endDate)
+        return userRepository.getUserReports(startDate, endDate)
                 .stream()
                 .map(userReportMapper::mapToDTO)
                 .toList();

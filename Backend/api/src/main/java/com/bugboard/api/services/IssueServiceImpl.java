@@ -7,6 +7,8 @@ import com.bugboard.api.mapper.IssueMapper;
 
 import com.bugboard.api.models.*;
 import com.bugboard.api.observer.Observer;
+import com.bugboard.api.repositories.IssueRepository;
+import com.bugboard.api.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -18,17 +20,17 @@ import java.util.UUID;
 @Transactional
 public class IssueServiceImpl implements IssueService {
 
-    private final IssueServiceTarget issueServiceTarget;
-    private final UserServiceTarget userServiceTarget;
+    private final IssueRepository issueRepository;
+    private final UserRepository userRepository;
     private final AuthService authService;
     private final IssueMapper issueMapper;
 
-    public IssueServiceImpl(IssueServiceTarget issueServiceTarget,
-                            UserServiceTarget userServiceTarget,
+    public IssueServiceImpl(IssueRepository issueRepository,
+                            UserRepository userRepository,
                             AuthService authService,
                             IssueMapper issueMapper) {
-        this.issueServiceTarget=issueServiceTarget;
-        this.userServiceTarget=userServiceTarget;
+        this.issueRepository = issueRepository;
+        this.userRepository=userRepository;
         this.authService = authService;
         this.issueMapper = issueMapper;
         
@@ -53,12 +55,12 @@ public class IssueServiceImpl implements IssueService {
 
 
         if (dto.assignedToUuid() != null) {
-            User assignedTo = userServiceTarget.findByUuid(
+            User assignedTo = userRepository.findByUuid(
                     UUID.fromString(dto.assignedToUuid())).orElseThrow(
                     () -> new IllegalArgumentException("Assigned user not found"));
             issue.setAssignedTo(assignedTo);
         }
-            Issue saved= issueServiceTarget.save(issue);
+            Issue saved= issueRepository.save(issue);
 
             return issueMapper.mapToDTO(saved);
     }
@@ -68,32 +70,32 @@ public class IssueServiceImpl implements IssueService {
         List<Issue> issues;
 
         if (status != null && priority != null && type != null) {
-            issues = issueServiceTarget
+            issues = issueRepository
                     .findByStatusAndPriorityAndType(status, priority, type);
 
         } else if (status != null && priority != null) {
-            issues = issueServiceTarget
+            issues = issueRepository
                     .findByStatusAndPriority(status, priority);
 
         } else if (status != null && type != null) {
-            issues = issueServiceTarget
+            issues = issueRepository
                     .findByStatusAndType(status, type);
 
         } else if (priority != null && type != null) {
-            issues = issueServiceTarget
+            issues = issueRepository
                     .findByPriorityAndType(priority, type);
 
         } else if (status != null) {
-            issues = issueServiceTarget.findByStatus(status);
+            issues = issueRepository.findByStatus(status);
 
         } else if (priority != null) {
-            issues = issueServiceTarget.findByPriority(priority);
+            issues = issueRepository.findByPriority(priority);
 
         } else if (type != null) {
-            issues = issueServiceTarget.findByType(type);
+            issues = issueRepository.findByType(type);
 
         } else {
-            issues = issueServiceTarget.findAll();
+            issues = issueRepository.findAll();
         }
 
 
@@ -142,7 +144,7 @@ public class IssueServiceImpl implements IssueService {
             throw new IllegalArgumentException("Keyword is required");
         }
 
-        List<Issue> issues = issueServiceTarget
+        List<Issue> issues = issueRepository
                 .findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(keyword, keyword);
 
         return issues.stream()
@@ -152,7 +154,7 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public List<IssueDTO> findByAssignedToUuid(UUID assignedTo) {
-        return issueServiceTarget.findByAssignedToUuid(assignedTo)
+        return issueRepository.findByAssignedToUuid(assignedTo)
                 .stream()
                 .map(issueMapper::mapToDTO)
                 .toList();
@@ -177,8 +179,8 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public void assignIssue(UUID issueUuid, UUID userUuid) {
-        Issue issue = issueServiceTarget.findByUuid(issueUuid);
-        User user = userServiceTarget.findByUuid(userUuid)
+        Issue issue = issueRepository.findByUuid(issueUuid);
+        User user = userRepository.findByUuid(userUuid)
                 .orElseThrow(()->new IllegalArgumentException("User not found"));
         issue.setAssignedTo(user);
         issue.setAssigned_at(LocalDateTime.now());

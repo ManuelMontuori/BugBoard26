@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UserRepositoryAdaptee extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
     // soliti metodi CRUD sono già disponibili grazie a JpaRepository
 
     Optional<User> findByUuid(UUID uuid);
