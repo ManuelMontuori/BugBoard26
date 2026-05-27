@@ -98,36 +98,6 @@ public class IssueServiceImpl implements IssueService {
             issues = issueRepository.findAll();
         }
 
-
-//        if(view!=null){
-//            switch(view) {
-//                case STATUS_ASC:
-//                    issues.sort(Comparator.comparing(Issue::getStatus));
-//                    break;
-//                case STATUS_DESC:
-//                    issues.sort(Comparator.comparing(Issue::getStatus).reversed());
-//                    break;
-//                case PRIORITY_ASC:
-//                    issues.sort(Comparator.comparing(Issue::getPriority));
-//                    break;
-//                case PRIORITY_DESC:
-//                    issues.sort(Comparator.comparing(Issue::getPriority).reversed());
-//                    break;
-//                case  TYPE_ASC:
-//                    issues.sort(Comparator.comparing(Issue::getType));
-//                    break;
-//                case TYPE_DESC:
-//                    issues.sort(Comparator.comparing(Issue::getType).reversed());
-//                    break;
-//                case DATE_ASC:
-//                    issues.sort(Comparator.comparing(Issue::getCreatedAt));
-//                    break;
-//                case DATE_DESC:
-//                    issues.sort(Comparator.comparing(Issue::getCreatedAt).reversed());
-//                    break;
-//            }
-//        }
-
         return issues.stream()
                 .map(issueMapper::mapToDTO)
                 .toList();
