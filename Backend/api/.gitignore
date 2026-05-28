@@ -34,3 +34,12 @@ build/
 
 # Local Spring Boot overrides (do not commit)
 **/application-local.properties
+
+# SonarQube e SonarScanner
+
+.sonar/
+.scannerwork/
+sonar-project.properties
+
+# Reports temporanei
+**/*.log
