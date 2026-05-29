@@ -80,8 +80,7 @@ public class IssueReadService {
     }
 
     public IssueDTO getIssueByUuid(UUID uuid) {
-        return null; // TODO
+        return issueMapper.mapToDTO(issueRepository.findByUuid(uuid));
     }
-
 
 }

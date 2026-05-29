@@ -20,19 +20,19 @@ public class IssueWriteService {
     private final UserRepository userRepository;
     private final AuthService authService;
     private final IssueMapper issueMapper;
-    private final IssueObserverComponent issueObserverService;
+    private final IssueObserverComponent issueObserverComponent;
 
     public IssueWriteService(IssueRepository issueRepository,
                              UserRepository userRepository,
                              AuthService authService,
                              IssueMapper issueMapper,
-                             IssueObserverComponent issueObserverService
+                             IssueObserverComponent issueObserverComponent
     ) {
         this.issueRepository = issueRepository;
         this.userRepository = userRepository;
         this.authService = authService;
         this.issueMapper = issueMapper;
-        this.issueObserverService = issueObserverService;
+        this.issueObserverComponent = issueObserverComponent;
     }
 
     public IssueDTO createIssue(CreateIssueDTO dto) {
@@ -70,6 +70,6 @@ public class IssueWriteService {
         issue.setAssignedTo(user);
         issue.setAssigned_at(LocalDateTime.now());
 //        User reporter=authService.getCurrentUser();\
-        issueObserverService.notifyObservers(issue, user); // aggiungi anche reporter
+        issueObserverComponent.notifyObservers(issue, user); // aggiungi anche reporter
     }
 }

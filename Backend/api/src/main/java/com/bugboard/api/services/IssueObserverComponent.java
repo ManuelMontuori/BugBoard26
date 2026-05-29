@@ -18,7 +18,7 @@ public class IssueObserverComponent {
         observers.add(observer);
     }
 
-        public void detach(Observer observer) {
+    public void detach(Observer observer) {
         observers.remove(observer);
     }
 
