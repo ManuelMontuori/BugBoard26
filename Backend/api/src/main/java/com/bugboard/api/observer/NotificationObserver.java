@@ -2,16 +2,18 @@ package com.bugboard.api.observer;
 
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.User;
+import com.bugboard.api.services.NotificationService;
 
 public class NotificationObserver implements Observer {
 
-//    private final NotificationService notificationService;
-//    public NotificationObserver(NotificationService notificationService) {
-//        this.notificationService = notificationService;
-//    }
+    private final NotificationService notificationService;
+    public NotificationObserver(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
 
     @Override
     public void update(Issue issue, User user) {
-        // usa metodo notificationService
+        
+        notificationService.createNotification(issue, user);
     }
 }
