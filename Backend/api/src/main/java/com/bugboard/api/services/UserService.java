@@ -16,11 +16,7 @@ public interface UserService {
     List<UserDTO> findAll();
 
     Optional<UserDTO> findByUuid(UUID uuid);
-
-    UserDTO update(String uuid, UserDTO dto);
-
-    void delete(String uuid);
-
+   
     void disableUser(UUID uuid);
 
     void enableUser(UUID uuid);

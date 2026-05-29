@@ -82,15 +82,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUuidAndStatus(uuid, UserStatus.ACTIVE).map(userMapper::mapToDTO);
     }
 
-    @Override
-    public UserDTO update(String uuid, UserDTO dto) {
-        return null;
-    }
-
-    @Override
-    public void delete(String uuid) {
-
-    }
+   
 
     @Override
     public List<UserReportDTO> getMonthlyReport(int year, int month) {
