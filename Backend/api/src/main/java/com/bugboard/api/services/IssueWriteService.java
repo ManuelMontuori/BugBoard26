@@ -70,6 +70,6 @@ public class IssueWriteService {
         issue.setAssignedTo(user);
         issue.setAssigned_at(LocalDateTime.now());
 //        User reporter=authService.getCurrentUser();\
-        issueObserverService.IssueObserverComponent(issue, user); // aggiungi anche reporter
+        issueObserverService.notifyObservers(issue, user); // aggiungi anche reporter
     }
 }
