@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
   <diagram name="Pagina-1" id="ZEshQJbg1vvPQmeWbTdf">
-    <mxGraphModel dx="3184" dy="1415" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1895" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1755,6 +1755,51 @@
         </mxCell>
         <mxCell id="6OFVx9HjuyvZyKUfMtCI-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&amp;lt;&amp;lt;use&amp;gt;&amp;gt;" vertex="1">
           <mxGeometry height="30" width="60" x="980" y="11800" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-1" edge="1" parent="1" source="hRoDE_ggfEZlvXT_u6ei-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="hRoDE_ggfEZlvXT_u6ei-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-2" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="IssueController" vertex="1">
+          <mxGeometry height="110" width="153" x="1050" y="13320" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-4" edge="1" parent="1" source="hRoDE_ggfEZlvXT_u6ei-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" target="hRoDE_ggfEZlvXT_u6ei-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-5" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="IssueServiceImpl&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; font-weight: 400; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20parent%3D%221%22%20style%3D%22swimlane%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20value%3D%22IssueController%22%20vertex%3D%221%22%3E%3CmxGeometry%20height%3D%22110%22%20width%3D%22153%22%20x%3D%22-513%22%20y%3D%2212540%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" vertex="1">
+          <mxGeometry height="110" width="223" x="1266" y="13320" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-6" parent="hRoDE_ggfEZlvXT_u6ei-5" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;font&gt;+createNotf&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="210" x="10" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-16" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="NotService&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; font-weight: 400; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20parent%3D%221%22%20style%3D%22swimlane%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20value%3D%22IssueController%22%20vertex%3D%221%22%3E%3CmxGeometry%20height%3D%22110%22%20width%3D%22153%22%20x%3D%22-513%22%20y%3D%2212540%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" vertex="1">
+          <mxGeometry height="110" width="223" x="1266" y="13100" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-17" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="Observer" vertex="1">
+          <mxGeometry height="110" width="153" x="1812" y="13100" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-18" edge="1" parent="1" source="hRoDE_ggfEZlvXT_u6ei-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="hRoDE_ggfEZlvXT_u6ei-19" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1683" y="13155" as="sourcePoint" />
+            <mxPoint x="1489" y="13155" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-19" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="25" width="27" x="1700" y="13000" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-20" edge="1" parent="1" source="hRoDE_ggfEZlvXT_u6ei-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=0;" target="hRoDE_ggfEZlvXT_u6ei-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-25" edge="1" parent="1" source="hRoDE_ggfEZlvXT_u6ei-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="hRoDE_ggfEZlvXT_u6ei-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-21" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="NotificationObserver" vertex="1">
+          <mxGeometry height="110" width="153" x="1812" y="13290" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="0...*" vertex="1">
+          <mxGeometry height="30" width="60" x="1756" y="13120" as="geometry" />
+        </mxCell>
+        <mxCell id="hRoDE_ggfEZlvXT_u6ei-24" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="IssueService&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; font-weight: 400; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20parent%3D%221%22%20style%3D%22swimlane%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20value%3D%22IssueController%22%20vertex%3D%221%22%3E%3CmxGeometry%20height%3D%22110%22%20width%3D%22153%22%20x%3D%22-513%22%20y%3D%2212540%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" vertex="1">
+          <mxGeometry height="110" width="223" x="1477" y="12960" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
