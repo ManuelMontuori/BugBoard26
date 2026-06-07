@@ -23,77 +23,52 @@ import java.util.UUID;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    // la dependency injection sostituisce l'Autowired. Il been container gentisce automaticamentel'inejction
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
-    private final UserReportMapper userReportMapper;
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, UserReportMapper userReportMapper) {
-        this.userRepository = userRepository;
-        this.userMapper=userMapper;
-        this.userReportMapper = userReportMapper;
+    private final UserReadService userReadService;
+    private final UserWriteService userWriteService;
+    public UserServiceImpl(UserReadService userReadService,
+                           UserWriteService userWriteService) {
+        this.userReadService = userReadService;
+        this.userWriteService = userWriteService;
     }
-
 
     @Override
     public UserDTO create(UserDTO dto) {
-        User user = new User();
-        userMapper.mapToEntity(dto, user);
-        User saved = userRepository.save(user);
-        return userMapper.mapToDTO(saved);
+        return userWriteService.create(dto);
     }
 
     @Override
     public List<UserDTO> findAll() {
-        return userRepository.findAll().stream()
-                .map(userMapper::mapToDTO)
-                .toList();
+        return userReadService.findAll();
     }
 
     @Override
     public void disableUser(UUID uuid) {
-        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
-        user.disable();
+        userWriteService.disableUser(uuid);
     }
 
     @Override
     public void enableUser(UUID uuid) {
-        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
-        user.enable();
+        userWriteService.enableUser(uuid);
     }
 
     @Override
     public List<UserDTO> findAllDisabledUsers() {
-        return userRepository.findAllByStatus(UserStatus.DISABLED).stream()
-                .map(userMapper::mapToDTO)
-                .toList();
+        return userReadService.findAllDisabledUsers();
     }
 
     @Override
     public List<UserWorkloadOutDTO> findByWorkload() {
-        return userRepository.findByWorkload()
-                .stream()
-                .map(userMapper::mapWorkloadToWorkloadOut)
-                .toList();
+        return userReadService.findByWorkload();
     }
 
     @Override
     public Optional<UserDTO> findByUuid(UUID uuid) {
-//        UUID userUuid = UUID.fromString(uuid); // converto la stringa in UUID
-        return userRepository.findByUuidAndStatus(uuid, UserStatus.ACTIVE).map(userMapper::mapToDTO);
+        return userReadService.findByUuid(uuid);
     }
-
-   
 
     @Override
     public List<UserReportDTO> getMonthlyReport(int year, int month) {
-        LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
-        LocalDateTime endDate = startDate.plusMonths(1);
-        System.out.println("inizio: "+ startDate);
-        System.out.println("fine: "+ endDate);
-        return userRepository.getUserReports(startDate, endDate)
-                .stream()
-                .map(userReportMapper::mapToDTO)
-                .toList();
+        return userReadService.getMonthlyReport(year, month);
     }
 }
 
