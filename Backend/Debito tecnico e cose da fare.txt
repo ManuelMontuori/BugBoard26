@@ -24,3 +24,5 @@ per generare il valore di dafult di createdAt. Perche se in futuro si dovesse ag
 5) Gestire il caricamento dell'immagine, per ora salva solo il path
 
 6) Inserire nei class diagram le classi target e adapter e modificare i nomi dei repository in adaptee; aggiungere i parametri nome e cognome ai model user e cambiare anche il database con questi attributi di users
+
+7) Sonar sta dando dei warning. Ma solo perché sul pc ho installato java25 che non è supportato da sonarqube che usa quindi il 17, ma il supporto di sonar per il 17 scade a luglio e per il progetto sto usando java 21 di intellij. Quindi si deve provare ad installare e impostare come jdk principale la java 21, altrimenti lanciare sonar scanner direttamente dalla console maven in intellij, cosi dovrebbero sparire tutti i warning.

@@ -54,8 +54,6 @@ public class UserReadService {
     public List<UserReportDTO> getMonthlyReport(int year, int month) {
         LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
         LocalDateTime endDate = startDate.plusMonths(1);
-        System.out.println("inizio: "+ startDate);
-        System.out.println("fine: "+ endDate);
         return userRepository.getUserReports(startDate, endDate)
                 .stream()
                 .map(userReportMapper::mapToDTO)

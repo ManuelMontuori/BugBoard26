@@ -3,18 +3,8 @@ package com.bugboard.api.services;
 import com.bugboard.api.dto.UserDTO;
 import com.bugboard.api.dto.UserReportDTO;
 import com.bugboard.api.dto.UserWorkloadOutDTO;
-
-import com.bugboard.api.mapper.UserMapper;
-import com.bugboard.api.mapper.UserReportMapper;
-import com.bugboard.api.models.User;
-import com.bugboard.api.models.UserStatus;
-
-import com.bugboard.api.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.lang.System;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
