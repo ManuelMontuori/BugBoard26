@@ -45,7 +45,7 @@ public class Issue {
     private User assignedTo;
 
     @Column(name="assigned_at")
-    private LocalDateTime assigned_at;
+    private LocalDateTime assignedAt;
 
     @Column(nullable = false, updatable = false, name = "created_at")
         private LocalDateTime createdAt = LocalDateTime.now();
@@ -56,7 +56,9 @@ public class Issue {
     @Column(name = "img_path")
     private String imagePath;
 
-    // costruttore vuoto obbligatorio
+    /** 
+    Required by JPA/Hibernate. Do not remove.
+    */
     public Issue() {}
 
     // tutti i getter
@@ -148,11 +150,11 @@ public class Issue {
 
     public void setUuid(UUID uuid) { this.uuid = uuid; }
 
-    public LocalDateTime getAssigned_at() {
-        return assigned_at;
+    public LocalDateTime getAssignedAt() {
+        return assignedAt;
     }
 
-    public void setAssigned_at(LocalDateTime assigned_at) {
-        this.assigned_at = assigned_at;
+    public void setAssignedAt(LocalDateTime assignedAt) {
+        this.assignedAt = assignedAt;
     }
 }

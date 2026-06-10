@@ -3,12 +3,15 @@ package com.bugboard.api.services;
 import com.bugboard.api.auth.AuthService;
 import com.bugboard.api.dto.CreateIssueDTO;
 import com.bugboard.api.dto.IssueDTO;
+import com.bugboard.api.events.IssueAssignedEvent;
 import com.bugboard.api.mapper.IssueMapper;
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.User;
 import com.bugboard.api.repositories.IssueRepository;
 import com.bugboard.api.repositories.UserRepository;
+
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,19 +23,21 @@ public class IssueWriteService {
     private final UserRepository userRepository;
     private final AuthService authService;
     private final IssueMapper issueMapper;
-    private final IssueObserverComponent issueObserverComponent;
+    private final ApplicationEventPublisher eventPublisher; 
+
 
     public IssueWriteService(IssueRepository issueRepository,
                              UserRepository userRepository,
                              AuthService authService,
                              IssueMapper issueMapper,
-                             IssueObserverComponent issueObserverComponent
+                                ApplicationEventPublisher eventPublisher
     ) {
         this.issueRepository = issueRepository;
         this.userRepository = userRepository;
         this.authService = authService;
         this.issueMapper = issueMapper;
-        this.issueObserverComponent = issueObserverComponent;
+        this.eventPublisher = eventPublisher;
+        
     }
 
     public IssueDTO createIssue(CreateIssueDTO dto) {
@@ -68,8 +73,9 @@ public class IssueWriteService {
         User user = userRepository.findByUuid(userUuid)
                 .orElseThrow(()->new IllegalArgumentException("User not found"));
         issue.setAssignedTo(user);
-        issue.setAssigned_at(LocalDateTime.now());
-//        User reporter=authService.getCurrentUser();\
-        issueObserverComponent.notifyObservers(issue, user); // aggiungi anche reporter
+        issue.setAssignedAt(LocalDateTime.now());
+
+        eventPublisher.publishEvent(new IssueAssignedEvent(issue, user));
     }
 }
+

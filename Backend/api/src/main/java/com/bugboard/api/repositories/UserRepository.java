@@ -16,13 +16,11 @@ import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    // soliti metodi CRUD sono già disponibili grazie a JpaRepository
+   
 
     Optional<User> findByUuid(UUID uuid);
 
     Optional<User> findByUuidAndStatus(UUID uuid, UserStatus status);
-
-//    void deleteByUuid(String uuid);
 
     boolean existsByUuid(UUID uuid);
 

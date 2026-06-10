@@ -5,8 +5,6 @@ import com.bugboard.api.dto.IssueDTO;
 import com.bugboard.api.models.IssuePriority;
 import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.IssueType;
-import com.bugboard.api.observer.NotificationObserver;
-import com.bugboard.api.services.IssueObserverComponent;
 import com.bugboard.api.services.IssueService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +16,9 @@ import java.util.UUID;
 @RequestMapping("/api/issues")
 public class IssueController {
     private final IssueService issueService;
-    private final IssueObserverComponent issueObserverComponent;
-
-    public IssueController(IssueService issueService, IssueObserverComponent issueObserverComponent){
+    
+    public IssueController(IssueService issueService){
         this.issueService = issueService;
-        this.issueObserverComponent = issueObserverComponent;
     }
 
     @PostMapping
@@ -51,7 +47,6 @@ public class IssueController {
     @PatchMapping("/assigned")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void assignIssue(@RequestParam UUID issueUuid, @RequestParam UUID userUuid) {
-        issueObserverComponent.attach(new NotificationObserver());
         issueService.assignIssue(issueUuid, userUuid);
     }
 

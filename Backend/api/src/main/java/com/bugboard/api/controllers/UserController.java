@@ -1,7 +1,6 @@
 package com.bugboard.api.controllers;
 
 import com.bugboard.api.dto.*;
-import com.bugboard.api.services.IssueService;
 import com.bugboard.api.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +12,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/users")
 public class  UserController {
-//    @Autowired
-//    private UserServiceImpl userServiceImpl;
 
     private final UserService userService;
     public UserController(UserService userService) {
@@ -30,7 +27,6 @@ public class  UserController {
     @GetMapping
     public List<UserDTO> findAll() {
         return userService.findAll();
-        // qui non serve il controllo perché se non ci sono utenti, restituisce una lista vuota, che è un risultato valido
     }
 
     @GetMapping("/disabled")

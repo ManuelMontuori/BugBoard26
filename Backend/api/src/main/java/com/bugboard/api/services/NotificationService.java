@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.bugboard.api.dto.NotificationDTO;
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.User;
-import com.sun.nio.sctp.NotificationHandler;
+
 
 public interface NotificationService {
 
