@@ -19,54 +19,33 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class NotificationServiceImpl implements NotificationService {
-    private final NotificationRepository notificationRepository;
-    private final NotificationMapper notificationMapper;
-    private final AuthService authService;
-
-    public NotificationServiceImpl(NotificationRepository notificationRepository,
-                                   NotificationMapper notificationMapper,
-                                   AuthService authService) {
-        this.notificationRepository = notificationRepository;
-        this.notificationMapper = notificationMapper;
-        this.authService = authService;
+    private final NotificationReadService notificationReadService;
+    private final NotificationWriteService notificationWriteService;
+    public NotificationServiceImpl(NotificationReadService notificationReadService,
+                                   NotificationWriteService notificationWriteService) {
+        this.notificationReadService = notificationReadService;
+        this.notificationWriteService = notificationWriteService;
     }
 
     @Override
     public void createNotification(Issue issue, User user) {
-
-        Notification notification = new Notification();
-        notification.setMessage("Ti è stata assegnata la seguente Issue: " + issue.getTitle() + "\nDescrizione:"
-                + issue.getDescription());
-        notification.setRead(false);
-        notification.setUser(user);
-
-        notificationRepository.save(notification);
-
+        notificationWriteService.createNotification(issue, user);
     }
 
     @Override
     public void readTrue(UUID uuid) {
-        Notification notification = notificationRepository.findByUuid(uuid)
-                .orElseThrow(() -> new RuntimeException("Notification not found"));
-        notification.setRead(true);
-
-        notificationRepository.save(notification);
+        notificationWriteService.readTrue(uuid);
 
     }
 
     @Override
     public void readFalse(UUID uuid) {
-        Notification notification = notificationRepository.findByUuid(uuid).orElseThrow(() -> new RuntimeException("Notification not found"));
-        notification.setRead(false);
-        notificationRepository.save(notification);
+        notificationWriteService.readFalse(uuid);
     }
 
     @Override
     public List<NotificationDTO> myNotifications() {
-        User user = authService.getCurrentUser().orElseThrow(() -> new RuntimeException("User not found"));
-        return notificationRepository.findByUserId(user.getId()).stream()
-                .map(notificationMapper::mapToDTO)
-                .toList();
+        return notificationReadService.myNotifications();
     }
 
 
