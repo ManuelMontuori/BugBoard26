@@ -7,6 +7,8 @@ import com.bugboard.api.models.IssuePriority;
 import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.IssueType;
 import com.bugboard.api.repositories.IssueRepository;
+import com.bugboard.api.specification.IssueSpecification;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,36 +25,13 @@ public class IssueReadService {
     }
 
     public List<IssueDTO> getIssues(IssueStatus status, IssuePriority priority, IssueType type) {
-        List<Issue> issues;
 
-        if (status != null && priority != null && type != null) {
-            issues = issueRepository
-                    .findByStatusAndPriorityAndType(status, priority, type);
+        Specification<Issue> spec = Specification
+                .where(IssueSpecification.hasStatus(status))
+                .and(IssueSpecification.hasPriority(priority))
+                .and(IssueSpecification.hasType(type));
 
-        } else if (status != null && priority != null) {
-            issues = issueRepository
-                    .findByStatusAndPriority(status, priority);
-
-        } else if (status != null && type != null) {
-            issues = issueRepository
-                    .findByStatusAndType(status, type);
-
-        } else if (priority != null && type != null) {
-            issues = issueRepository
-                    .findByPriorityAndType(priority, type);
-
-        } else if (status != null) {
-            issues = issueRepository.findByStatus(status);
-
-        } else if (priority != null) {
-            issues = issueRepository.findByPriority(priority);
-
-        } else if (type != null) {
-            issues = issueRepository.findByType(type);
-
-        } else {
-            issues = issueRepository.findAll();
-        }
+        List<Issue> issues = issueRepository.findAll(spec);
 
         return issues.stream()
                 .map(issueMapper::mapToDTO)

@@ -56,10 +56,10 @@ public class Issue {
     @Column(name = "img_path")
     private String imagePath;
 
-    /** 
-    Required by JPA/Hibernate. Do not remove.
-    */
-    public Issue() {}
+
+    public Issue() {
+         // Required by JPA/Hibernate. Do not removee
+    }
 
     // tutti i getter
     public Long getId() {
