@@ -6,7 +6,11 @@ import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.IssueType;
 import org.springframework.data.jpa.domain.Specification;
 
-public class IssueSpecification {
+public final class IssueSpecification {
+
+    private IssueSpecification() {
+       //Utility class per non instanziamento
+    }
 
     public static Specification<Issue> hasStatus(IssueStatus status) {
         return (root, query, cb) ->

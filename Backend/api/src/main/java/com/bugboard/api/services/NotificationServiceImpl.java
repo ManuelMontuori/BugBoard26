@@ -2,17 +2,10 @@ package com.bugboard.api.services;
 
 import java.util.List;
 import java.util.UUID;
-
-import com.bugboard.api.auth.AuthService;
 import com.bugboard.api.dto.NotificationDTO;
-import com.bugboard.api.repositories.NotificationRepository;
 import org.springframework.stereotype.Service;
-
-import com.bugboard.api.mapper.NotificationMapper;
 import com.bugboard.api.models.Issue;
-import com.bugboard.api.models.Notification;
 import com.bugboard.api.models.User;
-
 import jakarta.transaction.Transactional;
 
 

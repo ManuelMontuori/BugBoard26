@@ -4,11 +4,9 @@ import com.bugboard.api.dto.CreateIssueDTO;
 import com.bugboard.api.dto.IssueDTO;
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.IssuePriority;
-import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.IssueType;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
 
 @Component
 public class IssueMapper {
