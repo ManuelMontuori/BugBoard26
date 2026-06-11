@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.frontend.views.HelloViewController">
+    <padding>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
+    </padding>
+
+    <Label fx:id="welcomeText" text="Premi il bottone per caricare /api/users"/>
+
+    <TableView fx:id="usersTable" prefHeight="280.0" prefWidth="680.0">
+        <columns>
+            <TableColumn fx:id="firstNameColumn" prefWidth="120.0" text="Nome"/>
+            <TableColumn fx:id="lastNameColumn" prefWidth="120.0" text="Cognome"/>
+            <TableColumn fx:id="emailColumn" prefWidth="210.0" text="Email"/>
+            <TableColumn fx:id="roleColumn" prefWidth="90.0" text="Ruolo"/>
+            <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Stato"/>
+        </columns>
+    </TableView>
+
+    <Button text="Carica utenti" onAction="#onHelloButtonClick"/>
+</VBox>
