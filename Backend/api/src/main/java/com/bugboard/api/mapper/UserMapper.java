@@ -25,6 +25,8 @@ public class UserMapper {
     public void mapToEntity(UserDTO dto, User user) {
         user.setEmail(dto.email());
         user.setRole(UserRole.valueOf(dto.role()));
+        user.setLastName(dto.lastName());
+        user.setFirstName(dto.firstName());
     }
 
     public UserWorkloadOutDTO mapWorkloadToWorkloadOut(WorkloadDTO dto) {

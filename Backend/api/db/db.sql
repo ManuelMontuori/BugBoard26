@@ -5,13 +5,13 @@ CREATE TYPE user_status AS ENUM ('ACTIVE', 'DISABLED');
 CREATE TABLE Users (
 	id BIGSERIAL PRIMARY KEY,
 	uuid UUID NOT NULL UNIQUE,
-	firstName VARCHAR(30) NOT NULL,
-	lastName VARCHAR(30) NOT NULL,
-	email VARCHAR(50) NOT NULL,
+	firstName VARCHAR(30),
+	lastName VARCHAR(30),
+	email VARCHAR(50) NOT NULL UNIQUE,
 	role user_role NOT NULL,
 	status user_status NOT NULL DEFAULT 'ACTIVE',
 	last_login DATE,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	created_at TIMESTAMP
 );
 
 CREATE TABLE Notifications (

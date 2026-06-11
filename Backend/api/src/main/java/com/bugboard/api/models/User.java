@@ -27,10 +27,10 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 30, name="firstname")
+    @Column(length = 30, name="firstname")
     private String firstName;
 
-    @Column(nullable = false, length = 30, name="lastname")
+    @Column(length = 30, name="lastname")
     private String lastName;
 
 
@@ -45,7 +45,7 @@ public class User {
 
 
     @Column(updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt =  LocalDateTime.now();
 
     @Column(name = "last_login")
     private LocalDate lastLogin;
