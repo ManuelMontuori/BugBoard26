@@ -12,15 +12,18 @@ import java.util.UUID;
 public class UserWriteService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-    public UserWriteService(UserRepository userRepository, UserMapper userMapper) {
+    private final CognitoUserService cognitoUserService;
+    public UserWriteService(UserRepository userRepository, UserMapper userMapper, CognitoUserService cognitoUserService) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.cognitoUserService = cognitoUserService;
     }
 
     public UserDTO create(UserDTO dto) {
         User user = new User();
         userMapper.mapToEntity(dto, user);
         User saved = userRepository.save(user);
+        cognitoUserService.registraUtenteSuCognito(saved);
         return userMapper.mapToDTO(saved);
     }
 
