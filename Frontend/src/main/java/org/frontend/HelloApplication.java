@@ -26,14 +26,20 @@ public class HelloApplication extends Application {
 
         FXMLLoader dashboardLoader = new FXMLLoader(getClass().getResource("/org/frontend/view/dashboard.fxml"));
         Scene dashboardScene = new Scene(dashboardLoader.load());
+        stage.setResizable(false);
 
         LoginEvent.addListener(() -> {
             // Qui sei sull'FX thread: cambia scena, aggiorna label, ecc.
             stage.setScene(dashboardScene);
+            stage.setMinWidth(800);
+            stage.setMinHeight(600);
+            stage.centerOnScreen();
+            stage.setResizable(true);
         });
 
         Scene scene = new Scene(fxmlLoader.load(), 478, 420);
         stage.setScene(scene);
+
         stage.show();
     }
 

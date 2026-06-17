@@ -12,9 +12,9 @@
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="24.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.HomeDashboardController">
    <children>
       <Label styleClass="title-dashboard" text="Dashboard" textFill="#292766" />
-      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="metric-card">
+      <HBox prefHeight="100.0" prefWidth="0.0" spacing="10.0" styleClass="metric-card">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="200.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>

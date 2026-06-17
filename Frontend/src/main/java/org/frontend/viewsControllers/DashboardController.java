@@ -26,6 +26,7 @@ public class DashboardController {
             // 3. Spedisci la nuova vista direttamente al centro del BorderPane
             mainBorderPane.setCenter(nuovaVista);
 
+
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Errore: impossibile caricare il file FXML della sottopagina.");
