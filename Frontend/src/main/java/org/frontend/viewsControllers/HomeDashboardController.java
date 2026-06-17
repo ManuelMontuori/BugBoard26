@@ -51,7 +51,7 @@ public class HomeDashboardController {
 
 
         String email = AuthSession.getInstance().getEmail();
-        labelWelcome.setText(email.isEmpty() ? "Utente" : email);
+        labelWelcome.setText(email.isEmpty() ? "Utente" : "Benvenuto, " + email);
 
 
 

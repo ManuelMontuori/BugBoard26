@@ -11,25 +11,29 @@ import java.io.IOException;
 
 public class DashboardController {
     @FXML
-    private Button button1;
+    private Button btnDashboard;
     @FXML
     private BorderPane mainBorderPane;
 
     @FXML
+    public void initialize() {
+       loadSubPage("/org/frontend/view/home-dashboard.fxml");
+    }
+
+    @FXML
     public void handleButtonAction(ActionEvent event) {
+        loadSubPage("/org/frontend/view/home-dashboard.fxml");
+    }
+    
+    // Metodo riutilizzabile per evitare duplicazione di codice
+    private void loadSubPage(String path) {
         try {
-            // 2. Carica il file FXML della sottopagina
-            // Nota: Il percorso parte dalla cartella "resources" del tuo progetto
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/frontend/view/home-dashboard.fxml"));
-            Parent nuovaVista = loader.load();
-
-            // 3. Spedisci la nuova vista direttamente al centro del BorderPane
-            mainBorderPane.setCenter(nuovaVista);
-
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            Parent view = loader.load();
+            mainBorderPane.setCenter(view);
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Errore: impossibile caricare il file FXML della sottopagina.");
+            System.err.println("Errore: impossibile caricare la vista " + path);
         }
     }
 

@@ -50,6 +50,105 @@
     -fx-text-fill: #2C2C2A;
 }
 
+
+/* =============================================
+   WELCOME / SPLASH SCREEN
+   ============================================= */
+
+/* Pannello sinistro scuro */
+.welcome-left {
+    -fx-background-color: #23214d;
+}
+
+/* Cerchio decorativo esterno */
+.welcome-circle-outer {
+    -fx-stroke: rgba(120, 100, 255, 0.5);
+    -fx-stroke-width: 1.5px;
+    -fx-fill: transparent;
+}
+
+/* Cerchio decorativo interno (pallino) */
+.welcome-circle-dot {
+    -fx-fill: #a3158f;
+    -fx-stroke: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(163,21,143,0.6), 10, 0, 0, 0);
+}
+
+/* Titolo BugBoard */
+.welcome-title {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 31px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Numero 26 */
+.welcome-subtitle {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Footer crediti */
+.welcome-footer {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(255,255,255,0.55);
+}
+
+/* Pannello destro chiaro */
+.welcome-right {
+    -fx-background-color: #F1EFE8;
+}
+
+/* Testo descrittivo a destra */
+.welcome-description {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 15px;
+    -fx-text-fill: #23214d;
+    -fx-text-alignment: CENTER;
+    -fx-wrap-text: true;
+}
+
+/* Bottone Login */
+.welcome-btn-login {
+    -fx-background-color: #23214d;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-pref-width: 181px;
+    -fx-pref-height: 36px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 2);
+}
+.welcome-btn-login:hover {
+    -fx-background-color: #185FA5;
+}
+
+/* Bottone Exit */
+.welcome-btn-exit {
+    -fx-background-color: #FCEBEB;
+    -fx-text-fill: #791F1F;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #F7C1C1;
+    -fx-border-width: 0.5px;
+    -fx-pref-width: 181px;
+    -fx-pref-height: 36px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 1);
+}
+.welcome-btn-exit:hover {
+    -fx-background-color: #F7C1C1;
+}
+
+
 /* ==================== CUSTOM TITLE BAR ==================== */
 .custom-title-bar {
     -fx-background-color: #888780; /* Un tono più scuro della sidebar per staccare */
@@ -147,17 +246,11 @@
 }
 
 .title-dashboard {
-    -fx-padding: 20px 16px 20px 16px;
     -fx-font-size: 22px;
     -fx-font-weight: bold;
     -fx-text-fill: #23214d;
-    -fx-border-color: transparent transparent rgba(255,255,255,0.1) transparent;
-    -fx-border-width: 0 0 0.5px 0;
-    -fx-pref-width: 220px;
-    -fx-max-width: infinity;
-    -fx-graphic-text-gap: 10px;
+    -fx-padding: 0px 0px 20px 0px;
 }
-
 /* Voci nav adattate al tema scuro */
 .nav-item {
     -fx-padding: 9px 16px 9px 16px;
@@ -224,6 +317,17 @@
        -fx-background-color: #F1F5F9;
 
     -fx-padding: 30px;
+}
+
+.welcome-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #23214d;
+}
+
+.welcome-sub {
+    -fx-font-size: 12px;
+    -fx-text-fill: #5F5E5A;
 }
 
 /* Intestazione pagina */
