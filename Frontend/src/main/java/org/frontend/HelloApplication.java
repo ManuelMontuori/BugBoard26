@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
         // Carica la scena home (già pronta in memoria, non ancora mostrata)
 
 
-        FXMLLoader dashboardLoader = new FXMLLoader(getClass().getResource("/org/frontend/view/dashboard-view.fxml"));
+        FXMLLoader dashboardLoader = new FXMLLoader(getClass().getResource("/org/frontend/view/dashboard.fxml"));
         Scene dashboardScene = new Scene(dashboardLoader.load());
 
         LoginEvent.addListener(() -> {

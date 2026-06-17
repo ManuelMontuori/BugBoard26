@@ -17,6 +17,8 @@ module org.prova.provafrontend {
     opens org.frontend.models to javafx.fxml;
     exports org.frontend.util;
     opens org.frontend.util to javafx.fxml;
-    exports org.frontend.views;
-    opens org.frontend.views to javafx.fxml;
+    exports org.frontend.viewsControllers;
+    opens org.frontend.viewsControllers to javafx.fxml;
+    exports org.frontend.models.dtos;
+    opens org.frontend.models.dtos to javafx.fxml;
 }

@@ -48,6 +48,12 @@ public class CognitoUserService {
                 .value(user.getUuid().toString()) // Trasformiamo il UUID in Stringa
                 .build());
 
+        // Inseriamo il ruolo nell'attributo custom::role
+        userAttributes.add(AttributeType.builder()
+                .name("custom:role")
+                .value(user.getRole().toString()) // Trasformiamo il ruolo in Stringa
+                .build());
+
         // 2. Costruiamo la richiesta di creazione
         AdminCreateUserRequest request = AdminCreateUserRequest.builder()
                 .userPoolId(userPoolId)

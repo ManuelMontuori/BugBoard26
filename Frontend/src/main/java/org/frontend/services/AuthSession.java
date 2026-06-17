@@ -1,6 +1,9 @@
 package org.frontend.services;
 
 import java.time.Instant;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -70,5 +73,25 @@ public final class AuthSession {
         accessTokenExpiresAt = 0;
         authenticated.set(false);
         displayName.set("");
+    }
+
+    public String getEmail() {
+        if (idToken == null || idToken.isBlank()) return "";
+        try {
+            String[] parts   = idToken.split("\\.");
+            String   payload = parts[1];
+            int pad = payload.length() % 4;
+            if (pad != 0) payload += "=".repeat(4 - pad);
+
+            byte[] decoded = java.util.Base64.getUrlDecoder().decode(payload);
+
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode node   = mapper.readTree(decoded);
+            return node.path("email").asText("");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }

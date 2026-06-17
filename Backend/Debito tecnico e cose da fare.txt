@@ -2,27 +2,12 @@
 public class UserAlreadyDisabledException 
         extends IllegalStateException {...} ect.
 
-
-2) Nella entity Issue ho inizializzato il valore di created_at a LocalDateTime.now() in fase di dichiarazione. Copilot consiglia di usare la direttiva Hibernate 
-@PrePersist
-protected void prePersist() {
-    if (this.uuid == null) {
-        this.uuid = UUID.randomUUID();
-    }
-cosi il metodo viene richiamato prima di ogni Insert. Ma alla fine è solo un controllo sul null, ma sarà sempre null quindi secondo me è meglio la versione dichiarazione/inizializzazione. Controllare.
-Dovrei anche usare 
-@PrePersist
-   protected void onCreate() {
-       this.createdAt = LocalDateTime.now();
-   }
-per generare il valore di dafult di createdAt. Perche se in futuro si dovesse aggiungere una riga direttamente da SQL la colonna rimarrebbe vuota. Noi teoricamente non vogliamo che si possa toccare il db senza passare dal backend ma controlla anche questo.
-
-3) In IssueServiceImpl, nel metodo getIssue() ci sono una cascata di if-else per applicare dinamicamente i filtri. Con questo approccio l'endpoint è unico per qualsiasi tipo di filtro si voglia inserire, basta aggiungere il parametro al path, senza parametri la risposta è tutte le issue. Il problema è la scalabilità, se si dovesse voler aggiungere un altro filtro in futuro andrebbe ripensata l'intera cascata di if-else, non è il massimo. 
-
-4) Ricordarsi dopo aver aggiunto la vera autenticazione con cognito di modificare i class diagram aggiungendo le classi di autenticazione iniettate per dipendenza
-
 5) Gestire il caricamento dell'immagine, per ora salva solo il path
 
-6) Inserire nei class diagram le classi target e adapter e modificare i nomi dei repository in adaptee; aggiungere i parametri nome e cognome ai model user e cambiare anche il database con questi attributi di users
-
 7) Sonar sta dando dei warning. Ma solo perché sul pc ho installato java25 che non è supportato da sonarqube che usa quindi il 17, ma il supporto di sonar per il 17 scade a luglio e per il progetto sto usando java 21 di intellij. Quindi si deve provare ad installare e impostare come jdk principale la java 21, altrimenti lanciare sonar scanner direttamente dalla console maven in intellij, cosi dovrebbero sparire tutti i warning.
+
+8) Verificare il fatto di lastname e firstname. Eliminare tutte le occorrenze degli attributi. Principalmente stanno in workload e in report (in report anche nel comando sql). 
+
+9) Inserire i controlli di admin nei controller
+
+10) Aggiungere attributo custom::role al pool di utenti su cognito. Inserire anche questo attributo alla lista degli attributi nel cognitoservice.

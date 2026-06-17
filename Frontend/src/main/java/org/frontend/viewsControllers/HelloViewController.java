@@ -1,4 +1,4 @@
-package org.frontend.views;
+package org.frontend.viewsControllers;
 
 import javafx.fxml.FXML;
 

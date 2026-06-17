@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="24.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.HomeDashboardController">
+   <children>
+      <Label styleClass="title-dashboard" text="Dashboard" textFill="#292766" />
+      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="metric-card">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Benvenuto, " />
+                        <Label fx:id="labelWelcome" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Ruolo: " />
+                        <Label fx:id="labelRole" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="16.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="metric-label" text="Issue aperte" />
+                  <Label fx:id="labelTodo" text="0">
+                     <styleClass>
+                        <String fx:value="metric-value" />
+                        <String fx:value="metric-value-blue" />
+                     </styleClass>
+                  </Label>
+                  <Label styleClass="metric-sub" text="Stato: Todo" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="metric-label" text="In lavorazione" />
+                  <Label fx:id="labelinProgress" text="0">
+                     <styleClass>
+                        <String fx:value="metric-value" />
+                        <String fx:value="metric-value-blue" />
+                     </styleClass>
+                  </Label>
+                  <Label styleClass="metric-sub" text="Stato: In progress" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="metric-label" text="Issues chiuse" />
+                  <Label fx:id="labelDone" text="0">
+                     <styleClass>
+                        <String fx:value="metric-value" />
+                        <String fx:value="metric-value-blue" />
+                     </styleClass>
+                  </Label>
+                  <Label styleClass="metric-sub" text="Stato: Done" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="12.0" styleClass="metric-card" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label styleClass="card-title" text="Issues recenti" />
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnAltro" mnemonicParsing="false" styleClass="btn-secondary" text="Altro -&gt;" />
+               </children>
+            </HBox>
+            <TableView fx:id="tblIssueRecenti" fixedCellSize="44.0" prefHeight="600.0" prefWidth="200.0" stylesheets="@style.css" VBox.vgrow="NEVER">
+                <placeholder>
+                    <Label styleClass="label-muted" text="Nessuna issue recente." />
+                </placeholder>
+                <columns>
+                <TableColumn fx:id="colUuid" prefWidth="45.0" text="#" />
+                <TableColumn fx:id="colTitle" prefWidth="220.0" text="Titolo" />
+                  <TableColumn fx:id="colType" prefWidth="250.0" text="Tipo" />
+                  <TableColumn fx:id="colPriority" prefWidth="90.0" text="Priorità" />
+                  <TableColumn fx:id="colState" prefWidth="200.0" text="Stato" />
+                  <TableColumn fx:id="colCreatedAt" prefWidth="200.0" text="Data creazione" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>
