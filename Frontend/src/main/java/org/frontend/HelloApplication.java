@@ -26,6 +26,7 @@ public class HelloApplication extends Application {
 
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.centerOnScreen();
         stage.initStyle(StageStyle.UNDECORATED); // Login senza barra superiore
 
         // 2. Rimani in ascolto dell'evento di login effettuato

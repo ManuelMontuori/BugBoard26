@@ -36,6 +36,9 @@ public class HomeDashboardController {
     @FXML
     private Label labelWelcome;
 
+    @FXML
+    private Label labelRole;
+
 
 
     private DashboardController controller;
@@ -50,8 +53,11 @@ public class HomeDashboardController {
                 new DashboardController();
 
 
-        String email = AuthSession.getInstance().getEmail();
-        labelWelcome.setText(email.isEmpty() ? "Utente" : "Benvenuto, " + email);
+        labelWelcome.textProperty().bind(AuthSession.getInstance().displayNameProperty());
+        labelRole.textProperty().bind(AuthSession.getInstance().displayRoleProperty());
+
+//        String email = AuthSession.getInstance().getEmail();
+//        labelWelcome.setText(email.isEmpty() ? "Utente" : "Benvenuto, " + email);
 
 
 
