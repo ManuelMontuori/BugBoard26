@@ -31,7 +31,7 @@ public class CognitoAuthService {
         codeVerifier = PkceUtil.generateCodeVerifier();
         String codeChallenge = PkceUtil.codeChallengeS256(codeVerifier);
 
-        String scope = "email openid phone";
+        String scope = "email openid profile";
 
         return DOMAIN + "/oauth2/authorize"
                 + "?response_type=code"

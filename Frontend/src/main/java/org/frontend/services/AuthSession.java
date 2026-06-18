@@ -68,18 +68,15 @@ public final class AuthSession {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node   = mapper.readTree(decoded);
 
-            // Aggiungi questo nel tuo blocco try dopo "JsonNode node = mapper.readTree(decoded);"
-            System.out.println("Payload JWT completo: " + node.toString());
             // 1. Estrai Email
             this.email = node.path("email").asText("");
 
             // 2. Estrai il custom::uuid da Cognito
-            this.customUuid = node.path("custom::uuid").asText("");
+            this.customUuid = node.path("custom:uuid").asText("");
 
-            this.role = node.path("custom::role").asText("");
-            System.out.println("uuid:" + customUuid);
-            System.out.println("email:" + email);
-            System.out.println("ruolo:" + role);
+            this.role = node.path("custom:role").asText("");
+
+            this.displayRole.set(this.role);
 
             // 3. Opzionale: Imposta in automatico il displayName usando l'email o un altro campo (es. "name")
             if (node.has("name")) {
@@ -125,8 +122,10 @@ public final class AuthSession {
         accessToken = refreshToken = idToken = null;
         accessTokenExpiresAt = 0;
         email = "";
+        role="";
         customUuid = "";
         authenticated.set(false);
         displayName.set("");
+        displayRole.set("");
     }
 }
