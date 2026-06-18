@@ -33,6 +33,12 @@ public class DashboardController {
 
     }
 
+    public void loadMyIssues(String uuid){
+        issues.setAll(
+                service.findAssignedToMe(uuid)
+        );
+    }
+
     public ObservableList<Issue> getIssues(){
         return issues;
     }
