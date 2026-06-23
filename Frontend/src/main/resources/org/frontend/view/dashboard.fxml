@@ -26,23 +26,29 @@
             <Button fx:id="btnElencoIssue" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonElencoIssue" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Elenco Issues" />
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Le mie Issues" />
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Notifiche" />
-            <Region prefHeight="97.0" prefWidth="215.0" VBox.vgrow="ALWAYS" />
-            <Label maxWidth="1.7976931348623157E308" stylesheets="@style.css" text="ADMIN">
-               <styleClass>
-                  <String fx:value="sidebar-section-label" />
-                  <String fx:value="sidebar-logo" />
-               </styleClass>
-            </Label>
-            <Button fx:id="button11" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" stylesheets="@style.css" text="Gestione utente">
-               <styleClass>
-                  <String fx:value="nav-item" />
-                  <String fx:value="button" />
-               </styleClass>
-            </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Assegna Issue" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Report mensili" />
-            <Region prefHeight="97.0" prefWidth="215.0" VBox.vgrow="ALWAYS" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item-logout" stylesheets="@style.css" text="[Logout]" />
+             <Region prefHeight="97.0" prefWidth="215.0" VBox.vgrow="ALWAYS" />
+
+             <VBox fx:id="adminSection" managed="false" maxWidth="1.7976931348623157E308" spacing="5.0" visible="false">
+                 <children>
+                     <Label maxWidth="1.7976931348623157E308" stylesheets="@style.css" text="ADMIN">
+                         <styleClass>
+                             <String fx:value="sidebar-section-label" />
+                             <String fx:value="sidebar-logo" />
+                         </styleClass>
+                     </Label>
+                     <Button fx:id="button11" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" stylesheets="@style.css" text="Gestione utente">
+                         <styleClass>
+                             <String fx:value="nav-item" />
+                             <String fx:value="button" />
+                         </styleClass>
+                     </Button>
+                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Assegna Issue" />
+                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Report mensili" />
+                 </children>
+             </VBox>
+
+             <Region prefHeight="97.0" prefWidth="215.0" VBox.vgrow="ALWAYS" />
+            <Button fx:id="btnLogout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item-logout" text="Logout" />
          </children>
          <styleClass>
             <String fx:value="sidebar" />

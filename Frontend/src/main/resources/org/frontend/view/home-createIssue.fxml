@@ -64,7 +64,6 @@
                      </styleClass>
                   </ToggleButton>
                </children></HBox>
-            <Label fx:id="errType" styleClass="form-error-label" visible="false" />
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
@@ -95,13 +94,12 @@
                   </ToggleButton>
                </children>
             </HBox>
-            <Label fx:id="errPriority" styleClass="form-error-label" visible="false" />
          </children>
       </VBox>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="12.0">
          <children>
             <Button mnemonicParsing="false" onAction="#onAnnullaClicked" styleClass="btn-secondary" text="Annulla" />
-            <Button mnemonicParsing="false" onAction="#onCreaClicked" styleClass="btn-primary" text="Crea Issue" />
+            <Button fx:id="btnCreaIssue" mnemonicParsing="false" onAction="#onCreaClicked" styleClass="btn-primary" text="Crea Issue" />
          </children>
       </HBox>
    </children>

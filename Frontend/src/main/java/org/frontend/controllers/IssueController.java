@@ -1,47 +1,35 @@
 package org.frontend.controllers;
 
-import javafx.collections.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.frontend.models.Issue;
-import org.frontend.services.*;
+import org.frontend.services.IssueService;
+import org.frontend.util.BackendServiceFactory;
 
 public class IssueController {
 
     private final IssueService service;
+    private final ObservableList<Issue> issues;
 
-    private final ObservableList<Issue> issues =
-            FXCollections.observableArrayList();
-
-    public IssueController(){
-        ApiClient client =
-                new ApiClient(
-                        "http://localhost:8080"
-                );
-
-        IssueApiService api =
-                new IssueApiService(client);
-
-        service =
-                new IssueService(api);
-
+    // Costruttore ora è PUBBLICO
+    public IssueController() {
+        this.service = BackendServiceFactory.getInstance().getIssueService();
+        this.issues = FXCollections.observableArrayList();
     }
 
-    public void loadIssues(){
-
-        issues.setAll(
-                service.findAll()
-        );
-
+    public ObservableList<Issue> getIssues() {
+        return issues;
     }
 
-    public void loadMyIssues(String uuid){
-        issues.setAll(
-                service.findAssignedToMe(uuid)
-        );
-
+    public void loadAllIssues() {
+        issues.setAll(service.findAll());
     }
 
-    public void createIssue(String title, String description,
-                            String type, String priority) {
+    public void loadMyIssues(String uuid) {
+        issues.setAll(service.findAssignedToMe(uuid));
+    }
+
+    public void createIssue(String title, String description, String type, String priority) {
         Issue issue = new Issue();
         issue.setTitle(title);
         issue.setDescription(description);
@@ -49,9 +37,5 @@ public class IssueController {
         issue.setPriority(priority);
 
         service.createIssue(issue);
-    }
-
-    public ObservableList<Issue> getIssues(){
-        return issues;
     }
 }

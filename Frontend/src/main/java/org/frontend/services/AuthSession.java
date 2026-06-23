@@ -100,6 +100,7 @@ public final class AuthSession {
     // --- getters dati utente (Ottenimento istantaneo senza parsing ripetuto) ---
     public String getEmail()        { return email;        }
     public String getCustomUuid()   { return customUuid;   }
+    public String getCustomRole()  { return role;    }
 
     // --- stato sessione ---
     public boolean isAuthenticated() {

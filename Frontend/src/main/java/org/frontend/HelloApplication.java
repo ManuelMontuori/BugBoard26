@@ -13,13 +13,6 @@ import org.frontend.services.Auth.LoginEvent;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        CallbackServer callbackServer = new CallbackServer();
-        callbackServer.start();
-
-        // IMPORTISSIMO: genera PKCE e stampa il link da aprire a mano
-        String loginUrl = CognitoAuthService.buildHostedUiLoginUrl();
-        System.out.println("Apri questo URL nel browser:\n" + loginUrl);
-
         // 1. Carica SOLO il modulo di benvenuto/login all'avvio
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/org/frontend/view/welcome-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 546, 400);
@@ -59,5 +52,14 @@ public class HelloApplication extends Application {
 
         // Mostra la schermata di login
         stage.show();
+    }
+
+    @Override
+    public void stop() {
+        // Questo codice viene eseguito quando l'utente chiude l'applicazione dalla X
+        System.out.println("Chiusura dell'applicazione in corso... Pulizia risorse.");
+
+        // Forza la chiusura pulita di qualsiasi processo orfano rimasto attivo nella JVM
+        System.exit(0);
     }
 }

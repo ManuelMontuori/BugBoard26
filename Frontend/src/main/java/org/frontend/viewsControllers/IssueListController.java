@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import org.frontend.controllers.IssueController;
 import org.frontend.models.Issue;
 import org.frontend.services.ApiClient;
 import org.frontend.services.IssueApiService;
 import org.frontend.services.IssueService;
+import org.frontend.util.BackendServiceFactory;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,22 +29,19 @@ public class IssueListController {
     @FXML private TableColumn<Issue, LocalDateTime> colCreatedAt;
     @FXML private TableColumn<Issue, LocalDateTime> colResolvedAt;
 
-    private IssueService issueService;
+    private final IssueController issueController = new IssueController();
 
     // Formatter per mostrare le date in modo leggibile (es: 23/06/2026 11:12)
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     @FXML
     public void initialize() {
-        // 2. Inizializzazione della pipeline dei servizi HTTP
-        ApiClient apiClient = new ApiClient("http://localhost:8080");
-        IssueApiService apiService = new IssueApiService(apiClient);
-        this.issueService = new IssueService(apiService);
-
-        // 3. Configurazione delle colonne
         configuraColonneTabella();
 
-        // 4. Caricamento totale dei dati
+        // Colleghiamo la tabella alla lista di QUESTA istanza
+        tblAllIssues.setItems(issueController.getIssues());
+
+        // Ordiniamo di scaricare i dati
         caricaTutteLeIssue();
     }
 
@@ -121,14 +120,9 @@ public class IssueListController {
      */
     private void caricaTutteLeIssue() {
         try {
-            // Utilizza l'endpoint globale (corrispondente al FIND_ALL che abbiamo visto nei log precedenti)
-            List<Issue> tutteLeIssue = issueService.findAll();
-
-            // Popola la tabella principale
-            tblAllIssues.setItems(FXCollections.observableArrayList(tutteLeIssue));
-
+            issueController.loadAllIssues();
         } catch (Exception e) {
-            System.err.println("Errore durante il recupero della lista completa delle issue dal server.");
+            System.err.println("Errore di caricamento.");
             e.printStackTrace();
         }
     }

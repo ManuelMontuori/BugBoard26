@@ -184,6 +184,14 @@ public class CognitoAuthService {
 
         session.clear();
     }
+    public static String buildHostedUiLogoutUrl() {
+        // Usiamo la stessa REDIRECT_URI del login, è la scelta più comoda.
+        // ATTENZIONE: Questo esatto URL deve essere registrato nella console AWS
+        // sotto la voce "Allowed sign-out URLs".
+        return DOMAIN + "/logout"
+                + "?client_id=" + url(CLIENT_ID)
+                + "&logout_uri=" + url(REDIRECT_URI);
+    }
 
     private static String url(String s) {
         return URLEncoder.encode(s, StandardCharsets.UTF_8);

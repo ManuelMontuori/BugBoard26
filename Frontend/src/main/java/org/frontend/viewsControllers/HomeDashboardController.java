@@ -1,15 +1,13 @@
 package org.frontend.viewsControllers;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.frontend.controllers.IssueController;
 import org.frontend.models.Issue;
-import org.frontend.services.ApiClient;
 import org.frontend.services.AuthSession;
-import org.frontend.services.IssueApiService;
-import org.frontend.services.IssueService;
+import org.frontend.util.DialogUtils;
 
 import java.util.List;
 
@@ -28,7 +26,7 @@ public class HomeDashboardController {
     @FXML private Label labelInProgress;
     @FXML private Label labelDone;
 
-    private IssueService issueService;
+    private final IssueController issueController = new IssueController();
 
     @FXML
     public void initialize() {
@@ -38,16 +36,26 @@ public class HomeDashboardController {
             return;
         }
 
-        ApiClient apiClient = new ApiClient("http://localhost:8080");
-        IssueApiService apiService = new IssueApiService(apiClient);
-        this.issueService = new IssueService(apiService);
-
         labelWelcome.textProperty().bind(AuthSession.getInstance().displayNameProperty());
         labelRole.textProperty().bind(AuthSession.getInstance().displayRoleProperty());
 
         configuraColonneTabella();
 
-        caricaDatiDashboard(userUuid);
+        // Colleghiamo la tabella
+        tblIssueRecenti.setItems(issueController.getIssues());
+
+        // Listener per aggiornare i contatori quando i dati cambiano
+        issueController.getIssues().addListener(new ListChangeListener<Issue>() {
+            @Override
+            public void onChanged(Change<? extends Issue> change) {
+                aggiornaContatoriUI(issueController.getIssues());
+            }
+        });
+
+        // Invece, usiamo runLater per farla partire subito dopo che la UI è stata costruita
+        Platform.runLater(() -> {
+            caricaDatiDashboard(userUuid);
+        });
     }
 
     private void configuraColonneTabella() {
@@ -83,29 +91,11 @@ public class HomeDashboardController {
 
     private void caricaDatiDashboard(String userUuid) {
         try {
-
-//            // prova manuale di createdIssue
-//            IssueController controller=new IssueController();
-//            Issue prova = new Issue();
-//            prova.setTitle("Prova da frontend n 1");
-//            prova.setDescription("Descrizione della prima prova dal frontend");
-//            prova.setType("BUG");
-//            prova.setPriority("HIGH");
-//            controller.createIssue(prova);
-
-
-            // Recupera le issue VERE usando l'issueService appena istanziato
-            List<Issue> mieIssue = issueService.findAssignedToMe(userUuid);
-
-            // Popola la tabella con i dati reali dell'utente
-            tblIssueRecenti.setItems(FXCollections.observableArrayList(mieIssue));
-
-            // Aggiorna i contatori calcolandoli in modo pulito tramite Stream API
-            aggiornaContatoriUI(mieIssue);
-
+            issueController.loadMyIssues(userUuid);
         } catch (Exception e) {
             System.err.println("Errore durante il recupero delle issue dal server.");
             e.printStackTrace();
+            DialogUtils.mostraErroreConnessione();
         }
     }
 

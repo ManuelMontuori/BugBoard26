@@ -397,7 +397,6 @@
     -fx-font-size: 11px;
     -fx-text-fill: #888780;
 }
-
 /* ===========================================
    TABELLA ISSUE
    =========================================== */
@@ -419,7 +418,8 @@
 .table-view .column-header,
 .table-view .filler {
     -fx-background-color: transparent;
-    -fx-border-color: transparent;
+    -fx-border-color: transparent #D3D1C7 transparent transparent;
+    -fx-border-width: 0 0.5px 0 0;
     -fx-size: 36px;
 }
 
@@ -429,6 +429,7 @@
     -fx-text-fill: #888780;
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 0 8px 0 8px;
+    -fx-content-display: LEFT;
 }
 
 .table-view .table-row-cell {
@@ -438,57 +439,39 @@
     -fx-cell-size: 44px;
 }
 
-.table-view .table-row-cell:hover {
-    -fx-background-color: #F7F7F5;
-}
-
-.table-view .table-row-cell:selected {
-    -fx-background-color: #E6F1FB;
-}
-
-.table-view .table-row-cell:selected .text {
-    -fx-fill: #0C447C;
-}
+.table-view .table-row-cell:hover    { -fx-background-color: #F7F7F5; }
+.table-view .table-row-cell:selected { -fx-background-color: #E6F1FB; }
+.table-view .table-row-cell:selected .text { -fx-fill: #0C447C; }
 
 .table-view .table-cell {
     -fx-padding: 0 8px 0 8px;
     -fx-font-size: 12px;
     -fx-text-fill: #2C2C2A;
     -fx-alignment: CENTER_LEFT;
-    -fx-border-color: transparent;
+    -fx-border-color: transparent #F1EFE8 transparent transparent;
+    -fx-border-width: 0 0.5px 0 0;
 }
 
-/* Nascondi la scrollbar verticale se poco contenuto */
-.table-view .scroll-bar:vertical {
-    -fx-pref-width: 8px;
-}
-.table-view .scroll-bar:vertical .thumb {
-    -fx-background-color: #D3D1C7;
-    -fx-background-radius: 4px;
-}
-.table-view .scroll-bar:vertical .track,
-.table-view .scroll-bar:vertical .track-background {
-    -fx-background-color: transparent;
-}
-.table-view .scroll-bar:vertical .increment-button,
-.table-view .scroll-bar:vertical .decrement-button {
-    -fx-pref-height: 0;
-    -fx-opacity: 0;
-}
+.table-view:focused { -fx-border-color: #D3D1C7; }
 
-/* Rimuovi il bordo focus blu di default JavaFX */
-.table-view:focused {
-    -fx-border-color: #D3D1C7;
-}
-
-.table-view .column-header .label {
-    -fx-content-display: LEFT;
-}
 .table-view .show-hide-columns-button {
     -fx-opacity: 0;
     -fx-pref-width: 0;
 }
 
+/* Scrollbar verticale */
+.table-view .scroll-bar:vertical { -fx-pref-width: 8px; }
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #D3D1C7;
+    -fx-background-radius: 4px;
+}
+.table-view .scroll-bar:vertical .track,
+.table-view .scroll-bar:vertical .track-background { -fx-background-color: transparent; }
+.table-view .scroll-bar:vertical .increment-button,
+.table-view .scroll-bar:vertical .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
 /* ===========================================
    LISTA VIEW (alternativa alla TableView)
    =========================================== */
