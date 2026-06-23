@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="24.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.CreateIssueViewController">
+   <children>
+      <Label styleClass="title-dashboard" text="Nuova Issue" />
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="metric-card">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.0">
+               <children>
+                  <Label styleClass="form-label" text="Titolo *" />
+                  <TextField fx:id="fieldTitle" promptText="Inserisci un titolo..." styleClass="text-field" />
+                  <Label fx:id="errTitle" styleClass="form-error-label" visible="false" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.0">
+               <children>
+                  <Label styleClass="form-label" text="Descrizione *" />
+                  <TextArea fx:id="fieldDescription" prefHeight="200.0" prefRowCount="5" prefWidth="200.0" promptText="Descrivi il problema o la richiesta..." styleClass="text-area" wrapText="true" />
+                  <Label fx:id="errDescription" styleClass="form-error-label" visible="false" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <Label styleClass="form-label" text="Tipo" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+               <children>
+                  <ToggleButton fx:id="btnBug" mnemonicParsing="false" text="BUG">
+                     <styleClass>
+                        <String fx:value="toggle-badge" />
+                        <String fx:value="toggle-bug" />
+                     </styleClass>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="typeGroup" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnFeature" mnemonicParsing="false" text="FEATURE" toggleGroup="$typeGroup">
+                     <styleClass>
+                        <String fx:value="toggle-badge" />
+                        <String fx:value="toggle-feature" />
+                     </styleClass>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnQuestion" mnemonicParsing="false" text="QUESTION" toggleGroup="$typeGroup">
+                     <styleClass>
+                        <String fx:value="toggle-badge" />
+                        <String fx:value="toggle-question" />
+                     </styleClass>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnDocumentation" mnemonicParsing="false" text="DOCUMENTATION" toggleGroup="$typeGroup">
+                     <styleClass>
+                        <String fx:value="toggle-badge" />
+                        <String fx:value="toggle-documentation" />
+                     </styleClass>
+                  </ToggleButton>
+               </children></HBox>
+            <Label fx:id="errType" styleClass="form-error-label" visible="false" />
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <Label styleClass="form-label" text="Priorità" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+               <children>
+                  <ToggleButton fx:id="btnHigh" mnemonicParsing="false" text="HIGH">
+                     <styleClass>
+                        <String fx:value="toggle-badge" />
+                        <String fx:value="toggle-high" />
+                     </styleClass>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="priorityGroup" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnMedium" mnemonicParsing="false" text="MEDIUM" toggleGroup="$priorityGroup">
+                     <styleClass>
+                        <String fx:value="toggle-badge" />
+                        <String fx:value="toggle-medium" />
+                     </styleClass>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnLow" mnemonicParsing="false" text="LOW" toggleGroup="$priorityGroup">
+                     <styleClass>
+                        <String fx:value="toggle-badge" />
+                        <String fx:value="toggle-low" />
+                     </styleClass>
+                  </ToggleButton>
+               </children>
+            </HBox>
+            <Label fx:id="errPriority" styleClass="form-error-label" visible="false" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="12.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onAnnullaClicked" styleClass="btn-secondary" text="Annulla" />
+            <Button mnemonicParsing="false" onAction="#onCreaClicked" styleClass="btn-primary" text="Crea Issue" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

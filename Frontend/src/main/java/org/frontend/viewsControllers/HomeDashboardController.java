@@ -84,14 +84,14 @@ public class HomeDashboardController {
     private void caricaDatiDashboard(String userUuid) {
         try {
 
-            // prova manuale di createdIssue
-            IssueController controller=new IssueController();
-            Issue prova = new Issue();
-            prova.setTitle("Prova da frontend n 1");
-            prova.setDescription("Descrizione della prima prova dal frontend");
-            prova.setType("BUG");
-            prova.setPriority("HIGH");
-            controller.createIssue(prova);
+//            // prova manuale di createdIssue
+//            IssueController controller=new IssueController();
+//            Issue prova = new Issue();
+//            prova.setTitle("Prova da frontend n 1");
+//            prova.setDescription("Descrizione della prima prova dal frontend");
+//            prova.setType("BUG");
+//            prova.setPriority("HIGH");
+//            controller.createIssue(prova);
 
 
             // Recupera le issue VERE usando l'issueService appena istanziato

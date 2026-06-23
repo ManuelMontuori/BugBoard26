@@ -17,13 +17,13 @@
                   <String fx:value="sidebar-section-label" />
                   <String fx:value="sidebar-logo" />
                </styleClass></Label>
-            <Button fx:id="btnDashboard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="121.0" stylesheets="@style.css" text="Dashboard">
+            <Button fx:id="btnDashboard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonDashboard" prefHeight="26.0" prefWidth="121.0" stylesheets="@style.css" text="Dashboard">
                <styleClass>
                   <String fx:value="nav-item" />
                   <String fx:value="button" />
                </styleClass></Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Segnala Issue" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Elenco Issues" />
+            <Button fx:id="btnSegnalaIssue" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonSegnalaIssue" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Segnala Issue" />
+            <Button fx:id="btnElencoIssue" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonElencoIssue" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Elenco Issues" />
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Le mie Issues" />
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Notifiche" />
             <Region prefHeight="97.0" prefWidth="215.0" VBox.vgrow="ALWAYS" />
@@ -33,7 +33,7 @@
                   <String fx:value="sidebar-logo" />
                </styleClass>
             </Label>
-            <Button fx:id="button11" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="121.0" stylesheets="@style.css" text="Gestione utente">
+            <Button fx:id="button11" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" stylesheets="@style.css" text="Gestione utente">
                <styleClass>
                   <String fx:value="nav-item" />
                   <String fx:value="button" />

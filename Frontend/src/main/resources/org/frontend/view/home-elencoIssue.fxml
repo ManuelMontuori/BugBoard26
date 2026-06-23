@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0" minWidth="0" spacing="16.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.IssueListController">
+
+    <Label styleClass="title-dashboard" text="Elenco Issue" />
+
+    <TableView fx:id="tblAllIssues" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0" VBox.vgrow="ALWAYS">
+        <placeholder>
+            <Label styleClass="label-muted" text="Nessuna issue trovata." />
+        </placeholder>
+        <columns>
+            <TableColumn fx:id="colUuid" prefWidth="80" text="#" />
+            <TableColumn fx:id="colTitle" prefWidth="200" text="Titolo" />
+            <TableColumn fx:id="colDescription" prefWidth="200" text="Descrizione" />
+            <TableColumn fx:id="colType" prefWidth="120" text="Tipo" />
+            <TableColumn fx:id="colPriority" prefWidth="90" text="Priorità" />
+            <TableColumn fx:id="colStatus" prefWidth="120" text="Stato" />
+            <TableColumn fx:id="colCreatedAt" prefWidth="140" text="Data creazione" />
+            <TableColumn fx:id="colResolvedAt" prefWidth="140" text="Data risoluzione" />
+        </columns>
+    </TableView>
+
+</VBox>

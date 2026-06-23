@@ -34,6 +34,13 @@ public class Issue {
             new SimpleObjectProperty<>();
 
 
+    private final ObjectProperty<LocalDateTime> resolvedAt =
+            new SimpleObjectProperty<>();
+
+    private final ObjectProperty<LocalDateTime> assignedAt =
+            new SimpleObjectProperty<>();
+
+
     public Issue() {
         // costruttore nullo
     }
@@ -47,6 +54,7 @@ public class Issue {
         priority.set(dto.priority());
         status.set(dto.status());
         createdAt.set(dto.createdAt());
+        resolvedAt.set(dto.resolvedAt());
     }
 
     public String getUuid(){
@@ -56,6 +64,11 @@ public class Issue {
     public StringProperty uuidProperty(){
         return uuid;
     }
+
+    public StringProperty descriptionProperty() { return this.description; }
+    public ObjectProperty<LocalDateTime> resolvedAtProperty() { return this.resolvedAt; }
+    public ObjectProperty<LocalDateTime> assignedAtPriority() { return this.assignedAt; }
+
 
     public String getTitle(){
         return title.get();

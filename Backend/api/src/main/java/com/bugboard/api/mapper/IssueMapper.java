@@ -22,7 +22,8 @@ public class IssueMapper {
                 issue.getAssignedTo() != null ? issue.getAssignedTo().getUuid().toString() : null,
                 issue.getImagePath() != null ? issue.getImagePath() : null,
                 issue.getCreatedAt() != null ? issue.getCreatedAt(): null,
-                issue.getResolvedAt() != null ? issue.getResolvedAt(): null
+                issue.getResolvedAt() != null ? issue.getResolvedAt(): null,
+                issue.getAssignedAt() != null ? issue.getAssignedAt():null
         );
     }
 
@@ -32,6 +33,7 @@ public class IssueMapper {
         issue.setType(dto.type() != null ? IssueType.valueOf(dto.type()) : null);
         issue.setPriority(dto.priority() != null ? IssuePriority.valueOf(dto.priority()) : null);
         issue.setImagePath(dto.imgPath() != null ? dto.imgPath() : null);
+
 
         return issue;
     }

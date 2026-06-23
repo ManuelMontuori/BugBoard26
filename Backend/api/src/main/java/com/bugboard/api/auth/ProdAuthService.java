@@ -35,18 +35,9 @@ public class ProdAuthService implements AuthService {
             return Optional.empty();
         }
 
-        System.out.println("--- TUTTI I CLAIM PRESENTI NEL TOKEN ---");
-        jwt.getClaims().forEach((chiave, valore) -> {
-            System.out.println(chiave + " : " + valore);
-        });
-        System.out.println("----------------------------------------");
 
         String uuidStr = jwt.getClaimAsString("custom:uuid");
-        String uuid2 = jwt.getClaimAsString("custom::uuid");
-        String uuid3 = jwt.getClaimAsString("uuid");
         System.out.println("uuid:" + uuidStr);
-        System.out.println("uuid2:" + uuid2);
-        System.out.println("uuid3:" + uuid3);
         if (uuidStr == null || uuidStr.isBlank()) {
             System.out.println("3");
             return Optional.empty();

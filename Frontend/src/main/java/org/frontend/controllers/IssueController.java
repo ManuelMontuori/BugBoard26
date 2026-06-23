@@ -40,7 +40,14 @@ public class IssueController {
 
     }
 
-    public void createIssue(Issue issue){
+    public void createIssue(String title, String description,
+                            String type, String priority) {
+        Issue issue = new Issue();
+        issue.setTitle(title);
+        issue.setDescription(description);
+        issue.setType(type);
+        issue.setPriority(priority);
+
         service.createIssue(issue);
     }
 

@@ -13,6 +13,7 @@ public record IssueDTO(
         String assignedToUuid,
         String imgPath,
         LocalDateTime createdAt,
-        LocalDateTime resolvedAt
+        LocalDateTime resolvedAt,
+        LocalDateTime assignedAt
 ) {
 }

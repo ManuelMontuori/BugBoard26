@@ -1062,3 +1062,38 @@
     -fx-background-color: #F1EFE8;
     -fx-text-fill: #2C2C2A;
 }
+/* =============================================
+   TOGGLE BADGE (selezione Tipo e Priorità)
+   ============================================= */
+
+.toggle-badge {
+    -fx-padding: 4px 14px 4px 14px;
+    -fx-background-radius: 999px;
+    -fx-border-radius: 999px;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-border-width: 1.5px;
+}
+
+/* Tipo — non selezionato */
+.toggle-bug           { -fx-background-color: #F7F7F5; -fx-text-fill: #791F1F; -fx-border-color: #FCEBEB; }
+.toggle-feature       { -fx-background-color: #F7F7F5; -fx-text-fill: #0C447C; -fx-border-color: #E6F1FB; }
+.toggle-question      { -fx-background-color: #F7F7F5; -fx-text-fill: #633806; -fx-border-color: #FAEEDA; }
+.toggle-documentation { -fx-background-color: #F7F7F5; -fx-text-fill: #27500A; -fx-border-color: #EAF3DE; }
+
+/* Tipo — selezionato (riusa i colori dei badge) */
+.toggle-bug:selected           { -fx-background-color: #FCEBEB; -fx-text-fill: #791F1F; -fx-border-color: #791F1F; }
+.toggle-feature:selected       { -fx-background-color: #E6F1FB; -fx-text-fill: #0C447C; -fx-border-color: #0C447C; }
+.toggle-question:selected      { -fx-background-color: #FAEEDA; -fx-text-fill: #633806; -fx-border-color: #633806; }
+.toggle-documentation:selected { -fx-background-color: #EAF3DE; -fx-text-fill: #27500A; -fx-border-color: #27500A; }
+
+/* Priorità — non selezionato */
+.toggle-high   { -fx-background-color: #F7F7F5; -fx-text-fill: #791F1F; -fx-border-color: #FCEBEB; }
+.toggle-medium { -fx-background-color: #F7F7F5; -fx-text-fill: #633806; -fx-border-color: #FAEEDA; }
+.toggle-low    { -fx-background-color: #F7F7F5; -fx-text-fill: #27500A; -fx-border-color: #EAF3DE; }
+
+/* Priorità — selezionato */
+.toggle-high:selected   { -fx-background-color: #FCEBEB; -fx-text-fill: #791F1F; -fx-border-color: #791F1F; }
+.toggle-medium:selected { -fx-background-color: #FAEEDA; -fx-text-fill: #633806; -fx-border-color: #633806; }
+.toggle-low:selected    { -fx-background-color: #EAF3DE; -fx-text-fill: #27500A; -fx-border-color: #27500A; }
