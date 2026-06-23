@@ -13,3 +13,4 @@ sonar scanner direttamente dalla console maven in intellij, cosi dovrebbero spar
 
 9) Inserire i controlli di admin nei controller
 
+10) Nel frontend bisogna aggiungere il refreshtoken se il backend risponde con 500

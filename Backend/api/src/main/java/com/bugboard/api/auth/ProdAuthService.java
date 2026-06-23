@@ -24,6 +24,7 @@ public class ProdAuthService implements AuthService {
     @Override
     public Optional<User> getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         if (auth == null || auth.getPrincipal() == null) {
             System.out.println("1");
             return Optional.empty();
@@ -33,6 +34,12 @@ public class ProdAuthService implements AuthService {
             System.out.println("2");
             return Optional.empty();
         }
+
+        System.out.println("--- TUTTI I CLAIM PRESENTI NEL TOKEN ---");
+        jwt.getClaims().forEach((chiave, valore) -> {
+            System.out.println(chiave + " : " + valore);
+        });
+        System.out.println("----------------------------------------");
 
         String uuidStr = jwt.getClaimAsString("custom:uuid");
         String uuid2 = jwt.getClaimAsString("custom::uuid");

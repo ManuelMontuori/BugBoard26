@@ -27,7 +27,7 @@ public class ApiClient {
                 .timeout(Duration.ofSeconds(30))
                 .header("Accept", "application/json");
 
-        String token = AuthSession.getInstance().getAccessToken();
+        String token = AuthSession.getInstance().getIdToken();
         if (token != null && !token.isBlank()) {
             builder.header("Authorization", "Bearer " + token);
         }
