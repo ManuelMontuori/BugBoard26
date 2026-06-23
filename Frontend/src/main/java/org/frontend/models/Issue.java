@@ -34,6 +34,10 @@ public class Issue {
             new SimpleObjectProperty<>();
 
 
+    public Issue() {
+        // costruttore nullo
+    }
+
 
     public Issue(IssueDTO dto){
         uuid.set(dto.uuid());
@@ -61,6 +65,9 @@ public class Issue {
         return title;
     }
 
+    public String getDescription() {
+        return description.get();
+    }
 
     public String getType(){
         return type.get();
@@ -91,4 +98,21 @@ public class Issue {
     public ObjectProperty<LocalDateTime> createdAtProperty(){
         return createdAt;
     }
+
+
+    // setter
+    public void setTitle(String title){
+            this.title.set(title);
+    }
+    public void setType(String type){
+        this.type.set(type);
+    }
+    public void setPriority(String priority){
+        this.priority.set(priority);
+    }
+    public void setDescription(String description){
+        this.description.set(description);
+    }
+
+
 }

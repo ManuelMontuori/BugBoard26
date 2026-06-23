@@ -47,4 +47,28 @@ public class IssueApiService {
         return response.body();
     }
 
+
+    public String create(String jsonPayload) throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/issues")
+                .header("Content-Type", "application/json") // È importante dire al backend che inviamo JSON
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(
+                        request,
+                        HttpResponse.BodyHandlers.ofString()
+                );
+
+        System.out.println("SIAMO NEL CREATE DEL api service");
+
+        // Un piccolo controllo: se il backend risponde con un errore, potrebbe essere utile saperlo
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException("Errore API: Staus " + response.statusCode() + " - " + response.body());
+        }
+
+        return response.body(); // Restituisce il JSON dell'issue creato ricevuto dal backend
+    }
+
 }

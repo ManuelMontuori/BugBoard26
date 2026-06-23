@@ -2,7 +2,7 @@ package org.frontend.viewsControllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.frontend.controllers.DashboardController;
+import org.frontend.controllers.IssueController;
 import org.frontend.models.Issue;
 
 public class DashboardViewController {
@@ -12,12 +12,12 @@ public class DashboardViewController {
     @FXML private TableColumn<Issue,String> colPriority;
     @FXML private TableColumn<Issue,String> colState;
 
-    private DashboardController controller;
+    private IssueController controller;
 
     @FXML
     public void initialize(){
         controller =
-                new DashboardController();
+                new IssueController();
 
         colTitle.setCellValueFactory(
                 data ->

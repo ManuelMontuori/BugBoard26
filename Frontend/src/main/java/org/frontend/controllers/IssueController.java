@@ -4,14 +4,14 @@ import javafx.collections.*;
 import org.frontend.models.Issue;
 import org.frontend.services.*;
 
-public class DashboardController {
+public class IssueController {
 
     private final IssueService service;
 
     private final ObservableList<Issue> issues =
             FXCollections.observableArrayList();
 
-    public DashboardController(){
+    public IssueController(){
         ApiClient client =
                 new ApiClient(
                         "http://localhost:8080"
@@ -37,6 +37,11 @@ public class DashboardController {
         issues.setAll(
                 service.findAssignedToMe(uuid)
         );
+
+    }
+
+    public void createIssue(Issue issue){
+        service.createIssue(issue);
     }
 
     public ObservableList<Issue> getIssues(){

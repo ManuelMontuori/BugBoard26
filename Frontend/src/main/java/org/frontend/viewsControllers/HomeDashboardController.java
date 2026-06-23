@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.frontend.controllers.IssueController;
 import org.frontend.models.Issue;
 import org.frontend.services.ApiClient;
 import org.frontend.services.AuthSession;
@@ -82,6 +83,17 @@ public class HomeDashboardController {
 
     private void caricaDatiDashboard(String userUuid) {
         try {
+
+            // prova manuale di createdIssue
+            IssueController controller=new IssueController();
+            Issue prova = new Issue();
+            prova.setTitle("Prova da frontend n 1");
+            prova.setDescription("Descrizione della prima prova dal frontend");
+            prova.setType("BUG");
+            prova.setPriority("HIGH");
+            controller.createIssue(prova);
+
+
             // Recupera le issue VERE usando l'issueService appena istanziato
             List<Issue> mieIssue = issueService.findAssignedToMe(userUuid);
 
