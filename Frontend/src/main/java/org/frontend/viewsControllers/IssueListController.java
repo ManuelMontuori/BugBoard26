@@ -1,20 +1,14 @@
 package org.frontend.viewsControllers;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.frontend.controllers.IssueController;
 import org.frontend.models.Issue;
-import org.frontend.services.ApiClient;
-import org.frontend.services.IssueApiService;
-import org.frontend.services.IssueService;
-import org.frontend.util.BackendServiceFactory;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class IssueListController {
 

@@ -1080,3 +1080,12 @@
 .toggle-high:selected   { -fx-background-color: #FCEBEB; -fx-text-fill: #791F1F; -fx-border-color: #791F1F; }
 .toggle-medium:selected { -fx-background-color: #FAEEDA; -fx-text-fill: #633806; -fx-border-color: #633806; }
 .toggle-low:selected    { -fx-background-color: #EAF3DE; -fx-text-fill: #27500A; -fx-border-color: #27500A; }
+
+/* Ruolo utente — non selezionato */
+.toggle-user  { -fx-background-color: #F7F7F5; -fx-text-fill: #0C447C; -fx-border-color: #E6F1FB; }
+.toggle-admin { -fx-background-color: #F7F7F5; -fx-text-fill: #3C3489; -fx-border-color: #EEEDFE; }
+
+/* Ruolo utente — selezionato */
+.toggle-user:selected  { -fx-background-color: #E6F1FB; -fx-text-fill: #0C447C; -fx-border-color: #0C447C; }
+.toggle-admin:selected { -fx-background-color: #EEEDFE; -fx-text-fill: #3C3489; -fx-border-color: #3C3489; }
+

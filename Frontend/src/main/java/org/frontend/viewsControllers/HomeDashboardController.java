@@ -30,32 +30,37 @@ public class HomeDashboardController {
 
     @FXML
     public void initialize() {
-        String userUuid = AuthSession.getInstance().getCustomUuid();
-        if (userUuid == null || userUuid.isBlank()) {
-            System.err.println("Impossibile caricare la dashboard: UUID utente mancante.");
-            return;
-        }
-
-        labelWelcome.textProperty().bind(AuthSession.getInstance().displayNameProperty());
-        labelRole.textProperty().bind(AuthSession.getInstance().displayRoleProperty());
-
-        configuraColonneTabella();
-
-        // Colleghiamo la tabella
-        tblIssueRecenti.setItems(issueController.getIssues());
-
-        // Listener per aggiornare i contatori quando i dati cambiano
-        issueController.getIssues().addListener(new ListChangeListener<Issue>() {
-            @Override
-            public void onChanged(Change<? extends Issue> change) {
-                aggiornaContatoriUI(issueController.getIssues());
+        try {
+            String userUuid = AuthSession.getInstance().getCustomUuid();
+            if (userUuid == null || userUuid.isBlank()) {
+                throw new IllegalStateException("Utente non riconosciuto.");
             }
-        });
 
-        // Invece, usiamo runLater per farla partire subito dopo che la UI è stata costruita
-        Platform.runLater(() -> {
-            caricaDatiDashboard(userUuid);
-        });
+            labelWelcome.textProperty().bind(AuthSession.getInstance().displayNameProperty());
+            labelRole.textProperty().bind(AuthSession.getInstance().displayRoleProperty());
+
+            configuraColonneTabella();
+
+            // Colleghiamo la tabella
+            tblIssueRecenti.setItems(issueController.getIssues());
+
+            // Listener per aggiornare i contatori quando i dati cambiano
+            issueController.getIssues().addListener(new ListChangeListener<Issue>() {
+                @Override
+                public void onChanged(Change<? extends Issue> change) {
+                    aggiornaContatoriUI(issueController.getIssues());
+                }
+            });
+
+            // Invece, usiamo runLater per farla partire subito dopo che la UI è stata costruita
+            Platform.runLater(() -> {
+                caricaDatiDashboard(userUuid);
+            });
+        } catch (IllegalStateException e) {
+            DialogUtils.mostraErrore("Errore di sessione",
+                    "Utente non trovato.",
+                    "Impossibile caricare i dati");
+        }
     }
 
     private void configuraColonneTabella() {
@@ -93,9 +98,10 @@ public class HomeDashboardController {
         try {
             issueController.loadMyIssues(userUuid);
         } catch (Exception e) {
-            System.err.println("Errore durante il recupero delle issue dal server.");
             e.printStackTrace();
-            DialogUtils.mostraErroreConnessione();
+            DialogUtils.mostraErrore("Errore di Connessione",
+                    "Impossibile caricare i dati. Assicurati che il backend sia attivo.",
+                    "Server non raggiungibile");
         }
     }
 
