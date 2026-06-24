@@ -16,8 +16,20 @@ public class CreateIssueViewController {
     @FXML private Label errType;
     @FXML private Label errPriority;
     @FXML private Button btnCreaIssue;
+    @FXML private ToggleButton btnBug, btnFeature, btnDocumentation, btnQuestion;
+    @FXML private ToggleButton btnHigh, btnMedium, btnLow;
 
     private final IssueController controller = new IssueController();
+
+    @FXML
+    private void initialize() {
+        btnBug.setUserData("BUG");
+        btnFeature.setUserData("FEATURE");
+        btnDocumentation.setUserData("DOCUMENTATION");
+        btnQuestion.setUserData("QUESTION");
+        btnHigh.setUserData("HIGH");
+        btnMedium.setUserData("MEDIUM");
+    }
 
     @FXML
     private void onCreaClicked() {
