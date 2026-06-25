@@ -16,3 +16,9 @@ sonar scanner direttamente dalla console maven in intellij, cosi dovrebbero spar
 10) Nel frontend bisogna aggiungere il refreshtoken se il backend risponde con 500
 
 11) Per risolvere il problema della porta occupata 9090 che dava warning ho fatto vari cambiamenti alla classe callbackserver. Poi si è scoperto che il problema era altrove. Cmq CallbackServer è rimasta modificata perché cosi dovrebbe essere più sicura, soprattutto perché lancia dei Daemon Theard invece di Theard normali. Verificare se va bene o se meglio tornare a come era prima
+
+12) Nel frontend cambiare la visualizzazione di utente creato con successo (ora è un label, deve diventare una finestra di dialogo che usa la classe DialogsUtil) e implementare il caso di errore. 
+
+13) Nel frontend verifica perché se faccio logout mi si aprono due schermate di login
+
+14) Quando creo nuovo utente con una mail gia presente il backend invia codice 409. ma il frontend non si accorge di niente e dice ok account creato con successo, ma in realtà lancia un'eccezione in console. L'eccezione viene catturata a riga 39 di UserApiService

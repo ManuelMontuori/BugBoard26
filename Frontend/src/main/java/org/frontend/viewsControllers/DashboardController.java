@@ -61,6 +61,9 @@ public class DashboardController {
     }
 
     @FXML
+    public void handleButtonGestioneUtenti(ActionEvent event) { loadSubPage("/org/frontend/view/home-creaUtente.fxml"); }
+
+    @FXML
     private void handleLogout() {
         try {
             // 1. Uccide il token sul server AWS e pulisce la sessione locale
@@ -109,7 +112,9 @@ public class DashboardController {
             System.err.println("Errore: impossibile caricare la vista " + path);
         }
         catch (Exception e) {
-            DialogUtils.mostraErroreConnessione();
+            DialogUtils.mostraErrore("Errore di Rete.",
+                    "Impossibile connettersi al server.",
+                    "Connessione non riuscita.");
         }
     }
 

@@ -3,6 +3,7 @@ package org.frontend.viewsControllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
         import org.frontend.controllers.IssueController;
+import org.frontend.util.DialogUtils;
 
 public class CreateIssueViewController {
 
@@ -15,8 +16,20 @@ public class CreateIssueViewController {
     @FXML private Label errType;
     @FXML private Label errPriority;
     @FXML private Button btnCreaIssue;
+    @FXML private ToggleButton btnBug, btnFeature, btnDocumentation, btnQuestion;
+    @FXML private ToggleButton btnHigh, btnMedium, btnLow;
 
     private final IssueController controller = new IssueController();
+
+    @FXML
+    private void initialize() {
+        btnBug.setUserData("BUG");
+        btnFeature.setUserData("FEATURE");
+        btnDocumentation.setUserData("DOCUMENTATION");
+        btnQuestion.setUserData("QUESTION");
+        btnHigh.setUserData("HIGH");
+        btnMedium.setUserData("MEDIUM");
+    }
 
     @FXML
     private void onCreaClicked() {
@@ -36,32 +49,19 @@ public class CreateIssueViewController {
         // 1. DISABILITA i controlli per evitare click compulsivi dell'utente durante la chiamata di rete
         // (Presumo tu abbia un'annotazione @FXML per il bottone, es: btnCrea)
         btnCreaIssue.setDisable(true);
-
         try {
             // 2. Invia i dati al backend
             controller.createIssue(title, description, type, priority);
-
-            // 3. Mostra un messaggio di successo
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Operazione Completata");
-            alert.setHeaderText(null);
-            alert.setContentText("L'Issue è stata creata con successo!");
-            alert.showAndWait(); // Resta aperto finché l'utente non clicca "OK"
-
+            DialogUtils.mostraInformazione("Operazione Completata",
+                    "L'Issue è stata creata con successo!");
             svuotaForm();
-
         } catch (Exception e) {
-            // 5. Se il server è giù o c'è un errore, avvisa l'utente senza far crashare l'app
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Errore di Rete");
-            alert.setHeaderText("Impossibile salvare l'Issue");
-            alert.setContentText("Il server non ha risposto correttamente. Riprova più tardi.");
-            alert.showAndWait();
-
+            DialogUtils.mostraErrore("Errore di Rete",
+                    "Il server non ha risposto correttamente. Riprova più tardi.",
+                    "Impossibile salvare l'issue");
             e.printStackTrace();
         } finally {
-            // Ripristina il bottone in caso di errore per permettere di riprovare
-            // btnCrea.setDisable(false);
+            btnCreaIssue.setDisable(false);
         }
     }
 

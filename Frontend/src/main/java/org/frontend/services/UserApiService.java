@@ -1,11 +1,6 @@
 package org.frontend.services;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import org.frontend.util.JsonUtil;
-import org.frontend.models.User;
-
-import java.net.http.HttpResponse;
-import java.util.List;
+import java.net.http.*;
 
 public class UserApiService {
 
@@ -15,28 +10,38 @@ public class UserApiService {
         this.apiClient = apiClient;
     }
 
-    public List<User> findAll() throws Exception {
-        var request = apiClient.request("/api/users")
+    public String findAll() throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/users")
                 .GET()
                 .build();
 
-        HttpResponse<String> response = apiClient.client().send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
 
-        int statusCode = response.statusCode();
-        if (statusCode == 401) {
-            throw new RuntimeException("401 Unauthorized: token mancante o non valido");
-        }
-        if (statusCode == 403) {
-            throw new RuntimeException("403 Forbidden: token valido ma senza permessi");
-        }
-        if (statusCode == 404) {
-            throw new RuntimeException("404 Not Found: endpoint /api/users non trovato");
-        }
-        if (statusCode < 200 || statusCode >= 300) {
-            throw new RuntimeException("Errore HTTP " + statusCode + ": " + response.body());
+        return response.body();
+    }
+
+    public String create(String jsonPayload) throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/users")
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println("--- DEBUG USER API CREATE STATUS ---");
+        System.out.println(response.statusCode());
+        System.out.println("------------------------------------");
+
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException(
+                    "Errore API: Status " + response.statusCode() + " - " + response.body()
+            );
         }
 
-        return JsonUtil.mapper.readValue(response.body(), new TypeReference<>() {
-        });
+        return response.body();
     }
 }
