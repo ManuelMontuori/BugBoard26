@@ -74,6 +74,7 @@ public class IssueWriteService {
                 .orElseThrow(()->new IllegalArgumentException("User not found"));
         issue.setAssignedTo(user);
         issue.setAssignedAt(LocalDateTime.now());
+        issue.setStatus(IssueStatus.IN_PROGRESS);
 
         eventPublisher.publishEvent(new IssueAssignedEvent(issue, user));
     }

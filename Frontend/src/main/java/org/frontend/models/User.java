@@ -7,6 +7,12 @@ import java.time.LocalDateTime;
 
 public class User {
 
+    private final StringProperty firstName =
+            new SimpleStringProperty();
+
+    private final StringProperty lastName =
+            new SimpleStringProperty();
+
     private final StringProperty uuid =
             new SimpleStringProperty();
 
@@ -31,6 +37,8 @@ public class User {
         uuid.set(dto.uuid());
         email.set(dto.email());
         role.set(dto.role());
+        firstName.set(dto.firstName());
+        lastName.set(dto.lastName());
         // status, lastLogin, createdAt non sono nel DTO ora —
         // verranno aggiunti al DTO quando il backend li esporrà
     }
@@ -63,4 +71,14 @@ public class User {
     public LocalDateTime getCreatedAt()                       { return createdAt.get(); }
     public ObjectProperty<LocalDateTime> createdAtProperty()  { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt)         { this.createdAt.set(createdAt); }
+
+    // firstName
+    public String getFirstName()              { return firstName.get(); }
+    public StringProperty firstNameProperty()               { return firstName; }
+    public void setFirstName(String firstName)        { this.firstName.set(firstName); }
+
+    // lastName
+    public String getLastName()                  { return lastName.get(); }
+    public StringProperty lastNameProperty()             { return lastName; }
+    public void setLastName(String lastName)        { this.lastName.set(lastName); }
 }

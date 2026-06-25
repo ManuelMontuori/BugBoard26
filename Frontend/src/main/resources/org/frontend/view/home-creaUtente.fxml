@@ -31,9 +31,23 @@
 
         <VBox spacing="6.0">
             <Label styleClass="form-label" text="Email *" />
-            <TextField fx:id="fieldEmail" maxWidth="1.7976931348623157E308" promptText="es. mario.rossi@azienda.it" styleClass="text-field" />
+            <TextField fx:id="fieldEmail" maxWidth="1.7976931348623157E308" promptText="es. ciro.fozzanapoli1926@azienda.it" styleClass="text-field" />
             <Label fx:id="errEmail" managed="false" styleClass="form-error-label" text="" visible="false" />
         </VBox>
+      <VBox spacing="6.0">
+         <children>
+            <Label styleClass="form-label" text="Nome *" />
+            <TextField fx:id="fieldNome" maxWidth="1.7976931348623157E308" promptText="es. Ciro" styleClass="text-field" />
+            <Label fx:id="errNome" managed="false" styleClass="form-error-label" text="" visible="false" />
+         </children>
+      </VBox>
+      <VBox spacing="6.0">
+         <children>
+            <Label styleClass="form-label" text="Cognome *" />
+            <TextField fx:id="fieldCognome" maxWidth="1.7976931348623157E308" promptText="es. Esposito" styleClass="text-field" />
+            <Label fx:id="errCognome" managed="false" styleClass="form-error-label" text="" visible="false" />
+         </children>
+      </VBox>
 
         <VBox spacing="10.0">
             <Label styleClass="form-label" text="Ruolo *" />

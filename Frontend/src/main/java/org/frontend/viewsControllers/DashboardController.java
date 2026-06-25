@@ -64,6 +64,11 @@ public class DashboardController {
     public void handleButtonGestioneUtenti(ActionEvent event) { loadSubPage("/org/frontend/view/home-creaUtente.fxml"); }
 
     @FXML
+    public void handleButtonAssegnaIssue(ActionEvent event) {
+        loadSubPage("/org/frontend/view/home-assegnaIssue.fxml");
+    }
+
+    @FXML
     private void handleLogout() {
         try {
             // 1. Uccide il token sul server AWS e pulisce la sessione locale
@@ -100,7 +105,7 @@ public class DashboardController {
             e.printStackTrace();
         }
     }
-    
+
     // Metodo riutilizzabile per evitare duplicazione di codice
     private void loadSubPage(String path) {
         try {

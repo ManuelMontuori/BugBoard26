@@ -22,3 +22,5 @@ sonar scanner direttamente dalla console maven in intellij, cosi dovrebbero spar
 13) Nel frontend verifica perché se faccio logout mi si aprono due schermate di login
 
 14) Quando creo nuovo utente con una mail gia presente il backend invia codice 409. ma il frontend non si accorge di niente e dice ok account creato con successo, ma in realtà lancia un'eccezione in console. L'eccezione viene catturata a riga 39 di UserApiService
+
+15) Il logout apre due finestre di login.

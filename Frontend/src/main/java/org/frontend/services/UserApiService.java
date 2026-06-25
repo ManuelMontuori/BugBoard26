@@ -44,4 +44,33 @@ public class UserApiService {
 
         return response.body();
     }
+
+    public String findByWorkload() throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/users/workload")
+                .GET()
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
+    }
+
+    public void assignIssue(String issueUuid, String userUuid) throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/issues/assigned?issueUuid=" + issueUuid + "&userUuid=" + userUuid)
+                .method("PATCH", HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println("--- DEBUG ASSIGN STATUS ---");
+        System.out.println(response.statusCode());
+        System.out.println("---------------------------");
+
+        if (response.statusCode() >= 400)
+            throw new RuntimeException("Errore API: " + response.statusCode() + " - " + response.body());
+    }
 }

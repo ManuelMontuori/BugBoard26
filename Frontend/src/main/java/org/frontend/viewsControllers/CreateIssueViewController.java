@@ -2,7 +2,7 @@ package org.frontend.viewsControllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-        import org.frontend.controllers.IssueController;
+import org.frontend.controllers.IssueController;
 import org.frontend.util.DialogUtils;
 
 public class CreateIssueViewController {
@@ -29,6 +29,7 @@ public class CreateIssueViewController {
         btnQuestion.setUserData("QUESTION");
         btnHigh.setUserData("HIGH");
         btnMedium.setUserData("MEDIUM");
+        btnLow.setUserData("LOW");
     }
 
     @FXML

@@ -1,7 +1,9 @@
 package org.frontend.services;
 
 import org.frontend.models.User;
+import org.frontend.models.UserWorkload;
 import org.frontend.models.dtos.UserDTO;
+import org.frontend.models.dtos.UserWorkloadDTO;
 import org.frontend.util.JsonUtil;
 import java.util.List;
 
@@ -57,6 +59,39 @@ public class UserService {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public List<UserWorkload> findByWorkload() {
+        try {
+            String json = api.findByWorkload();
+
+            System.out.println("--- DEBUG WORKLOAD ---");
+            System.out.println(json);
+            System.out.println("---------------------");
+
+            List<UserWorkloadDTO> dtoList = JsonUtil.mapper.readValue(
+                    json,
+                    JsonUtil.mapper.getTypeFactory()
+                            .constructCollectionType(List.class, UserWorkloadDTO.class)
+            );
+
+            return dtoList.stream()
+                    .map(UserWorkload::new)
+                    .toList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return List.of();
+        }
+    }
+
+    public void assignIssue(String issueUuid, String userUuid) {
+        try {
+            api.assignIssue(issueUuid, userUuid);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

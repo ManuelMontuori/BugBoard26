@@ -7,11 +7,15 @@ import org.frontend.controllers.UserController;
 public class CreateUserViewController {
 
     @FXML private TextField    fieldEmail;
+    @FXML private TextField    fieldNome;
+    @FXML private TextField fieldCognome;
     @FXML private ToggleButton btnUser;
     @FXML private ToggleButton btnAdmin;
     @FXML private ToggleGroup  roleGroup;
     @FXML private Label        errEmail;
     @FXML private Label        errRole;
+    @FXML private Label        errNome;
+    @FXML private Label        errCognome;
     @FXML private Label        lblEsito;
 
     private final UserController controller = new UserController();
@@ -28,9 +32,11 @@ public class CreateUserViewController {
 
         String email = fieldEmail.getText().trim();
         String role  = (String) roleGroup.getSelectedToggle().getUserData();
+        String firstName = fieldNome.getText().trim();
+        String lastName = fieldCognome.getText().trim();
 
         try {
-            controller.createUser(email, role);
+            controller.createUser(email, role, firstName, lastName);
             mostraEsito("Utente " + email + " creato con successo.", true);
             resetForm();
         } catch (Exception e) {
@@ -57,6 +63,20 @@ public class CreateUserViewController {
         } else {
             hideError(errEmail);
         }
+
+        // Validazione nome e cognome
+        String firstName = fieldNome.getText().trim();
+        String lastName =  fieldCognome.getText().trim();
+        if(firstName.isEmpty()) {
+            showError(errNome, "Inserisci un nome valido.");
+            ok = false;
+        }
+        else hideError(errNome);
+        if(lastName.isEmpty()) {
+            showError(errCognome, "Inserisci un cognome valido.");
+            ok = false;
+        }
+        else hideError(errCognome);
 
         // Validazione ruolo
         if (roleGroup.getSelectedToggle() == null) {
