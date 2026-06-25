@@ -21,6 +21,7 @@ import com.bugboard.api.auth.AuthService;
 import com.bugboard.api.events.IssueAssignedEvent;
 import com.bugboard.api.mapper.IssueMapper;
 import com.bugboard.api.models.Issue;
+import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.User;
 import com.bugboard.api.repositories.IssueRepository;
 import com.bugboard.api.repositories.UserRepository;
@@ -63,6 +64,7 @@ public class IssueWriteServiceTest {
         // Verifiche (ORACLE)
         assertEquals(user, issue.getAssignedTo());
         assertNotNull(issue.getAssignedAt());
+        assertEquals(IssueStatus.IN_PROGRESS, issue.getStatus());
 
         verify(eventPublisher).publishEvent(any(IssueAssignedEvent.class));
     }
