@@ -3,6 +3,7 @@ package org.frontend.services;
 import org.frontend.models.User;
 import org.frontend.models.UserWorkload;
 import org.frontend.models.dtos.UserDTO;
+import org.frontend.models.dtos.UserReportDTO;
 import org.frontend.models.dtos.UserWorkloadDTO;
 import org.frontend.util.JsonUtil;
 import java.util.List;
@@ -92,6 +93,27 @@ public class UserService {
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
+        }
+    }
+
+    public List<UserReportDTO> getMonthlyReport(int year, int month) {
+        try {
+            String json = api.getMonthlyReport(year, month);
+
+            System.out.println("--- DEBUG RESPONSE USER REPORT ---");
+            System.out.println(json);
+            System.out.println("----------------------------------");
+
+            return JsonUtil.mapper.readValue(
+                    json,
+                    JsonUtil.mapper.getTypeFactory()
+                            .constructCollectionType(List.class, UserReportDTO.class)
+            );
+
+        } catch (Exception e) {
+            System.err.println("Errore durante il recupero del report mensile: " + e.getMessage());
+            e.printStackTrace();
+            return List.of(); // Ritorna una lista vuota in caso di errore per evitare NullPointerException
         }
     }
 }

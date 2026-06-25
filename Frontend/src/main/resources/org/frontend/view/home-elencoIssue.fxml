@@ -1,28 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0" minWidth="0" spacing="16.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.IssueListController">
 
     <Label styleClass="title-dashboard" text="Elenco Issue" />
 
-    <TableView fx:id="tblAllIssues" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0" VBox.vgrow="ALWAYS">
-        <placeholder>
-            <Label styleClass="label-muted" text="Nessuna issue trovata." />
-        </placeholder>
-        <columns>
-            <TableColumn fx:id="colUuid" prefWidth="80" text="#" />
-            <TableColumn fx:id="colTitle" prefWidth="200" text="Titolo" />
-            <TableColumn fx:id="colDescription" prefWidth="200" text="Descrizione" />
-            <TableColumn fx:id="colType" prefWidth="120" text="Tipo" />
-            <TableColumn fx:id="colPriority" prefWidth="90" text="Priorità" />
-            <TableColumn fx:id="colStatus" prefWidth="120" text="Stato" />
-            <TableColumn fx:id="colCreatedAt" prefWidth="140" text="Data creazione" />
-            <TableColumn fx:id="colResolvedAt" prefWidth="140" text="Data risoluzione" />
-        </columns>
-    </TableView>
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <TextField fx:id="txtSearch" prefWidth="300.0" promptText="Cerca per titolo o descrizione..." styleClass="search-field" />
+        <Button fx:id="btnSearch" onAction="#gestisciRicerca" styleClass="btn-primary" text="Cerca" />
+        <Button fx:id="btnResetSearch" onAction="#resetRicerca" styleClass="btn-secondary" text="Torna a tutte le issue" />
+    </HBox>
 
+    <HBox spacing="16.0" VBox.vgrow="ALWAYS">
+
+        <TableView fx:id="tblAllIssues" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0" HBox.hgrow="ALWAYS">
+            <placeholder>
+                <Label styleClass="label-muted" text="Nessuna issue trovata." />
+            </placeholder>
+            <columns>
+                <TableColumn fx:id="colUuid" prefWidth="80" text="#" />
+                <TableColumn fx:id="colTitle" prefWidth="200" text="Titolo" />
+                <TableColumn fx:id="colDescription" prefWidth="200" text="Descrizione" />
+                <TableColumn fx:id="colType" prefWidth="120" text="Tipo" />
+                <TableColumn fx:id="colPriority" prefWidth="90" text="Priorità" />
+                <TableColumn fx:id="colStatus" prefWidth="120" text="Stato" />
+                <TableColumn fx:id="colCreatedAt" prefWidth="140" text="Data creazione" />
+                <TableColumn fx:id="colResolvedAt" prefWidth="140" text="Data risoluzione" />
+            </columns>
+        </TableView>
+
+        <VBox fx:id="pnlDetails" managed="false" minWidth="320.0" prefWidth="320.0" spacing="12.0" style="-fx-background-color: #fcfcfc; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 0 1; -fx-padding: 16;" visible="false">
+            <HBox alignment="CENTER_LEFT">
+                <Label maxWidth="1.7976931348623157E308" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Dettaglio Issue" HBox.hgrow="ALWAYS" />
+                <Button onAction="#chiudiDettagli" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-weight: bold;" text="X" />
+            </HBox>
+
+            <Separator prefWidth="200.0" />
+
+            <Label style="-fx-text-fill: #777;" text="Titolo:" />
+            <Label fx:id="lblDetTitle" style="-fx-font-size: 14px; -fx-font-weight: bold;" wrapText="true" />
+
+            <Label style="-fx-text-fill: #777;" text="Descrizione:" />
+            <Label fx:id="lblDetDescription" wrapText="true" />
+
+            <Label style="-fx-text-fill: #777;" text="Stato:" />
+            <Label fx:id="lblDetStatus" style="-fx-font-weight: bold;" />
+
+            <Label style="-fx-text-fill: #777;" text="Tipo:" />
+            <Label fx:id="lblDetType" style="-fx-font-weight: bold;" />
+
+            <Label style="-fx-text-fill: #777;" text="Priorità:" />
+            <Label fx:id="lblDetPriority" style="-fx-font-weight: bold;" />
+
+            <Label style="-fx-text-fill: #777;" text="ID Issue:" />
+            <Label fx:id="lblDetUuid" style="-fx-font-family: monospace;" />
+        </VBox>
+
+    </HBox>
 </VBox>

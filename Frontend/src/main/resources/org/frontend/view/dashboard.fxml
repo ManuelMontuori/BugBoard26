@@ -43,7 +43,7 @@
                          </styleClass>
                      </Button>
                      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAssegnaIssue" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Assegna Issue" />
-                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Report mensili" />
+                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonReport" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Report mensili" />
                  </children>
              </VBox>
 

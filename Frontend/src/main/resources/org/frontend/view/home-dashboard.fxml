@@ -2,29 +2,38 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="24.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.HomeDashboardController">
    <children>
-      <Label styleClass="title-dashboard" text="Dashboard" textFill="#292766" />
+      <VBox>
+         <children>
+            <Label styleClass="title-dashboard" text="Dashboard" textFill="#292766" />
+            <Label prefHeight="28.0" prefWidth="129.0" styleClass="subtitle-dashboard" text="BugBoard26" />
+         </children>
+      </VBox>
       <HBox prefHeight="100.0" prefWidth="0.0" spacing="10.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="0.0" spacing="4.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label fx:id="labelWelcome" styleClass="welcome-label" text="Benvenuto, " />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="labelRole" styleClass="welcome-sub" text="Ruolo: " />
+                        <Label text="👤" textFill="#23214d">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                           <children>
+                              <Label fx:id="labelWelcome" styleClass="welcome-label" text="Benvenuto, " />
+                              <Label fx:id="labelRole" styleClass="welcome-sub" text="Ruolo: " />
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </children>
@@ -78,9 +87,7 @@
          <children>
             <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label styleClass="card-title" text="Issues recenti" />
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnAltro" mnemonicParsing="false" styleClass="btn-secondary" text="Altro -&gt;" />
+                  <Label styleClass="card-title" text="Le mie Issue" />
                </children>
             </HBox>
             <TableView fx:id="tblIssueRecenti" fixedCellSize="44.0" prefHeight="600.0" prefWidth="200.0" stylesheets="@style.css" VBox.vgrow="NEVER">

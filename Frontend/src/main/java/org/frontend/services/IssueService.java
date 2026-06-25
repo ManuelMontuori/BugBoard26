@@ -71,6 +71,26 @@ public class IssueService {
         }
     }
 
+    public List<Issue> searchIssue(String keyword) {
+        try {
+            String json = api.searchIssue(keyword);
+
+            List<IssueDTO> dtoList = JsonUtil.mapper.readValue(
+                    json,
+                    JsonUtil.mapper.getTypeFactory()
+                            .constructCollectionType(List.class, IssueDTO.class)
+            );
+
+            return dtoList.stream()
+                    .map(Issue::new)
+                    .toList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return List.of();
+        }
+    }
+
 
     public Issue createIssue(Issue issue) {
         try {
@@ -103,4 +123,6 @@ public class IssueService {
             return null;
         }
     }
+
+
 }

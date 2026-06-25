@@ -204,10 +204,13 @@
     -fx-text-fill: white;
 }
 
-/* Pulsante Chiudi (Effetto Rosso al passaggio del mouse) */
+.btn-close {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
 .btn-close:hover {
     -fx-background-color: -danger;
-    -fx-text-fill: white;
 }
 
 
@@ -248,6 +251,11 @@
 .title-dashboard {
     -fx-font-size: 22px;
     -fx-font-weight: bold;
+    -fx-text-fill: #23214d;
+    -fx-padding: 0px 0px 20px 0px;
+}
+.subtitle-dashboard {
+    -fx-font-size: 15px;
     -fx-text-fill: #23214d;
     -fx-padding: 0px 0px 20px 0px;
 }
@@ -407,6 +415,7 @@
     -fx-border-width: 0.5px;
     -fx-border-radius: 12px;
     -fx-background-radius: 12px;
+    -fx-cursor: hand;
 }
 
 .table-view .column-header-background {
@@ -1089,3 +1098,229 @@
 .toggle-user:selected  { -fx-background-color: #E6F1FB; -fx-text-fill: #0C447C; -fx-border-color: #0C447C; }
 .toggle-admin:selected { -fx-background-color: #EEEDFE; -fx-text-fill: #3C3489; -fx-border-color: #3C3489; }
 
+
+
+
+
+
+/* ═══════════════════════════════════════════
+   KPI CARDS
+   ═══════════════════════════════════════════ */
+.kpi-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #E8E8EE;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 14 16 14 16;
+    -fx-spacing: 4;
+}
+
+.kpi-icon-label {
+    -fx-font-size: 20px;
+    -fx-padding: 0 0 4 0;
+}
+
+.kpi-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #7A7A95;
+    -fx-font-weight: normal;
+}
+
+.kpi-value {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1C1C2E;
+}
+
+.kpi-sub {
+    -fx-font-size: 11px;
+    -fx-text-fill: #AAAABF;
+}
+
+/* ═══════════════════════════════════════════
+   CHARTS
+   ═══════════════════════════════════════════ */
+.report-chart {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.report-chart .chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.report-chart .chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.report-chart .chart-horizontal-grid-lines {
+    -fx-stroke: #F0F0F5;
+    -fx-stroke-dash-array: 4 4;
+}
+
+.report-chart .axis {
+    -fx-tick-label-fill: #7A7A95;
+    -fx-font-size: 11px;
+}
+
+.report-chart .axis-label {
+    -fx-text-fill: #7A7A95;
+    -fx-font-size: 11px;
+}
+
+/* Colori barre BarChart */
+.report-chart .default-color0.chart-bar { -fx-bar-fill: #378ADD; }
+.report-chart .default-color1.chart-bar { -fx-bar-fill: #1D9E75; }
+.report-chart .default-color2.chart-bar { -fx-bar-fill: #EF9F27; }
+.report-chart .default-color3.chart-bar { -fx-bar-fill: #E24B4A; }
+.report-chart .default-color4.chart-bar { -fx-bar-fill: #9B6BDF; }
+.report-chart .default-color5.chart-bar { -fx-bar-fill: #3DC6D4; }
+.report-chart .default-color6.chart-bar { -fx-bar-fill: #F46E9B; }
+.report-chart .default-color7.chart-bar { -fx-bar-fill: #6DBE6D; }
+
+/* Colori fette PieChart */
+.report-chart .default-color0.chart-pie { -fx-pie-color: #378ADD; }
+.report-chart .default-color1.chart-pie { -fx-pie-color: #1D9E75; }
+.report-chart .default-color2.chart-pie { -fx-pie-color: #EF9F27; }
+.report-chart .default-color3.chart-pie { -fx-pie-color: #E24B4A; }
+
+.report-chart .chart-legend {
+    -fx-background-color: transparent;
+    -fx-font-size: 11px;
+    -fx-text-fill: #7A7A95;
+}
+
+.report-chart .chart-legend-item-symbol {
+    -fx-padding: 4px;
+}
+
+/* ═══════════════════════════════════════════
+   TABELLA UTENTI REPORT
+   ═══════════════════════════════════════════ */
+.report-table-header {
+    -fx-background-color: #F5F5FA;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10 6 10;
+}
+
+.report-th {
+    -fx-font-size: 11px;
+    -fx-text-fill: #7A7A95;
+    -fx-font-weight: normal;
+}
+
+/* Riga singola utente nella tabella */
+.report-row {
+    -fx-padding: 8 10 8 10;
+    -fx-border-color: transparent transparent #F0F0F5 transparent;
+    -fx-border-width: 1;
+}
+
+.report-row:hover {
+    -fx-background-color: #F8F8FC;
+    -fx-background-radius: 6;
+}
+
+.report-td {
+    -fx-font-size: 12px;
+    -fx-text-fill: #1C1C2E;
+}
+
+.report-td-muted {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7A7A95;
+}
+
+/* Progress bar inline nella tabella */
+.report-progress {
+    -fx-pref-height: 5px;
+    -fx-pref-width: 60px;
+    -fx-background-color: #EBEBF5;
+    -fx-background-radius: 3;
+}
+
+.report-progress .bar {
+    -fx-background-color: #378ADD;
+    -fx-background-radius: 3;
+    -fx-background-insets: 0;
+}
+
+.report-progress.high .bar {
+    -fx-background-color: #E24B4A;
+}
+
+.report-progress.medium .bar {
+    -fx-background-color: #EF9F27;
+}
+
+/* ═══════════════════════════════════════════
+   TOP PERFORMER
+   ═══════════════════════════════════════════ */
+.top-performer-row {
+    -fx-padding: 8 4 8 4;
+    -fx-border-color: transparent transparent #F0F0F5 transparent;
+    -fx-border-width: 1;
+}
+
+.top-performer-rank {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #AAAABF;
+    -fx-min-width: 22px;
+}
+
+.top-performer-rank-gold   { -fx-text-fill: #C9960C; }
+.top-performer-rank-silver { -fx-text-fill: #7A8A99; }
+.top-performer-rank-bronze { -fx-text-fill: #A0603A; }
+
+.top-performer-name {
+    -fx-font-size: 12px;
+    -fx-text-fill: #1C1C2E;
+}
+
+.top-performer-score {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #378ADD;
+}
+
+/* ═══════════════════════════════════════════
+   AVATAR (usato anche nel report)
+   ═══════════════════════════════════════════ */
+.avatar-label {
+    -fx-background-radius: 50%;
+    -fx-alignment: CENTER;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
+}
+
+/* Varianti colore avatar — assegnate via Java in base all'iniziale */
+.avatar-blue   { -fx-background-color: #E6F1FB; -fx-text-fill: #185FA5; }
+.avatar-green  { -fx-background-color: #E1F5EE; -fx-text-fill: #0F6E56; }
+.avatar-orange { -fx-background-color: #FAEEDA; -fx-text-fill: #854F0B; }
+.avatar-red    { -fx-background-color: #FBEAF0; -fx-text-fill: #993556; }
+.avatar-purple { -fx-background-color: #EEEDFE; -fx-text-fill: #534AB7; }
+.avatar-teal   { -fx-background-color: #E0F7F8; -fx-text-fill: #0E7077; }
+
+
+/* Stile base per la riga di un utente */
+.user-workload-row {
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 6px;
+    -fx-background-color: transparent;
+    -fx-transition: all 0.2s ease-in-out;
+    -fx-cursor: hand;
+}
+
+/* Evidenziazione specifica per l'utente consigliato (all'avvio e se selezionato) */
+.user-workload-row-selected {
+    -fx-background-color: #eef5ff; /* Un azzurrino leggero di sfondo */
+    -fx-border-color: #3b82f6;     /* Bordo blu per farlo risaltare */
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+}

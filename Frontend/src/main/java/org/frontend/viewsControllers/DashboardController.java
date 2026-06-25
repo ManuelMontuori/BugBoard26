@@ -69,6 +69,11 @@ public class DashboardController {
     }
 
     @FXML
+    public void handleButtonReport(ActionEvent event) {
+        loadSubPage("/org/frontend/view/home-report.fxml");
+    }
+
+    @FXML
     private void handleLogout() {
         try {
             // 1. Uccide il token sul server AWS e pulisce la sessione locale

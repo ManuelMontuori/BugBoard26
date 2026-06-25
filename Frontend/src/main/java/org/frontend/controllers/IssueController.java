@@ -38,4 +38,8 @@ public class IssueController {
 
         service.createIssue(issue);
     }
+
+    public void searchIssue(String keyword) {
+        issues.setAll(service.searchIssue(keyword));
+    }
 }

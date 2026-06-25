@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fx:controller="org.frontend.viewsControllers.ReportViewController"
+            fitToWidth="true"
+            fitToHeight="true"
+            hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED"
+            style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0;"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+
+        <VBox spacing="20.0" styleClass="secondary-content" stylesheets="@style.css">
+            <children>
+
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="12.0">
+                    <children>
+                        <Label styleClass="title-dashboard" text="Report mensile" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="comboMese" prefWidth="180.0" promptText="Seleziona mese..." styleClass="combo-box" />
+                    </children>
+                </HBox>
+
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="kpi-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="kpi-icon-label" text="🐛" />
+                                <Label styleClass="kpi-label" text="Issue totali aperte" />
+                                <Label fx:id="lblTotAperte" styleClass="kpi-value" text="-" />
+                                <Label fx:id="lblTotAperteDesc" styleClass="kpi-sub" text="/" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="kpi-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="kpi-icon-label" text="✅" />
+                                <Label styleClass="kpi-label" text="Issue risolte" />
+                                <Label fx:id="lblTotRisolte" styleClass="kpi-value" text="-" />
+                                <Label fx:id="lblTotRisolteDesc" styleClass="kpi-sub" text="/" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="kpi-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="kpi-icon-label" text="⏱" />
+                                <Label styleClass="kpi-label" text="Issue risolte" />
+                                <Label fx:id="lblAvgTempo" styleClass="kpi-value" text="-" />
+                                <Label fx:id="lblTotRisolteDesc1" styleClass="kpi-sub" text="giorni in media" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="kpi-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="kpi-icon-label" text="⚠" />
+                                <Label styleClass="kpi-label" text="Alta priorità" />
+                                <Label fx:id="lblAltaPriorita" styleClass="kpi-value" text="-" />
+                                <Label fx:id="lblTotRisolteDesc11" styleClass="kpi-sub" text="issue critiche" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="14.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="card-title" text="Carico di lavoro per utente" />
+                                <BarChart fx:id="barChartWorkload" animated="false" legendVisible="false" prefHeight="220.0" styleClass="report-chart" VBox.vgrow="ALWAYS">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM" tickLabelRotation="-35" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis minorTickVisible="false" side="LEFT" />
+                                    </yAxis>
+                                </BarChart>
+                            </children>
+                        </VBox>
+                        <VBox prefWidth="260.0" spacing="10.0" styleClass="card">
+                            <children>
+                                <Label styleClass="card-title" text="Distribuzione stati" />
+                                <PieChart fx:id="pieChartStato" animated="false" labelsVisible="false" legendSide="BOTTOM" legendVisible="true" prefHeight="220.0" styleClass="report-chart" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                        <VBox prefWidth="260.0" spacing="10.0" styleClass="card">
+                            <children>
+                                <Label styleClass="card-title" text="Distribuzione priorità" />
+                                <PieChart fx:id="pieChartPriorita" animated="false" labelsVisible="false" legendSide="BOTTOM" legendVisible="true" prefHeight="220.0" styleClass="report-chart" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <HBox spacing="14.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox spacing="10.0" styleClass="card" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="card-title" text="Dettaglio per utente" />
+                                <HBox spacing="0.0" styleClass="report-table-header">
+                                    <children>
+                                        <Label prefWidth="170.0" styleClass="report-th" text="Membro" />
+                                        <Label prefWidth="60.0" styleClass="report-th" text="Totale" />
+                                        <Label prefWidth="60.0" styleClass="report-th" text="Create" />
+                                        <Label prefWidth="65.0" styleClass="report-th" text="Risolte" />
+                                        <Label prefWidth="80.0" styleClass="report-th" text="Workload" />
+                                        <Label prefWidth="100.0" styleClass="report-th" text="Avg. risoluz." />
+                                        <Label prefWidth="80.0" styleClass="report-th" text="Alta prior." />
+                                    </children>
+                                </HBox>
+                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS">
+                                    <content>
+                                        <VBox fx:id="listUtentiReport" spacing="0.0" />
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </VBox>
+                        <VBox prefWidth="220.0" spacing="10.0" styleClass="card">
+                            <children>
+                                <Label styleClass="card-title" text="Top performer" />
+                                <Label styleClass="kpi-label" text="per issue risolte" />
+                                <VBox fx:id="topPerformerBox" spacing="8.0" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

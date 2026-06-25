@@ -4,8 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.frontend.models.User;
 import org.frontend.models.UserWorkload;
+import org.frontend.models.dtos.UserReportDTO;
 import org.frontend.services.UserService;
 import org.frontend.util.BackendServiceFactory;
+
+import java.util.List;
 
 public class UserController {
 
@@ -51,5 +54,9 @@ public class UserController {
     // Restituisce il primo utente (carico minore — già ordinato dal backend)
     public UserWorkload getSuggerito() {
         return workload.isEmpty() ? null : workload.get(0);
+    }
+
+    public List<UserReportDTO> getMonthlyReport(int year, int month) {
+        return service.getMonthlyReport(year, month);
     }
 }

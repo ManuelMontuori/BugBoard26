@@ -73,4 +73,16 @@ public class UserApiService {
         if (response.statusCode() >= 400)
             throw new RuntimeException("Errore API: " + response.statusCode() + " - " + response.body());
     }
+
+    public String getMonthlyReport(int year, int month) throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/users/report?year=" + year + "&month=" + month)
+                .GET()
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
+    }
 }

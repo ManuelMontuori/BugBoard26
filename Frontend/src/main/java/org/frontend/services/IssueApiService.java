@@ -47,6 +47,33 @@ public class IssueApiService {
         return response.body();
     }
 
+    public String searchIssue(String keyword) throws Exception {
+        // Codifichiamo la keyword per evitare problemi con spazi o caratteri speciali nell'URL
+        String encodedKeyword = java.net.URLEncoder.encode(keyword, java.nio.charset.StandardCharsets.UTF_8);
+
+        HttpRequest request = apiClient
+                .request("/api/issues/search?keyword=" + encodedKeyword)
+                .GET()
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(
+                        request,
+                        HttpResponse.BodyHandlers.ofString()
+                );
+
+        // LOG DI DEBUG
+        System.out.println("--- DEBUG RESPONSE SEARCH ---");
+        System.out.println(response.body());
+        System.out.println("-----------------------------");
+
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException("Errore API Cerca: Status " + response.statusCode() + " - " + response.body());
+        }
+
+        return response.body();
+    }
+
 
     public String create(String jsonPayload) throws Exception {
         HttpRequest request = apiClient
