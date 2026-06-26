@@ -41,7 +41,7 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
-        String userRole = AuthSession.getInstance().getCustomRole(); // Suppongo restituisca "ADMIN", "USER", ecc.
+        String userRole = AuthSession.getInstance().getCustomRole();
         boolean isAdmin = "ADMIN".equalsIgnoreCase(userRole);
 
         if (isAdmin) {
@@ -49,23 +49,26 @@ public class DashboardController {
             adminSection.setManaged(true);
         }
 
-        if(AuthSession.getInstance().getNotificationService()!=null){
-            ObservableList<Notification> listaNotifiche = AuthSession.getInstance().getNotificationService().getNotifications();
+        if (AuthSession.getInstance().getNotificationService() != null) {
+
+            // Carica le notifiche subito
+            AuthSession.getInstance().getNotificationService().loadNotifications();
+
+            // Lista con extractor — osserva anche i cambiamenti delle property interne
+            ObservableList<Notification> listaNotifiche =
+                    AuthSession.getInstance().getNotificationService().getNotifications();
+
             IntegerBinding notificheNonLetteContatore = Bindings.createIntegerBinding(
                     () -> (int) listaNotifiche.stream().filter(n -> !n.isRead()).count(),
                     listaNotifiche
             );
 
-            // 2. Sincronizziamo il testo del badge con il contatore
             lblBadge.textProperty().bind(notificheNonLetteContatore.asString());
 
-            // 3. Mostriamo il badge SOLO se il contatore è maggiore di 0
             BooleanBinding haNotificheNonLette = notificheNonLetteContatore.greaterThan(0);
-            System.out.println("NUMERO NOT NON LETTE: " + notificheNonLetteContatore);
             lblBadge.visibleProperty().bind(haNotificheNonLette);
             lblBadge.managedProperty().bind(haNotificheNonLette);
         }
-
 
         loadSubPage("/org/frontend/view/home-dashboard.fxml");
     }

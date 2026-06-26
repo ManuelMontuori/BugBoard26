@@ -17,13 +17,11 @@ public class NotificationApiService {
      */
     public HttpResponse<Stream<String>> streamNotifications(String userUuid, String token) throws Exception {
         HttpRequest request = apiClient
-                .request("/api/notification/stream/" + userUuid) // Adatta il path al tuo backend
-                .header("Accept", "text/event-stream")
-                .header("Authorization", "Bearer " + token) // Il solito Token JWT
+                .requestStream("/api/notification/stream/" + userUuid) // <-- requestStream, non request
+                .header("Authorization", "Bearer " + token)
                 .GET()
                 .build();
 
-        // Mandiamo la richiesta aspettandoci un flusso continuo di righe (lines)
         return apiClient.client().send(request, HttpResponse.BodyHandlers.ofLines());
     }
 
@@ -45,4 +43,35 @@ public class NotificationApiService {
             throw new RuntimeException("Errore API notifica letta: " + response.statusCode());
         }
     }
+
+    public String findMyNotifications() throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/notification/my")
+                .GET()
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException("Errore API notifiche: " + response.statusCode());
+        }
+        return response.body();
+    }
+
+    public void setRead(String uuid, boolean check) throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/notification/read?uuid=" + uuid + "&check=" + check)
+                .method("PATCH", HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException("Errore PATCH notifica: " + response.statusCode());
+        }
+    }
+
+
 }

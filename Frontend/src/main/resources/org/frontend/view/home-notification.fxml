@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+      spacing="16.0" styleClass="secondary-content" stylesheets="@style.css"
+      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.frontend.viewsControllers.NotificationViewController">
+
+    <!-- ── Header ── -->
+    <HBox alignment="CENTER_LEFT" spacing="12.0">
+        <Label styleClass="title-dashboard" text="Notifiche" HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblNonLette" styleClass="badge-unread" text=""/>
+        <Label fx:id="lblTotale"   styleClass="kpi-label"   text=""/>
+        <Button fx:id="btnSegnatutte"
+                mnemonicParsing="false"
+                onAction="#onSegnatutte"
+                styleClass="btn-secondary"
+                text="Segna tutte lette"/>
+    </HBox>
+
+    <!-- ── Lista notifiche ── -->
+    <VBox styleClass="card" spacing="0.0" VBox.vgrow="ALWAYS">
+
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    VBox.vgrow="ALWAYS">
+            <content>
+                <VBox fx:id="listNotifiche" spacing="0.0"/>
+            </content>
+        </ScrollPane>
+
+    </VBox>
+
+</VBox>

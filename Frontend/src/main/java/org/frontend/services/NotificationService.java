@@ -7,13 +7,17 @@ import javafx.collections.ObservableList;
 import org.frontend.models.Notification;
 
 import java.net.http.HttpResponse;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class NotificationService {
 
     private final NotificationApiService api;
     private final ObjectMapper objectMapper;
-    private final ObservableList<Notification> notifications = FXCollections.observableArrayList();
+
+    private final ObservableList<Notification> notifications = FXCollections.observableArrayList(
+            n -> new javafx.beans.Observable[]{ n.readProperty() }
+    );
 
     public NotificationService(NotificationApiService api, ObjectMapper objectMapper) {
         this.api = api;
@@ -77,4 +81,35 @@ public class NotificationService {
             System.err.println("NotificationService: Errore parsing notifica JSON: " + e.getMessage());
         }
     }
-}
+
+    /** Carica lo storico notifiche all'avvio e popola la lista. */
+    public void loadNotifications() {
+        try {
+            String json = api.findMyNotifications();
+            List<Notification> list = objectMapper.readValue(
+                    json,
+                    objectMapper.getTypeFactory()
+                            .constructCollectionType(List.class, Notification.class)
+            );
+            Platform.runLater(() -> notifications.setAll(list));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /** Segna letta/non letta e aggiorna la lista locale. */
+    public boolean setRead(String uuid, boolean check) {
+        try {
+            api.setRead(uuid, check);
+            Platform.runLater(() ->
+                    notifications.stream()
+                            .filter(n -> uuid.equals(n.getId()))
+                            .findFirst()
+                            .ifPresent(n -> n.setRead(check))
+            );
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }}
