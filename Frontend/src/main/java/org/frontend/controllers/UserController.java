@@ -59,4 +59,15 @@ public class UserController {
     public List<UserReportDTO> getMonthlyReport(int year, int month) {
         return service.getMonthlyReport(year, month);
     }
+
+    // Esempio logico di metodi nell'UserController:
+    public void enableUser(String uuid) throws Exception {
+        service.enableUser(uuid);
+        loadAllUsers(); // Ricarica la lista per sincronizzare la UI
+    }
+
+    public void disableUser(String uuid) throws Exception {
+        service.disableUser(uuid);
+        loadAllUsers();
+    }
 }

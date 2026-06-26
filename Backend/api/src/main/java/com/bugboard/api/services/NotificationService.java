@@ -11,7 +11,7 @@ import com.bugboard.api.models.User;
 public interface NotificationService {
 
 
-    public void createNotification (Issue issue, User user);
+    public NotificationDTO createNotification (Issue issue, User user);
 
     public void readTrue(UUID uuid);
 

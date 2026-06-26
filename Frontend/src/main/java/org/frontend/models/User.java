@@ -1,5 +1,7 @@
 package org.frontend.models;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.*;
 import org.frontend.models.dtos.UserDTO;
 import java.time.LocalDate;
@@ -39,7 +41,10 @@ public class User {
         role.set(dto.role());
         firstName.set(dto.firstName());
         lastName.set(dto.lastName());
-        // status, lastLogin, createdAt non sono nel DTO ora —
+        status.set(dto.status());
+        lastLogin.set(dto.lastLogin());
+        createdAt.set(dto.createdAt());
+        //  lastLogin, createdAt non sono nel DTO ora —
         // verranno aggiunti al DTO quando il backend li esporrà
     }
 
@@ -81,4 +86,12 @@ public class User {
     public String getLastName()                  { return lastName.get(); }
     public StringProperty lastNameProperty()             { return lastName; }
     public void setLastName(String lastName)        { this.lastName.set(lastName); }
+
+    public BooleanBinding activeProperty() {
+        // Crea un legame reattivo: se statusProperty cambia, il booleano si ri-calcola da solo
+        return Bindings.createBooleanBinding(
+                () -> "ACTIVE".equalsIgnoreCase(getStatus()),
+                statusProperty()
+        );
+    }
 }

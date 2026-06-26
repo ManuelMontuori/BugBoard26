@@ -1,5 +1,7 @@
 package com.bugboard.api.services;
 
+import com.bugboard.api.dto.NotificationDTO;
+import com.bugboard.api.mapper.NotificationMapper;
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.Notification;
 import com.bugboard.api.models.User;
@@ -11,11 +13,14 @@ import java.util.UUID;
 @Service
 public class NotificationWriteService {
     private final NotificationRepository notificationRepository;
-    public NotificationWriteService(NotificationRepository notificationRepository) {
+    private final NotificationMapper notificationMapper;
+    public NotificationWriteService(NotificationRepository notificationRepository,
+                                    NotificationMapper notificationMapper) {
         this.notificationRepository = notificationRepository;
+        this.notificationMapper = notificationMapper;
     }
 
-    public void createNotification(Issue issue, User user) {
+    public NotificationDTO createNotification(Issue issue, User user) {
 
         Notification notification = new Notification();
         notification.setMessage("Ti è stata assegnata la seguente Issue: "
@@ -24,8 +29,9 @@ public class NotificationWriteService {
         notification.setRead(false);
         notification.setUser(user);
 
-        notificationRepository.save(notification);
+        Notification savedNotification = notificationRepository.save(notification);
 
+        return notificationMapper.mapToDTO(savedNotification);
     }
 
     public void readTrue(UUID uuid) {

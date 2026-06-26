@@ -26,20 +26,16 @@ public class ProdAuthService implements AuthService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (auth == null || auth.getPrincipal() == null) {
-            System.out.println("1");
             return Optional.empty();
         }
 
         if (!(auth.getPrincipal() instanceof Jwt jwt)) {
-            System.out.println("2");
             return Optional.empty();
         }
 
 
         String uuidStr = jwt.getClaimAsString("custom:uuid");
-        System.out.println("uuid:" + uuidStr);
         if (uuidStr == null || uuidStr.isBlank()) {
-            System.out.println("3");
             return Optional.empty();
         }
 

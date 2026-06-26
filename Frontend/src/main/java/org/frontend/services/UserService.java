@@ -116,4 +116,26 @@ public class UserService {
             return List.of(); // Ritorna una lista vuota in caso di errore per evitare NullPointerException
         }
     }
+
+    public void enableUser(String uuid) throws Exception {
+        try {
+            api.enable(uuid);
+            System.out.println("UserService: Utente " + uuid + " abilitato con successo.");
+        } catch (Exception e) {
+            System.err.println("UserService: Errore durante l'abilitazione dell'utente " + uuid);
+            e.printStackTrace();
+            throw e; // Rilanciamo l'eccezione per farla gestire al ViewController grafico
+        }
+    }
+
+    public void disableUser(String uuid) throws Exception {
+        try {
+            api.disable(uuid);
+            System.out.println("UserService: Utente " + uuid + " disabilitato con successo.");
+        } catch (Exception e) {
+            System.err.println("UserService: Errore durante la disabilitazione dell'utente " + uuid);
+            e.printStackTrace();
+            throw e; // Rilanciamo l'eccezione per farla gestire al ViewController grafico
+        }
+    }
 }

@@ -400,10 +400,6 @@ public class ReportViewController {
         );
     }
 
-    /**
-     * Dato il label abbreviato usato nelle barre (es. "LB"),
-     * cerca il nome completo nell'elenco per i tooltip del BarChart.
-     */
     private String cercaNomeCompleto(List<UserReportDTO> report, String etichetta) {
         return report.stream()
                 .filter(r -> iniziali(r.firstName(), r.lastName()).equals(etichetta))
@@ -416,12 +412,11 @@ public class ReportViewController {
         List<String> lista = new ArrayList<>();
         LocalDate dataCorrente = LocalDate.now();
 
-        // Formattatore in italiano (es. "giugno 2026")
+        // Formatto in italiano
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ITALIAN);
 
         for (int i = 0; i < quantiMesi; i++) {
             String meseFormattato = dataCorrente.minusMonths(i).format(formatter);
-            // Rendi maiuscola la prima lettera (es. "giugno 2026" -> "Giugno 2026")
             meseFormattato = meseFormattato.substring(0, 1).toUpperCase() + meseFormattato.substring(1);
             lista.add(meseFormattato);
         }

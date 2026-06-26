@@ -11,6 +11,9 @@ import javafx.beans.property.StringProperty;
 public final class AuthSession {
     private static final AuthSession INSTANCE = new AuthSession();
 
+    // --- Servizi aggiunti per le notifiche ---
+    private NotificationService notificationService;
+
     // --- token grezzi ---
     private String accessToken;
     private String refreshToken;
@@ -45,6 +48,8 @@ public final class AuthSession {
 
         // Estraiamo i dati dall'ID Token una volta sola qui
         estraiDatiDaIdToken(id);
+
+        inizializzaFlussoNotifiche();
 
         this.authenticated.set(true);
     }
@@ -118,6 +123,30 @@ public final class AuthSession {
     public StringProperty  displayNameProperty()   { return displayName;   }
     public StringProperty  displayRoleProperty() { return displayRole; }
 
+    private void inizializzaFlussoNotifiche() {
+        try {
+            // 1. Passa la URL del tuo backend (es. http://localhost:8080)
+            ApiClient apiClient = new ApiClient("http://localhost:8080");
+            ObjectMapper mapper = new ObjectMapper();
+
+            NotificationApiService apiService = new NotificationApiService(apiClient);
+            this.notificationService = new NotificationService(apiService, mapper);
+
+            // 2. Avviamo l'ascolto usando l'UUID e il token già presenti in questa classe
+            // NOTA: il tuo ApiClient inserisce già l'IdToken in automatico nelle richieste!
+            this.notificationService.startNotificationListener(this.customUuid, this.idToken);
+
+            System.out.println("AuthSession: Flusso notifiche avviato per l'utente " + this.email);
+        } catch (Exception e) {
+            System.err.println("AuthSession: Impossibile avviare il servizio notifiche.");
+            e.printStackTrace();
+        }
+    }
+
+    public NotificationService getNotificationService() {
+        return notificationService;
+    }
+
     // --- logout locale ---
     public void clear() {
         accessToken = refreshToken = idToken = null;
@@ -128,5 +157,6 @@ public final class AuthSession {
         authenticated.set(false);
         displayName.set("");
         displayRole.set("");
+        notificationService=null;
     }
 }

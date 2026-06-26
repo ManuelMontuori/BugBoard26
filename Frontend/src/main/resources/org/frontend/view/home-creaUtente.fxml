@@ -4,85 +4,100 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="24.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.CreateUserViewController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="24.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.CreateUserViewController">
 
     <Label styleClass="title-dashboard" text="Gestione Utenti" />
 
-    <!-- Card info -->
-    <VBox spacing="8.0" styleClass="card">
-        <Label styleClass="card-title" text="Crea nuovo utente" />
-        <Label styleClass="label-muted" text="L'utente riceverà una email con una password temporanea che dovrà essere cambiata al primo accesso. " wrapText="true" />
-    </VBox>
+    <HBox spacing="24.0" VBox.vgrow="ALWAYS" maxWidth="1.7976931348623157E308">
 
+        <VBox spacing="16.0" HBox.hgrow="ALWAYS" maxWidth="1.7976931348623157E308">
+            <VBox spacing="8.0" styleClass="card">
+                <Label styleClass="card-title" text="Team di Sviluppo" />
+                <Label styleClass="label-muted" text="Abilita o disabilita gli accessi dei membri del team in tempo reale." />
+            </VBox>
 
-    <!-- Card form -->
-    <VBox spacing="20.0" styleClass="card" VBox.vgrow="ALWAYS">
-
-
-        <fx:define>
-            <ToggleGroup fx:id="roleGroup" />
-        </fx:define>
-
-        <VBox spacing="6.0">
-            <Label styleClass="form-label" text="Email *" />
-            <TextField fx:id="fieldEmail" maxWidth="1.7976931348623157E308" promptText="es. ciro.fozzanapoli1926@azienda.it" styleClass="text-field" />
-            <Label fx:id="errEmail" managed="false" styleClass="form-error-label" text="" visible="false" />
+            <TableView fx:id="tblUsers" VBox.vgrow="ALWAYS" maxHeight="1.7976931348623157E308">
+                <placeholder>
+                    <Label styleClass="label-muted" text="Nessun utente trovato nel team." />
+                </placeholder>
+                <columns>
+                    <TableColumn fx:id="colNome" prefWidth="100" text="Nome" />
+                    <TableColumn fx:id="colCognome" prefWidth="120" text="Cognome" />
+                    <TableColumn fx:id="colEmail" prefWidth="220" text="Email" />
+                    <TableColumn fx:id="colRuolo" prefWidth="100" text="Ruolo" />
+                    <TableColumn fx:id="colStato" prefWidth="90" text="Attivo" style="-fx-alignment: CENTER;" />
+                </columns>
+            </TableView>
         </VBox>
-      <VBox spacing="6.0">
-         <children>
-            <Label styleClass="form-label" text="Nome *" />
-            <TextField fx:id="fieldNome" maxWidth="1.7976931348623157E308" promptText="es. Ciro" styleClass="text-field" />
-            <Label fx:id="errNome" managed="false" styleClass="form-error-label" text="" visible="false" />
-         </children>
-      </VBox>
-      <VBox spacing="6.0">
-         <children>
-            <Label styleClass="form-label" text="Cognome *" />
-            <TextField fx:id="fieldCognome" maxWidth="1.7976931348623157E308" promptText="es. Esposito" styleClass="text-field" />
-            <Label fx:id="errCognome" managed="false" styleClass="form-error-label" text="" visible="false" />
-         </children>
-      </VBox>
 
-        <VBox spacing="10.0">
-            <Label styleClass="form-label" text="Ruolo *" />
-            <HBox spacing="8.0">
-            <children>
-               <ToggleButton fx:id="btnUser" mnemonicParsing="false" text="USER">
-                  <styleClass>
-                     <String fx:value="toggle-badge" />
-                     <String fx:value="toggle-user" />
-                  </styleClass>
-                  <toggleGroup>
-                     <ToggleGroup fx:id="roleGroup" />
-                  </toggleGroup>
-               </ToggleButton>
-               <ToggleButton fx:id="btnAdmin" mnemonicParsing="false" text="ADMIN" toggleGroup="$roleGroup">
-                  <styleClass>
-                     <String fx:value="toggle-badge" />
-                     <String fx:value="toggle-admin" />
-                  </styleClass>
-               </ToggleButton>
-            </children></HBox>
-            <Label fx:id="errRole" managed="false" styleClass="form-error-label" text="" visible="false" />
+        <VBox spacing="16.0" prefWidth="380.0" minWidth="380.0">
+            <VBox spacing="8.0" styleClass="card">
+                <Label styleClass="card-title" text="Crea nuovo utente" />
+                <Label styleClass="label-muted" text="L'utente riceverà una email con credenziali temporanee." wrapText="true" />
+            </VBox>
+
+            <VBox spacing="20.0" styleClass="card" VBox.vgrow="ALWAYS">
+                <fx:define>
+                    <ToggleGroup fx:id="roleGroup" />
+                </fx:define>
+
+                <VBox spacing="6.0">
+                    <Label styleClass="form-label" text="Email *" />
+                    <TextField fx:id="fieldEmail" promptText="es. ciro.fozzanapoli1926@azienda.it" styleClass="text-field" />
+                    <Label fx:id="errEmail" managed="false" styleClass="form-error-label" visible="false" />
+                </VBox>
+
+                <VBox spacing="6.0">
+                    <Label styleClass="form-label" text="Nome *" />
+                    <TextField fx:id="fieldNome" promptText="es. Ciro" styleClass="text-field" />
+                    <Label fx:id="errNome" managed="false" styleClass="form-error-label" visible="false" />
+                </VBox>
+
+                <VBox spacing="6.0">
+                    <Label styleClass="form-label" text="Cognome *" />
+                    <TextField fx:id="fieldCognome" promptText="es. Esposito" styleClass="text-field" />
+                    <Label fx:id="errCognome" managed="false" styleClass="form-error-label" visible="false" />
+                </VBox>
+
+                <VBox spacing="10.0">
+                    <Label styleClass="form-label" text="Ruolo *" />
+                    <HBox spacing="8.0">
+                        <ToggleButton fx:id="btnUser" mnemonicParsing="false" text="USER" toggleGroup="$roleGroup">
+                            <styleClass>
+                                <String fx:value="toggle-badge" />
+                                <String fx:value="toggle-user" />
+                            </styleClass>
+                        </ToggleButton>
+                        <ToggleButton fx:id="btnAdmin" mnemonicParsing="false" text="ADMIN" toggleGroup="$roleGroup">
+                            <styleClass>
+                                <String fx:value="toggle-badge" />
+                                <String fx:value="toggle-admin" />
+                            </styleClass>
+                        </ToggleButton>
+                    </HBox>
+                    <Label fx:id="errRole" managed="false" styleClass="form-error-label" visible="false" />
+                </VBox>
+
+                <Label styleClass="label-muted" text="L'Admin può gestire issue, utenti, assegnare task e vedere i report metrici." wrapText="true" style="-fx-font-size: 11px;" />
+
+                <Separator />
+
+                <HBox alignment="CENTER_RIGHT" spacing="12.0">
+                    <Button onAction="#onAnnullaClicked" styleClass="btn-secondary" text="Annulla" />
+                    <Button onAction="#onCreaClicked" styleClass="btn-primary" text="Crea Utente" />
+                </HBox>
+            </VBox>
+
+            <Label fx:id="lblEsito" managed="false" styleClass="label-success" visible="false" wrapText="true" />
         </VBox>
-      <Label text="L'utente Admin ha accesso completo alla gestione delle issue e degli utenti. Può visualizzare report mensili con le metriche del team, assegnare una issue ad un utente e può creare altri utenti a sua volta." wrapText="true" />
 
-        <Separator />
-
-        <HBox alignment="CENTER_RIGHT" spacing="12.0">
-            <Button onAction="#onAnnullaClicked" styleClass="btn-secondary" text="Annulla" />
-            <Button onAction="#onCreaClicked" styleClass="btn-primary" text="Crea Utente" />
-        </HBox>
-
-    </VBox>
-
-    <Label fx:id="lblEsito" managed="false" styleClass="label-success" visible="false" wrapText="true" />
-
-
+    </HBox>
 </VBox>

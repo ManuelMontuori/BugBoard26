@@ -66,7 +66,6 @@ public class CognitoUserService {
         try {
             // 3. Eseguiamo la chiamata ad AWS
             AdminCreateUserResponse response = cognitoClient.adminCreateUser(request);
-            System.out.println("Utente creato con successo su Cognito. Sub: " + response.user().username());
 
         } catch (Exception e) {
             // Gestisci le eccezioni (es. UsernameExistsException se l'email esiste già)

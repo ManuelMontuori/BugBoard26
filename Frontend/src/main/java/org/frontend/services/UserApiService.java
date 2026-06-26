@@ -85,4 +85,42 @@ public class UserApiService {
 
         return response.body();
     }
+
+    public void enable(String uuid) throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/users/enable/" + uuid) // Assicurati che il prefisso rispetti il tuo backend (es. /api/users o solo /api)
+                .method("PATCH", HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        // 🚨 LOG DI DEBUG IMPERATIVO
+        System.out.println("--- DEBUG PATCH ENABLE ---");
+        System.out.println("Status: " + response.statusCode());
+        System.out.println("--------------------------");
+
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException("Errore API Abilita: Status " + response.statusCode() + " - " + response.body());
+        }
+    }
+
+    public void disable(String uuid) throws Exception {
+        HttpRequest request = apiClient
+                .request("/api/users/disable/" + uuid)
+                .method("PATCH", HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<String> response = apiClient.client()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        // 🚨 LOG DI DEBUG IMPERATIVO
+        System.out.println("--- DEBUG PATCH DISABLE ---");
+        System.out.println("Status: " + response.statusCode());
+        System.out.println("---------------------------");
+
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException("Errore API Disabilita: Status " + response.statusCode() + " - " + response.body());
+        }
+    }
 }

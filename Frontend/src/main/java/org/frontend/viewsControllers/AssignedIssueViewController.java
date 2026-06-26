@@ -69,22 +69,45 @@ public class AssignedIssueViewController {
     }
 
     private void aggiornaDettagli(Issue issue) {
-        lblTitolo.setText(issue.getTitle());
-        lblDescrizione.setText(issue.getDescription());
+        // 1. Controllo di sicurezza fondamentale se l'issue passata è nulla
+        if (issue == null) {
+            dettagliPane.setVisible(false);
+            dettagliPane.setManaged(false);
+            return;
+        }
 
-        aggiornaLabelBadge(lblTipo,      issue.getType(),
-                "badge-" + issue.getType().toLowerCase().replace("_", "-"));
+        lblTitolo.setText(issue.getTitle() != null ? issue.getTitle() : "Nessun Titolo");
+        lblDescrizione.setText(issue.getDescription() != null ? issue.getDescription() : "Nessuna Descrizione");
 
-        aggiornaLabelBadge(lblPriorita,  issue.getPriority(),
-                "badge-" + issue.getPriority().toLowerCase());
+        // 2. Controllo di sicurezza sul Tipo (evita il crash al toLowerCase)
+        String tipo = issue.getType();
+        if (tipo != null) {
+            aggiornaLabelBadge(lblTipo, tipo, "badge-" + tipo.toLowerCase().replace("_", "-"));
+        } else {
+            aggiornaLabelBadge(lblTipo, "UNKNOWN", "badge-unknown");
+        }
 
-        String cssStato = switch (issue.getStatus()) {
-            case "TODO"        -> "badge-todo";
-            case "IN_PROGRESS" -> "badge-in-progress";
-            case "DONE"        -> "badge-resolved";
-            default            -> "";
-        };
-        aggiornaLabelBadge(lblStato, issue.getStatus(), cssStato);
+        // 3. Controllo di sicurezza sulla Priorità (evita il crash al toLowerCase)
+        String priorita = issue.getPriority();
+        if (priorita != null) {
+            aggiornaLabelBadge(lblPriorita, priorita, "badge-" + priorita.toLowerCase());
+        } else {
+            aggiornaLabelBadge(lblPriorita, "UNKNOWN", "badge-unknown");
+        }
+
+        // 4. Controllo di sicurezza sullo Stato
+        String stato = issue.getStatus();
+        if (stato != null) {
+            String cssStato = switch (stato) {
+                case "TODO"        -> "badge-todo";
+                case "IN_PROGRESS" -> "badge-in-progress";
+                case "DONE"        -> "badge-resolved";
+                default            -> "";
+            };
+            aggiornaLabelBadge(lblStato, stato, cssStato);
+        } else {
+            aggiornaLabelBadge(lblStato, "UNKNOWN", "");
+        }
 
         dettagliPane.setVisible(true);
         dettagliPane.setManaged(true);

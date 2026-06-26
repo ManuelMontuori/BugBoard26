@@ -21,8 +21,8 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public void createNotification(Issue issue, User user) {
-        notificationWriteService.createNotification(issue, user);
+    public NotificationDTO createNotification(Issue issue, User user) {
+        return notificationWriteService.createNotification(issue, user);
     }
 
     @Override

@@ -1,16 +1,22 @@
 package org.frontend.viewsControllers;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.binding.IntegerBinding;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.frontend.HelloApplication;
+import org.frontend.models.Notification;
 import org.frontend.services.Auth.CallbackServer;
 import org.frontend.services.Auth.CognitoAuthService;
 import org.frontend.services.AuthSession;
@@ -31,6 +37,7 @@ public class DashboardController {
     private BorderPane mainBorderPane;
     @FXML private VBox adminSection;
     @FXML private Button btnLogout;
+    @FXML private Label lblBadge;
 
     @FXML
     public void initialize() {
@@ -41,6 +48,25 @@ public class DashboardController {
             adminSection.setVisible(true);
             adminSection.setManaged(true);
         }
+
+        if(AuthSession.getInstance().getNotificationService()!=null){
+            ObservableList<Notification> listaNotifiche = AuthSession.getInstance().getNotificationService().getNotifications();
+            IntegerBinding notificheNonLetteContatore = Bindings.createIntegerBinding(
+                    () -> (int) listaNotifiche.stream().filter(n -> !n.isRead()).count(),
+                    listaNotifiche
+            );
+
+            // 2. Sincronizziamo il testo del badge con il contatore
+            lblBadge.textProperty().bind(notificheNonLetteContatore.asString());
+
+            // 3. Mostriamo il badge SOLO se il contatore è maggiore di 0
+            BooleanBinding haNotificheNonLette = notificheNonLetteContatore.greaterThan(0);
+            System.out.println("NUMERO NOT NON LETTE: " + notificheNonLetteContatore);
+            lblBadge.visibleProperty().bind(haNotificheNonLette);
+            lblBadge.managedProperty().bind(haNotificheNonLette);
+        }
+
+
         loadSubPage("/org/frontend/view/home-dashboard.fxml");
     }
 
@@ -71,6 +97,11 @@ public class DashboardController {
     @FXML
     public void handleButtonReport(ActionEvent event) {
         loadSubPage("/org/frontend/view/home-report.fxml");
+    }
+
+    @FXML
+    public void handleButtonNotification(ActionEvent event) {
+        loadSubPage("/org/frontend/view/home-notification.fxml");
     }
 
     @FXML
