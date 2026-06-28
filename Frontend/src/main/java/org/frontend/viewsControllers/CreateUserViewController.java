@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.frontend.controllers.UserController;
 import org.frontend.models.User;
+import org.frontend.util.DialogUtils;
 import org.frontend.util.FormUtil;
 import org.frontend.util.TableUtil;
 
@@ -71,12 +72,13 @@ public class CreateUserViewController {
 
         try {
             userController.createUser(email, role, firstName, lastName);
-            FormUtil.showFeedback(lblEsito, "Utente " + email + " creato con successo.", true);
-
+            String message = "Utente " + firstName + " " + lastName + " (" + email + ") creato con successo.";
+            DialogUtils.mostraInformazione("Successo", message);
             resetForm();
             userController.loadWorkload();
         } catch (Exception e) {
-            FormUtil.showFeedback(lblEsito, "Errore durante la creazione. Riprova.", false);
+            String message = "Errore durante la creazione dell'utente: " + firstName + " " + lastName + " (" + email + ").";
+            DialogUtils.mostraErrore("Errore", message, "Utente non creato.");
         }
     }
 

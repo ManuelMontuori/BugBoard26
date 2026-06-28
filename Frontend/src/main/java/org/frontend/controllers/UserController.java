@@ -28,7 +28,7 @@ public class UserController {
         users.setAll(service.findAll());
     }
 
-    public void createUser(String email, String role, String firstName, String lastName) {
+    public void createUser(String email, String role, String firstName, String lastName) throws Exception {
         User user = new User();
         user.setEmail(email);
         user.setRole(role);

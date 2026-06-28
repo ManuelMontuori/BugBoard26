@@ -69,15 +69,6 @@ public class FormUtil {
         }
     }
 
-    // 3. Mostra Esito con Classi CSS dinamiche
-    public static void showFeedback(Label lbl, String msg, boolean success) {
-        lbl.setText(msg);
-        lbl.getStyleClass().removeAll("label-success", "label-danger");
-        lbl.getStyleClass().add(success ? "label-success" : "label-danger");
-        lbl.setVisible(true);
-        lbl.setManaged(true);
-    }
-
     public static void hideFeedback(Label lbl) {
         lbl.setVisible(false);
         lbl.setManaged(false);

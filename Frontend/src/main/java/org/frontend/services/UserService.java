@@ -40,27 +40,24 @@ public class UserService {
         }
     }
 
-    public User createUser(User user) {
-        try {
-            String json = JsonUtil.mapper.writeValueAsString(user);
+    public User createUser(User user) throws Exception {
 
-            System.out.println("--- DEBUG POST USER PAYLOAD ---");
-            System.out.println(json);
-            System.out.println("-------------------------------");
+        String json = JsonUtil.mapper.writeValueAsString(user);
 
-            String jsonResponse = api.create(json);
+        System.out.println("--- DEBUG POST USER PAYLOAD ---");
+        System.out.println(json);
+        System.out.println("-------------------------------");
 
-            System.out.println("--- DEBUG POST USER RESPONSE ---");
-            System.out.println(jsonResponse);
-            System.out.println("--------------------------------");
+        String jsonResponse = api.create(json);
 
-            UserDTO savedDto = JsonUtil.mapper.readValue(jsonResponse, UserDTO.class);
-            return new User(savedDto);
+        System.out.println("--- DEBUG POST USER RESPONSE ---");
+        System.out.println(jsonResponse);
+        System.out.println("--------------------------------");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        UserDTO savedDto = JsonUtil.mapper.readValue(jsonResponse, UserDTO.class);
+        return new User(savedDto);
+
+
     }
 
     public List<UserWorkload> findByWorkload() {
