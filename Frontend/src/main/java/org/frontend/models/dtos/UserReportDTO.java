@@ -10,5 +10,5 @@ public record UserReportDTO(
         Integer totResolvedIssue,
         Integer totWorkloadIssue,
         Double averageResolutionTime,
-        Integer totHightPriorityIssue
+        Integer totHighPriorityIssue
 ){}

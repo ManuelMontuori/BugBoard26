@@ -4,11 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.frontend.controllers.UserController;
-import org.frontend.models.User; // Sostituisci con il tuo modello Utente effettivo se diverso
+import org.frontend.models.User;
+import org.frontend.util.FormUtil;
+import org.frontend.util.TableUtil;
 
 public class CreateUserViewController {
 
-    // Componenti Tabella (Colonna Sinistra)
     @FXML private TableView<User> tblUsers;
     @FXML private TableColumn<User, String> colNome;
     @FXML private TableColumn<User, String> colCognome;
@@ -16,168 +17,104 @@ public class CreateUserViewController {
     @FXML private TableColumn<User, String> colRuolo;
     @FXML private TableColumn<User, Boolean> colStato;
 
-    // Componenti Form (Colonna Destra)
-    @FXML private TextField    fieldEmail;
-    @FXML private TextField    fieldNome;
-    @FXML private TextField    fieldCognome;
-    @FXML private ToggleButton btnUser;
-    @FXML private ToggleButton btnAdmin;
-    @FXML private ToggleGroup  roleGroup;
-    @FXML private Label        errEmail;
-    @FXML private Label        errRole;
-    @FXML private Label        errNome;
-    @FXML private Label        errCognome;
-    @FXML private Label        lblEsito;
+    @FXML private TextField fieldEmail;
+    @FXML private TextField fieldNome;
+    @FXML private TextField fieldCognome;
+    @FXML private ToggleGroup roleGroup;
 
-    private final UserController controller = new UserController();
+    @FXML private Label errEmail;
+    @FXML private Label errRole;
+    @FXML private Label errNome;
+    @FXML private Label errCognome;
+    @FXML private Label lblEsito;
+
+    private UserController userController;
+
+    public void initDependencies(UserController userController) {
+        this.userController = userController;
+
+        tblUsers.setItems(userController.getUsers());
+        caricaTuttiGliUtenti();
+    }
 
     @FXML
     public void initialize() {
-        // Form Inizializzazione
-        btnUser.setUserData("USER");
-        btnAdmin.setUserData("ADMIN");
-
-        // Configurazione Colonne Tabella
-        // Nota: Assicurati che i nomi corrispondano alle proprietà (es. getFullName(), getEmail(), getRole())
+        // Configurazione delle Colonne
         colNome.setCellValueFactory(data -> data.getValue().firstNameProperty());
         colCognome.setCellValueFactory(data -> data.getValue().lastNameProperty());
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colRuolo.setCellValueFactory(new PropertyValueFactory<>("role"));
 
-        // Mappatura booleana dello stato attivo
+        // Costruzione cella delegata a TableUtils
         colStato.setCellValueFactory(data -> data.getValue().activeProperty());
-        colStato.setCellFactory(col -> creaSwitchStatoCell());
-
-        // Caricamento dati e binding della TableView
-        controller.loadAllUsers(); // Carica gli utenti dal server
-        tblUsers.setItems(controller.getUsers());
-    }
-
-    /**
-     * Genera una cella contenente una CheckBox interattiva che agisce da interruttore
-     * per abilitare o disabilitare l'utente chiamando le API /enable e /disable.
-     */
-    private TableCell<User, Boolean> creaSwitchStatoCell() {
-        return new TableCell<>() {
-            private final CheckBox cb = new CheckBox();
-
-            {
-                cb.setOnAction(e -> {
-                    User user = getTableRow().getItem();
-                    if (user != null) {
-                        boolean selezionato = cb.isSelected();
-                        try {
-                            if (selezionato) {
-                                controller.enableUser(user.getUuid());
-                            } else {
-                                controller.disableUser(user.getUuid());
-                            }
-                        } catch (Exception ex) {
-                            // Se la chiamata API fallisce, rimettiamo lo switch allo stato precedente
-                            cb.setSelected(!selezionato);
-                            System.err.println("Impossibile aggiornare lo stato dell'utente.");
-                            ex.printStackTrace();
-                        }
-                    }
-                });
+        colStato.setCellFactory(col -> TableUtil.createToggleSwitchCell((user, isSelected) -> {
+            if (userController == null) return;
+            if (isSelected) {
+                userController.enableUser(user.getUuid());
+            } else {
+                userController.disableUser(user.getUuid());
             }
-
-            @Override
-            protected void updateItem(Boolean item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setGraphic(null);
-                } else {
-                    cb.setSelected(item);
-                    setGraphic(cb);
-                }
-            }
-        };
+        }));
     }
 
     @FXML
     private void onCreaClicked() {
-        if (!validate()) return;
+        if (userController == null) return;
+
+        FormUtil.hideFeedback(lblEsito);
+        if (!validateForm()) return;
 
         String email = fieldEmail.getText().trim();
-        String role  = (String) roleGroup.getSelectedToggle().getUserData();
+        String role = FormUtil.getToggleUserData(roleGroup);
         String firstName = fieldNome.getText().trim();
         String lastName = fieldCognome.getText().trim();
 
         try {
-            controller.createUser(email, role, firstName, lastName);
-            mostraEsito("Utente " + email + " creato con successo.", true);
+            userController.createUser(email, role, firstName, lastName);
+            FormUtil.showFeedback(lblEsito, "Utente " + email + " creato con successo.", true);
+
             resetForm();
-            controller.loadWorkload(); // Ricarica la tabella a sinistra per mostrare il nuovo inserito
+            userController.loadWorkload();
         } catch (Exception e) {
-            mostraEsito("Errore durante la creazione. Riprova.", false);
+            FormUtil.showFeedback(lblEsito, "Errore durante la creazione. Riprova.", false);
         }
     }
 
     @FXML
     private void onAnnullaClicked() {
-        // MainController.getInstance().loadView("home-dashboard.fxml");
+        // Gestione dell'azione di annullamento
+        resetForm();
     }
 
-    private boolean validate() {
-        boolean ok = true;
+    private boolean validateForm() {
+        boolean isEmailValid = FormUtil.checkEmail(fieldEmail, errEmail);
+        boolean isNomeValid = FormUtil.checkNotBlank(fieldNome, errNome, "Inserisci un nome valido.");
+        boolean isCognomeValid = FormUtil.checkNotBlank(fieldCognome, errCognome, "Inserisci un cognome valido.");
+        boolean isRoleValid = FormUtil.checkToggleSelected(roleGroup, errRole, "Seleziona un ruolo.");
 
-        String email = fieldEmail.getText().trim();
-        if (email.isBlank()) {
-            showError(errEmail, "L'email è obbligatoria.");
-            ok = false;
-        } else if (!email.matches("^[\\w._%+\\-]+@[\\w.\\-]+\\.[a-zA-Z]{2,}$")) {
-            showError(errEmail, "Inserisci un indirizzo email valido.");
-            ok = false;
-        } else {
-            hideError(errEmail);
-        }
-
-        String firstName = fieldNome.getText().trim();
-        String lastName =  fieldCognome.getText().trim();
-        if(firstName.isEmpty()) {
-            showError(errNome, "Inserisci un nome valido.");
-            ok = false;
-        } else hideError(errNome);
-
-        if(lastName.isEmpty()) {
-            showError(errCognome, "Inserisci un cognome valido.");
-            ok = false;
-        } else hideError(errCognome);
-
-        if (roleGroup.getSelectedToggle() == null) {
-            showError(errRole, "Seleziona un ruolo.");
-            ok = false;
-        } else {
-            hideError(errRole);
-        }
-
-        return ok;
+        return isEmailValid && isNomeValid && isCognomeValid && isRoleValid;
     }
 
     private void resetForm() {
         fieldEmail.clear();
         fieldNome.clear();
         fieldCognome.clear();
-        roleGroup.selectToggle(null);
+        FormUtil.clearToggleGroup(roleGroup);
+
+        FormUtil.hideError(errEmail);
+        FormUtil.hideError(errNome);
+        FormUtil.hideError(errCognome);
+        FormUtil.hideError(errRole);
     }
 
-    private void mostraEsito(String msg, boolean successo) {
-        lblEsito.setText(msg);
-        lblEsito.getStyleClass().removeAll("label-success", "label-danger");
-        lblEsito.getStyleClass().add(successo ? "label-success" : "label-danger");
-        lblEsito.setVisible(true);
-        lblEsito.setManaged(true);
-    }
-
-    private void showError(Label lbl, String msg) {
-        lbl.setText(msg);
-        lbl.setVisible(true);
-        lbl.setManaged(true);
-    }
-
-    private void hideError(Label lbl) {
-        lbl.setVisible(false);
-        lbl.setManaged(false);
+    private void caricaTuttiGliUtenti() {
+        if (userController != null) {
+            try {
+                userController.loadAllUsers();
+            } catch (Exception e) {
+                System.err.println("Errore durante il caricamento degli utenti.");
+                e.printStackTrace();
+            }
+        }
     }
 }

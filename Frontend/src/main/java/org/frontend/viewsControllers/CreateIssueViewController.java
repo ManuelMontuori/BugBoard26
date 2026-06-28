@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.frontend.controllers.IssueController;
 import org.frontend.util.DialogUtils;
+import org.frontend.util.FormUtil;
 
 public class CreateIssueViewController {
 
@@ -16,13 +17,19 @@ public class CreateIssueViewController {
     @FXML private Label errType;
     @FXML private Label errPriority;
     @FXML private Button btnCreaIssue;
+
     @FXML private ToggleButton btnBug, btnFeature, btnDocumentation, btnQuestion;
     @FXML private ToggleButton btnHigh, btnMedium, btnLow;
 
-    private final IssueController controller = new IssueController();
+    private IssueController issueController;
+
+    public void initDependencies(IssueController issueController) {
+        this.issueController = issueController;
+    }
 
     @FXML
     private void initialize() {
+        // Assegnazione dati. (Vedi Tip sotto per rimuovere anche questo!)
         btnBug.setUserData("BUG");
         btnFeature.setUserData("FEATURE");
         btnDocumentation.setUserData("DOCUMENTATION");
@@ -34,27 +41,20 @@ public class CreateIssueViewController {
 
     @FXML
     private void onCreaClicked() {
-        if (!validate()) return;
+        if (!isFormValid()) return;
 
-        String title       = fieldTitle.getText().trim();
+        // Estrazione dati delegata alla utility
+        String title = fieldTitle.getText().trim();
         String description = fieldDescription.getText().trim();
-        // Se c'è un toggle selezionato prendi i suoi dati, altrimenti imposta la stringa a null
-        String type = (typeGroup.getSelectedToggle() != null)
-                ? (String) typeGroup.getSelectedToggle().getUserData()
-                : null;
+        String type = FormUtil.getToggleUserData(typeGroup);
+        String priority = FormUtil.getToggleUserData(priorityGroup);
 
-        String priority = (priorityGroup.getSelectedToggle() != null)
-                ? (String) priorityGroup.getSelectedToggle().getUserData()
-                : null;
-
-        // 1. DISABILITA i controlli per evitare click compulsivi dell'utente durante la chiamata di rete
-        // (Presumo tu abbia un'annotazione @FXML per il bottone, es: btnCrea)
         btnCreaIssue.setDisable(true);
+
         try {
-            // 2. Invia i dati al backend
-            controller.createIssue(title, description, type, priority);
-            DialogUtils.mostraInformazione("Operazione Completata",
-                    "L'Issue è stata creata con successo!");
+            issueController.createIssue(title, description, type, priority);
+
+            DialogUtils.mostraInformazione("Operazione Completata", "L'Issue è stata creata con successo!");
             svuotaForm();
         } catch (Exception e) {
             DialogUtils.mostraErrore("Errore di Rete",
@@ -71,49 +71,19 @@ public class CreateIssueViewController {
         // MainController.getInstance().loadView("home-dashboard.fxml");
     }
 
-    private boolean validate() {
-        boolean ok = true;
+    private boolean isFormValid() {
+        // La validazione ora è coesa e pulita
+        boolean isTitleValid = FormUtil.checkNotBlank(fieldTitle, errTitle, "Il titolo è obbligatorio.");
+        boolean isDescValid = FormUtil.checkNotBlank(fieldDescription, errDescription, "La descrizione è obbligatoria.");
 
-        if (fieldTitle.getText().isBlank()) {
-            showError(errTitle, "Il titolo è obbligatorio.");
-            ok = false;
-        } else {
-            hideError(errTitle);
-        }
-
-        if (fieldDescription.getText().isBlank()) {
-            showError(errDescription, "La descrizione è obbligatoria.");
-            ok = false;
-        } else {
-            hideError(errDescription);
-        }
-
-        return ok;
-    }
-
-    private void showError(Label lbl, String msg) {
-        lbl.setText(msg);
-        lbl.setVisible(true);
-        lbl.setManaged(true);
-    }
-
-    private void hideError(Label lbl) {
-        lbl.setVisible(false);
-        lbl.setManaged(false);
+        return isTitleValid && isDescValid;
     }
 
     private void svuotaForm() {
         fieldTitle.clear();
         fieldDescription.clear();
 
-        if (typeGroup.getSelectedToggle() != null) {
-            typeGroup.getSelectedToggle().setSelected(false);
-        }
-        if (priorityGroup.getSelectedToggle() != null) {
-            priorityGroup.getSelectedToggle().setSelected(false);
-        }
-
-        // Il bottone torna attivo e pronto all'uso!
-        btnCreaIssue.setDisable(false);
+        FormUtil.clearToggleGroup(typeGroup);
+        FormUtil.clearToggleGroup(priorityGroup);
     }
 }

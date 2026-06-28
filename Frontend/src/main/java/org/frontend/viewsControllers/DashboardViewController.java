@@ -14,19 +14,24 @@ public class DashboardViewController {
     @FXML private TableColumn<Issue, String> colPriority;
     @FXML private TableColumn<Issue, String> colState;
 
-    // 1. Creiamo una NUOVA istanza del controller dedicata solo a questa View
-    private final IssueController controller = new IssueController();
+    // DIP: Rimosso il 'new' e reso configurabile dall'esterno
+    private IssueController issueController;
+
+    // ════════════════════════════════════════════════════════════════════════
+    // METODO DI INIEZIONE DELLE DIPENDENZE (DI)
+    // ════════════════════════════════════════════════════════════════════════
+    public void initDependencies(IssueController issueController) {
+        this.issueController = issueController;
+
+        // Colleghiamo la tabella alla lista del controller logico e scarichiamo i dati
+        tblIssueRecenti.setItems(issueController.getIssues());
+        caricaDatiDashboard();
+    }
 
     @FXML
     public void initialize() {
-        // 2. Impostiamo il comportamento visivo delle colonne
+        // Prepariamo solo lo scheletro visivo della tabella
         configuraColonneTabella();
-
-        // 3. LA MAGIA DEL BINDING: Colleghiamo la tabella alla lista del controller
-        tblIssueRecenti.setItems(controller.getIssues());
-
-        // 4. Diamo l'ordine di scaricare i dati
-        caricaDatiDashboard();
     }
 
     /**
@@ -43,17 +48,15 @@ public class DashboardViewController {
      * Recupera l'UUID dell'utente e ordina al controller di caricare i dati dal server.
      */
     private void caricaDatiDashboard() {
+        if (issueController == null) return; // Sicurezza
+
         // Recuperiamo l'ID dell'utente loggato
         String userUuid = AuthSession.getInstance().getCustomUuid();
 
         if (userUuid != null && !userUuid.isBlank()) {
-            // Chiamiamo il nuovo metodo specifico per le issue dell'utente
-            controller.loadMyIssues(userUuid);
+            issueController.loadMyIssues(userUuid);
         } else {
             System.err.println("Attenzione: UUID utente mancante. Impossibile caricare la dashboard.");
-
-            // NOTA: Se invece questa schermata dovesse mostrare *tutte* le issue del sistema a prescindere dall'utente,
-            // dovresti usare: controller.loadAllIssues();
         }
     }
 }
