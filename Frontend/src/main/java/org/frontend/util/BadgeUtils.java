@@ -7,6 +7,12 @@ import org.frontend.models.Issue;
 public class BadgeUtils {
 
     public static void applyBadgeStyle(Label label, String value) {
+        // --- IL PEZZO MANCANTE: Assicuriamoci che ci sia SEMPRE la forma base ---
+        if (!label.getStyleClass().contains("badge")) {
+            label.getStyleClass().add("badge");
+        }
+        // ------------------------------------------------------------------------
+
         if (value == null || value.isBlank()) {
             label.setText("UNKNOWN");
             label.getStyleClass().removeIf(c -> c.startsWith("badge-"));
@@ -14,17 +20,17 @@ public class BadgeUtils {
             return;
         }
 
-        // 1. RIPRISTINATO: Assegna il testo!
+        // 1. Assegna il testo
         label.setText(value);
 
-        // 2. RIPRISTINATO: Rimuove solo i colori vecchi, salva la formattazione FXML
+        // 2. Rimuove solo i colori vecchi, salva la formattazione ("badge")
         label.getStyleClass().removeIf(c -> c.startsWith("badge-"));
 
-        // 3. RIPRISTINATA: La tua mappatura esatta per gli stati e i tipi
+        // 3. La tua mappatura esatta per gli stati e i tipi
         String cssClass = switch (value) {
             case "TODO"        -> "badge-todo";
             case "IN_PROGRESS" -> "badge-in-progress";
-            case "DONE"        -> "badge-resolved"; // Mantiene il tuo CSS
+            case "DONE"        -> "badge-resolved";
             default            -> "badge-" + value.toLowerCase().replace("_", "-");
         };
 
@@ -42,8 +48,13 @@ public class BadgeUtils {
                     setText(null);
                     return;
                 }
+
                 Label badge = new Label(val);
-                applyBadgeStyle(badge, val); // Riutilizziamo il metodo sopra!
+
+                // Ora quando chiamiamo applyBadgeStyle, il metodo capirà che manca
+                // la classe "badge" e la aggiungerà in automatico, oltre ai colori!
+                applyBadgeStyle(badge, val);
+
                 setGraphic(badge);
                 setText(null);
             }

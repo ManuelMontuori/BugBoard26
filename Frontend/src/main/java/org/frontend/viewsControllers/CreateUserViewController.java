@@ -22,6 +22,8 @@ public class CreateUserViewController {
     @FXML private TextField fieldNome;
     @FXML private TextField fieldCognome;
     @FXML private ToggleGroup roleGroup;
+    @FXML private ToggleButton btnUser, btnAdmin;
+
 
     @FXML private Label errEmail;
     @FXML private Label errRole;
@@ -33,6 +35,10 @@ public class CreateUserViewController {
 
     public void initDependencies(UserController userController) {
         this.userController = userController;
+
+        btnUser.setUserData("USER");
+        btnAdmin.setUserData("ADMIN");
+
 
         tblUsers.setItems(userController.getUsers());
         caricaTuttiGliUtenti();
