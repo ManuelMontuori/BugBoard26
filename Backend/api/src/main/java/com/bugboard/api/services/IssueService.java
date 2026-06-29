@@ -4,6 +4,7 @@ import com.bugboard.api.dto.CreateIssueDTO;
 import com.bugboard.api.dto.IssueDTO;
 import com.bugboard.api.models.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface IssueService {
@@ -14,7 +15,7 @@ public interface IssueService {
 
     List<IssueDTO> getIssues(IssueStatus status, IssuePriority priority, IssueType type);
 
-    IssueDTO getIssueByUuid(UUID id);
+    Optional<IssueDTO> getIssueByUuid(UUID id);
 
     List<IssueDTO> searchIssueByTitleOrDescription(String keyword);
 

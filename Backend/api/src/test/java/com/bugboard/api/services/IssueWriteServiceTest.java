@@ -56,7 +56,7 @@ public class IssueWriteServiceTest {
         Issue issue = new Issue();
         User user = new User();
 
-        when(issueRepository.findByUuid(issueId)).thenReturn(issue);
+        when(issueRepository.findByUuid(issueId)).thenReturn(Optional.of(issue));
         when(userRepository.findByUuid(userId)).thenReturn(Optional.of(user));
 
         issueWriteService.assignIssue(issueId, userId);
@@ -77,7 +77,7 @@ public class IssueWriteServiceTest {
 
         Issue issue = new Issue();
 
-        when(issueRepository.findByUuid(issueId)).thenReturn(issue);
+        when(issueRepository.findByUuid(issueId)).thenReturn(Optional.of(issue));
         when(userRepository.findByUuid(userId)).thenReturn(Optional.empty());
 
         assertThrows(IllegalArgumentException.class, () -> {

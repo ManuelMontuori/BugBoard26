@@ -17,7 +17,7 @@ public class DialogUtils {
 
     public static void mostraInformazione(String title, String message) {
         Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle(title);
             alert.setHeaderText(null);
             alert.setContentText(message);

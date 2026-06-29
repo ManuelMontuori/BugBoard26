@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -36,7 +37,7 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public IssueDTO getIssueByUuid(UUID uuid) {
+    public Optional<IssueDTO> getIssueByUuid(UUID uuid) {
         return issueReadService.getIssueByUuid(uuid);
     }
 

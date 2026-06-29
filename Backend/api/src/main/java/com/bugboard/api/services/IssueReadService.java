@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -58,8 +59,9 @@ public class IssueReadService {
                 .toList();
     }
 
-    public IssueDTO getIssueByUuid(UUID uuid) {
-        return issueMapper.mapToDTO(issueRepository.findByUuid(uuid));
+    public Optional<IssueDTO> getIssueByUuid(UUID uuid) {
+        return Optional.ofNullable(issueMapper.mapToDTO(issueRepository.findByUuid(uuid).orElseThrow(() ->
+                new RuntimeException("Issue non presente"))));
     }
 
 }

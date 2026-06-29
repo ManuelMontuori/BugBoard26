@@ -25,7 +25,6 @@
                </styleClass></Button>
             <Button fx:id="btnSegnalaIssue" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonSegnalaIssue" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Segnala Issue" />
             <Button fx:id="btnElencoIssue" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonElencoIssue" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Elenco Issues" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Le mie Issues" />
             <HBox spacing="5.0">
                <children>
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonNotification" prefHeight="26.0" prefWidth="121.0" styleClass="nav-item" text="Notifiche" />

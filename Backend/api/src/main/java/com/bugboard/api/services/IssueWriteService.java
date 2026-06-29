@@ -69,7 +69,8 @@ public class IssueWriteService {
     }
 
     public void assignIssue(UUID issueUuid, UUID userUuid) {
-        Issue issue = issueRepository.findByUuid(issueUuid);
+        Issue issue = issueRepository.findByUuid(issueUuid).orElseThrow(() ->
+                new IllegalArgumentException("Issue not found"));
         User user = userRepository.findByUuid(userUuid)
                 .orElseThrow(()->new IllegalArgumentException("User not found"));
         issue.setAssignedTo(user);
