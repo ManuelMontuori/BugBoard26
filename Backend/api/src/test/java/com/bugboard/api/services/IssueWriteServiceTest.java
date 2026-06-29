@@ -92,10 +92,10 @@ public class IssueWriteServiceTest {
         UUID issueId = UUID.randomUUID();
         UUID userId = UUID.randomUUID();
 
-        User user = new User();
+       
 
         when(issueRepository.findByUuid(issueId)).thenReturn(Optional.empty());
-        when(userRepository.findByUuid(userId)).thenReturn(Optional.of(user));
+        
 
         assertThrows(IllegalArgumentException.class, () -> {
             issueWriteService.assignIssue(issueId, userId);
@@ -103,19 +103,6 @@ public class IssueWriteServiceTest {
     }
 
     
-    @Test
-    void testAssignIssue_issueAndUserNotFound() {
-
-        UUID issueId = UUID.randomUUID();
-        UUID userId = UUID.randomUUID();
-
-        when(issueRepository.findByUuid(issueId)).thenReturn(Optional.empty());
-
-        when(userRepository.findByUuid(userId)).thenReturn(Optional.empty());
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            issueWriteService.assignIssue(issueId, userId);
-        });
-    }
+    
 
 }
