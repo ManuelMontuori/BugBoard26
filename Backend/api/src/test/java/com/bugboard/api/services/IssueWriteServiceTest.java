@@ -47,7 +47,7 @@ public class IssueWriteServiceTest {
     @InjectMocks
     IssueWriteService issueWriteService;
 
-    //caso positivo (utente esiste)
+    
     @Test
     void testAssignIssue_validUser() {
         UUID issueId = UUID.randomUUID();
@@ -69,7 +69,7 @@ public class IssueWriteServiceTest {
         verify(eventPublisher).publishEvent(any(IssueAssignedEvent.class));
     }
 
-    // utente inesistente
+    
     @Test
     void testAssignIssue_userNotFound() {
         UUID issueId = UUID.randomUUID();
@@ -78,6 +78,39 @@ public class IssueWriteServiceTest {
         Issue issue = new Issue();
 
         when(issueRepository.findByUuid(issueId)).thenReturn(Optional.of(issue));
+        when(userRepository.findByUuid(userId)).thenReturn(Optional.empty());
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            issueWriteService.assignIssue(issueId, userId);
+        });
+    }
+    
+
+    @Test
+    void testAssignIssue_issueNotFound() {
+
+        UUID issueId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+
+        User user = new User();
+
+        when(issueRepository.findByUuid(issueId)).thenReturn(Optional.empty());
+        when(userRepository.findByUuid(userId)).thenReturn(Optional.of(user));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            issueWriteService.assignIssue(issueId, userId);
+        });
+    }
+
+    
+    @Test
+    void testAssignIssue_issueAndUserNotFound() {
+
+        UUID issueId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+
+        when(issueRepository.findByUuid(issueId)).thenReturn(Optional.empty());
+
         when(userRepository.findByUuid(userId)).thenReturn(Optional.empty());
 
         assertThrows(IllegalArgumentException.class, () -> {
