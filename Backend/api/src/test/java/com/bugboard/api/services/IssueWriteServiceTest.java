@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import java.util.Optional;
 import java.util.UUID;
 
+import com.bugboard.api.exceptions.ValidationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,6 +26,7 @@ import com.bugboard.api.models.IssueStatus;
 import com.bugboard.api.models.User;
 import com.bugboard.api.repositories.IssueRepository;
 import com.bugboard.api.repositories.UserRepository;
+import org.springframework.web.client.ResourceAccessException;
 
 @ExtendWith(MockitoExtension.class)
 public class IssueWriteServiceTest {
@@ -80,7 +82,7 @@ public class IssueWriteServiceTest {
         when(issueRepository.findByUuid(issueId)).thenReturn(Optional.of(issue));
         when(userRepository.findByUuid(userId)).thenReturn(Optional.empty());
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ResourceAccessException.class, () -> {
             issueWriteService.assignIssue(issueId, userId);
         });
     }
@@ -97,7 +99,7 @@ public class IssueWriteServiceTest {
         when(issueRepository.findByUuid(issueId)).thenReturn(Optional.empty());
         
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ResourceAccessException.class, () -> {
             issueWriteService.assignIssue(issueId, userId);
         });
     }

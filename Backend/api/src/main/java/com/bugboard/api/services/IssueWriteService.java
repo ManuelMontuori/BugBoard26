@@ -4,6 +4,7 @@ import com.bugboard.api.auth.AuthService;
 import com.bugboard.api.dto.CreateIssueDTO;
 import com.bugboard.api.dto.IssueDTO;
 import com.bugboard.api.events.IssueAssignedEvent;
+import com.bugboard.api.exceptions.ValidationException;
 import com.bugboard.api.mapper.IssueMapper;
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.IssueStatus;
@@ -13,6 +14,8 @@ import com.bugboard.api.repositories.UserRepository;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -42,14 +45,14 @@ public class IssueWriteService {
 
     public IssueDTO createIssue(CreateIssueDTO dto) {
         if (dto.title() == null || dto.title().isBlank()) {
-            throw new IllegalArgumentException("Title is required");
+            throw new ValidationException("Title is required");
         }
 
         if (dto.description() == null || dto.description().isBlank()) {
-            throw new IllegalArgumentException("Description is required");
+            throw new ValidationException("Description is required");
         }
 
-        User reporter = authService.getCurrentUser().orElseThrow(() -> new IllegalArgumentException("User not authenticated"));
+        User reporter = authService.getCurrentUser().orElseThrow(() -> new ResourceAccessException("User not authenticated"));
 
         Issue issue = new Issue();
         issue = issueMapper.mapToEntity(dto, issue);
@@ -60,7 +63,7 @@ public class IssueWriteService {
         if (dto.assignedToUuid() != null) {
             User assignedTo = userRepository.findByUuid(
                     UUID.fromString(dto.assignedToUuid())).orElseThrow(
-                    () -> new IllegalArgumentException("Assigned user not found"));
+                    () -> new ResourceAccessException("Assigned user not found"));
             issue.setAssignedTo(assignedTo);
         }
         Issue saved= issueRepository.save(issue);
@@ -70,9 +73,9 @@ public class IssueWriteService {
 
     public void assignIssue(UUID issueUuid, UUID userUuid) {
         Issue issue = issueRepository.findByUuid(issueUuid).orElseThrow(() ->
-                new IllegalArgumentException("Issue not found"));
+                new ResourceAccessException("Issue not found"));
         User user = userRepository.findByUuid(userUuid)
-                .orElseThrow(()->new IllegalArgumentException("User not found"));
+                .orElseThrow(()->new ResourceAccessException("User not found"));
         issue.setAssignedTo(user);
         issue.setAssignedAt(LocalDateTime.now());
         issue.setStatus(IssueStatus.IN_PROGRESS);

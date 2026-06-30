@@ -1,6 +1,7 @@
 package com.bugboard.api.services;
 
 import com.bugboard.api.dto.IssueDTO;
+import com.bugboard.api.exceptions.ValidationException;
 import com.bugboard.api.mapper.IssueMapper;
 import com.bugboard.api.models.Issue;
 import com.bugboard.api.models.IssuePriority;
@@ -10,6 +11,7 @@ import com.bugboard.api.repositories.IssueRepository;
 import com.bugboard.api.specification.IssueSpecification;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +43,7 @@ public class IssueReadService {
 
     public List<IssueDTO> searchIssueByTitleOrDescription(String keyword) {
         if(keyword==null || keyword.isBlank()) {
-            throw new IllegalArgumentException("Keyword is required");
+            throw new ValidationException("Keyword is required");
         }
 
         List<Issue> issues = issueRepository
@@ -61,7 +63,7 @@ public class IssueReadService {
 
     public Optional<IssueDTO> getIssueByUuid(UUID uuid) {
         return Optional.ofNullable(issueMapper.mapToDTO(issueRepository.findByUuid(uuid).orElseThrow(() ->
-                new RuntimeException("Issue non presente"))));
+                new ResourceAccessException("Issue non presente"))));
     }
 
 }

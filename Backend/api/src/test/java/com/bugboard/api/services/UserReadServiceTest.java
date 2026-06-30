@@ -32,7 +32,7 @@ public class UserReadServiceTest {
     UserReportMapper userReportMapper;
 
     @InjectMocks
-    UserService userService;
+    UserReadService userService;
 
     //test per il metodo getMonthlyReport, input valido, deve restituire lista di UserReportDTO
     @Test

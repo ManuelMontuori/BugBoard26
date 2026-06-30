@@ -7,6 +7,7 @@ import com.bugboard.api.models.Notification;
 import com.bugboard.api.models.User;
 import com.bugboard.api.repositories.NotificationRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.UUID;
 
@@ -36,7 +37,7 @@ public class NotificationWriteService {
 
     public void readTrue(UUID uuid) {
         Notification notification = notificationRepository.findByUuid(uuid)
-                .orElseThrow(() -> new RuntimeException("Notification not found"));
+                .orElseThrow(() -> new ResourceAccessException("Notification not found"));
         notification.setRead(true);
 
         notificationRepository.save(notification);
@@ -44,7 +45,7 @@ public class NotificationWriteService {
     }
 
     public void readFalse(UUID uuid) {
-        Notification notification = notificationRepository.findByUuid(uuid).orElseThrow(() -> new RuntimeException("Notification not found"));
+        Notification notification = notificationRepository.findByUuid(uuid).orElseThrow(() -> new ResourceAccessException("Notification not found"));
         notification.setRead(false);
         notificationRepository.save(notification);
     }

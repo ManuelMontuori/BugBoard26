@@ -15,10 +15,4 @@ public interface UserReportProjection {
     BigDecimal getAverageIssues();
     Integer getTotHighPriorityIssues();
 
-    
-
-   
-
-    
-    
 }

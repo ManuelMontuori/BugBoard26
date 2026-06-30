@@ -5,6 +5,7 @@ import com.bugboard.api.mapper.UserMapper;
 import com.bugboard.api.models.User;
 import com.bugboard.api.repositories.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.UUID;
 
@@ -28,12 +29,12 @@ public class UserWriteService {
     }
 
     public void disableUser(UUID uuid) {
-        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
+        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new ResourceAccessException("User not found"));
         user.disable();
     }
 
     public void enableUser(UUID uuid) {
-        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalStateException("User not found"));
+        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new ResourceAccessException("User not found"));
         user.enable();
     }
 
