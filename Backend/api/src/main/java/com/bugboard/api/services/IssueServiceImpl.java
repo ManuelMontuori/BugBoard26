@@ -21,19 +21,19 @@ public class IssueServiceImpl implements IssueService {
     private final IssueReadService issueReadService;
 
     public IssueServiceImpl(IssueWriteService issueWriteService,
-                            IssueReadService issueReadService) {
+            IssueReadService issueReadService) {
         this.issueWriteService = issueWriteService;
         this.issueReadService = issueReadService;
-        }
+    }
 
     @Override
     public IssueDTO createIssue(CreateIssueDTO dto) {
-       return issueWriteService.createIssue(dto);
+        return issueWriteService.createIssue(dto);
     }
 
     @Override
     public List<IssueDTO> getIssues(IssueStatus status, IssuePriority priority, IssueType type) {
-        return  issueReadService.getIssues(status, priority, type);
+        return issueReadService.getIssues(status, priority, type);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public List<IssueDTO> searchIssueByTitleOrDescription(String keyword) {
-       return issueReadService.searchIssueByTitleOrDescription(keyword);
+        return issueReadService.searchIssueByTitleOrDescription(keyword);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public void assignIssue(UUID issueUuid, UUID userUuid) {
-         issueWriteService.assignIssue(issueUuid, userUuid);
+        issueWriteService.assignIssue(issueUuid, userUuid);
     }
 
 }

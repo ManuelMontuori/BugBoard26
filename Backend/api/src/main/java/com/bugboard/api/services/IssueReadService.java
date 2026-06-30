@@ -42,7 +42,7 @@ public class IssueReadService {
     }
 
     public List<IssueDTO> searchIssueByTitleOrDescription(String keyword) {
-        if(keyword==null || keyword.isBlank()) {
+        if (keyword == null || keyword.isBlank()) {
             throw new ValidationException("Keyword is required");
         }
 
@@ -62,8 +62,8 @@ public class IssueReadService {
     }
 
     public Optional<IssueDTO> getIssueByUuid(UUID uuid) {
-        return Optional.ofNullable(issueMapper.mapToDTO(issueRepository.findByUuid(uuid).orElseThrow(() ->
-                new ResourceAccessException("Issue non presente"))));
+        return Optional.ofNullable(issueMapper.mapToDTO(
+                issueRepository.findByUuid(uuid).orElseThrow(() -> new ResourceAccessException("Issue non presente"))));
     }
 
 }

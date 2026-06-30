@@ -45,7 +45,8 @@ public class NotificationWriteService {
     }
 
     public void readFalse(UUID uuid) {
-        Notification notification = notificationRepository.findByUuid(uuid).orElseThrow(() -> new ResourceAccessException("Notification not found"));
+        Notification notification = notificationRepository.findByUuid(uuid)
+        .orElseThrow(() -> new ResourceAccessException("Notification not found"));
         notification.setRead(false);
         notificationRepository.save(notification);
     }

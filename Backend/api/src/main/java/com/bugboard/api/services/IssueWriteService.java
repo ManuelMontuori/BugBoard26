@@ -15,7 +15,6 @@ import com.bugboard.api.repositories.UserRepository;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -26,21 +25,19 @@ public class IssueWriteService {
     private final UserRepository userRepository;
     private final AuthService authService;
     private final IssueMapper issueMapper;
-    private final ApplicationEventPublisher eventPublisher; 
-
+    private final ApplicationEventPublisher eventPublisher;
 
     public IssueWriteService(IssueRepository issueRepository,
-                             UserRepository userRepository,
-                             AuthService authService,
-                             IssueMapper issueMapper,
-                                ApplicationEventPublisher eventPublisher
-    ) {
+            UserRepository userRepository,
+            AuthService authService,
+            IssueMapper issueMapper,
+            ApplicationEventPublisher eventPublisher) {
         this.issueRepository = issueRepository;
         this.userRepository = userRepository;
         this.authService = authService;
         this.issueMapper = issueMapper;
         this.eventPublisher = eventPublisher;
-        
+
     }
 
     public IssueDTO createIssue(CreateIssueDTO dto) {
@@ -52,30 +49,30 @@ public class IssueWriteService {
             throw new ValidationException("Description is required");
         }
 
-        User reporter = authService.getCurrentUser().orElseThrow(() -> new ResourceAccessException("User not authenticated"));
+        User reporter = authService.getCurrentUser()
+                .orElseThrow(() -> new ResourceAccessException("User not authenticated"));
 
         Issue issue = new Issue();
         issue = issueMapper.mapToEntity(dto, issue);
         issue.setStatus(IssueStatus.TODO);
         issue.setReporter(reporter);
 
-
         if (dto.assignedToUuid() != null) {
             User assignedTo = userRepository.findByUuid(
                     UUID.fromString(dto.assignedToUuid())).orElseThrow(
-                    () -> new ResourceAccessException("Assigned user not found"));
+                            () -> new ResourceAccessException("Assigned user not found"));
             issue.setAssignedTo(assignedTo);
         }
-        Issue saved= issueRepository.save(issue);
+        Issue saved = issueRepository.save(issue);
 
         return issueMapper.mapToDTO(saved);
     }
 
     public void assignIssue(UUID issueUuid, UUID userUuid) {
-        Issue issue = issueRepository.findByUuid(issueUuid).orElseThrow(() ->
-                new ResourceAccessException("Issue not found"));
+        Issue issue = issueRepository.findByUuid(issueUuid)
+                .orElseThrow(() -> new ResourceAccessException("Issue not found"));
         User user = userRepository.findByUuid(userUuid)
-                .orElseThrow(()->new ResourceAccessException("User not found"));
+                .orElseThrow(() -> new ResourceAccessException("User not found"));
         issue.setAssignedTo(user);
         issue.setAssignedAt(LocalDateTime.now());
         issue.setStatus(IssueStatus.IN_PROGRESS);
