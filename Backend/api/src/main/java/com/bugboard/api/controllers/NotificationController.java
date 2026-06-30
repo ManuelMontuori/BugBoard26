@@ -43,7 +43,7 @@ public class NotificationController {
 
     @GetMapping(value= "/stream/{uuid}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public SseEmitter streamNotifications(@PathVariable UUID uuid) {
-        return notificationStreamService.createStream(uuid); // Chiama il servizio di stream
+        return notificationStreamService.createStream(uuid);
     }
 
 }

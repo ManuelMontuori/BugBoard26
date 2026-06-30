@@ -58,10 +58,9 @@ public class Issue {
 
 
     public Issue() {
-         // Required by JPA/Hibernate. Do not removee
+         // Richiesto da Hibernate, non rimuovere
     }
 
-    // tutti i getter
     public Long getId() {
         return id;
     }
@@ -108,7 +107,6 @@ public class Issue {
         return imagePath;
     }
 
-    // setter tutti tranne id
 
     public void setTitle(String title) {
         this.title = title;
@@ -135,14 +133,6 @@ public class Issue {
     }
 
     public void setAssignedTo(User assignedTo) { this.assignedTo = assignedTo; }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setResolvedAt(LocalDateTime resolvedAt) {
-        this.resolvedAt = resolvedAt;
-    }
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;

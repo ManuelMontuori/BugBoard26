@@ -51,8 +51,7 @@ public class User {
     private LocalDate lastLogin;
 
     public User() {
-        // in jakarta il costruttore di default viene escluso se si definisce un costruttore personalizzato,
-        // quindi è necessario definirlo esplicitamente
+        // costruttore vuoto richiesto da Hibernate
     }
 
     public User(UserRole role, String email, UUID uuid) {
@@ -65,16 +64,8 @@ public class User {
         return lastLogin;
     }
 
-    public void setLastLogin(LocalDate lastLogin) {
-        this.lastLogin = lastLogin;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public UserRole getRole() {
@@ -113,7 +104,6 @@ public class User {
         this.status = status;
     }
 
-    // metodi di utilità
     public void disable() {
         if (this.status == UserStatus.DISABLED) {
             throw new IllegalStateException("User is already disabled");
@@ -143,10 +133,5 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public boolean isActive() {
-        return this.status == UserStatus.ACTIVE;
-    }
-
 
 }

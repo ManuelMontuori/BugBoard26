@@ -50,5 +50,4 @@ public class IssueController {
         issueService.assignIssue(issueUuid, userUuid);
     }
 
-
 }

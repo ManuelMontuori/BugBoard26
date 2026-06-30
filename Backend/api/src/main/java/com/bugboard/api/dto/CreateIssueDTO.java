@@ -8,5 +8,4 @@ public record CreateIssueDTO(
         String type,
         String priority,
         String imgPath
-
 ){}

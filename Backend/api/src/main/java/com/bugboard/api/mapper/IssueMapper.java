@@ -7,7 +7,6 @@ import com.bugboard.api.models.IssuePriority;
 import com.bugboard.api.models.IssueType;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class IssueMapper {
     public IssueDTO mapToDTO(Issue issue) {
@@ -33,8 +32,6 @@ public class IssueMapper {
         issue.setType(dto.type() != null ? IssueType.valueOf(dto.type()) : null);
         issue.setPriority(dto.priority() != null ? IssuePriority.valueOf(dto.priority()) : null);
         issue.setImagePath(dto.imgPath() != null ? dto.imgPath() : null);
-
-
         return issue;
     }
 }

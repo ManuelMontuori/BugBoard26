@@ -12,5 +12,4 @@ public record UserDTO(
         String status,
         LocalDate lastLogin,
         LocalDateTime createdAt
-) {
-}
+) {}

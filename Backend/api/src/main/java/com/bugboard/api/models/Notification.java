@@ -31,8 +31,9 @@ public class Notification {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // solito costruttore vuoto richiesto da JPA
+
     public Notification() {
+        // solito costruttore vuoto richiesto da JPA
     }
 
     public Notification(User user, boolean read, String message) {
@@ -41,9 +42,6 @@ public class Notification {
         this.message = message;
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public String getMessage() {
         return message;
@@ -63,10 +61,6 @@ public class Notification {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public User getUser() {

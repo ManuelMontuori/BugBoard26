@@ -1,9 +1,6 @@
 package com.bugboard.api.dto;
 
-
-
 public record UserReportDTO (
-
     String uuid,
     String firstName,
     String lastName,
