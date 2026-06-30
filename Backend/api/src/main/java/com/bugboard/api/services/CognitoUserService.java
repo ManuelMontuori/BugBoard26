@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.AdminCreateUserRequest;
-import software.amazon.awssdk.services.cognitoidentityprovider.model.AdminCreateUserResponse;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.AttributeType;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.DeliveryMediumType;
 
@@ -60,12 +59,13 @@ public class CognitoUserService {
                 .username(user.getEmail()) // L'email fa da Username principale
                 .userAttributes(userAttributes)
                 .desiredDeliveryMediums(DeliveryMediumType.EMAIL) // Specifichiamo che l'invito vada via email
-                // NOTA: Non settando "temporaryPassword", Cognito ne genera una random e la invia da solo
+                // NOTA: Non settando "temporaryPassword", Cognito ne genera una random e la
+                // invia da solo
                 .build();
 
         try {
             // 3. Eseguiamo la chiamata ad AWS
-            AdminCreateUserResponse response = cognitoClient.adminCreateUser(request);
+            /* AdminCreateUserResponse response = */ cognitoClient.adminCreateUser(request);
 
         } catch (Exception e) {
             // Gestisci le eccezioni (es. UsernameExistsException se l'email esiste già)
