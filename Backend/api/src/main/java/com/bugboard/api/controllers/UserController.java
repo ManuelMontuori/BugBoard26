@@ -1,13 +1,11 @@
 package com.bugboard.api.controllers;
 
 import com.bugboard.api.dto.*;
-import com.bugboard.api.models.User;
 import com.bugboard.api.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.UsernameExistsException;
-
 import java.util.List;
 import java.util.UUID;
 
