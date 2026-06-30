@@ -1,11 +1,7 @@
 package com.bugboard.api.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
@@ -34,7 +30,9 @@ public class UserReadServiceTest {
     @InjectMocks
     UserReadService userService;
 
-    //test per il metodo getMonthlyReport, input valido, deve restituire lista di UserReportDTO
+    // =========================
+    // TC1 - CASO POSITIVO
+    // =========================
     @Test
     void testGetMonthlyReport_valid() {
 
@@ -44,34 +42,28 @@ public class UserReadServiceTest {
         LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
         LocalDateTime endDate = startDate.plusMonths(1);
 
-        // ✅ tipo corretto
         UserReportProjection projection = mock(UserReportProjection.class);
         UserReportDTO dto = mock(UserReportDTO.class);
 
-        List<UserReportProjection> projections = List.of(projection);
-
-        // mock repository
         when(userRepository.getUserReports(startDate, endDate))
-                .thenReturn(projections);
+                .thenReturn(List.of(projection));
 
-        // mock mapper
         when(userReportMapper.mapToDTO(projection))
                 .thenReturn(dto);
 
-        // esecuzione
         List<UserReportDTO> result =
                 userService.getMonthlyReport(year, month);
 
-        // ✅ assert
         assertEquals(1, result.size());
         assertEquals(dto, result.get(0));
 
-        // ✅ verify
         verify(userRepository).getUserReports(startDate, endDate);
         verify(userReportMapper).mapToDTO(projection);
     }
 
-    //input valido, ma non ci sono utenti nel database, deve restituire lista vuota
+    // =========================
+    // TC2 - LISTA VUOTA
+    // =========================
     @Test
     void testGetMonthlyReport_emptyList() {
 
@@ -90,14 +82,72 @@ public class UserReadServiceTest {
         assertTrue(result.isEmpty());
 
         verify(userRepository).getUserReports(startDate, endDate);
+        verify(userReportMapper, never()).mapToDTO(any());
     }
 
-    //input non valido, ad esempio mese 13, deve lanciare eccezione
+    // =========================
+    // TC3 - BOUNDARY VALUE: mese non valido (>12)
+    // =========================
     @Test
-    void testGetMonthlyReport_invalidMonth() {
+    void testGetMonthlyReport_invalidMonth_upperBound() {
 
-        assertThrows(DateTimeException.class, () -> {
-            userService.getMonthlyReport(2024, 13);
-        });
+        assertThrows(DateTimeException.class,
+                () -> userService.getMonthlyReport(2024, 13));
+    }
+
+    // =========================
+    // TC4 - BOUNDARY VALUE: mese non valido (<1)
+    // =========================
+    @Test
+    void testGetMonthlyReport_invalidMonth_lowerBound() {
+
+        assertThrows(DateTimeException.class,
+                () -> userService.getMonthlyReport(2024, 0));
+    }
+
+    // =========================
+    // TC5 - BOUNDARY VALUE: mese valido minimo
+    // =========================
+    @Test
+    void testGetMonthlyReport_boundary_minMonth() {
+
+        int year = 2024;
+        int month = 1;
+
+        LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
+        LocalDateTime endDate = startDate.plusMonths(1);
+
+        when(userRepository.getUserReports(startDate, endDate))
+                .thenReturn(List.of());
+
+        List<UserReportDTO> result =
+                userService.getMonthlyReport(year, month);
+
+        assertTrue(result.isEmpty());
+
+        verify(userRepository).getUserReports(startDate, endDate);
+    }
+
+    // =========================
+    // TC6 - BOUNDARY VALUE: mese valido massimo
+    // =========================
+    @Test
+    void testGetMonthlyReport_boundary_maxMonth() {
+
+        int year = 2024;
+        int month = 12;
+
+        LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
+        LocalDateTime endDate = startDate.plusMonths(1);
+
+        when(userRepository.getUserReports(startDate, endDate))
+                .thenReturn(List.of());
+
+        List<UserReportDTO> result =
+                userService.getMonthlyReport(year, month);
+
+        assertTrue(result.isEmpty());
+
+        verify(userRepository).getUserReports(startDate, endDate);
     }
 }

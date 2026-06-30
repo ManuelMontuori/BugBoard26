@@ -17,7 +17,6 @@ public class CognitoConfig {
     public CognitoIdentityProviderClient cognitoClient() {
         return CognitoIdentityProviderClient.builder()
                 .region(Region.of(region))
-                // Questo oggetto fa tutto il lavoro di ricerca automatico sia in locale che in produzione
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build();
     }

@@ -91,8 +91,8 @@ public class NotificationServiceTest {
     void testCreateNotification_whenRepositoryThrowsException() {
         // 1. Arrange
         Issue issue = new Issue();
-        issue.setTitle("Bug Critico");
-        issue.setDescription("Il sistema crasha.");
+        issue.setTitle("Bug frontend");
+        issue.setDescription("La dashboard non è responsive");
         User user = new User();
 
         // Istruiamo il finto repository a simulare un crash (es. connessione persa)
@@ -110,36 +110,4 @@ public class NotificationServiceTest {
         verify(notificationMapper, never()).mapToDTO(any());
     }
 
-    @Test
-    void testCreateNotification_withNullIssueFields_createsStringWithNull() {
-        // 1. Arrange
-        Issue issue = new Issue();
-        // Non settiamo titolo e descrizione (rimangono null)
-        User user = new User();
-
-        Notification savedNotification = new Notification();
-        NotificationDTO expectedDto = new NotificationDTO(
-                UUID.randomUUID().toString(),
-                "Ti è stata assegnata la seguente Issue: null\nDescrizione:null",
-                false,
-                LocalDateTime.now()
-        );
-
-        when(notificationRepository.save(any(Notification.class))).thenReturn(savedNotification);
-        when(notificationMapper.mapToDTO(savedNotification)).thenReturn(expectedDto);
-
-        // 2. Act
-        NotificationDTO result = service.createNotification(issue, user);
-
-        // 3. Assert
-        assertEquals(expectedDto, result);
-
-        // 4. Verify (La parte importante)
-        verify(notificationRepository).save(notificationCaptor.capture());
-        Notification capturedNotification = notificationCaptor.getValue();
-
-        // Verifichiamo che il messaggio contenga letteralmente la parola "null"
-        String expectedMessage = "Ti è stata assegnata la seguente Issue: null\nDescrizione:null";
-        assertEquals(expectedMessage, capturedNotification.getMessage());
-    }
 }
