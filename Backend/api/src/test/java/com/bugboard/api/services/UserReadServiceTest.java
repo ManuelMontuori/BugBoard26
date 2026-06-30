@@ -25,9 +25,6 @@ import com.bugboard.api.repositories.projection.UserReportProjection;
 @ExtendWith(MockitoExtension.class)
 public class UserReadServiceTest {
 
-    @ExtendWith(MockitoExtension.class)
-class UserServiceTest {
-
     @Mock
     UserRepository userRepository;
 
@@ -49,7 +46,7 @@ class UserServiceTest {
 
     // ✅ tipo corretto
     UserReportProjection projection = mock(UserReportProjection.class);
-    UserReportDTO dto = new UserReportDTO();
+    UserReportDTO dto = mock(UserReportDTO.class);
 
     List<UserReportProjection> projections = List.of(projection);
 
@@ -108,5 +105,4 @@ void testGetMonthlyReport_invalidMonth() {
 
 
 
-}
 }
