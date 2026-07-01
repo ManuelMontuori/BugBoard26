@@ -43,3 +43,6 @@ sonar-project.properties
 
 # Reports temporanei
 **/*.log
+
+
+*.env
