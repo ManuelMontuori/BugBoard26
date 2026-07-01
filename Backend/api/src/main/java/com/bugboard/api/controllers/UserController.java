@@ -1,7 +1,6 @@
 package com.bugboard.api.controllers;
 
 import com.bugboard.api.dto.*;
-import com.bugboard.api.models.User;
 import com.bugboard.api.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
