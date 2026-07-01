@@ -45,4 +45,4 @@ sonar-project.properties
 **/*.log
 
 
-*.env
+**/aws.env
