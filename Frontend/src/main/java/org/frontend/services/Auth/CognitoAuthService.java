@@ -94,27 +94,7 @@ public class CognitoAuthService {
 
     public static void logout() {
         AuthSession session = AuthSession.getInstance();
-        String token = session.getRefreshToken();
-
-        if (token != null && !token.isBlank()) {
-            try {
-                HttpClient client = HttpClient.newHttpClient();
-
-                String body =
-                        "token=" + url(token)
-                                + "&client_id=" + url(CLIENT_ID);
-
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(DOMAIN + "/oauth2/revoke"))
-                        .header("Content-Type", "application/x-www-form-urlencoded")
-                        .POST(HttpRequest.BodyPublishers.ofString(body))
-                        .build();
-
-            } catch (Exception e) {
-                throw new RuntimeException("Logout fallito", e);
-            }
-        }
-
+        
         session.clear();
     }
     public static String buildHostedUiLogoutUrl() {
