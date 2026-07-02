@@ -46,14 +46,12 @@ public class CreateUserViewController {
 
     @FXML
     public void initialize() {
-        // Configurazione delle Colonne
         colNome.setCellValueFactory(data -> data.getValue().firstNameProperty());
         colCognome.setCellValueFactory(data -> data.getValue().lastNameProperty());
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colRuolo.setCellValueFactory(new PropertyValueFactory<>("role"));
-
-        // Costruzione cella delegata a TableUtils
         colStato.setCellValueFactory(data -> data.getValue().activeProperty());
+
         colStato.setCellFactory(col -> TableUtil.createToggleSwitchCell((user, isSelected) -> {
             if (userController == null) return;
             if (isSelected) {
@@ -90,7 +88,6 @@ public class CreateUserViewController {
 
     @FXML
     private void onAnnullaClicked() {
-        // Gestione dell'azione di annullamento
         resetForm();
     }
 
@@ -120,8 +117,8 @@ public class CreateUserViewController {
             try {
                 userController.loadAllUsers();
             } catch (Exception e) {
-                System.err.println("Errore durante il caricamento degli utenti.");
-                e.printStackTrace();
+                DialogUtils.showError("Errore di rete.", "Errore durante il caricamento della lista degli utenti.", "Riprova");
+                throw new RuntimeException("Errore durante il caricamento della lista de users.", e);
             }
         }
     }

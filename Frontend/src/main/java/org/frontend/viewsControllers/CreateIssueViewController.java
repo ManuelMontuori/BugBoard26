@@ -29,7 +29,6 @@ public class CreateIssueViewController {
 
     @FXML
     private void initialize() {
-        // Assegnazione dati. (Vedi Tip sotto per rimuovere anche questo!)
         btnBug.setUserData("BUG");
         btnFeature.setUserData("FEATURE");
         btnDocumentation.setUserData("DOCUMENTATION");
@@ -43,7 +42,6 @@ public class CreateIssueViewController {
     private void onCreaClicked() {
         if (!isFormValid()) return;
 
-        // Estrazione dati delegata alla utility
         String title = fieldTitle.getText().trim();
         String description = fieldDescription.getText().trim();
         String type = FormUtil.getToggleUserData(typeGroup);
@@ -60,7 +58,7 @@ public class CreateIssueViewController {
             DialogUtils.showError("Errore di Rete",
                     "Il server non ha risposto correttamente. Riprova più tardi.",
                     "Impossibile salvare l'issue");
-            e.printStackTrace();
+            throw new RuntimeException(("Errore di Rete"), e);
         } finally {
             btnCreaIssue.setDisable(false);
         }
@@ -68,11 +66,10 @@ public class CreateIssueViewController {
 
     @FXML
     private void onAnnullaClicked() {
-        // MainController.getInstance().loadView("home-dashboard.fxml");
+        svuotaForm();
     }
 
     private boolean isFormValid() {
-        // La validazione ora è coesa e pulita
         boolean isTitleValid = FormUtil.checkNotBlank(fieldTitle, errTitle, "Il titolo è obbligatorio.");
         boolean isDescValid = FormUtil.checkNotBlank(fieldDescription, errDescription, "La descrizione è obbligatoria.");
 

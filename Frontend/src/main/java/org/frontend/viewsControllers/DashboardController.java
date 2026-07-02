@@ -76,7 +76,7 @@ public class DashboardController {
         }
 
         loadSubPage("/org/frontend/view/home-dashboard.fxml", controller -> {
-            if (controller instanceof DashboardViewController dashCtrl) {
+            if (controller instanceof HomeDashboardController dashCtrl) {
                 dashCtrl.initDependencies(new IssueController());
             }
         });
@@ -85,7 +85,7 @@ public class DashboardController {
     @FXML
     public void handleButtonDashboard(ActionEvent event) {
         loadSubPage("/org/frontend/view/home-dashboard.fxml", controller -> {
-            if (controller instanceof DashboardViewController dashCtrl) {
+            if (controller instanceof HomeDashboardController dashCtrl) {
                 dashCtrl.initDependencies(new IssueController());
             }
         });

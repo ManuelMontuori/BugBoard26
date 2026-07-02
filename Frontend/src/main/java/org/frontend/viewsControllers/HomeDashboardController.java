@@ -26,7 +26,7 @@ public class HomeDashboardController {
     @FXML private Label labelInProgress;
     @FXML private Label labelDone;
 
-    private final IssueController issueController = new IssueController();
+    private IssueController issueController;
 
     @FXML
     public void initialize() {
@@ -41,21 +41,6 @@ public class HomeDashboardController {
 
             configuraColonneTabella();
 
-            // Colleghiamo la tabella
-            tblIssueRecenti.setItems(issueController.getIssues());
-
-            // Listener per aggiornare i contatori quando i dati cambiano
-            issueController.getIssues().addListener(new ListChangeListener<Issue>() {
-                @Override
-                public void onChanged(Change<? extends Issue> change) {
-                    aggiornaContatoriUI(issueController.getIssues());
-                }
-            });
-
-            // Invece, usiamo runLater per farla partire subito dopo che la UI è stata costruita
-            Platform.runLater(() -> {
-                caricaDatiDashboard(userUuid);
-            });
         } catch (IllegalStateException e) {
             DialogUtils.showError("Errore di sessione",
                     "Utente non trovato.",
@@ -63,11 +48,29 @@ public class HomeDashboardController {
         }
     }
 
+    public void initDependencies(IssueController issueController) {
+        this.issueController = issueController;
+
+        // Ora che l'issueController esiste, possiamo usarlo in sicurezza!
+        tblIssueRecenti.setItems(this.issueController.getIssues());
+
+        this.issueController.getIssues().addListener(new ListChangeListener<Issue>() {
+            @Override
+            public void onChanged(Change<? extends Issue> change) {
+                aggiornaContatoriUI(HomeDashboardController.this.issueController.getIssues());
+            }
+        });
+
+        String userUuid = AuthSession.getInstance().getCustomUuid();
+        Platform.runLater(() -> {
+            caricaDatiDashboard(userUuid);
+        });
+    }
+
     private void configuraColonneTabella() {
         colTitle.setCellValueFactory(data -> data.getValue().titleProperty());
         colCreatedAt.setCellValueFactory(data -> data.getValue().createdAtProperty().asString());
 
-        // Celle personalizzate (Sintetizzate usando un metodo helper per evitare codice duplicato)
         colType.setCellValueFactory(data -> data.getValue().typeProperty());
         colType.setCellFactory(col -> creaBadgeCell());
 
@@ -78,7 +81,6 @@ public class HomeDashboardController {
         colState.setCellFactory(col -> creaBadgeCell());
     }
 
-    // Helper per non ripetere 3 volte lo stesso identico codice di updateItem
     private TableCell<Issue, String> creaBadgeCell() {
         return new TableCell<>() {
             @Override
@@ -105,29 +107,23 @@ public class HomeDashboardController {
         }
     }
 
-    /**
-     * RICEVE I DATI GIÀ PRONTI. Il suo unico scopo è renderizzarli a schermo.
-     */
     private void aggiornaContatoriUI(List<Issue> list) {
         Integer todoCount=0;
         Integer doneCount=0;
         Integer inProgressCount=0;
         for (Issue issue : list) {
-            System.out.println(issue.getStatus());
             if(issue.getStatus().equalsIgnoreCase("TODO"))
                 todoCount++;
             else if(issue.getStatus().equalsIgnoreCase("DONE"))
                 doneCount++;
             else if(issue.getStatus().equalsIgnoreCase("IN_PROGRESS"))
                 inProgressCount++;
-            System.out.println(todoCount + " " + doneCount + " " + inProgressCount);
         }
 
         final int finalTodo = todoCount;
         final int finalInProgress = inProgressCount;
         final int finalDone = doneCount;
 
-        // Aggiornamento grafico racchiuso su Platform.runLater per sicurezza sul thread JavaFX
         Platform.runLater(() -> {
             if (labelTodo != null) labelTodo.setText(String.valueOf(finalTodo));
             if (labelInProgress != null) labelInProgress.setText(String.valueOf(finalInProgress));
@@ -135,4 +131,3 @@ public class HomeDashboardController {
         });
     }
 }
-
