@@ -6,35 +6,32 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.frontend.services.Auth.CallbackServer;
-import org.frontend.services.Auth.CognitoAuthService;
 import org.frontend.services.Auth.LoginEvent;
 
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        // 1. Carica SOLO il modulo di benvenuto/login all'avvio
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/org/frontend/view/welcome-view.fxml"));
+
+        FXMLLoader fxmlLoader = new FXMLLoader(
+                HelloApplication.class.getResource("/org/frontend/view/welcome-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 546, 400);
 
         stage.setScene(scene);
         stage.setResizable(false);
         stage.centerOnScreen();
-        stage.initStyle(StageStyle.UNDECORATED); // Login senza barra superiore
+        stage.initStyle(StageStyle.UNDECORATED);
 
-        // 2. Rimani in ascolto dell'evento di login effettuato
         LoginEvent.addListener(() -> {
-            // Usiamo Platform.runLater per essere sicuri di manipolare l'interfaccia sul thread corretto
+
             Platform.runLater(() -> {
                 try {
-                    // Chiudiamo lo stage del login (undecorated)
+
                     stage.close();
 
-                    // ORA E SOLO ORA carichiamo la dashboard (i token ora ci sono!)
-                    FXMLLoader dashboardLoader = new FXMLLoader(getClass().getResource("/org/frontend/view/dashboard.fxml"));
+                    FXMLLoader dashboardLoader = new FXMLLoader(
+                            getClass().getResource("/org/frontend/view/dashboard.fxml"));
                     Scene dashboardScene = new Scene(dashboardLoader.load());
 
-                    // Creiamo il nuovo stage per l'applicazione principale (con la barra di sistema)
                     Stage mainStage = new Stage();
                     mainStage.setScene(dashboardScene);
                     mainStage.setMinWidth(800);
@@ -50,16 +47,14 @@ public class HelloApplication extends Application {
             });
         });
 
-        // Mostra la schermata di login
         stage.show();
     }
 
     @Override
     public void stop() {
-        // Questo codice viene eseguito quando l'utente chiude l'applicazione dalla X
+
         System.out.println("Chiusura dell'applicazione in corso... Pulizia risorse.");
 
-        // Forza la chiusura pulita di qualsiasi processo orfano rimasto attivo nella JVM
         System.exit(0);
     }
 }

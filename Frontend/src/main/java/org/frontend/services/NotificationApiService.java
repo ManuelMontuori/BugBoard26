@@ -6,18 +6,17 @@ import java.util.stream.Stream;
 
 public class NotificationApiService {
 
-    private final ApiClient apiClient; // Presumo tu abbia una classe base ApiClient per configurare l'host
+    private final ApiClient apiClient;
 
     public NotificationApiService(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
-    /**
-     * Apre la connessione persistente SSE verso il server inviando il token di autenticazione.
-     */
+    // Apre la connessione persistente SSE serve per ricevere le notifiche in tempo reale
+    
     public HttpResponse<Stream<String>> streamNotifications(String userUuid, String token) throws Exception {
         HttpRequest request = apiClient
-                .requestStream("/api/notification/stream/" + userUuid) // <-- requestStream, non request
+                .requestStream("/api/notification/stream/" + userUuid)
                 .header("Authorization", "Bearer " + token)
                 .GET()
                 .build();
@@ -25,9 +24,6 @@ public class NotificationApiService {
         return apiClient.client().send(request, HttpResponse.BodyHandlers.ofLines());
     }
 
-    /**
-     * Esempio di chiamata PATCH standard per segnare la notifica come letta
-     */
     public void markAsRead(String notificationId, String token) throws Exception {
         HttpRequest request = apiClient
                 .request("/api/notification/" + notificationId + "/read")
@@ -72,6 +68,5 @@ public class NotificationApiService {
             throw new RuntimeException("Errore PATCH notifica: " + response.statusCode());
         }
     }
-
 
 }

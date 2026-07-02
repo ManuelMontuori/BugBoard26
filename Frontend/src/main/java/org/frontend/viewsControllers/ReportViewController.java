@@ -7,61 +7,61 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import org.frontend.controllers.UserController;
 import org.frontend.models.MeseOpzione;
-
 import org.frontend.models.dtos.UserReportDTO;
 import org.frontend.services.ReportRowService;
 import org.frontend.services.ReportSummary;
-import org.frontend.util.DateUtils; // Importiamo l'utility appena creata
-
+import org.frontend.util.DateUtils;
 import java.util.List;
 
 public class ReportViewController {
 
-    @FXML private ComboBox<MeseOpzione> comboMese;
-    @FXML private Button btnEsporta;
+    @FXML
+    private ComboBox<MeseOpzione> comboMese;
+    @FXML
+    private Button btnEsporta;
+    @FXML
+    private Label lblTotAperte;
+    @FXML
+    private Label lblTotAperteDesc;
+    @FXML
+    private Label lblTotRisolte;
+    @FXML
+    private Label lblTotRisolteDesc;
+    @FXML
+    private Label lblAvgTempo;
+    @FXML
+    private Label lblAltaPriorita;
+    @FXML
+    private BarChart<String, Number> barChartWorkload;
+    @FXML
+    private PieChart pieChartStato;
+    @FXML
+    private PieChart pieChartPriorita;
+    @FXML
+    private VBox listUtentiReport;
+    @FXML
+    private VBox topPerformerBox;
 
-    @FXML private Label lblTotAperte;
-    @FXML private Label lblTotAperteDesc;
-    @FXML private Label lblTotRisolte;
-    @FXML private Label lblTotRisolteDesc;
-    @FXML private Label lblAvgTempo;
-    @FXML private Label lblAltaPriorita;
-
-    @FXML private BarChart<String, Number> barChartWorkload;
-    @FXML private PieChart pieChartStato;
-    @FXML private PieChart pieChartPriorita;
-
-    @FXML private VBox listUtentiReport;
-    @FXML private VBox topPerformerBox;
-
-    // DIP: Le dipendenze NON vengono istanziate qui. Sono private e pronte per l'iniezione.
     private UserController userController;
     private ReportRowService rowService;
 
-    // ════════════════════════════════════════════════════════════════════════
-    // METODO DI INIEZIONE DELLE DIPENDENZE (DI)
-    // ════════════════════════════════════════════════════════════════════════
     public void initDependencies(UserController userController, ReportRowService rowService) {
         this.userController = userController;
         this.rowService = rowService;
 
-        // Ora che abbiamo le dipendenze, possiamo popolare la UI in sicurezza senza NullPointerException
         comboMese.setItems(FXCollections.observableArrayList(DateUtils.generaUltimiMesi(12)));
         comboMese.getSelectionModel().selectFirst();
-
-        // Carichiamo il primo report
         caricaReport();
     }
 
     @FXML
     public void initialize() {
-        // L'initialize imposta solo l'ascoltatore dell'evento.
-        // Non carichiamo dati qui perché userController e rowFactory sarebbero null!
+
         comboMese.setOnAction(e -> caricaReport());
     }
 
     private void caricaReport() {
-        // Controllo di sicurezza: se qualcuno ha dimenticato di chiamare initDependencies, evitiamo il crash
+
         if (userController == null || rowService == null) {
             return;
         }
@@ -106,7 +106,7 @@ public class ReportViewController {
 
         for (int i = 0; i < limite; i++) {
             UserReportDTO r = topWorkload.get(i);
-            // Uso della factory passata per dipendenza
+
             String label = rowService.calcolaIniziali(r.firstName(), r.lastName());
             series.getData().add(new XYChart.Data<>(label, r.totWorkloadIssue() != null ? r.totWorkloadIssue() : 0));
         }
@@ -122,14 +122,12 @@ public class ReportViewController {
         pieChartStato.getData().setAll(
                 new PieChart.Data("Risolte (" + summary.getTotRisolte() + ")", summary.getTotRisolte()),
                 new PieChart.Data("In lavoraz. (" + summary.getTotWorkload() + ")", summary.getTotWorkload()),
-                new PieChart.Data("Altre aperte (" + summary.getAltreAperte() + ")", summary.getAltreAperte())
-        );
-
+                new PieChart.Data("Altre aperte (" + summary.getAltreAperte() + ")", summary.getAltreAperte()));
+                
         int altraPriorita = Math.max(0, summary.getTotAperte() - summary.getAltaPriorita());
         pieChartPriorita.getData().setAll(
                 new PieChart.Data("Alta priorità (" + summary.getAltaPriorita() + ")", summary.getAltaPriorita()),
-                new PieChart.Data("Normale (" + altraPriorita + ")", altraPriorita)
-        );
+                new PieChart.Data("Normale (" + altraPriorita + ")", altraPriorita));
 
         applicaTooltipPie(pieChartStato);
         applicaTooltipPie(pieChartPriorita);
@@ -139,13 +137,13 @@ public class ReportViewController {
         listUtentiReport.getChildren().clear();
         topPerformerBox.getChildren().clear();
 
-        // Utilizziamo la rowFactory iniettata per generare le righe grafiche
         for (UserReportDTO r : summary.getOrdinatiPerWorkload()) {
             listUtentiReport.getChildren().add(rowService.creaRigaUtente(r, summary.getMaxWorkload()));
         }
 
-        String[] medaglie = {"🥇", "🥈", "🥉", "4.", "5."};
-        String[] rankStyle = {"top-performer-rank-gold", "top-performer-rank-silver", "top-performer-rank-bronze", "top-performer-rank", "top-performer-rank"};
+        String[] medaglie = { "🥇", "🥈", "🥉", "4.", "5." };
+        String[] rankStyle = { "top-performer-rank-gold", "top-performer-rank-silver", "top-performer-rank-bronze",
+                "top-performer-rank", "top-performer-rank" };
 
         List<UserReportDTO> top = summary.getTopPerformer();
         int limite = Math.min(5, top.size());
@@ -155,10 +153,15 @@ public class ReportViewController {
     }
 
     private void mostraVuoto() {
-        lblTotAperte.setText("0"); lblTotRisolte.setText("0"); lblAvgTempo.setText("— gg"); lblAltaPriorita.setText("0");
-        barChartWorkload.getData().clear(); pieChartStato.getData().clear(); pieChartPriorita.getData().clear();
-        listUtentiReport.getChildren().clear(); topPerformerBox.getChildren().clear();
-
+        lblTotAperte.setText("0");
+        lblTotRisolte.setText("0");
+        lblAvgTempo.setText("— gg");
+        lblAltaPriorita.setText("0");
+        barChartWorkload.getData().clear();
+        pieChartStato.getData().clear();
+        pieChartPriorita.getData().clear();
+        listUtentiReport.getChildren().clear();
+        topPerformerBox.getChildren().clear();
         Label vuoto = new Label("Nessun dato disponibile per il periodo selezionato.");
         vuoto.getStyleClass().add("label-muted");
         listUtentiReport.getChildren().add(vuoto);

@@ -10,7 +10,7 @@ import org.frontend.models.dtos.UserReportDTO;
 
 public class ReportRowService {
 
-    public static HBox creaRigaUtente(UserReportDTO r, int maxWorkload) {
+    public HBox creaRigaUtente(UserReportDTO r, int maxWorkload) {
         HBox row = new HBox();
         row.getStyleClass().add("report-row");
         row.setAlignment(Pos.CENTER_LEFT);
@@ -33,8 +33,10 @@ public class ReportRowService {
         int wl = r.totWorkloadIssue() != null ? r.totWorkloadIssue() : 0;
         ProgressBar pb = new ProgressBar(maxWorkload > 0 ? (double) wl / maxWorkload : 0);
         pb.getStyleClass().add("report-progress");
-        if ((double) wl / maxWorkload > 0.75) pb.getStyleClass().add("high");
-        else if ((double) wl / maxWorkload > 0.4) pb.getStyleClass().add("medium");
+        if ((double) wl / maxWorkload > 0.75)
+            pb.getStyleClass().add("high");
+        else if ((double) wl / maxWorkload > 0.4)
+            pb.getStyleClass().add("medium");
         pb.setPrefWidth(64);
 
         Label wlNum = new Label(String.valueOf(wl));
@@ -61,7 +63,7 @@ public class ReportRowService {
         return row;
     }
 
-    public static HBox creaRigaTop(UserReportDTO r, String medaglia, String rankStyleClass) {
+    public HBox creaRigaTop(UserReportDTO r, String medaglia, String rankStyleClass) {
         HBox row = new HBox(10);
         row.getStyleClass().add("top-performer-row");
         row.setAlignment(Pos.CENTER_LEFT);
@@ -83,16 +85,17 @@ public class ReportRowService {
         return row;
     }
 
-    // UTILITY INTERNE ALLA GRAFICA
-    public static String calcolaIniziali(String nome, String cognome) {
+    public String calcolaIniziali(String nome, String cognome) {
         String n = (nome != null && !nome.isEmpty()) ? nome.substring(0, 1).toUpperCase() : "";
         String c = (cognome != null && !cognome.isEmpty()) ? cognome.substring(0, 1).toUpperCase() : "";
         return n + c;
     }
 
     private static String determinaColoreAvatar(String nome) {
-        String[] colori = {"avatar-blue", "avatar-green", "avatar-orange", "avatar-red", "avatar-purple", "avatar-teal"};
-        if (nome == null || nome.isEmpty()) return colori[0];
+        String[] colori = { "avatar-blue", "avatar-green", "avatar-orange", "avatar-red", "avatar-purple",
+                "avatar-teal" };
+        if (nome == null || nome.isEmpty())
+            return colori[0];
         return colori[Math.abs(nome.hashCode()) % colori.length];
     }
 
