@@ -1,8 +1,0 @@
-
-7) Sonar sta dando dei warning. Ma solo perché sul pc ho installato java25 che non è supportato da sonarqube che usa quindi il 17, 
-ma il supporto di sonar per il 17 scade a luglio e per il progetto sto usando java 21 di intellij. 
-Quindi si deve provare ad installare e impostare come jdk principale la java 21, altrimenti lanciare 
-sonar scanner direttamente dalla console maven in intellij, cosi dovrebbero sparire tutti i warning.
-
-
-10) Nel frontend bisogna aggiungere il refreshtoken se il backend risponde con 500
