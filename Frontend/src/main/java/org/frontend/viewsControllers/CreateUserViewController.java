@@ -11,25 +11,40 @@ import org.frontend.util.TableUtil;
 
 public class CreateUserViewController {
 
-    @FXML private TableView<User> tblUsers;
-    @FXML private TableColumn<User, String> colNome;
-    @FXML private TableColumn<User, String> colCognome;
-    @FXML private TableColumn<User, String> colEmail;
-    @FXML private TableColumn<User, String> colRuolo;
-    @FXML private TableColumn<User, Boolean> colStato;
+    @FXML
+    private TableView<User> tblUsers;
+    @FXML
+    private TableColumn<User, String> colNome;
+    @FXML
+    private TableColumn<User, String> colCognome;
+    @FXML
+    private TableColumn<User, String> colEmail;
+    @FXML
+    private TableColumn<User, String> colRuolo;
+    @FXML
+    private TableColumn<User, Boolean> colStato;
 
-    @FXML private TextField fieldEmail;
-    @FXML private TextField fieldNome;
-    @FXML private TextField fieldCognome;
-    @FXML private ToggleGroup roleGroup;
-    @FXML private ToggleButton btnUser, btnAdmin;
+    @FXML
+    private TextField fieldEmail;
+    @FXML
+    private TextField fieldNome;
+    @FXML
+    private TextField fieldCognome;
+    @FXML
+    private ToggleGroup roleGroup;
+    @FXML
+    private ToggleButton btnUser, btnAdmin;
 
-
-    @FXML private Label errEmail;
-    @FXML private Label errRole;
-    @FXML private Label errNome;
-    @FXML private Label errCognome;
-    @FXML private Label lblEsito;
+    @FXML
+    private Label errEmail;
+    @FXML
+    private Label errRole;
+    @FXML
+    private Label errNome;
+    @FXML
+    private Label errCognome;
+    @FXML
+    private Label lblEsito;
 
     private UserController userController;
 
@@ -39,23 +54,21 @@ public class CreateUserViewController {
         btnUser.setUserData("USER");
         btnAdmin.setUserData("ADMIN");
 
-
         tblUsers.setItems(userController.getUsers());
         caricaTuttiGliUtenti();
     }
 
     @FXML
     public void initialize() {
-        // Configurazione delle Colonne
         colNome.setCellValueFactory(data -> data.getValue().firstNameProperty());
         colCognome.setCellValueFactory(data -> data.getValue().lastNameProperty());
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colRuolo.setCellValueFactory(new PropertyValueFactory<>("role"));
 
-        // Costruzione cella delegata a TableUtils
         colStato.setCellValueFactory(data -> data.getValue().activeProperty());
         colStato.setCellFactory(col -> TableUtil.createToggleSwitchCell((user, isSelected) -> {
-            if (userController == null) return;
+            if (userController == null)
+                return;
             if (isSelected) {
                 userController.enableUser(user.getUuid());
             } else {
@@ -66,10 +79,12 @@ public class CreateUserViewController {
 
     @FXML
     private void onCreaClicked() {
-        if (userController == null) return;
+        if (userController == null)
+            return;
 
         FormUtil.hideFeedback(lblEsito);
-        if (!validateForm()) return;
+        if (!validateForm())
+            return;
 
         String email = fieldEmail.getText().trim();
         String role = FormUtil.getToggleUserData(roleGroup);
@@ -83,14 +98,14 @@ public class CreateUserViewController {
             resetForm();
             userController.loadWorkload();
         } catch (Exception e) {
-            String message = "Errore durante la creazione dell'utente: " + firstName + " " + lastName + " (" + email + ").";
+            String message = "Errore durante la creazione dell'utente: " + firstName + " " + lastName + " (" + email
+                    + ").";
             DialogUtils.mostraErrore("Errore", message, "Utente non creato.");
         }
     }
 
     @FXML
     private void onAnnullaClicked() {
-        // Gestione dell'azione di annullamento
         resetForm();
     }
 

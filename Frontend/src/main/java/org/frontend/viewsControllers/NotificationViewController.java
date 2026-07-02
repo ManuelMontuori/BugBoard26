@@ -14,10 +14,14 @@ import java.util.List;
 
 public class NotificationViewController {
 
-    @FXML private Label  lblTotale;
-    @FXML private Label  lblNonLette;
-    @FXML private Button btnSegnatutte;
-    @FXML private VBox   listNotifiche;
+    @FXML
+    private Label lblTotale;
+    @FXML
+    private Label lblNonLette;
+    @FXML
+    private Button btnSegnatutte;
+    @FXML
+    private VBox listNotifiche;
 
     private NotificationService notificationService;
 
@@ -26,17 +30,12 @@ public class NotificationViewController {
         aggiornaUI();
 
         this.notificationService.getNotifications().addListener(
-                (ListChangeListener<Notification>) c -> Platform.runLater(this::aggiornaUI)
-        );
-    }
-
-    @FXML
-    public void initialize() {
-        // Nessuna logica qui, aspettiamo l'iniezione delle dipendenze
+                (ListChangeListener<Notification>) c -> Platform.runLater(this::aggiornaUI));
     }
 
     private void aggiornaUI() {
-        if (notificationService == null) return;
+        if (notificationService == null)
+            return;
 
         List<Notification> list = notificationService.getNotifications();
 
@@ -55,9 +54,8 @@ public class NotificationViewController {
         list.stream()
                 .sorted((a, b) -> Boolean.compare(a.isRead(), b.isRead()))
                 .forEach(n -> listNotifiche.getChildren().add(
-                        // Deleghiamo a NotificationUI e passiamo il metodo da eseguire al click!
-                        NotificationUI.createNotificationRow(n, () -> onToggleLetta(n))
-                ));
+
+                        NotificationUI.createNotificationRow(n, () -> onToggleLetta(n))));
     }
 
     private void aggiornaContatore(List<Notification> list) {
@@ -69,19 +67,18 @@ public class NotificationViewController {
     }
 
     private void onToggleLetta(Notification n) {
-        if (notificationService == null) return;
+        if (notificationService == null)
+            return;
 
-        // 1. Diciamo al servizio di aggiornare il dato
         notificationService.setRead(n.getId(), !n.isRead());
 
-        // 2. Ridisegniamo la UI.
-        // MOLTO più sicuro che cercare i componenti a mano con row.getChildren().get(0)!
         aggiornaUI();
     }
 
     @FXML
     private void onSegnatutte() {
-        if (notificationService == null) return;
+        if (notificationService == null)
+            return;
 
         notificationService.getNotifications().stream()
                 .filter(n -> !n.isRead())

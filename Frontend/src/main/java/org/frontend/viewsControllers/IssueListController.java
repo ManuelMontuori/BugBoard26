@@ -10,31 +10,45 @@ import org.frontend.controllers.IssueController;
 import org.frontend.models.Issue;
 import org.frontend.util.BadgeUtils;
 import org.frontend.util.DateUtils;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class IssueListController {
 
-    @FXML private TableView<Issue> tblAllIssues;
-    @FXML private TableColumn<Issue, String> colUuid;
-    @FXML private TableColumn<Issue, String> colTitle;
-    @FXML private TableColumn<Issue, String> colDescription;
-    @FXML private TableColumn<Issue, String> colType;
-    @FXML private TableColumn<Issue, String> colPriority;
-    @FXML private TableColumn<Issue, String> colStatus;
-    @FXML private TableColumn<Issue, LocalDateTime> colCreatedAt;
-    @FXML private TableColumn<Issue, LocalDateTime> colResolvedAt;
-
-    @FXML private VBox pnlDetails;
-    @FXML private Label lblDetTitle;
-    @FXML private Label lblDetDescription;
-    @FXML private Label lblDetStatus;
-    @FXML private Label lblDetType;
-    @FXML private Label lblDetPriority;
-    @FXML private Label lblDetUuid;
-
-    @FXML private TextField txtSearch;
+    @FXML
+    private TableView<Issue> tblAllIssues;
+    @FXML
+    private TableColumn<Issue, String> colUuid;
+    @FXML
+    private TableColumn<Issue, String> colTitle;
+    @FXML
+    private TableColumn<Issue, String> colDescription;
+    @FXML
+    private TableColumn<Issue, String> colType;
+    @FXML
+    private TableColumn<Issue, String> colPriority;
+    @FXML
+    private TableColumn<Issue, String> colStatus;
+    @FXML
+    private TableColumn<Issue, LocalDateTime> colCreatedAt;
+    @FXML
+    private TableColumn<Issue, LocalDateTime> colResolvedAt;
+    @FXML
+    private VBox pnlDetails;
+    @FXML
+    private Label lblDetTitle;
+    @FXML
+    private Label lblDetDescription;
+    @FXML
+    private Label lblDetStatus;
+    @FXML
+    private Label lblDetType;
+    @FXML
+    private Label lblDetPriority;
+    @FXML
+    private Label lblDetUuid;
+    @FXML
+    private TextField txtSearch;
 
     private IssueController issueController;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -50,7 +64,8 @@ public class IssueListController {
         configuraColonneTabella();
 
         tblAllIssues.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal != null) mostraDettagli(newVal);
+            if (newVal != null)
+                mostraDettagli(newVal);
         });
     }
 
@@ -77,7 +92,8 @@ public class IssueListController {
 
     @FXML
     private void gestisciRicerca() {
-        if (issueController == null) return;
+        if (issueController == null)
+            return;
 
         String keyword = txtSearch.getText();
         if (keyword == null || keyword.isBlank()) {
@@ -100,7 +116,8 @@ public class IssueListController {
         lblDetUuid.setText(issue.getUuid());
         lblDetTitle.setText(issue.getTitle());
         lblDetDescription.setText(issue.getDescription() != null && !issue.getDescription().isBlank()
-                ? issue.getDescription() : "Nessuna descrizione presente.");
+                ? issue.getDescription()
+                : "Nessuna descrizione presente.");
 
         lblDetStatus.setText(issue.getStatus());
         BadgeUtils.applyBadgeStyle(lblDetStatus, issue.getStatus());

@@ -22,11 +22,8 @@ import org.frontend.models.Notification;
 import org.frontend.services.Auth.CallbackServer;
 import org.frontend.services.Auth.CognitoAuthService;
 import org.frontend.services.AuthSession;
-import org.frontend.services.IssueService;
 import org.frontend.services.ReportRowService;
-import org.frontend.util.BackendServiceFactory;
 import org.frontend.util.DialogUtils;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -60,17 +57,14 @@ public class DashboardController {
 
         if (AuthSession.getInstance().getNotificationService() != null) {
 
-            // Carica le notifiche subito
             AuthSession.getInstance().getNotificationService().loadNotifications();
 
-            // Lista con extractor — osserva anche i cambiamenti delle property interne
-            ObservableList<Notification> listaNotifiche =
-                    AuthSession.getInstance().getNotificationService().getNotifications();
+            ObservableList<Notification> listaNotifiche = AuthSession.getInstance().getNotificationService()
+                    .getNotifications();
 
             IntegerBinding notificheNonLetteContatore = Bindings.createIntegerBinding(
                     () -> (int) listaNotifiche.stream().filter(n -> !n.isRead()).count(),
-                    listaNotifiche
-            );
+                    listaNotifiche);
 
             lblBadge.textProperty().bind(notificheNonLetteContatore.asString());
 
@@ -99,7 +93,6 @@ public class DashboardController {
     public void handleButtonElencoIssue(ActionEvent event) {
         loadSubPage("/org/frontend/view/home-elencoIssue.fxml", controller -> {
             if (controller instanceof IssueListController elencoCtrl) {
-                // Iniettiamo la dipendenza reale
                 elencoCtrl.initDependencies(new IssueController());
             }
         });
@@ -109,7 +102,6 @@ public class DashboardController {
     public void handleButtonSegnalaIssue(ActionEvent event) {
         loadSubPage("/org/frontend/view/home-createIssue.fxml", controller -> {
             if (controller instanceof CreateIssueViewController createCtrl) {
-                // Iniettiamo l'istanza fresca del controller logico delle issue
                 createCtrl.initDependencies(new IssueController());
             }
         });
@@ -119,7 +111,6 @@ public class DashboardController {
     public void handleButtonGestioneUtenti(ActionEvent event) {
         loadSubPage("/org/frontend/view/home-creaUtente.fxml", controller -> {
             if (controller instanceof CreateUserViewController utenteCtrl) {
-                // Iniettiamo l'istanza del controllore logico degli utenti
                 utenteCtrl.initDependencies(new UserController());
             }
         });
@@ -129,7 +120,6 @@ public class DashboardController {
     public void handleButtonAssegnaIssue(ActionEvent event) {
         loadSubPage("/org/frontend/view/home-assegnaIssue.fxml", controller -> {
             if (controller instanceof AssignedIssueViewController assegnaCtrl) {
-                // Iniettiamo contemporaneamente sia il controller utenti che quello delle issue
                 assegnaCtrl.initDependencies(new UserController(), new IssueController());
             }
         });
@@ -137,7 +127,6 @@ public class DashboardController {
 
     @FXML
     public void handleButtonReport(ActionEvent event) {
-        // Qui usiamo la variante con la Lambda per configurare il ReportViewController
         loadSubPage("/org/frontend/view/home-report.fxml", controller -> {
             if (controller instanceof ReportViewController reportCtrl) {
                 reportCtrl.initDependencies(new UserController(), new ReportRowService());
@@ -149,7 +138,6 @@ public class DashboardController {
     public void handleButtonNotification(ActionEvent event) {
         loadSubPage("/org/frontend/view/home-notification.fxml", controller -> {
             if (controller instanceof NotificationViewController notifCtrl) {
-                // Estraiamo il NotificationService centralizzato e lo iniettiamo nella vista
                 notifCtrl.initDependencies(AuthSession.getInstance().getNotificationService());
             }
         });
@@ -158,25 +146,26 @@ public class DashboardController {
     @FXML
     private void handleLogout() {
         try {
-            // 1. Uccide il token sul server AWS e pulisce la sessione locale
+            // 1. Esegui il logout locale
             CognitoAuthService.logout();
 
-            // 2. Genera l'URL per pulire i cookie del browser
+            // URL per il logout remoto su AWS Cognito
             String logoutUrl = CognitoAuthService.buildHostedUiLogoutUrl();
 
-            // 3. Accende il CallbackServer sulla 9090 in attesa del ritorno da AWS
+            // Accedi al server di callback per gestire la risposta del logout
             CallbackServer callbackServer = new CallbackServer();
             callbackServer.start();
 
-            // 4. Apre il browser per distruggere la sessione sul cloud
+            // Apri il browser per il logout remoto
             Desktop.getDesktop().browse(new URI(logoutUrl));
 
-            // 5. Chiudi la finestra attuale della Dashboard
+            // Chiudi la finestra attuale della Dashboard
             Stage currentStage = (Stage) btnLogout.getScene().getWindow();
             currentStage.close();
 
-            // 6. Riapri la schermata di Login (Welcome View)
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/org/frontend/view/welcome-view.fxml"));
+            // Riapri la schermata di Login (Welcome View)
+            FXMLLoader fxmlLoader = new FXMLLoader(
+                    HelloApplication.class.getResource("/org/frontend/view/welcome-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 546, 400);
 
             Stage loginStage = new Stage();
@@ -192,18 +181,11 @@ public class DashboardController {
         }
     }
 
-    // Variante 1: Standard (Per le pagine che non richiedono Dependency Injection immediata)
-    private void loadSubPage(String path) {
-        loadSubPage(path, null);
-    }
-
-    // Variante 2: Con Inizializzatore (Per le pagine SOLID che richiedono l'iniezione dei controller logici)
     private void loadSubPage(String path, Consumer<Object> initializer) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             Parent view = loader.load();
 
-            // Se è presente un blocco di istruzioni, lo eseguiamo passando il controller appena creato
             if (initializer != null && loader.getController() != null) {
                 initializer.accept(loader.getController());
             }
