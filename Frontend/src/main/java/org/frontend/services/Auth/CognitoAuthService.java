@@ -110,10 +110,8 @@ public class CognitoAuthService {
                         .POST(HttpRequest.BodyPublishers.ofString(body))
                         .build();
 
-                HttpResponse<String> response =
-                        client.send(request, HttpResponse.BodyHandlers.ofString());
             } catch (Exception e) {
-                e.printStackTrace();
+                throw new RuntimeException("Logout fallito", e);
             }
         }
 
