@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 
 public class DialogUtils {
 
-    public static void mostraErrore(String title, String message, String header) {
+    public static void showError(String title, String message, String header) {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(title);
@@ -15,7 +15,7 @@ public class DialogUtils {
         });
     }
 
-    public static void mostraInformazione(String title, String message) {
+    public static void showInfo(String title, String message) {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle(title);

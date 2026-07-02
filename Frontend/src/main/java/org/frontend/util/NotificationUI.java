@@ -10,11 +10,6 @@ import org.frontend.models.Notification;
 
 public class NotificationUI {
 
-    /**
-     * Crea l'intera riga grafica della notifica.
-     * @param n L'oggetto notifica con i dati
-     * @param onToggleAction L'azione di business da eseguire quando si clicca il pulsante
-     */
     public static HBox createNotificationRow(Notification n, Runnable onToggleAction) {
         HBox row = new HBox(12);
         row.getStyleClass().addAll("notif-row", n.isRead() ? "notif-read" : "notif-unread");
@@ -23,7 +18,7 @@ public class NotificationUI {
         Label dot = new Label();
         dot.getStyleClass().add(n.isRead() ? "notif-dot-read" : "notif-dot-unread");
 
-        Label icon = new Label(getIconForType(n.getType()));
+        Label icon = new Label("🔔");
         icon.getStyleClass().add("notif-icon");
 
         VBox body = new VBox(3);
@@ -48,15 +43,4 @@ public class NotificationUI {
         return row;
     }
 
-    private static String getIconForType(String tipo) {
-        if (tipo == null) return "🔔";
-        return switch (tipo.toUpperCase()) {
-            case "ISSUE_ASSIGNED" -> "📋";
-            case "ISSUE_RESOLVED" -> "✅";
-            case "ISSUE_CREATED"  -> "🐛";
-            case "ISSUE_UPDATED"  -> "✏️";
-            case "COMMENT_ADDED"  -> "💬";
-            default               -> "🔔";
-        };
-    }
 }

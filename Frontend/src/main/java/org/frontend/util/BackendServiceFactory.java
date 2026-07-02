@@ -34,5 +34,4 @@ public class BackendServiceFactory {
     public IssueService getIssueService() { return issueService; }
     public UserService getUserService() { return  userService; }
     public NotificationService getNotificationService() { return notificationService; }
-    // Aggiungi altri getter man mano che aggiungi servizi
 }

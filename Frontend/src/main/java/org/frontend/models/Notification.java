@@ -16,7 +16,6 @@ public class Notification {
 
     public Notification() {}
 
-    // uuid — Jackson cerca "uuid" nel JSON
     @JsonProperty("uuid")
     public String getId() { return uuid.get(); }
     public StringProperty idProperty() { return uuid; }

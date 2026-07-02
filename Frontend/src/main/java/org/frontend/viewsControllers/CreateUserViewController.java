@@ -79,12 +79,12 @@ public class CreateUserViewController {
         try {
             userController.createUser(email, role, firstName, lastName);
             String message = "Utente " + firstName + " " + lastName + " (" + email + ") creato con successo.";
-            DialogUtils.mostraInformazione("Successo", message);
+            DialogUtils.showInfo("Successo", message);
             resetForm();
             userController.loadWorkload();
         } catch (Exception e) {
             String message = "Errore durante la creazione dell'utente: " + firstName + " " + lastName + " (" + email + ").";
-            DialogUtils.mostraErrore("Errore", message, "Utente non creato.");
+            DialogUtils.showError("Errore", message, "Utente non creato.");
         }
     }
 

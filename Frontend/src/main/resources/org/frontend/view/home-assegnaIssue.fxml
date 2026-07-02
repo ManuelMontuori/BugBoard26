@@ -77,7 +77,6 @@
                            <Separator />
          
                            <HBox alignment="CENTER_RIGHT" spacing="10.0">
-                      <Button mnemonicParsing="false" onAction="#onAnnullaClicked" styleClass="btn-secondary" text="Annulla" />
                       <Button fx:id="btnAssegna" mnemonicParsing="false" onAction="#onAssegnaClicked" styleClass="btn-primary" text="Assegna" />
                   </HBox>
          

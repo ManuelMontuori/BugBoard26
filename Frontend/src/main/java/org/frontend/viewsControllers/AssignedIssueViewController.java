@@ -33,7 +33,6 @@ public class AssignedIssueViewController {
 
     @FXML
     public void initialize() {
-        // Deleghiamo la formattazione visiva della ComboBox a una Factory dedicata
         comboIssue.setCellFactory(lv -> IssueUI.createIssueListCell());
         comboIssue.setButtonCell(IssueUI.createIssueListCell());
 
@@ -52,7 +51,6 @@ public class AssignedIssueViewController {
         lblTitolo.setText(issue.getTitle() != null ? issue.getTitle() : "Nessun Titolo");
         lblDescrizione.setText(issue.getDescription() != null ? issue.getDescription() : "Nessuna Descrizione");
 
-        // Utilizziamo BadgeUtils per mantenere coerenza grafica in tutta l'app
         BadgeUtils.applyBadgeStyle(lblTipo, issue.getType());
         BadgeUtils.applyBadgeStyle(lblPriorita, issue.getPriority());
         BadgeUtils.applyBadgeStyle(lblStato, issue.getStatus());
@@ -69,7 +67,7 @@ public class AssignedIssueViewController {
             comboIssue.setItems(issueController.getIssues().filtered(i -> "TODO".equals(i.getStatus())));
             caricaUtenti();
         } catch (Exception e) {
-            DialogUtils.mostraErrore("Errore", "Impossibile caricare i dati iniziali.", e.getMessage());
+            DialogUtils.showError("Errore", "Impossibile caricare i dati iniziali.", e.getMessage());
         }
     }
 
@@ -86,7 +84,6 @@ public class AssignedIssueViewController {
         listUtenti.getChildren().clear();
 
         for (UserWorkload u : userController.getWorkload()) {
-            // Deleghiamo la costruzione della riga a WorkloadUI
             HBox row = WorkloadUI.createWorkloadRow(u, max, u == suggerito);
 
             row.setOnMouseClicked(e -> {
@@ -104,13 +101,13 @@ public class AssignedIssueViewController {
         Issue selectedIssue = comboIssue.getSelectionModel().getSelectedItem();
 
         if (selectedIssue == null || selectedUser == null) {
-            DialogUtils.mostraErrore("Selezione incompleta", "Seleziona sia una issue che un utente.", "");
+            DialogUtils.showError("Selezione incompleta", "Seleziona sia una issue che un utente.", "");
             return;
         }
 
         try {
             userController.assignIssue(selectedIssue.getUuid(), selectedUser.getUuid());
-            DialogUtils.mostraInformazione("Successo", "Issue assegnata correttamente.");
+            DialogUtils.showInfo("Successo", "Issue assegnata correttamente.");
 
             // Reset della UI dopo l'azione
             comboIssue.getSelectionModel().clearSelection();
@@ -119,12 +116,8 @@ public class AssignedIssueViewController {
             selectedUser = null;
             caricaUtenti();
         } catch (Exception e) {
-            DialogUtils.mostraErrore("Errore", "Impossibile completare l'assegnazione.", e.getMessage());
+            DialogUtils.showError("Errore", "Impossibile completare l'assegnazione.", e.getMessage());
         }
     }
 
-    @FXML
-    private void onAnnullaClicked() {
-        // Logica di navigazione qui
-    }
 }

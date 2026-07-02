@@ -18,12 +18,6 @@ public class UserWorkload {
     }
 
     public String getUuid()            { return uuid.get(); }
-    public String getFirstName()       { return firstName.get(); }
-    public String getLastName()        { return lastName.get(); }
     public long   getIssuesCount()     { return issuesCount.get(); }
     public String getFullName()        { return firstName.get() + " " + lastName.get(); }
-    public LongProperty issuesCountProperty() { return issuesCount; }
-    public StringProperty fullNameProperty()  {
-        return new SimpleStringProperty(getFullName());
-    }
 }

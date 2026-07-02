@@ -6,9 +6,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class FormUtil {
 
-    // 1. Logica visiva degli errori
-    public static void showError(Label lbl, String msg) {
-        lbl.setText(msg);
+    public static void showError(Label lbl, String message) {
+        lbl.setText(message);
         lbl.setVisible(true);
         lbl.setManaged(true);
     }
@@ -18,7 +17,6 @@ public class FormUtil {
         lbl.setManaged(false);
     }
 
-    // 2. Logica di validazione standard (funziona sia per TextField che per TextArea)
     public static boolean checkNotBlank(TextInputControl inputField, Label errorLabel, String errorMessage) {
         if (inputField.getText() == null || inputField.getText().trim().isEmpty()) {
             showError(errorLabel, errorMessage);
@@ -29,21 +27,18 @@ public class FormUtil {
         }
     }
 
-    // 3. Estrazione sicura dai ToggleGroup
     public static String getToggleUserData(ToggleGroup group) {
         return (group.getSelectedToggle() != null)
                 ? (String) group.getSelectedToggle().getUserData()
                 : null;
     }
 
-    // 4. Reset dei ToggleGroup
     public static void clearToggleGroup(ToggleGroup group) {
         if (group.getSelectedToggle() != null) {
             group.getSelectedToggle().setSelected(false);
         }
     }
 
-    // 1. Validazione Email
     public static boolean checkEmail(TextInputControl inputField, Label errorLabel) {
         String email = inputField.getText();
         if (email == null || email.trim().isEmpty()) {
@@ -58,7 +53,6 @@ public class FormUtil {
         }
     }
 
-    // 2. Validazione ToggleGroup
     public static boolean checkToggleSelected(ToggleGroup group, Label errorLabel, String errorMessage) {
         if (group.getSelectedToggle() == null) {
             showError(errorLabel, errorMessage);

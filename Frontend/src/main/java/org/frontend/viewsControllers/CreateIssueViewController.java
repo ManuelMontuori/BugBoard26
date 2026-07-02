@@ -54,10 +54,10 @@ public class CreateIssueViewController {
         try {
             issueController.createIssue(title, description, type, priority);
 
-            DialogUtils.mostraInformazione("Operazione Completata", "L'Issue è stata creata con successo!");
+            DialogUtils.showInfo("Operazione Completata", "L'Issue è stata creata con successo!");
             svuotaForm();
         } catch (Exception e) {
-            DialogUtils.mostraErrore("Errore di Rete",
+            DialogUtils.showError("Errore di Rete",
                     "Il server non ha risposto correttamente. Riprova più tardi.",
                     "Impossibile salvare l'issue");
             e.printStackTrace();

@@ -22,9 +22,7 @@ import org.frontend.models.Notification;
 import org.frontend.services.Auth.CallbackServer;
 import org.frontend.services.Auth.CognitoAuthService;
 import org.frontend.services.AuthSession;
-import org.frontend.services.IssueService;
 import org.frontend.services.ReportRowService;
-import org.frontend.util.BackendServiceFactory;
 import org.frontend.util.DialogUtils;
 
 import java.awt.*;
@@ -213,7 +211,7 @@ public class DashboardController {
             e.printStackTrace();
             System.err.println("Errore: impossibile caricare la vista " + path);
         } catch (Exception e) {
-            DialogUtils.mostraErrore("Errore di Rete.",
+            DialogUtils.showError("Errore di Rete.",
                     "Impossibile connettersi al server.",
                     "Connessione non riuscita.");
         }

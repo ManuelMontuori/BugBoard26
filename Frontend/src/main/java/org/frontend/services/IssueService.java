@@ -3,6 +3,7 @@ package org.frontend.services;
 import org.frontend.models.Issue;
 import org.frontend.models.dtos.IssueDTO;
 import org.frontend.util.JsonUtil;
+
 import java.util.List;
 
 public class IssueService {
@@ -107,8 +108,7 @@ public class IssueService {
 
         } catch (Exception e) {
             e.printStackTrace();
-
-            return null;
+            throw new RuntimeException("Errore durante la creazione della issue", e);
         }
     }
 

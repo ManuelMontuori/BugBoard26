@@ -19,7 +19,7 @@ public class CallbackServer {
                 String code = null;
                 boolean isLogin = false;
 
-                // 1. Controlliamo se c'è un parametro 'code' (Significa che è un LOGIN)
+                // se esiste un parametro code è stato effettuato il login
                 if (query != null) {
                     for (String param : query.split("&")) {
                         if (param.startsWith("code=")) {
@@ -31,23 +31,20 @@ public class CallbackServer {
 
                 String htmlResponse;
 
-                // 2. Smistiamo la logica tra Login e Logout
                 if (isLogin) {
-                    // FLUSSO DI LOGIN
                     CognitoAuthService.exchangeCode(code);
                     htmlResponse = "<html><body style='text-align:center; font-family:sans-serif; paddingTop:50px;'>"
                             + "<h1>✅ Accesso Autorizzato!</h1>"
                             + "<p>Puoi chiudere questa scheda e tornare all'applicazione.</p>"
                             + "</body></html>";
                 } else {
-                    // FLUSSO DI LOGOUT (Nessun 'code' trovato nell'URL)
                     htmlResponse = "<html><body style='text-align:center; font-family:sans-serif; paddingTop:50px;'>"
                             + "<h1>👋 Disconnessione completata!</h1>"
                             + "<p>A presto. Puoi chiudere questa scheda.</p>"
                             + "</body></html>";
                 }
 
-                // 3. Inviamo la risposta HTML al browser
+                // invio risposta HTML al browser
                 exchange.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
                 byte[] responseBytes = htmlResponse.getBytes(StandardCharsets.UTF_8);
                 exchange.sendResponseHeaders(200, responseBytes.length);
@@ -56,7 +53,7 @@ public class CallbackServer {
                     os.write(responseBytes);
                 }
 
-                // 4. Spegniamo il server per liberare la porta
+                // server spento
                 stop();
             });
 

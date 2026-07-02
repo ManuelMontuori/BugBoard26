@@ -17,14 +17,13 @@ public class CognitoAuthService {
     private static final String DOMAIN =
             "https://eu-south-1aa4g67ut3.auth.eu-south-1.amazoncognito.com";
 
-    // IMPORTANT: questo deve essere lo stesso del link Hosted UI che apri
     private static final String CLIENT_ID =
             "2m5mjtr6jk7ht41lv9e57596t2";
 
     private static final String REDIRECT_URI =
             "http://localhost:9090/callback";
 
-    // PKCE: lo generi prima del login e lo riusi nel token exchange
+    // pkce
     private static String codeVerifier;
 
     public static String buildHostedUiLoginUrl() {
@@ -93,7 +92,7 @@ public class CognitoAuthService {
                     AuthSession.getInstance().setTokens(access, refresh, id, expiresIn);
                     System.out.println("Tokens salvati in sessione.");
 
-                    // Notifica la UI JavaFX (che gira sull'FX thread)
+                    // Notifica la UI JavaFX
                     Platform.runLater(() -> LoginEvent.fire());
                 }
             }
@@ -106,55 +105,7 @@ public class CognitoAuthService {
         System.out.println(">>> exchangeCode END");
     }
 
-    public static boolean refreshAccessToken() {
-        AuthSession session = AuthSession.getInstance();
-        if (!session.canRefresh()) return false;
 
-        try {
-            HttpClient client = HttpClient.newHttpClient();
-
-            String body =
-                    "grant_type=refresh_token"
-                            + "&client_id=" + url(CLIENT_ID)
-                            + "&refresh_token=" + url(session.getRefreshToken());
-
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(DOMAIN + "/oauth2/token"))
-                    .header("Content-Type", "application/x-www-form-urlencoded")
-                    .POST(HttpRequest.BodyPublishers.ofString(body))
-                    .build();
-
-            HttpResponse<String> response =
-                    client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            if (response.statusCode() >= 200 && response.statusCode() < 300) {
-                JsonNode node = JsonUtil.mapper.readTree(response.body());
-                String access    = node.path("access_token").asText("");
-                String id        = node.path("id_token").asText("");
-                // Cognito NON restituisce un nuovo refresh token qui
-                int    expiresIn = node.path("expires_in").asInt(3600);
-
-                if (!access.isBlank()) {
-                    // refresh token rimane invariato
-                    session.setTokens(access, session.getRefreshToken(), id, expiresIn);
-                    System.out.println("Access token rinnovato.");
-                    return true;
-                }
-            }
-
-            System.err.println("Refresh fallito: " + response.statusCode() + " " + response.body());
-            return false;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    /**
-     * Revoca il refresh token su Cognito e pulisce la sessione locale.
-     * Dopo questa chiamata l'utente deve rifare il login.
-     */
     public static void logout() {
         AuthSession session = AuthSession.getInstance();
         String token = session.getRefreshToken();
@@ -185,9 +136,7 @@ public class CognitoAuthService {
         session.clear();
     }
     public static String buildHostedUiLogoutUrl() {
-        // Usiamo la stessa REDIRECT_URI del login, è la scelta più comoda.
-        // ATTENZIONE: Questo esatto URL deve essere registrato nella console AWS
-        // sotto la voce "Allowed sign-out URLs".
+
         return DOMAIN + "/logout"
                 + "?client_id=" + url(CLIENT_ID)
                 + "&logout_uri=" + url(REDIRECT_URI);

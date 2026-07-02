@@ -8,7 +8,6 @@ import java.util.Base64;
 public final class PkceUtil {
     private static final SecureRandom RNG = new SecureRandom();
 
-    // RFC 7636: verifier 43-128 chars (URL-safe)
     public static String generateCodeVerifier() {
         byte[] bytes = new byte[32];
         RNG.nextBytes(bytes);
@@ -21,7 +20,7 @@ public final class PkceUtil {
             byte[] digest = md.digest(codeVerifier.getBytes(StandardCharsets.US_ASCII));
             return Base64.getUrlEncoder().withoutPadding().encodeToString(digest);
         } catch (Exception e) {
-            throw new RuntimeException("Unable to compute PKCE code_challenge", e);
+            throw new RuntimeException("Errore nel PKCE", e);
         }
     }
 

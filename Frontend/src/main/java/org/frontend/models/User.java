@@ -44,51 +44,25 @@ public class User {
         status.set(dto.status());
         lastLogin.set(dto.lastLogin());
         createdAt.set(dto.createdAt());
-        //  lastLogin, createdAt non sono nel DTO ora —
-        // verranno aggiunti al DTO quando il backend li esporrà
     }
 
-    // --- uuid ---
     public String getUuid()             { return uuid.get(); }
-    public StringProperty uuidProperty(){ return uuid; }
 
-    // --- email ---
-    public String getEmail()              { return email.get(); }
-    public StringProperty emailProperty() { return email; }
     public void setEmail(String email)    { this.email.set(email); }
 
-    // --- role ---
-    public String getRole()              { return role.get(); }
-    public StringProperty roleProperty() { return role; }
     public void setRole(String role)     { this.role.set(role); }
 
-    // --- status ---
     public String getStatus()              { return status.get(); }
     public StringProperty statusProperty() { return status; }
-    public void setStatus(String status)   { this.status.set(status); }
 
-    // --- lastLogin ---
-    public LocalDate getLastLogin()                      { return lastLogin.get(); }
-    public ObjectProperty<LocalDate> lastLoginProperty() { return lastLogin; }
-    public void setLastLogin(LocalDate lastLogin)        { this.lastLogin.set(lastLogin); }
-
-    // --- createdAt ---
-    public LocalDateTime getCreatedAt()                       { return createdAt.get(); }
-    public ObjectProperty<LocalDateTime> createdAtProperty()  { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt)         { this.createdAt.set(createdAt); }
-
-    // firstName
-    public String getFirstName()              { return firstName.get(); }
     public StringProperty firstNameProperty()               { return firstName; }
     public void setFirstName(String firstName)        { this.firstName.set(firstName); }
 
-    // lastName
-    public String getLastName()                  { return lastName.get(); }
     public StringProperty lastNameProperty()             { return lastName; }
     public void setLastName(String lastName)        { this.lastName.set(lastName); }
 
     public BooleanBinding activeProperty() {
-        // Crea un legame reattivo: se statusProperty cambia, il booleano si ri-calcola da solo
+        // se statusProperty cambia, il booleano si ricalcola da solo
         return Bindings.createBooleanBinding(
                 () -> "ACTIVE".equalsIgnoreCase(getStatus()),
                 statusProperty()

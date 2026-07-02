@@ -5,10 +5,7 @@ import org.frontend.models.Issue;
 
 public class IssueUI {
 
-    /**
-     * Crea una ListCell per le ComboBox che visualizza le Issue.
-     * Centralizza la formattazione testuale per evitare duplicazioni.
-     */
+    // crea una lista di issue visualizzate nella combobox di assegnaIssue
     public static ListCell<Issue> createIssueListCell() {
         return new ListCell<>() {
             @Override
@@ -23,6 +20,4 @@ public class IssueUI {
             }
         };
     }
-
-
 }

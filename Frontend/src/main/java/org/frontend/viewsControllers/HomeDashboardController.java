@@ -57,7 +57,7 @@ public class HomeDashboardController {
                 caricaDatiDashboard(userUuid);
             });
         } catch (IllegalStateException e) {
-            DialogUtils.mostraErrore("Errore di sessione",
+            DialogUtils.showError("Errore di sessione",
                     "Utente non trovato.",
                     "Impossibile caricare i dati");
         }
@@ -99,7 +99,7 @@ public class HomeDashboardController {
             issueController.loadMyIssues(userUuid);
         } catch (Exception e) {
             e.printStackTrace();
-            DialogUtils.mostraErrore("Errore di Connessione",
+            DialogUtils.showError("Errore di Connessione",
                     "Impossibile caricare i dati. Assicurati che il backend sia attivo.",
                     "Server non raggiungibile");
         }

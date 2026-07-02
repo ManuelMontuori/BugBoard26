@@ -10,10 +10,7 @@ public class TableUtil {
         void execute(T item, boolean isSelected) throws Exception;
     }
 
-    /**
-     * Genera una cella contenente una CheckBox interattiva.
-     * Gestisce in automatico il rollback grafico se l'azione fallisce.
-     */
+    // Genera una cella contenente una CheckBox interattiva.
     public static <T> TableCell<T, Boolean> createToggleSwitchCell(ToggleAction<T> action) {
         return new TableCell<>() {
             private final CheckBox cb = new CheckBox();
@@ -24,12 +21,12 @@ public class TableUtil {
                 if (empty || item == null) {
                     setGraphic(null);
                 } else {
-                    // Rimuove l'evento prima di impostare il valore per evitare trigger accidentali
+                    // setOnAction a null per evitare vecchie selezioni nella checkbox
                     cb.setOnAction(null);
                     cb.setSelected(item);
                     setGraphic(cb);
 
-                    // Riassocia l'evento
+                    // lancio della nuova selezione
                     cb.setOnAction(e -> {
                         T rowData = getTableRow().getItem();
                         if (rowData != null) {
@@ -37,7 +34,7 @@ public class TableUtil {
                             try {
                                 action.execute(rowData, selected);
                             } catch (Exception ex) {
-                                // Se la chiamata API fallisce, rimettiamo lo switch allo stato precedente
+                                // se la chiamata API fallisce, cancellazione della scelta fatta
                                 cb.setSelected(!selected);
                                 System.err.println("Impossibile aggiornare lo stato: " + ex.getMessage());
                             }

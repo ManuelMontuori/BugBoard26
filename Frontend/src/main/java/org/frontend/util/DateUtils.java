@@ -14,59 +14,37 @@ import java.util.Locale;
 
 public class DateUtils {
 
-    // ════════════════════════════════════════════════════════════════════════
-    // FORMATTERS STATICI (Riutilizzabili)
-    // ════════════════════════════════════════════════════════════════════════
-
-    // Il formatter che usiamo per le notifiche e altre stringhe ISO
+    // Il formatter che usiamo per le notifiche
     private static final DateTimeFormatter ISO_TO_LOCAL_FMT = DateTimeFormatter
             .ofPattern("dd/MM/yyyy HH:mm")
             .withZone(ZoneId.systemDefault());
 
-    // ════════════════════════════════════════════════════════════════════════
-    // METODI PER LE STRINGHE / ISO
-    // ════════════════════════════════════════════════════════════════════════
-
-    /**
-     * Converte una stringa ISO (es. dal database/backend) in formato leggibile.
-     */
-    public static String formatIsoToLocal(String isoDate) {
-        if (isoDate == null || isoDate.isBlank()) return "";
+    public static String formatIsoToLocal(String date) {
+        if (date == null || date.isBlank()) return "";
         try {
-            return ISO_TO_LOCAL_FMT.format(Instant.parse(isoDate));
+            return ISO_TO_LOCAL_FMT.format(Instant.parse(date));
         } catch (Exception e) {
-            return isoDate; // Fallback se la stringa non è valida
+            return date;
         }
     }
 
-    // ════════════════════════════════════════════════════════════════════════
-    // METODI PREESISTENTI (Lista Mesi e Celle Tabella)
-    // ════════════════════════════════════════════════════════════════════════
-
-    /**
-     * Genera una lista di oggetti MeseOpzione per gli ultimi X mesi a partire da oggi.
-     */
-    public static List<MeseOpzione> generaUltimiMesi(int quantiMesi) {
-        List<MeseOpzione> lista = new ArrayList<>();
-        LocalDate dataCorrente = LocalDate.now();
+    public static List<MeseOpzione> generaUltimiMesi(int nMonunth) {
+        List<MeseOpzione> listMounth = new ArrayList<>();
+        LocalDate currentData = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ITALIAN);
 
-        for (int i = 0; i < quantiMesi; i++) {
-            LocalDate dataMese = dataCorrente.minusMonths(i);
+        for (int i = 0; i < nMonunth; i++) {
+            LocalDate dataMese = currentData.minusMonths(i);
 
-            // Formatta la stringa (es: "giugno 2026") e rende la prima lettera maiuscola
+            // Formatta la stringa (tipo "giugno 2026") e rende la prima lettera maiuscola
             String label = dataMese.format(formatter);
             label = label.substring(0, 1).toUpperCase() + label.substring(1);
 
-            // Crea l'oggetto pulito
-            lista.add(new MeseOpzione(dataMese.getYear(), dataMese.getMonthValue(), label));
+            listMounth.add(new MeseOpzione(dataMese.getYear(), dataMese.getMonthValue(), label));
         }
-        return lista;
+        return listMounth;
     }
 
-    /**
-     * Crea una cella per le TableView di JavaFX per formattare LocalDateTime.
-     */
     public static <T> TableCell<T, LocalDateTime> createDateCell(DateTimeFormatter formatter) {
         return new TableCell<>() {
             @Override

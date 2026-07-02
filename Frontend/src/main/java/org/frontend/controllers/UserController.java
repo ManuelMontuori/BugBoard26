@@ -51,7 +51,6 @@ public class UserController {
         service.assignIssue(issueUuid, userUuid);
     }
 
-    // Restituisce il primo utente (carico minore — già ordinato dal backend)
     public UserWorkload getSuggerito() {
         return workload.isEmpty() ? null : workload.get(0);
     }
@@ -60,10 +59,9 @@ public class UserController {
         return service.getMonthlyReport(year, month);
     }
 
-    // Esempio logico di metodi nell'UserController:
     public void enableUser(String uuid) throws Exception {
         service.enableUser(uuid);
-        loadAllUsers(); // Ricarica la lista per sincronizzare la UI
+        loadAllUsers();
     }
 
     public void disableUser(String uuid) throws Exception {

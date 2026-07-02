@@ -11,7 +11,6 @@ public class IssueController {
     private final IssueService service;
     private final ObservableList<Issue> issues;
 
-    // Costruttore ora è PUBBLICO
     public IssueController() {
         this.service = BackendServiceFactory.getInstance().getIssueService();
         this.issues = FXCollections.observableArrayList();

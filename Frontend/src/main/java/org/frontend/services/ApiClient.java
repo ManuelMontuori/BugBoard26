@@ -36,7 +36,7 @@ public class ApiClient {
         return builder;
     }
 
-    // Metodo NUOVO — solo per SSE, nessun timeout di request
+    // solo per SSE, nessun timeout di request, serve per lasciare il canale aperto per tutto il tempo dell'esecuzione
     public HttpRequest.Builder requestStream(String path) {
         HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(baseUrl + path))
@@ -51,7 +51,4 @@ public class ApiClient {
         return builder;
     }
 
-    public String getBaseUrl() {
-        return baseUrl;
-    }
 }

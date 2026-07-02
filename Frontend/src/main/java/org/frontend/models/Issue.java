@@ -113,7 +113,6 @@ public class Issue {
     }
 
 
-    // setter
     public void setTitle(String title){
             this.title.set(title);
     }
