@@ -42,7 +42,6 @@ public class CognitoAuthService {
     }
 
     public static void exchangeCode(String code) {
-        System.out.println(">>> exchangeCode START");
 
         try {
             if (code == null || code.isBlank()) {
@@ -51,8 +50,6 @@ public class CognitoAuthService {
             if (codeVerifier == null || codeVerifier.isBlank()) {
                 throw new IllegalStateException("Missing PKCE code_verifier. Devi chiamare buildHostedUiLoginUrl() prima del login.");
             }
-
-            System.out.println("CODE = " + code);
 
             HttpClient client = HttpClient.newHttpClient();
 
@@ -63,8 +60,6 @@ public class CognitoAuthService {
                             + "&redirect_uri=" + url(REDIRECT_URI)
                             + "&code_verifier=" + url(codeVerifier);
 
-            System.out.println("BODY = " + body);
-
             HttpRequest request =
                     HttpRequest.newBuilder()
                             .uri(URI.create(DOMAIN + "/oauth2/token"))
@@ -72,13 +67,8 @@ public class CognitoAuthService {
                             .POST(HttpRequest.BodyPublishers.ofString(body))
                             .build();
 
-            System.out.println("REQUEST SENT");
-
             HttpResponse<String> response =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            System.out.println("STATUS = " + response.statusCode());
-            System.out.println("BODY = " + response.body());
 
             if (response.statusCode() >= 200 && response.statusCode() < 300) {
                 JsonNode node = JsonUtil.mapper.readTree(response.body());
@@ -90,7 +80,6 @@ public class CognitoAuthService {
 
                 if (!access.isBlank()) {
                     AuthSession.getInstance().setTokens(access, refresh, id, expiresIn);
-                    System.out.println("Tokens salvati in sessione.");
 
                     // Notifica la UI JavaFX
                     Platform.runLater(() -> LoginEvent.fire());
@@ -98,11 +87,8 @@ public class CognitoAuthService {
             }
 
         } catch (Exception e) {
-            System.out.println(">>> ERROR OCCURRED");
             e.printStackTrace();
         }
-
-        System.out.println(">>> exchangeCode END");
     }
 
 
@@ -126,8 +112,6 @@ public class CognitoAuthService {
 
                 HttpResponse<String> response =
                         client.send(request, HttpResponse.BodyHandlers.ofString());
-
-                System.out.println("Revoke status: " + response.statusCode());
             } catch (Exception e) {
                 e.printStackTrace();
             }

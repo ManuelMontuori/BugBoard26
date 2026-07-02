@@ -12,7 +12,6 @@ public class WelcomeViewController {
     @FXML
     private void handleLogin(ActionEvent event) {
         try {
-            System.out.println("<<<<<< PULSANTE PREMUTO >>>>>>>");
             CallbackServer callbackServer = new CallbackServer();
             callbackServer.start();
             String loginUrl = CognitoAuthService.buildHostedUiLoginUrl();

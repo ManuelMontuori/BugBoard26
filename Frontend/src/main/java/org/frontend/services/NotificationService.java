@@ -28,18 +28,15 @@ public class NotificationService {
     public void startNotificationListener(String userUuid, String token) {
         Thread sseThread = new Thread(() -> {
             try {
-                System.out.println("NotificationService: Tentativo connessione SSE...");
 
                 HttpResponse<Stream<String>> response = api.streamNotifications(userUuid, token);
 
                 if (response.statusCode() == 200) {
-                    System.out.println("NotificationService: Flusso SSE connesso!");
 
                     try (Stream<String> lines = response.body()) {
                         lines.forEach(line -> {
                             if (line.startsWith("data:")) {
                                 String jsonPayload = line.substring(5).trim();
-                                System.out.println("ARRIVATA NUOVA NOTIFICA NEL SERVICE");
                                 processNotificationJson(jsonPayload);
                             }
                         });

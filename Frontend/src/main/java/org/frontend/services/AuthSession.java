@@ -97,8 +97,6 @@ public final class AuthSession {
             NotificationApiService apiService = new NotificationApiService(apiClient);
             this.notificationService = new NotificationService(apiService, mapper);
             this.notificationService.startNotificationListener(this.customUuid, this.idToken);
-
-            System.out.println("AuthSession: Flusso notifiche avviato per l'utente " + this.email);
         } catch (Exception e) {
             System.err.println("AuthSession: Impossibile avviare il servizio notifiche.");
             e.printStackTrace();

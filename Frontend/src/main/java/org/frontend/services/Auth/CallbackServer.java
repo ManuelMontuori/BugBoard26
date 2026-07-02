@@ -59,7 +59,6 @@ public class CallbackServer {
 
             server.setExecutor(null);
             server.start();
-            System.out.println("CallbackServer in ascolto su http://localhost:9090");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +68,6 @@ public class CallbackServer {
     public void stop() {
         if (server != null) {
             server.stop(0);
-            System.out.println("CallbackServer fermato e porta liberata.");
         }
     }
 }

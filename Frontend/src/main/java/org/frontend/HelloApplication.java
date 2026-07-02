@@ -53,8 +53,6 @@ public class HelloApplication extends Application {
     @Override
     public void stop() {
 
-        System.out.println("Chiusura dell'applicazione in corso... Pulizia risorse.");
-
         System.exit(0);
     }
 }

@@ -20,10 +20,6 @@ public class IssueService {
         try {
             String json = api.findAll();
 
-            System.out.println("--- DEBUG RESPONSE FIND_ALL ---");
-            System.out.println(json);
-            System.out.println("-------------------------------");
-
             List<IssueDTO> dtoList =
 
                     JsonUtil.mapper.readValue(
@@ -46,10 +42,6 @@ public class IssueService {
     public List<Issue> findAssignedToMe(String userUuid) {
         try {
             String json = api.findAssignedToMe(userUuid);
-
-            System.out.println("--- DEBUG RESPONSE FIND_ALL ---");
-            System.out.println(json);
-            System.out.println("-------------------------------");
 
             List<IssueDTO> dtoList = JsonUtil.mapper.readValue(
                     json,
@@ -90,19 +82,9 @@ public class IssueService {
 
             String json = JsonUtil.mapper.writeValueAsString(issue);
 
-            System.out.println("--- DEBUG POST PAYLOAD ---");
-            System.out.println(json);
-            System.out.println("--------------------------");
-
             String jsonResponse = api.create(json);
 
-            System.out.println("--- DEBUG POST RESPONSE ---");
-            System.out.println(jsonResponse);
-            System.out.println("---------------------------");
-
             IssueDTO savedDto = JsonUtil.mapper.readValue(jsonResponse, IssueDTO.class);
-
-            System.out.println("SIAMO NEL CREATE DEL SERVICE");
 
             return new Issue(savedDto);
 

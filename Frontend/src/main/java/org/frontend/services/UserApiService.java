@@ -32,10 +32,6 @@ public class UserApiService {
                 HttpResponse<String> response = apiClient.client()
                                 .send(request, HttpResponse.BodyHandlers.ofString());
 
-                System.out.println("--- DEBUG USER API CREATE STATUS ---");
-                System.out.println(response.statusCode());
-                System.out.println("------------------------------------");
-
                 if (response.statusCode() >= 400) {
                         throw new RuntimeException(
                                         "Errore API: Status " + response.statusCode() + " - " + response.body());
@@ -65,10 +61,6 @@ public class UserApiService {
                 HttpResponse<String> response = apiClient.client()
                                 .send(request, HttpResponse.BodyHandlers.ofString());
 
-                System.out.println("--- DEBUG ASSIGN STATUS ---");
-                System.out.println(response.statusCode());
-                System.out.println("---------------------------");
-
                 if (response.statusCode() >= 400)
                         throw new RuntimeException("Errore API: " + response.statusCode() + " - " + response.body());
         }
@@ -94,10 +86,6 @@ public class UserApiService {
                 HttpResponse<String> response = apiClient.client()
                                 .send(request, HttpResponse.BodyHandlers.ofString());
 
-                System.out.println("--- DEBUG PATCH ENABLE ---");
-                System.out.println("Status: " + response.statusCode());
-                System.out.println("--------------------------");
-
                 if (response.statusCode() >= 400) {
                         throw new RuntimeException("Errore API Abilita: Status " + response.statusCode() + " - "
                                         + response.body());
@@ -112,10 +100,6 @@ public class UserApiService {
 
                 HttpResponse<String> response = apiClient.client()
                                 .send(request, HttpResponse.BodyHandlers.ofString());
-
-                System.out.println("--- DEBUG PATCH DISABLE ---");
-                System.out.println("Status: " + response.statusCode());
-                System.out.println("---------------------------");
 
                 if (response.statusCode() >= 400) {
                         throw new RuntimeException("Errore API Disabilita: Status " + response.statusCode() + " - "

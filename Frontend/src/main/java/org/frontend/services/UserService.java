@@ -20,10 +20,6 @@ public class UserService {
         try {
             String json = api.findAll();
 
-            System.out.println("--- DEBUG RESPONSE USER FIND_ALL ---");
-            System.out.println(json);
-            System.out.println("------------------------------------");
-
             List<UserDTO> dtoList = JsonUtil.mapper.readValue(
                     json,
                     JsonUtil.mapper.getTypeFactory()
@@ -43,15 +39,7 @@ public class UserService {
 
         String json = JsonUtil.mapper.writeValueAsString(user);
 
-        System.out.println("--- DEBUG POST USER PAYLOAD ---");
-        System.out.println(json);
-        System.out.println("-------------------------------");
-
         String jsonResponse = api.create(json);
-
-        System.out.println("--- DEBUG POST USER RESPONSE ---");
-        System.out.println(jsonResponse);
-        System.out.println("--------------------------------");
 
         UserDTO savedDto = JsonUtil.mapper.readValue(jsonResponse, UserDTO.class);
         return new User(savedDto);
@@ -61,10 +49,6 @@ public class UserService {
     public List<UserWorkload> findByWorkload() {
         try {
             String json = api.findByWorkload();
-
-            System.out.println("--- DEBUG WORKLOAD ---");
-            System.out.println(json);
-            System.out.println("---------------------");
 
             List<UserWorkloadDTO> dtoList = JsonUtil.mapper.readValue(
                     json,
@@ -94,10 +78,6 @@ public class UserService {
         try {
             String json = api.getMonthlyReport(year, month);
 
-            System.out.println("--- DEBUG RESPONSE USER REPORT ---");
-            System.out.println(json);
-            System.out.println("----------------------------------");
-
             return JsonUtil.mapper.readValue(
                     json,
                     JsonUtil.mapper.getTypeFactory()
@@ -113,7 +93,6 @@ public class UserService {
     public void enableUser(String uuid) throws Exception {
         try {
             api.enable(uuid);
-            System.out.println("UserService: Utente " + uuid + " abilitato con successo.");
         } catch (Exception e) {
             System.err.println("UserService: Errore durante l'abilitazione dell'utente " + uuid);
             e.printStackTrace();
@@ -124,7 +103,6 @@ public class UserService {
     public void disableUser(String uuid) throws Exception {
         try {
             api.disable(uuid);
-            System.out.println("UserService: Utente " + uuid + " disabilitato con successo.");
         } catch (Exception e) {
             System.err.println("UserService: Errore durante la disabilitazione dell'utente " + uuid);
             e.printStackTrace();

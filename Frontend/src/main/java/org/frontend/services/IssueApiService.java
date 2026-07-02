@@ -53,10 +53,6 @@ public class IssueApiService {
                         request,
                         HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("--- DEBUG RESPONSE SEARCH ---");
-        System.out.println(response.body());
-        System.out.println("-----------------------------");
-
         if (response.statusCode() >= 400) {
             throw new RuntimeException(
                     "Errore API Cerca: Status " + response.statusCode() + " - " + response.body());
@@ -76,8 +72,6 @@ public class IssueApiService {
                 .send(
                         request,
                         HttpResponse.BodyHandlers.ofString());
-
-        System.out.println("SIAMO NEL CREATE DEL api service");
 
         if (response.statusCode() >= 400) {
             throw new RuntimeException(
