@@ -27,8 +27,7 @@ public class UserService {
             List<UserDTO> dtoList = JsonUtil.mapper.readValue(
                     json,
                     JsonUtil.mapper.getTypeFactory()
-                            .constructCollectionType(List.class, UserDTO.class)
-            );
+                            .constructCollectionType(List.class, UserDTO.class));
 
             return dtoList.stream()
                     .map(User::new)
@@ -57,7 +56,6 @@ public class UserService {
         UserDTO savedDto = JsonUtil.mapper.readValue(jsonResponse, UserDTO.class);
         return new User(savedDto);
 
-
     }
 
     public List<UserWorkload> findByWorkload() {
@@ -71,8 +69,7 @@ public class UserService {
             List<UserWorkloadDTO> dtoList = JsonUtil.mapper.readValue(
                     json,
                     JsonUtil.mapper.getTypeFactory()
-                            .constructCollectionType(List.class, UserWorkloadDTO.class)
-            );
+                            .constructCollectionType(List.class, UserWorkloadDTO.class));
 
             return dtoList.stream()
                     .map(UserWorkload::new)
@@ -104,8 +101,7 @@ public class UserService {
             return JsonUtil.mapper.readValue(
                     json,
                     JsonUtil.mapper.getTypeFactory()
-                            .constructCollectionType(List.class, UserReportDTO.class)
-            );
+                            .constructCollectionType(List.class, UserReportDTO.class));
 
         } catch (Exception e) {
             System.err.println("Errore durante il recupero del report mensile: " + e.getMessage());
@@ -132,7 +128,7 @@ public class UserService {
         } catch (Exception e) {
             System.err.println("UserService: Errore durante la disabilitazione dell'utente " + uuid);
             e.printStackTrace();
-            throw e; // Rilanciamo l'eccezione per farla gestire al ViewController grafico
+            throw e;
         }
     }
 }

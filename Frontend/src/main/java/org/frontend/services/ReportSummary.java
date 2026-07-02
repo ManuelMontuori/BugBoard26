@@ -17,12 +17,11 @@ public class ReportSummary {
     private final List<UserReportDTO> ordinatiPerWorkload;
     private final List<UserReportDTO> topPerformer;
 
-    public ReportSummary(List<UserReportDTO> reportGrezzo) {
-        // 1. Calcoli metriche generali
+    public ReportSummary(List<UserReportDTO> report) {
         int utentiConTempoValido = 0;
         double sommaTempoRisoluzione = 0;
 
-        for (UserReportDTO r : reportGrezzo) {
+        for (UserReportDTO r : report) {
             this.totAperte += nullSafe(r.totIssue());
             this.totRisolte += nullSafe(r.totResolvedIssue());
             this.altaPriorita += nullSafe(r.totHighPriorityIssue());
@@ -43,31 +42,54 @@ public class ReportSummary {
             this.avgTempo = sommaTempoRisoluzione / utentiConTempoValido;
         }
 
-        // 2. Ordinamento per Workload (Primi 10 per il BarChart e la Tabella)
-        this.ordinatiPerWorkload = new ArrayList<>(reportGrezzo);
-        this.ordinatiPerWorkload.sort((r1, r2) ->
-                Integer.compare(nullSafe(r2.totWorkloadIssue()), nullSafe(r1.totWorkloadIssue()))
-        );
+        this.ordinatiPerWorkload = new ArrayList<>(report);
+        this.ordinatiPerWorkload
+                .sort((r1, r2) -> Integer.compare(nullSafe(r2.totWorkloadIssue()), nullSafe(r1.totWorkloadIssue())));
 
-        // 3. Ordinamento Top Performer (Primi 5 risolte)
-        this.topPerformer = new ArrayList<>(reportGrezzo);
-        this.topPerformer.sort((r1, r2) ->
-                Integer.compare(nullSafe(r2.totResolvedIssue()), nullSafe(r1.totResolvedIssue()))
-        );
+        this.topPerformer = new ArrayList<>(report);
+        this.topPerformer
+                .sort((r1, r2) -> Integer.compare(nullSafe(r2.totResolvedIssue()), nullSafe(r1.totResolvedIssue())));
     }
 
-    // ── GETTER PER IL CONTROLLER ────────────────────────────────────────────
-    public int getTotAperte() { return totAperte; }
-    public int getTotRisolte() { return totRisolte; }
-    public int getAltaPriorita() { return altaPriorita; }
-    public int getTotWorkload() { return totWorkload; }
-    public int getAltreAperte() { return Math.max(0, totCreate - totRisolte - totWorkload); }
-    public double getAvgTempo() { return avgTempo; }
-    public int getMaxWorkload() { return maxWorkload; }
-    public int getPercentualeRisolte() { return totAperte > 0 ? (totRisolte * 100 / totAperte) : 0; }
+    public int getTotAperte() {
+        return totAperte;
+    }
 
-    public List<UserReportDTO> getOrdinatiPerWorkload() { return ordinatiPerWorkload; }
-    public List<UserReportDTO> getTopPerformer() { return topPerformer; }
+    public int getTotRisolte() {
+        return totRisolte;
+    }
+
+    public int getAltaPriorita() {
+        return altaPriorita;
+    }
+
+    public int getTotWorkload() {
+        return totWorkload;
+    }
+
+    public int getAltreAperte() {
+        return Math.max(0, totCreate - totRisolte - totWorkload);
+    }
+
+    public double getAvgTempo() {
+        return avgTempo;
+    }
+
+    public int getMaxWorkload() {
+        return maxWorkload;
+    }
+
+    public int getPercentualeRisolte() {
+        return totAperte > 0 ? (totRisolte * 100 / totAperte) : 0;
+    }
+
+    public List<UserReportDTO> getOrdinatiPerWorkload() {
+        return ordinatiPerWorkload;
+    }
+
+    public List<UserReportDTO> getTopPerformer() {
+        return topPerformer;
+    }
 
     private int nullSafe(Integer val) {
         return val != null ? val : 0;

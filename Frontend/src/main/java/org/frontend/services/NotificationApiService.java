@@ -12,8 +12,6 @@ public class NotificationApiService {
         this.apiClient = apiClient;
     }
 
-    // Apre la connessione persistente SSE serve per ricevere le notifiche in tempo reale
-    
     public HttpResponse<Stream<String>> streamNotifications(String userUuid, String token) throws Exception {
         HttpRequest request = apiClient
                 .requestStream("/api/notification/stream/" + userUuid)
