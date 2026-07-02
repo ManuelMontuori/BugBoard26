@@ -23,7 +23,7 @@ public class NotificationStreamService {
 
         emitter.onCompletion(() -> this.emitters.remove(userUuid));
         emitter.onTimeout(() -> this.emitters.remove(userUuid));
-        emitter.onError((e) -> this.emitters.remove(userUuid));
+        emitter.onError(e -> this.emitters.remove(userUuid));
 
         return emitter;
     }

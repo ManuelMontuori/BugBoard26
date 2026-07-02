@@ -51,7 +51,7 @@ public class IssueWriteServiceTest {
 
     
     @Test
-    void testAssignIssue_validUser() {
+    void testAssignIssueValidUser() {
         UUID issueId = UUID.randomUUID();
         UUID userId = UUID.randomUUID();
 
@@ -73,7 +73,7 @@ public class IssueWriteServiceTest {
 
     
     @Test
-    void testAssignIssue_userNotFound() {
+    void testAssignIssueUserNotFound() {
         UUID issueId = UUID.randomUUID();
         UUID userId = UUID.randomUUID();
 
@@ -89,7 +89,7 @@ public class IssueWriteServiceTest {
     
 
     @Test
-    void testAssignIssue_issueNotFound() {
+    void testAssignIssueIssueNotFound() {
 
         UUID issueId = UUID.randomUUID();
         UUID userId = UUID.randomUUID();

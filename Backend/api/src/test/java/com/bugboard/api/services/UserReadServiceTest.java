@@ -34,7 +34,7 @@ public class UserReadServiceTest {
     // TC1 - CASO POSITIVO
     // =========================
     @Test
-    void testGetMonthlyReport_valid() {
+    void testGetMonthlyReportValid() {
 
         int year = 2024;
         int month = 5;
@@ -65,7 +65,7 @@ public class UserReadServiceTest {
     // TC2 - LISTA VUOTA
     // =========================
     @Test
-    void testGetMonthlyReport_emptyList() {
+    void testGetMonthlyReportEmptyList() {
 
         int year = 2024;
         int month = 5;
@@ -89,7 +89,7 @@ public class UserReadServiceTest {
     // TC3 - BOUNDARY VALUE: mese non valido (>12)
     // =========================
     @Test
-    void testGetMonthlyReport_invalidMonth_upperBound() {
+    void testGetMonthlyReportInvalidMonth_upperBound() {
 
         assertThrows(DateTimeException.class,
                 () -> userService.getMonthlyReport(2024, 13));
@@ -99,7 +99,7 @@ public class UserReadServiceTest {
     // TC4 - BOUNDARY VALUE: mese non valido (<1)
     // =========================
     @Test
-    void testGetMonthlyReport_invalidMonth_lowerBound() {
+    void testGetMonthlyReportInvalidMonth_lowerBound() {
 
         assertThrows(DateTimeException.class,
                 () -> userService.getMonthlyReport(2024, 0));
@@ -109,7 +109,7 @@ public class UserReadServiceTest {
     // TC5 - BOUNDARY VALUE: mese valido minimo
     // =========================
     @Test
-    void testGetMonthlyReport_boundary_minMonth() {
+    void testGetMonthlyReportBoundary_minMonth() {
 
         int year = 2024;
         int month = 1;
@@ -132,7 +132,7 @@ public class UserReadServiceTest {
     // TC6 - BOUNDARY VALUE: mese valido massimo
     // =========================
     @Test
-    void testGetMonthlyReport_boundary_maxMonth() {
+    void testGetMonthlyReportBoundaryMaxMonth() {
 
         int year = 2024;
         int month = 12;

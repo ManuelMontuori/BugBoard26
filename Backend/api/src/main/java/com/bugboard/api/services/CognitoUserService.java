@@ -1,12 +1,12 @@
 package com.bugboard.api.services;
 
+import com.bugboard.api.exceptions.CognitoServiceException;
+import com.bugboard.api.exceptions.UserExistsException;
 import com.bugboard.api.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
-import software.amazon.awssdk.services.cognitoidentityprovider.model.AdminCreateUserRequest;
-import software.amazon.awssdk.services.cognitoidentityprovider.model.AttributeType;
-import software.amazon.awssdk.services.cognitoidentityprovider.model.DeliveryMediumType;
+import software.amazon.awssdk.services.cognitoidentityprovider.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,50 +26,47 @@ public class CognitoUserService {
 
     public void registraUtenteSuCognito(User user) {
 
-        // 1. Prepariamo gli attributi da inviare a Cognito
+
         List<AttributeType> userAttributes = new ArrayList<>();
 
-        // Impostiamo l'email (obbligatoria se usata come login)
         userAttributes.add(AttributeType.builder()
                 .name("email")
                 .value(user.getEmail())
                 .build());
 
-        // Confermiamo l'email automaticamente così Cognito sa di poter inviare messaggi
         userAttributes.add(AttributeType.builder()
                 .name("email_verified")
                 .value("true")
                 .build());
 
-        // Inseriamo l'UUID custom generato da Hibernate (es: "custom:uuid")
         userAttributes.add(AttributeType.builder()
                 .name("custom:uuid")
-                .value(user.getUuid().toString()) // Trasformiamo il UUID in Stringa
+                .value(user.getUuid().toString())
                 .build());
 
-        // Inseriamo il ruolo nell'attributo custom::role
         userAttributes.add(AttributeType.builder()
                 .name("custom:role")
-                .value(user.getRole().toString()) // Trasformiamo il ruolo in Stringa
+                .value(user.getRole().toString())
                 .build());
 
-        // 2. Costruiamo la richiesta di creazione
         AdminCreateUserRequest request = AdminCreateUserRequest.builder()
                 .userPoolId(userPoolId)
-                .username(user.getEmail()) // L'email fa da Username principale
+                .username(user.getEmail())
                 .userAttributes(userAttributes)
-                .desiredDeliveryMediums(DeliveryMediumType.EMAIL) // Specifichiamo che l'invito vada via email
-                // NOTA: Non settando "temporaryPassword", Cognito ne genera una random e la
-                // invia da solo
+                .desiredDeliveryMediums(DeliveryMediumType.EMAIL)
                 .build();
 
         try {
-            // 3. Eseguiamo la chiamata ad AWS
-            /* AdminCreateUserResponse response = */ cognitoClient.adminCreateUser(request);
+            cognitoClient.adminCreateUser(request);
 
-        } catch (Exception e) {
-            // Gestisci le eccezioni (es. UsernameExistsException se l'email esiste già)
-            throw new RuntimeException("Errore durante la creazione dell'utente su Cognito: " + e.getMessage(), e);
+        } catch (UsernameExistsException e) {
+            throw new UserExistsException("L'utente con questa email esiste già.", e);
+
+        } catch (InvalidParameterException e) {
+            throw new IllegalArgumentException("Parametri non validi per la creazione utente su Cognito: " + e.awsErrorDetails().errorMessage(), e);
+
+        } catch (CognitoIdentityProviderException e) {
+            throw new CognitoServiceException("Errore di Cognito: " + e.awsErrorDetails().errorMessage(), e);
         }
     }
 }

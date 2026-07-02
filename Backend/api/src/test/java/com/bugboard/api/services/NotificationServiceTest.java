@@ -39,7 +39,7 @@ public class NotificationServiceTest {
     private ArgumentCaptor<Notification> notificationCaptor;
 
     @Test
-    void testCreateNotification_success() {
+    void testCreateNotificationSuccess() {
         // 1. Arrange: Prepariamo i dati in ingresso
         Issue issue = new Issue();
         issue.setTitle("Errore login");
@@ -88,7 +88,7 @@ public class NotificationServiceTest {
     }
 
     @Test
-    void testCreateNotification_whenRepositoryThrowsException() {
+    void testCreateNotificationWhenRepositoryThrowsException() {
         // 1. Arrange
         Issue issue = new Issue();
         issue.setTitle("Bug frontend");
