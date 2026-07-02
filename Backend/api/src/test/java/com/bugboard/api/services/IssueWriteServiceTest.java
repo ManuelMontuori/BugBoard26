@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 import java.util.Optional;
 import java.util.UUID;
 
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -49,7 +48,6 @@ public class IssueWriteServiceTest {
     @InjectMocks
     IssueWriteService issueWriteService;
 
-    
     @Test
     void testAssignIssueValidUser() {
         UUID issueId = UUID.randomUUID();
@@ -63,7 +61,6 @@ public class IssueWriteServiceTest {
 
         issueWriteService.assignIssue(issueId, userId);
 
-        // Verifiche (ORACLE)
         assertEquals(user, issue.getAssignedTo());
         assertNotNull(issue.getAssignedAt());
         assertEquals(IssueStatus.IN_PROGRESS, issue.getStatus());
@@ -71,7 +68,6 @@ public class IssueWriteServiceTest {
         verify(eventPublisher).publishEvent(any(IssueAssignedEvent.class));
     }
 
-    
     @Test
     void testAssignIssueUserNotFound() {
         UUID issueId = UUID.randomUUID();
@@ -82,11 +78,8 @@ public class IssueWriteServiceTest {
         when(issueRepository.findByUuid(issueId)).thenReturn(Optional.of(issue));
         when(userRepository.findByUuid(userId)).thenReturn(Optional.empty());
 
-        assertThrows(ResourceAccessException.class, () -> {
-            issueWriteService.assignIssue(issueId, userId);
-        });
+        assertThrows(ResourceAccessException.class, () -> issueWriteService.assignIssue(issueId, userId));
     }
-    
 
     @Test
     void testAssignIssueIssueNotFound() {
@@ -94,17 +87,9 @@ public class IssueWriteServiceTest {
         UUID issueId = UUID.randomUUID();
         UUID userId = UUID.randomUUID();
 
-       
-
         when(issueRepository.findByUuid(issueId)).thenReturn(Optional.empty());
-        
 
-        assertThrows(ResourceAccessException.class, () -> {
-            issueWriteService.assignIssue(issueId, userId);
-        });
+        assertThrows(ResourceAccessException.class, () -> issueWriteService.assignIssue(issueId, userId));
     }
-
-    
-    
 
 }
