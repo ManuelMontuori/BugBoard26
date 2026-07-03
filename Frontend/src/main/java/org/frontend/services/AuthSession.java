@@ -91,7 +91,7 @@ public final class AuthSession {
 
     private void inizializzaFlussoNotifiche() {
         try {
-            ApiClient apiClient = new ApiClient("http://localhost:8080");
+            ApiClient apiClient = new ApiClient("http://52.211.223.99");
             ObjectMapper mapper = new ObjectMapper();
 
             NotificationApiService apiService = new NotificationApiService(apiClient);

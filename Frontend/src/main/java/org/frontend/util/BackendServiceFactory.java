@@ -17,7 +17,7 @@ public class BackendServiceFactory {
 
 
     private BackendServiceFactory() {
-        this.apiClient       = new ApiClient("http://localhost:8080");
+        this.apiClient       = new ApiClient("http://52.211.223.99");
         this.issueApiService = new IssueApiService(apiClient);
         this.userApiService = new UserApiService(apiClient);
         this.issueService    = new IssueService(issueApiService);

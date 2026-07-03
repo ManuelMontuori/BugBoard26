@@ -61,11 +61,27 @@ public class User {
     public StringProperty lastNameProperty()             { return lastName; }
     public void setLastName(String lastName)        { this.lastName.set(lastName); }
 
+    public String getEmail() { return email.get(); }
+    public StringProperty emailProperty() { return email; }
+
+    public String getRole() { return role.get(); }
+    public StringProperty roleProperty() { return role; }
+
     public BooleanBinding activeProperty() {
         // se statusProperty cambia, il booleano si ricalcola da solo
         return Bindings.createBooleanBinding(
                 () -> "ACTIVE".equalsIgnoreCase(getStatus()),
                 statusProperty()
         );
+    }
+
+    // === METODI PER FIRST NAME ===
+    public String getFirstName() {
+        return firstName.get();
+    }
+
+    // === METODI PER LAST NAME ===
+    public String getLastName() {
+        return lastName.get();
     }
 }
