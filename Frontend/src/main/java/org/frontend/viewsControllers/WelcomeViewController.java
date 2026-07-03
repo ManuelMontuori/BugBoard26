@@ -1,5 +1,6 @@
 package org.frontend.viewsControllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import org.frontend.services.Auth.CallbackServer;
@@ -20,5 +21,11 @@ public class WelcomeViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleLogout(ActionEvent event) {
+        Platform.exit();
+        System.exit(0);
     }
 }
