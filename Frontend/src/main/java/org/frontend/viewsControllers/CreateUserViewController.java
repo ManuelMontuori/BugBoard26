@@ -81,6 +81,7 @@ public class CreateUserViewController {
             resetForm();
             userController.loadWorkload();
         } catch (Exception e) {
+            e.printStackTrace();
             String message = "Errore durante la creazione dell'utente: " + firstName + " " + lastName + " (" + email + ").";
             DialogUtils.showError("Errore", message, "Utente non creato.");
         }

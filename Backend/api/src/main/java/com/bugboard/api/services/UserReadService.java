@@ -47,7 +47,6 @@ public class UserReadService {
     }
 
     public Optional<UserDTO> findByUuid(UUID uuid) {
-//        UUID userUuid = UUID.fromString(uuid); // converto la stringa in UUID
         return userRepository.findByUuidAndStatus(uuid, UserStatus.ACTIVE).map(userMapper::mapToDTO);
     }
 

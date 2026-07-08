@@ -23,7 +23,7 @@ public interface UserService {
 
     List<UserWorkloadOutDTO> findByWorkload();
 
-    public List<UserReportDTO> getMonthlyReport(int year, int month);
+    List<UserReportDTO> getMonthlyReport(int year, int month);
 
 
 }

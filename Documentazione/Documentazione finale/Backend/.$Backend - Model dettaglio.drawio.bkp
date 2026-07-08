@@ -1,0 +1,61 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="Pagina-1" id="CbHVEBFb42HWwFVqhi-R">
+    <mxGraphModel dx="1042" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-1" connectable="0" parent="1" style="group;fillColor=#ffe6cc;strokeColor=#d79b00;" value="" vertex="1">
+          <mxGeometry height="230" width="191.37" x="150" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-2" connectable="0" parent="aN2AJ85wpruk_Zz6iJLB-1" style="group;fillColor=#ffe6cc;strokeColor=#d79b00;container=0;" value="" vertex="1">
+          <mxGeometry height="60" width="191.37" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-3" parent="aN2AJ85wpruk_Zz6iJLB-1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" value="+uuid:String&lt;br&gt;+title:String&lt;br&gt;+description:String&lt;br&gt;+type:String&lt;br&gt;+priority:String&lt;br&gt;+status:String&lt;br&gt;+reporterUuid:String&lt;br&gt;+assignedToUuid:String&lt;br&gt;+imgPath:String&lt;br&gt;+createdAt:LocalDateTime&lt;br&gt;+resolvedAt:LocalDateTime" vertex="1">
+          <mxGeometry height="170" width="191.37" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-4" parent="aN2AJ85wpruk_Zz6iJLB-1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&amp;lt;&amp;lt;&lt;i&gt;record&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IssueDTO&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="191.37" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-5" connectable="0" parent="1" style="group;fillColor=#ffe6cc;strokeColor=#d79b00;" value="" vertex="1">
+          <mxGeometry height="230" width="191.37" x="443.17999999999995" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-6" connectable="0" parent="aN2AJ85wpruk_Zz6iJLB-5" style="group;fillColor=#ffe6cc;strokeColor=#d79b00;container=0;" value="" vertex="1">
+          <mxGeometry height="60" width="191.37" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-7" parent="aN2AJ85wpruk_Zz6iJLB-5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" value="+uuid:String&lt;br&gt;+title:String&lt;br&gt;+description:String&lt;br&gt;+type:String&lt;br&gt;+priority:String&lt;br&gt;+assignedToUuid:String&lt;br&gt;+imgPath:String" vertex="1">
+          <mxGeometry height="170" width="191.37" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-8" parent="aN2AJ85wpruk_Zz6iJLB-5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&amp;lt;&amp;lt;&lt;i&gt;record&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;CreateIssueDTO&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="191.37" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-9" connectable="0" parent="1" style="group;fillColor=#e1d5e7;strokeColor=#9673a6;" value="" vertex="1">
+          <mxGeometry height="240" width="191.37" x="110" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-10" connectable="0" parent="aN2AJ85wpruk_Zz6iJLB-9" style="group;fillColor=#e1d5e7;strokeColor=#9673a6;container=0;" value="" vertex="1">
+          <mxGeometry height="62.608695652173914" width="191.37" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-11" parent="aN2AJ85wpruk_Zz6iJLB-9" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;" value="-id:long&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-uuid:UUID&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-title:String&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-description:String&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-type:IssueType&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-priority:IssuePriority&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-status:IssueStatus&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-reporter:User&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-assignedTo:User&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-createdAt:LocalDateTime&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-resolvedAt:LocalDateTime&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-imagePath:String" vertex="1">
+          <mxGeometry height="177.3913043478261" width="191.37" y="62.608695652173914" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-12" parent="aN2AJ85wpruk_Zz6iJLB-9" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;b&gt;Issue&lt;/b&gt;" vertex="1">
+          <mxGeometry height="62.608695652173914" width="191.37" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-13" connectable="0" parent="1" style="group;fillColor=#e1d5e7;strokeColor=#9673a6;" value="" vertex="1">
+          <mxGeometry height="230" width="191.37" x="380" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-14" connectable="0" parent="aN2AJ85wpruk_Zz6iJLB-13" style="group;fillColor=#e1d5e7;strokeColor=#9673a6;container=0;" value="" vertex="1">
+          <mxGeometry height="60" width="191.37" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-15" parent="aN2AJ85wpruk_Zz6iJLB-13" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;" value="-uuid:UUID&lt;br&gt;-email:String&lt;br&gt;-role:UserRole&lt;br&gt;-status:UserStatus&lt;br&gt;-createdAt:LocalDateTime&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-lastLogin:LocalDate" vertex="1">
+          <mxGeometry height="170" width="191.37" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-16" parent="aN2AJ85wpruk_Zz6iJLB-13" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;b&gt;User&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="191.37" as="geometry" />
+        </mxCell>
+        <mxCell id="aN2AJ85wpruk_Zz6iJLB-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;b&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;MODEL&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="110" width="470" x="140" y="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
