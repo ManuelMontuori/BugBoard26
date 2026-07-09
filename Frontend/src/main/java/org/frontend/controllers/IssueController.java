@@ -20,15 +20,21 @@ public class IssueController {
         return issues;
     }
 
+    // Metodo con i filtri
+    public void loadAllIssues(String status, String priority, String type) {
+        issues.setAll(service.findAll(status, priority, type));
+    }
+
+    // Metodo di overload per caricare tutto senza filtri
     public void loadAllIssues() {
-        issues.setAll(service.findAll());
+        issues.setAll(service.findAll(null, null, null));
     }
 
     public void loadMyIssues(String uuid) {
         issues.setAll(service.findAssignedToMe(uuid));
     }
 
-    public void createIssue(String title, String description, String type, String priority) {
+    public void createIssue(String title, String description, String type, String priority) throws Exception{
         Issue issue = new Issue();
         issue.setTitle(title);
         issue.setDescription(description);

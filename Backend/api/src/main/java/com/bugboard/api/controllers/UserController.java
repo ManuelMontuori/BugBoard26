@@ -1,6 +1,7 @@
 package com.bugboard.api.controllers;
 
 import com.bugboard.api.dto.*;
+import com.bugboard.api.exceptions.ResourceNotFoundException;
 import com.bugboard.api.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +21,7 @@ public class  UserController {
 
     @GetMapping("/{uuid}")
     public UserDTO findByUuid(@PathVariable UUID uuid) {
-        return userService.findByUuid(uuid).orElseThrow(() -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND));
+        return userService.findByUuid(uuid).orElseThrow(() -> new ResourceNotFoundException("User not found with uuid: " + uuid));
     }
 
     @GetMapping
@@ -42,14 +42,7 @@ public class  UserController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO create(@RequestBody UserDTO dto) {
-        try {
-            return userService.create(dto);
-        } catch (RuntimeException e) {
-            if(e.getCause() instanceof UsernameExistsException) {
-                throw new ResponseStatusException(HttpStatus.CONFLICT, "Utente esistente.");
-            }
-            throw e;
-        }
+        return userService.create(dto);
     }
 
 

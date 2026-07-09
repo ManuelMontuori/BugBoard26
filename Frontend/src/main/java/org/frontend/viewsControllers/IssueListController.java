@@ -1,6 +1,7 @@
 package org.frontend.viewsControllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -36,6 +37,10 @@ public class IssueListController {
 
     @FXML private TextField txtSearch;
 
+    @FXML private ComboBox<String> cmbStatus;
+    @FXML private ComboBox<String> cmbPriority;
+    @FXML private ComboBox<String> cmbType;
+
     private IssueController issueController;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
@@ -48,6 +53,7 @@ public class IssueListController {
     @FXML
     public void initialize() {
         configuraColonneTabella();
+        popolaFiltriComboBox();
 
         tblAllIssues.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) mostraDettagli(newVal);
@@ -75,23 +81,34 @@ public class IssueListController {
         colResolvedAt.setCellFactory(col -> DateUtils.createDateCell(DATE_FORMATTER));
     }
 
+    private void popolaFiltriComboBox() {
+        cmbStatus.getItems().addAll("TODO", "IN_PROGRESS", "DONE");
+        cmbPriority.getItems().addAll("HIGH", "MEDIUM", "LOW");
+        cmbType.getItems().addAll("BUG", "FEATURE", "DOCUMENTATION", "QUESTION");
+    }
+
     @FXML
     private void gestisciRicerca() {
         if (issueController == null) return;
 
         String keyword = txtSearch.getText();
-        if (keyword == null || keyword.isBlank()) {
-            caricaTutteLeIssue();
-            return;
-        }
 
-        issueController.searchIssue(keyword.trim());
+        // Se c'è del testo inserito nella barra di ricerca, usiamo la ricerca testuale
+        if (keyword != null && !keyword.isBlank()) {
+            issueController.searchIssue(keyword.trim());
+        } else {
+            caricaTutteLeIssue();
+        }
         chiudiDettagli();
     }
 
     @FXML
     private void resetRicerca() {
         txtSearch.clear();
+        cmbStatus.setValue(null);
+        cmbPriority.setValue(null);
+        cmbType.setValue(null);
+
         caricaTutteLeIssue();
         chiudiDettagli();
     }
@@ -124,7 +141,11 @@ public class IssueListController {
 
     private void caricaTutteLeIssue() {
         if (issueController != null) {
-            issueController.loadAllIssues();
+            String status = cmbStatus.getValue();
+            String priority = cmbPriority.getValue();
+            String type = cmbType.getValue();
+
+            issueController.loadAllIssues(status, priority, type);
         }
     }
 }

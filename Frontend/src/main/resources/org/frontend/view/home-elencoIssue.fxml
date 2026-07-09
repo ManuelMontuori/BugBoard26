@@ -8,15 +8,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ComboBox?>
 
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0" minWidth="0" spacing="16.0" styleClass="secondary-content" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.frontend.viewsControllers.IssueListController">
 
     <Label styleClass="title-dashboard" text="Elenco Issue" />
 
     <HBox alignment="CENTER_LEFT" spacing="10.0">
-        <TextField fx:id="txtSearch" prefWidth="300.0" promptText="Cerca per titolo o descrizione..." styleClass="search-field" />
-        <Button fx:id="btnSearch" onAction="#gestisciRicerca" styleClass="btn-primary" text="Cerca" />
-        <Button fx:id="btnResetSearch" onAction="#resetRicerca" styleClass="btn-secondary" text="Torna a tutte le issue" />
+        <TextField fx:id="txtSearch" prefWidth="250.0" promptText="Cerca per titolo o descrizione..." styleClass="search-field" />
+
+        <ComboBox fx:id="cmbStatus" prefWidth="120.0" promptText="Stato" styleClass="filter-combo" />
+        <ComboBox fx:id="cmbPriority" prefWidth="120.0" promptText="Priorità" styleClass="filter-combo" />
+        <ComboBox fx:id="cmbType" prefWidth="120.0" promptText="Tipo" styleClass="filter-combo" />
+
+        <Button fx:id="btnSearch" onAction="#gestisciRicerca" styleClass="btn-primary" text="Filtra" />
+        <Button fx:id="btnResetSearch" onAction="#resetRicerca" styleClass="btn-secondary" text="Resetta" />
     </HBox>
 
     <HBox spacing="16.0" VBox.vgrow="ALWAYS">

@@ -16,19 +16,15 @@ public class IssueService {
 
     }
 
-    public List<Issue> findAll() {
+    public List<Issue> findAll(String status, String priority, String type) {
         try {
-            String json = api.findAll();
+            // Passiamo i parametri al metodo dell'API service
+            String json = api.findAll(status, priority, type);
 
-            List<IssueDTO> dtoList =
+            List<IssueDTO> dtoList = JsonUtil.mapper.readValue(
+                    json,
+                    JsonUtil.mapper.getTypeFactory().constructCollectionType(List.class, IssueDTO.class));
 
-                    JsonUtil.mapper.readValue(
-                            json,
-                            JsonUtil.mapper
-                                    .getTypeFactory()
-                                    .constructCollectionType(
-                                            List.class,
-                                            IssueDTO.class));
             return dtoList.stream()
                     .map(Issue::new)
                     .toList();
@@ -77,21 +73,14 @@ public class IssueService {
         }
     }
 
-    public Issue createIssue(Issue issue) {
-        try {
+    public Issue createIssue(Issue issue) throws Exception {
 
-            String json = JsonUtil.mapper.writeValueAsString(issue);
+        String json = JsonUtil.mapper.writeValueAsString(issue);
 
-            String jsonResponse = api.create(json);
+        String jsonResponse = api.create(json);
 
-            IssueDTO savedDto = JsonUtil.mapper.readValue(jsonResponse, IssueDTO.class);
+        IssueDTO savedDto = JsonUtil.mapper.readValue(jsonResponse, IssueDTO.class);
 
-            return new Issue(savedDto);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("Errore durante la creazione della issue", e);
-        }
+        return new Issue(savedDto);
     }
-
 }
