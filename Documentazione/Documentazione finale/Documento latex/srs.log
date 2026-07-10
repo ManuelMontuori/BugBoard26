@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.16)  10 JUL 2026 14:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.16)  10 JUL 2026 15:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -962,7 +962,7 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 622--623
 [][] 
  []
 
-<images/BugBoard26.jpg, id=423, 1076.02pt x 1199.48125pt>
+<images/BugBoard26.jpg, id=438, 1076.02pt x 1199.48125pt>
 File: images/BugBoard26.jpg Graphic file (type jpg)
 <use images/BugBoard26.jpg>
 Package pdftex.def Info: images/BugBoard26.jpg  used on input line 633.
@@ -983,13 +983,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [19 <./images/BugBoard26.jpg>]
-<images/Parziali/BugBoard26_login.jpg, id=434, 533.995pt x 326.21875pt>
+<images/Parziali/BugBoard26_login.jpg, id=449, 533.995pt x 326.21875pt>
 File: images/Parziali/BugBoard26_login.jpg Graphic file (type jpg)
 <use images/Parziali/BugBoard26_login.jpg>
 Package pdftex.def Info: images/Parziali/BugBoard26_login.jpg  used on input li
 ne 652.
 (pdftex.def)             Requested size: 364.19667pt x 222.49779pt.
-<images/Parziali/BugBoard26_SegnalaIssue.jpg, id=439, 765.86125pt x 595.22375pt
+<images/Parziali/BugBoard26_SegnalaIssue.jpg, id=454, 765.86125pt x 595.22375pt
 >
 File: images/Parziali/BugBoard26_SegnalaIssue.jpg Graphic file (type jpg)
 <use images/Parziali/BugBoard26_SegnalaIssue.jpg>
@@ -1005,7 +1005,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [20 <./images/Parziali/BugBoard26_login.jpg>]
-<images/Parziali/BugBoard26_Visualizza&Assegna.jpg, id=447, 744.7825pt x 328.22
+<images/Parziali/BugBoard26_Visualizza&Assegna.jpg, id=462, 744.7825pt x 328.22
 626pt>
 File: images/Parziali/BugBoard26_Visualizza&Assegna.jpg Graphic file (type jpg)
 
@@ -1022,7 +1022,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [21 <./images/Parziali/BugBoard26_SegnalaIssue.jpg>]
-<images/Parziali/BugBoard26_VisualizzaReport&VisualizzaRiepilogo.jpg, id=460, 1
+<images/Parziali/BugBoard26_VisualizzaReport&VisualizzaRiepilogo.jpg, id=475, 1
 043.9pt x 617.30624pt>
 File: images/Parziali/BugBoard26_VisualizzaReport&VisualizzaRiepilogo.jpg Graph
 ic file (type jpg)
@@ -1039,7 +1039,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [22 <./images/Parziali/BugBoard26_Visualizza&Assegna.jpg>]
-<images/Parziali/visualizzaNotifiche.jpg, id=471, 831.105pt x 317.185pt>
+<images/Parziali/visualizzaNotifiche.jpg, id=486, 831.105pt x 317.185pt>
 File: images/Parziali/visualizzaNotifiche.jpg Graphic file (type jpg)
 <use images/Parziali/visualizzaNotifiche.jpg>
 Package pdftex.def Info: images/Parziali/visualizzaNotifiche.jpg  used on input
@@ -1175,7 +1175,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [25]
-<images/SegnalaIssueMockup/MU_1.png, id=517, 662.913pt x 419.604pt>
+<images/SegnalaIssueMockup/MU_1.png, id=532, 662.913pt x 419.604pt>
 File: images/SegnalaIssueMockup/MU_1.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_1.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_1.png  used on input line
@@ -1190,7 +1190,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [26]
-<images/SegnalaIssueMockup/MU_2.png, id=525, 663.132pt x 419.823pt>
+<images/SegnalaIssueMockup/MU_2.png, id=540, 663.132pt x 419.823pt>
 File: images/SegnalaIssueMockup/MU_2.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_2.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_2.png  used on input line
@@ -1205,7 +1205,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [27 <./images/SegnalaIssueMockup/MU_1.png>]
-<images/SegnalaIssueMockup/MU_3.png, id=534, 663.132pt x 419.823pt>
+<images/SegnalaIssueMockup/MU_3.png, id=549, 663.132pt x 419.823pt>
 File: images/SegnalaIssueMockup/MU_3.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_3.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_3.png  used on input line
@@ -1220,7 +1220,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [28 <./images/SegnalaIssueMockup/MU_2.png>]
-<images/SegnalaIssueMockup/MU_4.png, id=542, 662.913pt x 419.604pt>
+<images/SegnalaIssueMockup/MU_4.png, id=557, 662.913pt x 419.604pt>
 File: images/SegnalaIssueMockup/MU_4.png Graphic file (type png)
 <use images/SegnalaIssueMockup/MU_4.png>
 Package pdftex.def Info: images/SegnalaIssueMockup/MU_4.png  used on input line
@@ -1235,7 +1235,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [29 <./images/SegnalaIssueMockup/MU_3.png>]
-<images/AssegnaIssueMockup/MU_1.png, id=550, 662.913pt x 419.604pt>
+<images/AssegnaIssueMockup/MU_1.png, id=565, 662.913pt x 419.604pt>
 File: images/AssegnaIssueMockup/MU_1.png Graphic file (type png)
 <use images/AssegnaIssueMockup/MU_1.png>
 Package pdftex.def Info: images/AssegnaIssueMockup/MU_1.png  used on input line
@@ -1250,7 +1250,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [30 <./images/SegnalaIssueMockup/MU_4.png>]
-<images/AssegnaIssueMockup/MU_2.png, id=559, 663.132pt x 419.823pt>
+<images/AssegnaIssueMockup/MU_2.png, id=574, 663.132pt x 419.823pt>
 File: images/AssegnaIssueMockup/MU_2.png Graphic file (type png)
 <use images/AssegnaIssueMockup/MU_2.png>
 Package pdftex.def Info: images/AssegnaIssueMockup/MU_2.png  used on input line
@@ -1265,7 +1265,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [31 <./images/AssegnaIssueMockup/MU_1.png>]
-<images/AssegnaIssueMockup/MU_3.png, id=569, 663.132pt x 419.823pt>
+<images/AssegnaIssueMockup/MU_3.png, id=584, 663.132pt x 419.823pt>
 File: images/AssegnaIssueMockup/MU_3.png Graphic file (type png)
 <use images/AssegnaIssueMockup/MU_3.png>
 Package pdftex.def Info: images/AssegnaIssueMockup/MU_3.png  used on input line
@@ -1280,7 +1280,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [32 <./images/AssegnaIssueMockup/MU_2.png>]
-<images/AssegnaIssueMockup/MU_4.png, id=577, 663.132pt x 419.823pt>
+<images/AssegnaIssueMockup/MU_4.png, id=592, 663.132pt x 419.823pt>
 File: images/AssegnaIssueMockup/MU_4.png Graphic file (type png)
 <use images/AssegnaIssueMockup/MU_4.png>
 Package pdftex.def Info: images/AssegnaIssueMockup/MU_4.png  used on input line
@@ -1303,13 +1303,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [34 <./images/AssegnaIssueMockup/MU_4.png>]
-<images/Architettura/Client-Server.png, id=591, 633.36626pt x 81.30376pt>
+<images/Architettura/Client-Server.png, id=606, 633.36626pt x 81.30376pt>
 File: images/Architettura/Client-Server.png Graphic file (type png)
 <use images/Architettura/Client-Server.png>
 Package pdftex.def Info: images/Architettura/Client-Server.png  used on input l
 ine 924.
 (pdftex.def)             Requested size: 455.24411pt x 58.43939pt.
-<images/Architettura/ComponentDiagramServer.png, id=592, 1001.7425pt x 279.0425
+<images/Architettura/ComponentDiagramServer.png, id=607, 1001.7425pt x 279.0425
 pt>
 File: images/Architettura/ComponentDiagramServer.png Graphic file (type png)
 <use images/Architettura/ComponentDiagramServer.png>
@@ -1333,16 +1333,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [36 <./images/Architettura/ComponentDiagramServer.png>]
-<images/Architettura/Database.png, id=609, 444.66125pt x 492.84125pt>
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[37]
+<images/Architettura/Database.png, id=626, 444.66125pt x 492.84125pt>
 File: images/Architettura/Database.png Graphic file (type png)
 <use images/Architettura/Database.png>
 Package pdftex.def Info: images/Architettura/Database.png  used on input line 9
-67.
+70.
 (pdftex.def)             Requested size: 318.66948pt x 353.1985pt.
-<images/BackendCD/Model.png, id=610, 675.52374pt x 1400.23125pt>
+<images/BackendCD/Model.png, id=627, 675.52374pt x 1400.23125pt>
 File: images/BackendCD/Model.png Graphic file (type png)
 <use images/BackendCD/Model.png>
-Package pdftex.def Info: images/BackendCD/Model.png  used on input line 978.
+Package pdftex.def Info: images/BackendCD/Model.png  used on input line 981.
 (pdftex.def)             Requested size: 318.66948pt x 660.5445pt.
 
 
@@ -1352,12 +1360,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[37 <./images/Architettura/Database.png>]
-<images/BackendCD/Funzionalità 2.png, id=619, 1176.395pt x 1436.36626pt>
+[38 <./images/Architettura/Database.png>]
+<images/BackendCD/Funzionalità 2.png, id=635, 1176.395pt x 1436.36626pt>
 File: images/BackendCD/Funzionalità 2.png Graphic file (type png)
 <use images/BackendCD/Funzionalità 2.png>
 Package pdftex.def Info: images/BackendCD/Funzionalità 2.png  used on input li
-ne 988.
+ne 991.
 (pdftex.def)             Requested size: 455.24411pt x 555.841pt.
 
 
@@ -1367,12 +1375,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[38 <./images/BackendCD/Model.png>]
-<images/BackendCD/Funzionalità 3.png, id=626, 1927.2pt x 1337.99875pt>
+[39 <./images/BackendCD/Model.png>]
+<images/BackendCD/Funzionalità 3.png, id=642, 1927.2pt x 1337.99875pt>
 File: images/BackendCD/Funzionalità 3.png Graphic file (type png)
 <use images/BackendCD/Funzionalità 3.png>
 Package pdftex.def Info: images/BackendCD/Funzionalità 3.png  used on input li
-ne 996.
+ne 999.
 (pdftex.def)             Requested size: 455.24411pt x 316.06305pt.
 
 
@@ -1382,13 +1390,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[39 <./images/BackendCD/Funzionalità 2.png>]
-<images/BackendCD/Funzionalità 4 e 14.png, id=635, 1227.58624pt x 1596.96625pt
+[40 <./images/BackendCD/Funzionalità 2.png>]
+<images/BackendCD/Funzionalità 4 e 14.png, id=651, 1227.58624pt x 1596.96625pt
 >
 File: images/BackendCD/Funzionalità 4 e 14.png Graphic file (type png)
 <use images/BackendCD/Funzionalità 4 e 14.png>
 Package pdftex.def Info: images/BackendCD/Funzionalità 4 e 14.png  used on inp
-ut line 1004.
+ut line 1007.
 (pdftex.def)             Requested size: 455.24411pt x 592.23286pt.
 
 
@@ -1398,12 +1406,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[40 <./images/BackendCD/Funzionalità 3.png>]
-<images/BackendCD/Funzionalità 11.png, id=643, 1028.84375pt x 866.23625pt>
+[41 <./images/BackendCD/Funzionalità 3.png>]
+<images/BackendCD/Funzionalità 11.png, id=659, 1028.84375pt x 866.23625pt>
 File: images/BackendCD/Funzionalità 11.png Graphic file (type png)
 <use images/BackendCD/Funzionalità 11.png>
 Package pdftex.def Info: images/BackendCD/Funzionalità 11.png  used on input l
-ine 1013.
+ine 1016.
 (pdftex.def)             Requested size: 455.24411pt x 383.29962pt.
 
 
@@ -1413,12 +1421,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[41 <./images/BackendCD/Funzionalità 4 e 14.png>]
-<images/BackendCD/Funzionalità 17.png, id=651, 1055.945pt x 1226.5825pt>
+[42 <./images/BackendCD/Funzionalità 4 e 14.png>]
+<images/BackendCD/Funzionalità 17.png, id=667, 1055.945pt x 1226.5825pt>
 File: images/BackendCD/Funzionalità 17.png Graphic file (type png)
 <use images/BackendCD/Funzionalità 17.png>
 Package pdftex.def Info: images/BackendCD/Funzionalità 17.png  used on input l
-ine 1021.
+ine 1024.
 (pdftex.def)             Requested size: 455.24411pt x 528.80519pt.
 
 
@@ -1428,7 +1436,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[42 <./images/BackendCD/Funzionalità 11.png>]
+[43 <./images/BackendCD/Funzionalità 11.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1436,10 +1444,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[43 <./images/BackendCD/Funzionalità 17.png>]
+[44 <./images/BackendCD/Funzionalità 17.png>]
 runsystem(makeindex srs.idx)...executed safely (allowed).
 
- (srs.ind) [44
+ (srs.ind) [45
 
 ] (srs.aux)
  ***********
@@ -1450,20 +1458,14 @@ L3 programming layer <2024-01-04>
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `srs.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `srs.out':
-(rerunfilecheck)             Before: BF537AD5540D0E0FB1A5028EBA23663B;11916
-(rerunfilecheck)             After:  5FCD31D0896A4B47DFC5B16EB9249F59;12344.
+Package rerunfilecheck Info: File `srs.out' has not changed.
+(rerunfilecheck)             Checksum: 58064414D590DE07FAE032FA264AC553;12225.
  ) 
 Here is how much of TeX's memory you used:
- 13572 strings out of 474486
- 218953 string characters out of 5743754
+ 13576 strings out of 474486
+ 219018 string characters out of 5743754
  1954542 words of memory out of 5000000
- 35498 multiletter control sequences out of 15000+600000
+ 35501 multiletter control sequences out of 15000+600000
  597521 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,15n,79p,878b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1473,9 +1475,9 @@ imes/utmb8a.pfb><C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
 imes/utmbi8a.pfb><C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
 times/utmr8a.pfb><C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on srs.pdf (44 pages, 2343412 bytes).
+Output written on srs.pdf (45 pages, 2345892 bytes).
 PDF statistics:
- 781 PDF objects out of 1000 (max. 8388607)
- 148 named destinations out of 1000 (max. 500000)
- 580 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 797 PDF objects out of 1000 (max. 8388607)
+ 149 named destinations out of 1000 (max. 500000)
+ 604 words of extra memory for PDF output out of 10000 (max. 10000000)
 

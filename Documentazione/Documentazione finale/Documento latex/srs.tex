@@ -945,14 +945,17 @@ PostgreSQL è stato scelto per diversi fattori. In primo luogo, è un sistema \t
 Il database relazionale garantisce la persistenza dei dati in modo sicuro. L'interazione con esso avviene tramite il livello \textbf{Repositories}, che incapsula le operazioni di accesso ai dati, mantenendo separata la logica applicativa dalla persistenza dei dati.
 
 \subsubsection{Client}
-Il \textit{frontend} è stato sviluppato in Java, che garantisce efficienza e portabilità.
+L'architettura del \textit{frontend} è basata sul pattern architetturale MVC (\textit{Model-View-Controller}) esteso con moduli ausiliari per una corretta separazione delle responsabilità. La struttura dei package riflette una netta separazione delle responsabilità (primo principio SOLID). 
 
 
 \subsection{Scelte tecnologiche e motivazioni} Da fare...
 
 \subsubsection{Server} 
 Per lo sviluppo del \textbf{backend} abbiamo utilizzato Spring Boot 3.2.2, un framework Java che facilita la creazione di API REST grazie al supportos per la gestione di richieste HTTP e l'integrazioni di componenti Spring come Spring MVC. Grazie all'integrazione di Spring Data JPA (Jakarta Persistence API) e Hibernate, i Repositories si occupano delle operazione di lettura e scrittura dei dati (CRUD), delegando al sistema di persistenza la sola gestione fisica delle informazioni.
-Tale approccio migliora la manutenibilità, la scalabilità e la chiarezza del codice.
+Tale approccio migliora la manutenibilità, la scalabilità e la chiarezza del codice. 
+
+Il Server è stato pensato e predisposto per essere containerizzato (con Docker) e messo in opera utilizzando servizi di Cloud Computing (Amazon Web Services). 
+
 
 \subsubsection{Client} \dots
 
