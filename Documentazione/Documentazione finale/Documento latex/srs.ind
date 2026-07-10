@@ -19,7 +19,8 @@
 
   \item IEEE Std 830-1998, \hyperpage{6}
   \item Issue, \hyperpage{8}
-    \subitem Assegnazione, \hyperpage{12}
+    \subitem Assegna, \hyperpage{25}
+    \subitem Assegnazione, \hyperpage{12}, \hyperpage{25}
     \subitem Assegnazione issue, \hyperpage{4}
     \subitem Filtra, \hyperpage{8}, \hyperpage{14}
     \subitem Modifica, \hyperpage{8}
@@ -31,12 +32,12 @@
 
   \indexspace
 
-  \item Mockup, \hyperpage{25}
+  \item Mockup, \hyperpage{26}, \hyperpage{30}
 
   \indexspace
 
-  \item Notifiche, \hyperpage{8}
-    \subitem Invio, \hyperpage{8}
+  \item Notifiche, \hyperpage{9}
+    \subitem Invio, \hyperpage{9}
     \subitem Lettura notifiche, \hyperpage{17}
   \item Nuova utenza (Amministratore), \hyperpage{8}, \hyperpage{10}
 

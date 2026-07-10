@@ -9,8 +9,8 @@
 \contentsline {subsubsection}{\numberline {1.3.3}Abbreviazioni}{6}{subsubsection.1.3.3}%
 \contentsline {subsection}{\numberline {1.4}Riferimenti}{6}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Panoramica del documento}{7}{subsection.1.5}%
-\contentsline {section}{\numberline {2}Descrizione generale}{7}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Prospettiva del prodotto}{7}{subsection.2.1}%
+\contentsline {section}{\numberline {2}Descrizione generale}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Prospettiva del prodotto}{8}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Funzionalità del prodotto}{8}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Utenti e attori del sistema}{9}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Requisiti specifici}{10}{section.3}%
@@ -37,17 +37,33 @@
 \contentsline {subsubsection}{\numberline {3.2.6}Use Case Diagram parziale 6}{23}{subsubsection.3.2.6}%
 \contentsline {subsection}{\numberline {3.3}Formalizzazione di casi d'uso significativi}{23}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Tabella di Cockburn 1}{23}{subsubsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.4}Prototipazione visuale del caso d'uso 3.3.3 Segnala Issue}{25}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Segnala Issue - Mockup 1}{25}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Segnala Issue - Mockup 2}{26}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Segnala Issue - Mockup 3}{26}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Segnala Issue - Mockup 4}{27}{subsubsection.3.4.4}%
-\contentsline {subsubsection}{\numberline {3.4.5}Segnala Issue - Mockup 5}{27}{subsubsection.3.4.5}%
-\contentsline {section}{\numberline {4}Documento di design del sistema}{28}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Analisi dell'Architettura}{28}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Client}{28}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Server}{28}{subsubsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.3}Persistenza}{29}{subsubsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.2}Scelte tecnologiche adottate}{29}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Descrizione dello schema di persistenza dei dati}{29}{subsubsection.4.2.1}%
-\contentsline {section}{Indice analitico}{31}{section*.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Tabella di Cockburn 2}{25}{subsubsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.4}Prototipazione visuale del caso d'uso 3.3.3 Segnala Issue}{26}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Segnala Issue - Mockup 1}{27}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Segnala Issue - Mockup 2}{28}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Segnala Issue - Mockup 3}{29}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Segnala Issue - Mockup 4}{30}{subsubsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.5}Prototipazione visuale del caso d'uso Assegna Issue}{30}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Assegna Issue - Mockup 1}{31}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Assegna Issue - Mockup 2}{32}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Assegna Issue - Mockup 3}{33}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Assegna Issue - Mockup 4}{34}{subsubsection.3.5.4}%
+\contentsline {section}{\numberline {4}Documento di design del sistema}{35}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Analisi dell'Architettura e scelte tecnologiche}{35}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Server}{35}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Persistenza}{36}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Client}{36}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Scelte tecnologiche e motivazioni}{36}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Server}{36}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Client}{36}{subsubsection.4.2.2}%
+\contentsline {section}{\numberline {5}Documento di Design del Software}{37}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Descrizione dello schema di persistenza dei dati}{37}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Class Diagram di Design}{37}{subsection.5.2}%
+\contentsline {paragraph}{Class Diagram 1- Model}{37}{paragraph*.1}%
+\contentsline {paragraph}{Class Diagram 2- Funzionalità 2}{39}{paragraph*.2}%
+\contentsline {paragraph}{Class Diagram 3- Funzionalità 3}{39}{paragraph*.3}%
+\contentsline {paragraph}{Class Diagram 4- Funzionalità 4 e 14}{40}{paragraph*.4}%
+\contentsline {paragraph}{Class Diagram 5- Funzionalità 11}{41}{paragraph*.5}%
+\contentsline {paragraph}{Class Diagram 6- Funzionalità 17}{42}{paragraph*.6}%
+\contentsline {subsection}{\numberline {5.3}Descrizione e motivazione delle scelte di software design adottate}{43}{subsection.5.3}%
+\contentsline {section}{Indice analitico}{44}{section*.7}%

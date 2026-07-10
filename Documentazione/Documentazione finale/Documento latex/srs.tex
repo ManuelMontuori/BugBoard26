@@ -199,6 +199,7 @@ utilizzando le tabelle di Cockburn. \\ \hline
 Prototipazione visuale & Si descriveranno visualmente le risposte del sistema nel suo utilizzo attraversando il flusso dei casi d'uso. \\ \hline
 \end{longtable}
 
+\newpage
 \section{Descrizione generale}
 \subsection{Prospettiva del prodotto}
 Il sistema \textit{BugBoard26} è un prodotto software autonomo progettato per la gestione interna delle issue nei team di sviluppo software.
@@ -263,6 +264,7 @@ Tutte le interazioni di un membro del team; assegna issue; visualizza report men
 Effettuare il log in. \\ \hline
 \end{tabularx}
 
+\newpage
 \section{Requisiti specifici}
 
 \subsection{Requisiti funzionali}
@@ -721,9 +723,9 @@ Tabella di Cockburn del caso d'uso \hyperref[sec:RE03]{Requisito funzionale 3.1.
 
 \begin{longtable}{|p{4cm}|p{12cm}|}
 \hline
-\textbf{Use Case x} & \textbf{Nome UC} \\ \hline
-Goal in Context & Permette agli utenti autenticati di creare una issue con titolo e descrizione. Facoltativamente, 
-di inserire un'immagine in allegato e assegnare un livello di priorità  \\ \hline
+\textbf{Use Case 2} & \textbf{Segnala Issue} \\ \hline
+Goal in Context & Permette agli utenti autenticati di creare una issue con titolo e descrizione e,facoltativamente, 
+di inserire un tipo e assegnare un livello di priorità  \\ \hline
 Preconditions & L'utente ha effettuato l'autenticazione nel sistema \\ \hline
 Success End Condition &  L'issue viene registrata nel sistema, risultando visibile con lo stato iniziale di \textit{Todo} \\ \hline
 Failed End Condition & L'issue non viene registrata nel sistema e viene visualizzato il messaggio di Errore: \textit{Issue non creata}  \\ \hline
@@ -735,11 +737,10 @@ Main Scenario &
 \textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
 1 & Accede alla sezione \textit{Crea nuova issue} &   \\ \hline
 2 & & \hyperref[sec:MU01]{Mostra MU\_1} \\ \hline
-3 & Inserisce i campi obbligatori: titolo descrizione e tipo di Issue \textit{(question, bug, documentation, feature)} & \\ \hline
+3 & Inserisce i campi obbligatori: titolo e descrizione & \\ \hline
 4 & Clicca \textit{Crea} &  \\ \hline
-5 & & \hyperref[sec:MU02]{Mostra MU\_2} \\ \hline
-6 & Clicca \textit{Si} & \\ \hline
-7 &  & Crea la issue e \hyperref[sec:MU03]{Mostra MU\_3} \\ \hline
+5 & & Crea la issue e \hyperref[sec:MU02]{Mostra MU\_2} \\ \hline
+6 & Clicca \textit{Ok} & \\ \hline
 \end{tabularx}
 \end{minipage}
 
@@ -749,25 +750,25 @@ Extension \textit{\#1} - Imposta una priorità (campo opzionale) &
 \begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
 \textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
 3.a & Sceglie di selezionare una priorità &  \\ \hline
-4.a & & Torna allo step 4 del \textit{Main Scenario}
+3.a.1 & & Torna allo step 4 del \textit{Main Scenario}
 \end{tabularx}
 \end{minipage} \strut \\ \hline
 Extension \textit{\#2} - Allega un'immagine (campo opzionale)  & 
 \begin{minipage}[t]{\linewidth}
 \begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
 \textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
-3.b & Clicca su \textit{Allega img} &  \\ \hline
-4.b & Clicca \textit{Crea} & \\ \hline
-5.b & & Consente la scelta dell'immagine e torna allo step 4 del \textit{Main Scenario} 
+3.b & Sceglie di selezionare un tipo &  \\ \hline
+3.b.1 & Clicca \textit{Crea} & \\ \hline
+3.b.2 & & Torna allo step 4 del \textit{Main Scenario} 
 \end{tabularx}
 \end{minipage}\strut \\ \hline
 
-Extension \textit{\#3} - Gestione Errore caricamento immagine  & 
+Extension \textit{\#3} - Gestione Errore connessione con il Server  & 
 \begin{minipage}[t]{\linewidth}
 \begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
 \textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
-3.b.1 & Clicca su \textit{Allega img} &  \\ \hline
-4.b.1 & & \hyperref[sec:MU04]{Mostra MU\_4} e torna allo step 4 del \textit{Main Scenario}
+4.c & Clicca su \textit{Crea} &  \\ \hline
+4.c.1 & & \hyperref[sec:MU03]{Mostra MU\_3} e torna allo step 3 del \textit{Main Scenario}
 \end{tabularx}
 \end{minipage}\strut \\ \hline
 
@@ -775,8 +776,8 @@ Extension \textit{\#4} - Campo obbligatorio non specificato  &
 \begin{minipage}[t]{\linewidth}
 \begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
 \textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
-4.c & Clicca su \textit{Crea} &  \\ \hline
-5.c & & \hyperref[sec:MU05]{Mostra MU\_5} e torna allo step 3 del \textit{Main Scenario}
+4.d & Clicca su \textit{Crea} &  \\ \hline
+4.d.1 & & \hyperref[sec:MU04]{Mostra MU\_4} e torna allo step 3 del \textit{Main Scenario}
 \end{tabularx}
 \end{minipage}\strut \\ \hline
 
@@ -784,11 +785,51 @@ Extension \textit{\#5} - L'utente non conferma la creazione  &
 \begin{minipage}[t]{\linewidth}
 \begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
 \textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
-6.e & Clicca \textit{No} &  \\ \hline
-7.e & & Torna allo step 3 del \textit{Main Scenario}
+6.a & Clicca \textit{Annulla} &  \\ \hline
+6.a.1 & & Torna allo step 3 del \textit{Main Scenario}
 \end{tabularx}
 \end{minipage}\strut \\ \hline
 
+\end{longtable}
+
+\subsubsection{Tabella di Cockburn 2} 
+\label{sec:CKB02} Tabella di Cockburn del caso d'uso \hyperref[sec:RE04]{Requisito funzionale 3.1.4 - }\index{Issue!Assegna}
+ \textit{Assegna Issue} 
+\index{Issue!Assegnazione} 
+\begin{longtable}{|p{4cm}|p{12cm}|} \hline \textbf{Use Case 3} & \textbf{Assegna Issue} \\ \hline 
+Goal in Context & Permette all'amministratore di assegnare una issue ad un utente \\ \hline 
+Preconditions & L'amministratore ha effettuato l'accesso al sistema \\ \hline 
+Success End Condition & L'issue viene assegnata all'utente prescelto e il suo stato passa a \textit{In Progress} \\ \hline 
+Failed End Condition & L'assegnazione non viene completata e viene visualizzato il messaggio di errore: \textit{Impossibile completare l'assegnazione} \\ \hline 
+Primary Actor & Amministratore \\ \hline 
+Trigger & L'amministratore clicca su \textit{Assegna Issue} \\ \hline 
+Main Scenario & \begin{minipage}[t]{\linewidth} 
+\begin{tabularx}{\linewidth}{p{0.8cm}|X|X} \textbf{Step} & 
+\textbf{Amministratore} & \textbf{Risposta del sistema} \\ \hline 
+1 & Accede alla sezione \textit{Assegna Issue} & \\ \hline 
+2 & & \hyperref[sec:MU05]{Mostra MU\_1} \\ \hline 
+3 & Seleziona la issue da assegnare e seleziona l'utente & \\ \hline 
+4 & Clicca \textit{Assegna} & \\ \hline 
+5 & & Mostra \hyperref[sec:MU06]{MU\_2} \\ \hline 
+6 & Clicca \textit{OK} & \\ \hline 
+\end{tabularx} 
+\end{minipage} \strut \\ \hline 
+
+Extension \textit{\#1} - Utente e/o Issue non selezionati & \begin{minipage}[t]{\linewidth} 
+\begin{tabularx}{\linewidth}{p{0.8cm}|X|X} \textbf{Step} & \textbf{Amministratore} & \textbf{Risposta del sistema} \\ \hline 
+4.a & Non seleziona l'utente e/o la issue & \\ \hline 
+4.a.1 & Clicca su \textit{Assegna} & \\ \hline 
+4.a.2 & & \hyperref[sec:MU07]{Mostra MU\_3} e torna allo step 3 del \textit{Main Scenario} 
+\end{tabularx} 
+\end{minipage} \strut \\ \hline 
+
+Extension \textit{\#2} - Errore di rete & \begin{minipage}[t]{\linewidth} \begin{tabularx}{\linewidth}{p{0.8cm}|X|X} \textbf{Step} & \textbf{Amministratore} & \textbf{Risposta del sistema} \\ \hline 
+4.b & Clicca su \textit{Assegna} & \\ \hline 
+4.b.1 & & \hyperref[sec:MU08]{Mostra MU\_4} \\ \hline 
+4.b.2 & Clicca \textit{OK} & \\ \hline 
+4.b.3 & & Torna allo step 3 del \textit{Main Scenario} 
+\end{tabularx} 
+\end{minipage} \strut \\ \hline 
 \end{longtable}
 
 \subsection{Prototipazione visuale del caso d'uso 3.3.3 Segnala Issue}
@@ -802,7 +843,7 @@ della schermata, ma solamente un mezzo per comunicare l'idea dell'interfaccia gr
     \centering
     \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_1.png}
     \caption{Mockup 1 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 2 del Main Scenario}}
-    \label{fig:etichetta}
+    \label{fig:MU01}
 \end{figure}
 
 \subsubsection{Segnala Issue - Mockup 2}
@@ -811,7 +852,7 @@ della schermata, ma solamente un mezzo per comunicare l'idea dell'interfaccia gr
     \centering
     \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_2.png}
     \caption{Mockup 2 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 5}}
-    \label{fig:etichetta}
+    \label{fig:MU02}
 \end{figure}
 
 \subsubsection{Segnala Issue - Mockup 3}
@@ -819,8 +860,8 @@ della schermata, ma solamente un mezzo per comunicare l'idea dell'interfaccia gr
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_3.png}
-    \caption{Mockup 3 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 7}}
-    \label{fig:etichetta}
+    \caption{Mockup 3 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 4.c.1}}
+    \label{fig:MU03}
 \end{figure}
 
 \subsubsection{Segnala Issue - Mockup 4}
@@ -829,18 +870,42 @@ della schermata, ma solamente un mezzo per comunicare l'idea dell'interfaccia gr
     \centering
     \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_4.png}
     \caption{Mockup 4 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 4.b.1}}
-    \label{fig:etichetta}
+    \label{fig:MU04}
 \end{figure}
 
-\subsubsection{Segnala Issue - Mockup 5}
-\label{sec:MU05}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/SegnalaIssueMockup/MU_5.png}
-    \caption{Mockup 5 - Crea issue riferito a \hyperref[sec:CKB01]{3.4.1 Tabella di Cockburn 1 - Step 5.c}}
-    \label{fig:etichetta}
+\subsection{Prototipazione visuale del caso d'uso Assegna Issue} 
+\index{Mockup} 
+Le seguenti figure rappresentano la prototipazione visuale via Mock-up delle relative interfacce utente. Non sono da intendersi come rappresentativi dell'aspetto finale della schermata, ma solamente un mezzo per comunicare l'idea dell'interfaccia grafica del prodotto software. 
+
+\subsubsection{Assegna Issue - Mockup 1} 
+\label{sec:MU05} 
+\begin{figure}[H] \centering \includegraphics[width=1.0\textwidth]{images/AssegnaIssueMockup/MU_1.png} 
+\caption{Mockup 1 - Assegna issue riferito a \hyperref[sec:CKB02]{Tabella di Cockburn 2 - Step 2 del Main Scenario}} 
+\label{fig:MU05} 
+\end{figure} 
+
+\subsubsection{Assegna Issue - Mockup 2} 
+\label{sec:MU06} 
+\begin{figure}[H] \centering \includegraphics[width=1.0\textwidth]{images/AssegnaIssueMockup/MU_2.png} 
+\caption{Mockup 2 - Assegna issue riferito a \hyperref[sec:CKB02]{Tabella di Cockburn 2 - Step 5 del Main Scenario}} 
+\label{fig:MU06} 
+\end{figure} 
+
+\subsubsection{Assegna Issue - Mockup 3} 
+\label{sec:MU07} 
+\begin{figure}[H] \centering \includegraphics[width=1.0\textwidth]{images/AssegnaIssueMockup/MU_3.png} 
+\caption{Mockup 3 - Assegna issue riferito a \hyperref[sec:CKB02]{Tabella di Cockburn 2 - Step 4.a.2}} 
+\label{fig:MU07} 
+\end{figure} 
+
+\subsubsection{Assegna Issue - Mockup 4} 
+\label{sec:MU08} 
+\begin{figure}[H] \centering \includegraphics[width=1.0\textwidth]{images/AssegnaIssueMockup/MU_4.png} 
+\caption{Mockup 4 - Assegna issue riferito a \hyperref[sec:CKB02]{Tabella di Cockburn 2 - Step 4.b.1}} 
+\label{fig:MU08} 
 \end{figure}
 
+\newpage
 \section{Documento di design del sistema}
 \subsection{Analisi dell'Architettura}
 Il progetto BugBoard26 è stato sviluppato con un'architettura \textit{\textbf{client-server}} (fig. 1) organizzata su tre livelli. Tale organizzazione è suddivisa in: 
@@ -861,13 +926,9 @@ la soluzione più coerente per lo sviluppo del software.
     \label{fig:etichetta}
 \end{figure}
 
-\subsubsection{Client}
-Il client...
-\subsubsection{Server}
-Per la creazione del \textbf{backend} abbiamo utilizzato Spring Boot 3.2.2, un framework Java che facilita la creazione di API REST grazie al supportos per la gestione di richieste HTTP e l'integrazioni di componenti Spring come Spring MVC. 
 
-Il sistema adotta un’architettura basata sul \textbf{pattern MVC} (Model-View-Controller), estesa attraverso l’introduzione di ulteriori livelli applicativi, come Service, DTO, Mapper e moduli di autenticazione. Questa organizzazione consente una separazione ancora più marcata delle responsabilità: i \textbf{Controller} si occupano della gestione delle richieste HTTP, i \textbf{Services} della logica di business, i \textbf{DTO} e \textbf{Mapper} facilitano lo scambio e la trasformazione dei dati, la componente \textbf{View} è rappresentata dal processo di serializzazione (da Object a JSON) e deserializzazione (da JSON a Object) dei dati trasferiti dal o verso il client, mentre la componente \textbf{Repositories} rappresenta l'interfaccia che fornisce i servizi per la comunicazione con il sistema di persistenza dei dati. In particolare, grazie all'integrazione di Spring Data JPA (Jakarta Persistence API) e Hibernate, i Repositories si occupano delle operazione di lettura e scrittura dei dati (CRUD), delegando al sistema di persistenza la sola gestione fisica delle informazioni.
-Tale approccio migliora la manutenibilità, la scalabilità e la chiarezza del codice.
+\subsubsection{Server}
+Il sistema adotta un’architettura basata sul \textbf{pattern MVC} (Model-View-Controller), estesa attraverso l’introduzione di ulteriori livelli applicativi, come Service, DTO, Mapper e moduli di autenticazione. Questa organizzazione consente una separazione ancora più marcata delle responsabilità: i \textbf{Controller} si occupano della gestione delle richieste HTTP, i \textbf{Services} della logica di business, i \textbf{DTO} e \textbf{Mapper} facilitano lo scambio e la trasformazione dei dati, la componente \textbf{View} è rappresentata dal processo di serializzazione (da Object a JSON) e deserializzazione (da JSON a Object) dei dati trasferiti dal o verso il client, mentre la componente \textbf{Repositories} rappresenta l'interfaccia che fornisce i servizi per la comunicazione con il sistema di persistenza dei dati. 
 
 L'architettura appena illustrata è rappresentata dal seguente Component Diagram UML.
 \begin{figure}[H]
@@ -883,11 +944,23 @@ La persistenza fisica dei dati è realizzata mediante l'utilizzo di un database 
 PostgreSQL è stato scelto per diversi fattori. In primo luogo, è un sistema \textit{open-source}, affidabile e altamente stabile. Inoltre, PostgreSQL si integra facilmente con il framework Spring Boot e tecnologie JPA/Hibernate. 
 Il database relazionale garantisce la persistenza dei dati in modo sicuro. L'interazione con esso avviene tramite il livello \textbf{Repositories}, che incapsula le operazioni di accesso ai dati, mantenendo separata la logica applicativa dalla persistenza dei dati.
 
+\subsubsection{Client}
+Il \textit{frontend} è stato sviluppato in Java, che garantisce efficienza e portabilità.
 
-\subsection{Scelte tecnologiche adottate}
-Descrizione e motivazione delle scelte tecnologiche adottate.
 
-\subsubsection{Descrizione dello schema di persistenza dei dati}
+\subsection{Scelte tecnologiche e motivazioni} Da fare...
+
+\subsubsection{Server} 
+Per lo sviluppo del \textbf{backend} abbiamo utilizzato Spring Boot 3.2.2, un framework Java che facilita la creazione di API REST grazie al supportos per la gestione di richieste HTTP e l'integrazioni di componenti Spring come Spring MVC. Grazie all'integrazione di Spring Data JPA (Jakarta Persistence API) e Hibernate, i Repositories si occupano delle operazione di lettura e scrittura dei dati (CRUD), delegando al sistema di persistenza la sola gestione fisica delle informazioni.
+Tale approccio migliora la manutenibilità, la scalabilità e la chiarezza del codice.
+
+\subsubsection{Client} \dots
+
+\newpage
+\section{Documento di Design del Software}
+
+
+\subsection{Descrizione dello schema di persistenza dei dati}
 Nella Figura 15 viene mostrato il diagramma UML del database.
 \begin{figure}[H]
     \centering
@@ -895,6 +968,66 @@ Nella Figura 15 viene mostrato il diagramma UML del database.
     \caption{Schema architetturale 3 - Diagramma UML Database}
     \label{fig:etichetta}
 \end{figure}
+
+
+
+\subsection{Class Diagram di Design} Di seguito sono riportati i class diagram del Server. Si è deciso di dividere il class diagram in vari diagrammi separati, organizzati per funzionalità, per semplificare la consultazione del documento. Inoltre, abbiamo riportato tutte le classi Model in un unico diagramma dettagliato, ogni volta che saranno coinvolte in associazioni nelle varie funzionalità le classi saranno rappresentate in forma ridotta.
+\paragraph{Class Diagram 1- Model}Il seguente class diagram rappresenta per esteso e in modo dettagliato le classi del Model. In seguito verranno riportate solo in forma ridotta.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/BackendCD/Model.png}
+    \caption{Class Diagram 1 - Model dettagliato}
+    \label{fig:ClassDiagramModel}
+\end{figure}
+
+
+
+\paragraph{Class Diagram 2- Funzionalità 2}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 2
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 2.png}
+    \caption{Class Diagram 2 - Funzionalità 2}
+    \label{fig:ClassDiagramFunz2}
+\end{figure}
+
+\paragraph{Class Diagram 3- Funzionalità 3}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 3
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 3.png}
+    \caption{Class Diagram 3 - Funzionalità 3}
+    \label{fig:ClassDiagramFunz3}
+\end{figure}
+
+\paragraph{Class Diagram 4- Funzionalità 4 e 14}Il seguente class diagram rappresenta le classi coninvolte nelle funzioanlità 4 e 14
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 4 e 14.png}
+    \caption{Class Diagram 4 - Funzionalità 4 e 14}
+    \label{fig:ClassDiagramFunz4e14}
+\end{figure}
+
+
+\paragraph{Class Diagram 5- Funzionalità 11}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 11
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 11.png}
+    \caption{Class Diagram 5 - Funzionalità 11}
+    \label{fig:ClassDiagramFunz11}
+\end{figure}
+
+\paragraph{Class Diagram 6- Funzionalità 17}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 17
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 17.png}
+    \caption{Class Diagram 6 - Funzionalità 17}
+    \label{fig:ClassDiagramFunz17}
+\end{figure}
+
+
+
+\subsection{Descrizione e motivazione delle scelte di software design adottate} Da fare
+
+
 
 \printindex
 

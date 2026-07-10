@@ -23,8 +23,8 @@
 \indexentry{Vista!Report mensile|hyperpage}{8}
 \indexentry{Vista!Issue personali|hyperpage}{8}
 \indexentry{Vista!Notifiche|hyperpage}{8}
-\indexentry{Notifiche|hyperpage}{8}
-\indexentry{Notifiche!Invio|hyperpage}{8}
+\indexentry{Notifiche|hyperpage}{9}
+\indexentry{Notifiche!Invio|hyperpage}{9}
 \indexentry{Autenticazione|hyperpage}{10}
 \indexentry{Nuova utenza (Amministratore)|hyperpage}{10}
 \indexentry{Issue!Segnalazione|hyperpage}{11}
@@ -48,4 +48,7 @@
 \indexentry{Use Case!Visualizza Notifiche|hyperpage}{23}
 \indexentry{Cockburn|hyperpage}{23}
 \indexentry{Issue!Segnalazione|hyperpage}{23}
-\indexentry{Mockup|hyperpage}{25}
+\indexentry{Issue!Assegna|hyperpage}{25}
+\indexentry{Issue!Assegnazione|hyperpage}{25}
+\indexentry{Mockup|hyperpage}{26}
+\indexentry{Mockup|hyperpage}{30}
