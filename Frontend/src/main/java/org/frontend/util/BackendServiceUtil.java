@@ -3,9 +3,9 @@ package org.frontend.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.frontend.services.*;
 
-public class BackendServiceFactory {
+public class BackendServiceUtil {
 
-    private static BackendServiceFactory instance;
+    private static BackendServiceUtil instance;
 
     private final ApiClient apiClient;
     private final IssueApiService issueApiService;
@@ -16,7 +16,7 @@ public class BackendServiceFactory {
     private final NotificationApiService notificationApiService;
 
 
-    private BackendServiceFactory() {
+    private BackendServiceUtil() {
         this.apiClient       = new ApiClient("http://52.211.223.99");
         this.issueApiService = new IssueApiService(apiClient);
         this.userApiService = new UserApiService(apiClient);
@@ -26,8 +26,8 @@ public class BackendServiceFactory {
         this.notificationService = new NotificationService(notificationApiService, new ObjectMapper());
     }
 
-    public static BackendServiceFactory getInstance() {
-        if (instance == null) instance = new BackendServiceFactory();
+    public static BackendServiceUtil getInstance() {
+        if (instance == null) instance = new BackendServiceUtil();
         return instance;
     }
 

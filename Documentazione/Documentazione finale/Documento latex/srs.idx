@@ -1,54 +1,109 @@
-\indexentry{Funzionalità|hyperpage}{4}
-\indexentry{Autenticazione|hyperpage}{4}
-\indexentry{Vista!Riepilogo issue|hyperpage}{4}
-\indexentry{Issue!Assegnazione issue|hyperpage}{4}
-\indexentry{Vista!Workload|hyperpage}{4}
-\indexentry{Vista!Report mensile|hyperpage}{4}
-\indexentry{Glossario|hyperpage}{4}
-\indexentry{IEEE Std 830-1998|hyperpage}{6}
-\indexentry{Cockburn|hyperpage}{6}
-\indexentry{Funzionalità|hyperpage}{8}
-\indexentry{Autenticazione|hyperpage}{8}
-\indexentry{Autenticazione|hyperpage}{8}
-\indexentry{Nuova utenza (Amministratore)|hyperpage}{8}
-\indexentry{Issue|hyperpage}{8}
-\indexentry{Issue!Segnalazione|hyperpage}{8}
-\indexentry{Issue!Filtra|hyperpage}{8}
-\indexentry{Issue!Ordina|hyperpage}{8}
-\indexentry{Issue!Ricerca|hyperpage}{8}
-\indexentry{Assegna|hyperpage}{8}
-\indexentry{Issue!Modifica|hyperpage}{8}
-\indexentry{Vista|hyperpage}{8}
-\indexentry{Vista!Riepilogo issue|hyperpage}{8}
-\indexentry{Vista!Report mensile|hyperpage}{8}
-\indexentry{Vista!Issue personali|hyperpage}{8}
-\indexentry{Vista!Notifiche|hyperpage}{8}
-\indexentry{Notifiche|hyperpage}{9}
-\indexentry{Notifiche!Invio|hyperpage}{9}
-\indexentry{Autenticazione|hyperpage}{10}
-\indexentry{Nuova utenza (Amministratore)|hyperpage}{10}
-\indexentry{Issue!Segnalazione|hyperpage}{11}
-\indexentry{Issue!Assegnazione|hyperpage}{12}
-\indexentry{Vista!Riepilogo issue|hyperpage}{13}
-\indexentry{Vista!Report mensile|hyperpage}{14}
-\indexentry{Vista!Issue personali|hyperpage}{14}
-\indexentry{Issue!Filtra|hyperpage}{14}
-\indexentry{Issue!Ordine|hyperpage}{15}
-\indexentry{Issue!Ricerca|hyperpage}{16}
-\indexentry{Vista!Notifiche|hyperpage}{17}
-\indexentry{Notifiche!Lettura notifiche|hyperpage}{17}
-\indexentry{Workload|hyperpage}{18}
-\indexentry{Use Case|hyperpage}{18}
-\indexentry{Use Case!Autenticazione|hyperpage}{19}
-\indexentry{Use Case!Segnala issue|hyperpage}{20}
-\indexentry{Use Case!Assegna issue|hyperpage}{21}
-\indexentry{Use Case!Visualizza issue assegnate|hyperpage}{21}
-\indexentry{Use Case!Visualizza riepilogo|hyperpage}{22}
-\indexentry{Use Case!Visualizza report team|hyperpage}{22}
-\indexentry{Use Case!Visualizza Notifiche|hyperpage}{23}
-\indexentry{Cockburn|hyperpage}{23}
-\indexentry{Issue!Segnalazione|hyperpage}{23}
-\indexentry{Issue!Assegna|hyperpage}{25}
-\indexentry{Issue!Assegnazione|hyperpage}{25}
-\indexentry{Mockup|hyperpage}{26}
-\indexentry{Mockup|hyperpage}{30}
+\indexentry{Funzionalità|hyperpage}{5}
+\indexentry{Autenticazione|hyperpage}{5}
+\indexentry{Vista!Riepilogo issue|hyperpage}{5}
+\indexentry{Issue!Assegnazione issue|hyperpage}{5}
+\indexentry{Vista!Workload|hyperpage}{5}
+\indexentry{Vista!Report mensile|hyperpage}{5}
+\indexentry{Glossario|hyperpage}{5}
+\indexentry{Priorità|hyperpage}{6}
+\indexentry{IEEE Std 830-1998|hyperpage}{7}
+\indexentry{Cockburn|hyperpage}{7}
+\indexentry{Funzionalità|hyperpage}{9}
+\indexentry{Autenticazione|hyperpage}{9}
+\indexentry{Autenticazione|hyperpage}{9}
+\indexentry{Nuova utenza (Amministratore)|hyperpage}{9}
+\indexentry{Issue|hyperpage}{9}
+\indexentry{Issue!Segnalazione|hyperpage}{9}
+\indexentry{Issue!Filtra|hyperpage}{9}
+\indexentry{Issue!Ordina|hyperpage}{9}
+\indexentry{Issue!Ricerca|hyperpage}{9}
+\indexentry{Priorità|hyperpage}{9}
+\indexentry{Assegna|hyperpage}{9}
+\indexentry{Issue!Modifica|hyperpage}{9}
+\indexentry{Vista|hyperpage}{9}
+\indexentry{Vista!Riepilogo issue|hyperpage}{9}
+\indexentry{Vista!Report mensile|hyperpage}{9}
+\indexentry{Vista!Issue personali|hyperpage}{9}
+\indexentry{Vista!Notifiche|hyperpage}{9}
+\indexentry{Notifiche|hyperpage}{10}
+\indexentry{Notifiche!Invio|hyperpage}{10}
+\indexentry{Autenticazione|hyperpage}{11}
+\indexentry{Nuova utenza (Amministratore)|hyperpage}{11}
+\indexentry{Issue!Segnalazione|hyperpage}{12}
+\indexentry{Priorità|hyperpage}{13}
+\indexentry{Issue!Assegnazione|hyperpage}{13}
+\indexentry{Vista!Riepilogo issue|hyperpage}{14}
+\indexentry{Vista!Report mensile|hyperpage}{15}
+\indexentry{Vista!Issue personali|hyperpage}{15}
+\indexentry{Issue!Filtra|hyperpage}{15}
+\indexentry{Priorità|hyperpage}{16}
+\indexentry{Issue!Ordine|hyperpage}{16}
+\indexentry{Priorità|hyperpage}{17}
+\indexentry{Issue!Ricerca|hyperpage}{17}
+\indexentry{Vista!Notifiche|hyperpage}{18}
+\indexentry{Notifiche!Lettura notifiche|hyperpage}{18}
+\indexentry{Workload|hyperpage}{19}
+\indexentry{Use Case|hyperpage}{19}
+\indexentry{Use Case!Autenticazione|hyperpage}{20}
+\indexentry{Use Case!Segnala issue|hyperpage}{21}
+\indexentry{Priorità|hyperpage}{21}
+\indexentry{Use Case!Assegna issue|hyperpage}{22}
+\indexentry{Use Case!Visualizza issue assegnate|hyperpage}{22}
+\indexentry{Use Case!Visualizza riepilogo|hyperpage}{23}
+\indexentry{Use Case!Visualizza report team|hyperpage}{23}
+\indexentry{Use Case!Visualizza Notifiche|hyperpage}{24}
+\indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{25}
+\indexentry{Docker|hyperpage}{25}
+\indexentry{Client-Server|hyperpage}{25}
+\indexentry{Cockburn|hyperpage}{26}
+\indexentry{Issue!Segnalazione|hyperpage}{26}
+\indexentry{Priorità|hyperpage}{26}
+\indexentry{Issue!Assegna|hyperpage}{27}
+\indexentry{Issue!Assegnazione|hyperpage}{27}
+\indexentry{Mockup|hyperpage}{28}
+\indexentry{Mockup|hyperpage}{32}
+\indexentry{Client-Server|hyperpage}{37}
+\indexentry{DTO|hyperpage}{37}
+\indexentry{MVC|hyperpage}{37}
+\indexentry{Database|hyperpage}{38}
+\indexentry{MVC|hyperpage}{38}
+\indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{39}
+\indexentry{Database|hyperpage}{39}
+\indexentry{MVC|hyperpage}{39}
+\indexentry{Spring Boot|hyperpage}{39}
+\indexentry{Docker|hyperpage}{39}
+\indexentry{PostgreSQL|hyperpage}{40}
+\indexentry{Spring Boot|hyperpage}{40}
+\indexentry{JavaFX / FXML|hyperpage}{40}
+\indexentry{Database|hyperpage}{41}
+\indexentry{Class Diagram|hyperpage}{41}
+\indexentry{Dependency Injection|hyperpage}{49}
+\indexentry{Principi SOLID|hyperpage}{49}
+\indexentry{Database|hyperpage}{49}
+\indexentry{Singleton|hyperpage}{49}
+\indexentry{Event-Listener / Observer|hyperpage}{49}
+\indexentry{Database|hyperpage}{49}
+\indexentry{Principi SOLID|hyperpage}{49}
+\indexentry{DTO|hyperpage}{50}
+\indexentry{Dependency Injection|hyperpage}{50}
+\indexentry{JavaFX / FXML|hyperpage}{50}
+\indexentry{GitHub|hyperpage}{50}
+\indexentry{Spring Boot|hyperpage}{50}
+\indexentry{JavaFX / FXML|hyperpage}{50}
+\indexentry{Amazon Web Services (AWS)|hyperpage}{51}
+\indexentry{Docker|hyperpage}{51}
+\indexentry{Maven|hyperpage}{51}
+\indexentry{Spring Boot|hyperpage}{51}
+\indexentry{Amazon Web Services (AWS)|hyperpage}{52}
+\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{52}
+\indexentry{Amazon Web Services (AWS)!RDS|hyperpage}{52}
+\indexentry{PostgreSQL|hyperpage}{52}
+\indexentry{Database|hyperpage}{52}
+\indexentry{Amazon Web Services (AWS)|hyperpage}{52}
+\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{52}
+\indexentry{Amazon Web Services (AWS)!EC2|hyperpage}{53}
+\indexentry{Docker|hyperpage}{53}
+\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{53}
+\indexentry{Database|hyperpage}{53}
+\indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{53}
+\indexentry{SonarQube|hyperpage}{53}

@@ -20,6 +20,10 @@
 % ---------- tabelle più stabili con link ---------
 \usepackage{tabularx}
 
+% ---------- dockerfile ---------
+
+\usepackage{listings}
+
 
 % ------------------------ fancyhdr ------------------------
 \usepackage{fancyhdr}
@@ -137,7 +141,7 @@ Il sistema software in fase di sviluppo sarà indicato come System Under Develop
     tempo di risoluzione medio.
     \item Mock-up: rappresentazione visiva di un'interfaccia grafica o di una schermata del sistema.
     \item Notifica: sistema con cui la piattaforma comunica ad utenti autenticati alcune informazioni.
-    \item Prorità: parametro di una issue. Se inserita in una issue richiede che la sua risoluzione debba essere considerata prioritaria dal team di sviluppo.
+    \item Priorità: parametro di una issue. Se inserita in una issue richiede che la sua risoluzione debba essere considerata prioritaria dal team di sviluppo. \index{Priorità}
     \item Report: visualizzazione che sintetizza dati o informazioni sulle attività svolte.
     \item Scenario: sequenza di eventi che descrive l'interazione tra attori e sistema in un caso d'uso specifico.
     \item Segretezza: garantisce che le informazioni, i dati sensibili e le risorse di un sistema siano accessibili esclusivamente agli utenti che dispongono dell'autorizzazione esplicita.
@@ -217,7 +221,7 @@ Tutti gli utenti devono autenticarsi prima di accedere alle funzionalità.
     \end{itemize}
     \item Categoria issue\index{Issue} - \textit{BugBoard26} gestisce la segnalazione e l'assegnazione di issue.
     \begin{itemize}
-        \item \hyperref[sec:RE03]{Segnala issue:}\index{Issue!Segnalazione}\index{Issue!Filtra}\index{Issue!Ordina}\index{Issue!Ricerca} Un utente autenticato può segnalare una issue, della quale deve inserire un titolo e una descrizione. Può anche impostare una priorità e un tipo.
+        \item \hyperref[sec:RE03]{Segnala issue:}\index{Issue!Segnalazione}\index{Issue!Filtra}\index{Issue!Ordina}\index{Issue!Ricerca} Un utente autenticato può segnalare una issue, della quale deve inserire un titolo e una descrizione. Può anche impostare una priorità e un tipo. \index{Priorità}
         \item \hyperref[sec:RE04]{Assegna issue:}\index{Assegna} Un amministratore può assegnare una issue ad un membro del team.
         \item{Suggerimento utente:} Il sistema mostra una lista di utenti ordinati per carico di lavoro crescente. Il primo della lista viene suggerito esplicitamente all'amministratore.
         \item \hyperref[sec:RE04]{Modifica stato issue:} Quando una issue viene assegnata ad un utente il sistema ne modifica lo stato.\index{Issue!Modifica} 
@@ -236,7 +240,8 @@ Tutti gli utenti devono autenticarsi prima di accedere alle funzionalità.
     \end{itemize}
 \end{itemize}
 
-\subsection{Utenti e attori del sistema}
+\subsection{Utenti e attori del sistema} 
+\label{sec:attori}
 La seguente tabella definisce gli utenti principali del sistema, descrivendone il possibile utilizzo e la competenza tecnica richiesta. L'insieme risulta esaustivo, non è 
 previsto, quindi, che utenti non specificati in questa sezione utilizzino il sistema. Per "competenze basilari di utilizzo di applicativi software" si intende 
 una media familiarità con strumenti informatici di base. Non è prevista una curva di apprendimento sull'utilizzo di \textit{BugBoard26}.\\ 
@@ -335,7 +340,7 @@ Use Case & \hyperref[sec:UC01]{Vedi Use Case relativo a RE02} \\ \hline
 \begin{tabularx}{\textwidth}{p{5cm}|X}
 Funzione & Segnalazione di una nuova issue \\ \hline
 Descrizione & Il sistema deve permettere ad un utente di segnalare una nuova issue, specificando titolo, descrizione e, eventualmente, 
-impostare un tipo e una priorità. Tipo:
+impostare un tipo e una priorità. Tipo: \index{Priorità}
 \begin{itemize}
     \item Bug
     \item Documentation
@@ -478,7 +483,7 @@ Descrizione & Il sistema deve permettere all'utente che intende visualizzare le 
 applicare un filtro in base ai seguenti criteri:
 \begin{itemize}
     \item Tipologia
-    \item Priorità
+    \item Priorità \index{Priorità}
     \item Stato
 \end{itemize}
 \\ \hline
@@ -509,7 +514,7 @@ Descrizione & Il sistema deve permettere all'utente di ordinare le issue visuali
     \item Titolo
     \item Descrizione
     \item Tipologia
-    \item Priorità
+    \item Priorità \index{Priorità}
     \item Stato
     \item Data di creazione
     \item Data di risoluzione
@@ -658,7 +663,7 @@ specificando una email il ruolo.
 \label{sec:UC02}
 Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
 In particolare, si pone l'attenzione sulla segnalazione di una issue. L'attore principale è un utente autenticato. Esso può segnalare una issue, specificando un titolo e una descrizione.
-Può anche impostare una priorità e allegare immagini. La issue verrà inserita nel sistema e sarà visibile nell'elenco delle issue. 
+Può anche impostare una priorità\index{Priorità} e allegare immagini. La issue verrà inserita nel sistema e sarà visibile nell'elenco delle issue. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_SegnalaIssue.jpg}
@@ -714,6 +719,36 @@ In particolare, si pone l'attenzione sulla visualizzazione delle proprie notific
     \label{fig:etichetta}
 \end{figure}
 
+\subsection{Requisiti non funzionali}
+
+Di seguito sono elencati i requisiti non funzionali del sistema \textit{BugBoard26}, classificati secondo le categorie previste dallo standard IEEE Std 830-1998.
+
+\subsubsection{RNF01 - Sicurezza}
+Il sistema deve garantire la \textit{segretezza} e l'\textit{integrità} delle informazioni gestite, in quanto critiche per l'azienda. In particolare:
+\begin{itemize}
+    \item L'accesso alle funzionalità del sistema deve essere consentito esclusivamente ad utenti autenticati, secondo i permessi associati al proprio ruolo (Utente o Amministratore).
+    \item Nessuna password deve essere memorizzata all'interno del sistema: la gestione delle credenziali è demandata ad un provider di identità esterno (\textit{Amazon Cognito}).\index{Amazon Web Services (AWS)!Cognito}
+    \item La creazione di nuove utenze non può avvenire in autonomia da parte degli utenti, ma richiede necessariamente l'intervento di un Amministratore.
+\end{itemize}
+
+\subsubsection{RNF02 - Affidabilità}
+Il sistema deve garantire la corretta e costante disponibilità delle proprie funzionalità. Il back-end, distribuito tramite container Docker su infrastruttura Cloud (AWS), è configurato con politiche di riavvio automatico in caso di arresto anomalo, al fine di minimizzare i tempi di interruzione del servizio.\index{Docker}
+
+\subsubsection{RNF03 - Prestazioni}
+Il sistema deve garantire tempi di risposta rapidi durante l'interazione con l'utente, in particolare nelle operazioni più frequenti quali la visualizzazione, il filtraggio, l'ordinamento e la ricerca delle issue. La gestione asincrona di alcune operazioni (es. l'invio delle notifiche a seguito dell'assegnazione di una issue, contribuisce a non penalizzare i tempi di risposta percepiti dall'utente durante le richieste principali.
+
+\subsubsection{RNF04 - Usabilità}
+L'interfaccia utente deve essere semplice ed intuitiva, tale da consentire l'utilizzo del sistema senza necessità di supporto o di una curva di apprendimento (vedi \hyperref[sec:attori]{Sezione 2.3 - Utenti e attori del sistema}).
+
+\subsubsection{RNF05 - Scalabilità}
+L'architettura client-server, organizzata su più livelli \hyperref[sec:analisiArchitettura]{(Sezione 4.1)}, deve consentire l'aggiunta di nuovi client o l'evoluzione del server senza richiedere modifiche sostanziali all'intero sistema.\index{Client-Server}
+
+\subsubsection{RNF06 - Portabilità e indipendenza tra i componenti}
+Il front-end e il back-end devono essere componenti indipendenti, comunicanti esclusivamente tramite API REST esposte dal back-end. Deve essere possibile sostituire o modificare il front-end senza alcun impatto sul back-end, e viceversa.
+
+\subsubsection{RNF07 - Manutenibilità}
+Il codice del sistema deve essere organizzato secondo un'architettura a livelli e principi di progettazione ad oggetti, al fine di favorire la leggibilità, l'estensibilità e il riutilizzo del codice.
+
 \subsection{Formalizzazione di casi d'uso significativi}
 Descrizione tramite tabelle di Cockburn dei casi d'uso significativi.\index{Cockburn}
 
@@ -725,7 +760,7 @@ Tabella di Cockburn del caso d'uso \hyperref[sec:RE03]{Requisito funzionale 3.1.
 \hline
 \textbf{Use Case 2} & \textbf{Segnala Issue} \\ \hline
 Goal in Context & Permette agli utenti autenticati di creare una issue con titolo e descrizione e,facoltativamente, 
-di inserire un tipo e assegnare un livello di priorità  \\ \hline
+di inserire un tipo e assegnare un livello di priorità\index{Priorità}  \\ \hline
 Preconditions & L'utente ha effettuato l'autenticazione nel sistema \\ \hline
 Success End Condition &  L'issue viene registrata nel sistema, risultando visibile con lo stato iniziale di \textit{Todo} \\ \hline
 Failed End Condition & L'issue non viene registrata nel sistema e viene visualizzato il messaggio di Errore: \textit{Issue non creata}  \\ \hline
@@ -745,7 +780,7 @@ Main Scenario &
 \end{minipage}
 
 \strut \\ \hline
-Extension \textit{\#1} - Imposta una priorità (campo opzionale) & 
+Extension \textit{\#1} - Imposta una priorità (campo opzionale) &  
 \begin{minipage}[t]{\linewidth}
 \begin{tabularx}{\linewidth}{p{0.8cm}|X|X}
 \textbf{Step} & \textbf{Utente autenticato} & \textbf{Risposta del sistema} \\ \hline
@@ -907,8 +942,9 @@ Le seguenti figure rappresentano la prototipazione visuale via Mock-up delle rel
 
 \newpage
 \section{Documento di design del sistema}
+\label{sec:analisiArchitettura}
 \subsection{Analisi dell'Architettura}
-Il progetto BugBoard26 è stato sviluppato con un'architettura \textit{\textbf{client-server}} (fig. 1) organizzata su tre livelli. Tale organizzazione è suddivisa in: 
+Il progetto BugBoard26 è stato sviluppato con un'architettura \textit{\textbf{client-server}} (fig. 1) organizzata su tre livelli che comunicano tramite API REST. Tale organizzazione è suddivisa in: \index{Client-Server}
 \begin{itemize}
     \item Presentation Layer (Client)
     \item Bussines Logic Layer (Server)
@@ -928,43 +964,62 @@ la soluzione più coerente per lo sviluppo del software.
 
 
 \subsubsection{Server}
-Il sistema adotta un’architettura basata sul \textbf{pattern MVC} (Model-View-Controller), estesa attraverso l’introduzione di ulteriori livelli applicativi, come Service, DTO, Mapper e moduli di autenticazione. Questa organizzazione consente una separazione ancora più marcata delle responsabilità: i \textbf{Controller} si occupano della gestione delle richieste HTTP, i \textbf{Services} della logica di business, i \textbf{DTO} e \textbf{Mapper} facilitano lo scambio e la trasformazione dei dati, la componente \textbf{View} è rappresentata dal processo di serializzazione (da Object a JSON) e deserializzazione (da JSON a Object) dei dati trasferiti dal o verso il client, mentre la componente \textbf{Repositories} rappresenta l'interfaccia che fornisce i servizi per la comunicazione con il sistema di persistenza dei dati. 
+Il sistema adotta un’architettura basata sul \textbf{pattern MVC} (Model-View-Controller), estesa attraverso l’introduzione di ulteriori livelli applicativi, come Service, DTO, Mapper e moduli di autenticazione. Questa organizzazione consente una separazione ancora più marcata delle responsabilità: i \textbf{Controller} si occupano della gestione delle richieste HTTP, i \textbf{Services} della logica di business, i \textbf{DTO} e \textbf{Mapper} facilitano lo scambio e la trasformazione dei dati, la componente \textbf{View} è rappresentata dal processo di serializzazione (da Object a JSON) e deserializzazione (da JSON a Object) dei dati trasferiti dal o verso il client, mentre la componente \textbf{Repositories} rappresenta l'interfaccia che fornisce i servizi per la comunicazione con il sistema di persistenza dei dati. \index{DTO} \index{MVC}
 
 L'architettura appena illustrata è rappresentata dal seguente Component Diagram UML.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/Architettura/ComponentDiagramServer.png}
+    \includegraphics[width=1.0\textwidth]{images/Architettura/ComponentDiagramClient.png}
     \caption{Schema architetturale 2 - Component Diagram del backend}
     \label{fig:etichetta}
 \end{figure}
 
 
 \subsubsection{Persistenza}
-La persistenza fisica dei dati è realizzata mediante l'utilizzo di un database relazionale, in particolare \textbf{PostgreSQL}. Questo sistema consente la memorizzazione dei dati attraverso l'uso del linguaggio \textbf{SQL}, utilizzato per definire, manipolare e interrogare le informazioni all'interno del database.
-PostgreSQL è stato scelto per diversi fattori. In primo luogo, è un sistema \textit{open-source}, affidabile e altamente stabile. Inoltre, PostgreSQL si integra facilmente con il framework Spring Boot e tecnologie JPA/Hibernate. 
+La persistenza fisica dei dati è sviluppata mediante l'utilizzo di un DBMS relazionale disaccoppiato dal resto del sistema tramite l'interfaccia Repository.
 Il database relazionale garantisce la persistenza dei dati in modo sicuro. L'interazione con esso avviene tramite il livello \textbf{Repositories}, che incapsula le operazioni di accesso ai dati, mantenendo separata la logica applicativa dalla persistenza dei dati.
-
+\index{Database}
 \subsubsection{Client}
-L'architettura del \textit{frontend} è basata sul pattern architetturale MVC (\textit{Model-View-Controller}) esteso con moduli ausiliari per una corretta separazione delle responsabilità. La struttura dei package riflette una netta separazione delle responsabilità (primo principio SOLID). 
+L'architettura del \textit{frontend} è basata sul pattern architetturale MVC (\textit{Model-View-Controller}) esteso con moduli ausiliari per una corretta separazione delle responsabilità. In particolare, il modulo ViewController, insieme alle risorse FXML, costituiscono il livello di presentazione. I ViewController gestiscono le pagine FXML garantendo il corretto funzionamento della GUI. Il modulo Service si occupa della logica di business, riducendo le responsabilità dei Controller, che ricevono gli eventi generati dalla View, richiamano i servizi che comunicano con il back-end tramite le API REST esposte, e aggiornano il Model con i dati ricevuti.
+L'architettura appena illustrata è rappresentata dal seguente Component Diagram UML.\index{MVC}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/Architettura/ComponentDiagramClient.png}
+    \caption{Schema architetturale 3 - Component Diagram del frontend}
+    \label{fig:etichetta}
+\end{figure}
 
 
-\subsection{Scelte tecnologiche e motivazioni} Da fare...
+\subsection{Scelte tecnologiche e motivazioni}
+La scelta tecnologica più rilevante, riferita all'intero sistema, riguarda la gestione dell'autenticazione. L'autenticazione è stata gestita interamente tramite \textbf{Amazon Cognito}, configurato su un server nella regione di Milano. Tramite un'apposita pagina UI del frontend, l'utente può richiedere di effettuare il login: la richiesta lo indirizza verso la \textit{Hosting UI} di Cognito, una pagina di autenticazione esterna al sistema \textit{BugBoard26}. Contestualmente, il frontend apre un server temporaneo in ascolto sulla porta 9090, in attesa della risposta (positiva o negativa) da parte di Cognito.\index{Amazon Web Services (AWS)!Cognito}
+
+Come indicato nel documento dei requisiti, il sistema non permette la registrazione spontanea a BugBoard26: la creazione di una nuova utenza richiede necessariamente l'intervento di un Amministratore. La registrazione di una nuova utenza (sia essa di ruolo Admin che User) avviene interamente all'interno di BugBoard26: il frontend acquisisce email e ruolo del nuovo utente, mentre il backend, oltre a persistere i dati nel database, invia una richiesta API a Cognito per aggiungere l'utente al pool di utenti già esistente. Cognito provvede quindi all'invio di un'email al nuovo utente contenente una password temporanea, forzando il cambio della password al primo accesso.\index{Database}
+
+Questa scelta garantisce un sistema di autenticazione semplice e, soprattutto, sicuro, poiché \textbf{nessuna password viene memorizzata all'interno del sistema}.
+
+
+Nei paragrafi successivi vengono presentate le principali scelte tecnologiche adottate nel sistema, suddivise per \textit{Client}, \textit{Persistenza} e \textit{Server}.
+
+
 
 \subsubsection{Server} 
-Per lo sviluppo del \textbf{backend} abbiamo utilizzato Spring Boot 3.2.2, un framework Java che facilita la creazione di API REST grazie al supportos per la gestione di richieste HTTP e l'integrazioni di componenti Spring come Spring MVC. Grazie all'integrazione di Spring Data JPA (Jakarta Persistence API) e Hibernate, i Repositories si occupano delle operazione di lettura e scrittura dei dati (CRUD), delegando al sistema di persistenza la sola gestione fisica delle informazioni.
-Tale approccio migliora la manutenibilità, la scalabilità e la chiarezza del codice. 
+Per lo sviluppo del \textbf{backend} abbiamo utilizzato Spring Boot (v. 3.2.2), un framework Java che facilita la creazione di API REST grazie al supportos per la gestione di richieste HTTP e l'integrazioni di componenti Spring come Spring MVC. Grazie all'integrazione di Spring Data JPA (Jakarta Persistence API) e Hibernate, i Repositories si occupano delle operazione di lettura e scrittura dei dati (CRUD), delegando al sistema di persistenza la sola gestione fisica delle informazioni.
+Tale approccio migliora la manutenibilità, la scalabilità e la chiarezza del codice. \index{MVC} \index{Spring Boot}
 
-Il Server è stato pensato e predisposto per essere containerizzato (con Docker) e messo in opera utilizzando servizi di Cloud Computing (Amazon Web Services). 
+Il Server è stato pensato e predisposto per essere containerizzato (con Docker) e messo in opera utilizzando servizi di Cloud Computing (Amazon Web Services). \index{Docker}
 
 
-\subsubsection{Client} \dots
+\subsubsection{Persistenza} Per la persistenza dei dati è stato scelto PostgreSQL, un DBMS relazionale open-source, affidabile e altamente stabile. Questa scelta è coerente con la natura fortemente relazionale del dominio: le entità principali (Users, Issues, Notifications) sono legate da relazioni ben definite con vincoli di integrità referenziale (es. una Issue ha sempre un reporter e opzionalmente un assegnatario) PostgreSQL è stato scelto per diversi fattori. Inoltre, PostgreSQL si integra facilmente con il
+framework Spring Boot e tecnologie JPA/Hibernate. \index{PostgreSQL} \index{Spring Boot}
+
+\subsubsection{Client} Per lo sviluppo del front-end è stato scelto JavaFX, un framework per la realizzazione di applicazioni desktop in Java. Tale scelta è stata motivata da diversi fattori. Tra i principali motivi, essendo il \textit{backend} sviluppato in Java, l'utilizzo di JavaFX permette di avere \textbf{coerenza tecnologica} e di riutilizzare competenze e strumenti su entrambe le componenti del sistema. Altra motivazione decisiva è il supporto nativo di JavaFX con il pattern \textit{MVC}, che favorisce naturalmente la separazione tra interfaccia grafica e logica di presentazione, tramite il formato FXML. Inoltre, rispetto ad alternative come Swing, JavaFX offre un supporto più moderno per componenti grafici, tramite CSS, e gestione di layout responsive, mantentendo  la stessa capacità di comunicare con il back-end esclusivamente tramite chiamate HTTP verso le API REST esposte, senza alcuna dipendenza diretta dal codice del server.\index{JavaFX / FXML}
 
 \newpage
 \section{Documento di Design del Software}
 
 
 \subsection{Descrizione dello schema di persistenza dei dati}
-Nella Figura 15 viene mostrato il diagramma UML del database.
+Nella Figura 15 viene mostrato il diagramma UML del database. \index{Database}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images/Architettura/Database.png}
@@ -973,9 +1028,9 @@ Nella Figura 15 viene mostrato il diagramma UML del database.
 \end{figure}
 
 
-
+\index{Class Diagram}
 \subsection{Class Diagram di Design} Di seguito sono riportati i class diagram del Server. Si è deciso di dividere il class diagram in vari diagrammi separati, organizzati per funzionalità, per semplificare la consultazione del documento. Inoltre, abbiamo riportato tutte le classi Model in un unico diagramma dettagliato, ogni volta che saranno coinvolte in associazioni nelle varie funzionalità le classi saranno rappresentate in forma ridotta.
-\paragraph{Class Diagram 1- Model}Il seguente class diagram rappresenta per esteso e in modo dettagliato le classi del Model. In seguito verranno riportate solo in forma ridotta.
+\subsubsection{Class Diagram 1- Model}Il seguente class diagram rappresenta per esteso e in modo dettagliato le classi del Model. In seguito verranno riportate solo in forma ridotta.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images/BackendCD/Model.png}
@@ -985,7 +1040,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database.
 
 
 
-\paragraph{Class Diagram 2- Funzionalità 2}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 2
+\subsubsection{Class Diagram 2- Funzionalità 2}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 2
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 2.png}
@@ -993,7 +1048,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database.
     \label{fig:ClassDiagramFunz2}
 \end{figure}
 
-\paragraph{Class Diagram 3- Funzionalità 3}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 3
+\subsubsection{Class Diagram 3- Funzionalità 3}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 3
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 3.png}
@@ -1001,7 +1056,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database.
     \label{fig:ClassDiagramFunz3}
 \end{figure}
 
-\paragraph{Class Diagram 4- Funzionalità 4 e 14}Il seguente class diagram rappresenta le classi coninvolte nelle funzioanlità 4 e 14
+\subsubsection{Class Diagram 4- Funzionalità 4 e 14}Il seguente class diagram rappresenta le classi coninvolte nelle funzioanlità 4 e 14
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 4 e 14.png}
@@ -1010,7 +1065,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database.
 \end{figure}
 
 
-\paragraph{Class Diagram 5- Funzionalità 11}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 11
+\subsubsection{Class Diagram 5- Funzionalità 11}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 11
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 11.png}
@@ -1018,7 +1073,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database.
     \label{fig:ClassDiagramFunz11}
 \end{figure}
 
-\paragraph{Class Diagram 6- Funzionalità 17}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 17
+\subsubsection{Class Diagram 6- Funzionalità 17}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 17
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 17.png}
@@ -1026,9 +1081,147 @@ Nella Figura 15 viene mostrato il diagramma UML del database.
     \label{fig:ClassDiagramFunz17}
 \end{figure}
 
+\subsection{Package Diagram Frontend}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/Architettura/Frontend - Package Diagram.png}
+    \caption{Package Diagram - Frontend}
+    \label{fig:PackageDiagram - Frontend}
+\end{figure}
+
+\subsection{Descrizione e motivazione delle scelte di software design adottate} Di seguito una lista dei principali design pattern utilizzati nel sistema \textit{BugBoard26}. 
+\begin{itemize}
+    \item \textbf{Dependency injection:} La DI è stata molto utilizzata nello sviluppo del sistema (sia lato Client che lato Server). Questa scelta comporta diversi vantaggi. \index{Dependency Injection}
+    \textbf{Basso accoppiamento:} le classi dipendono da astrazioni (interfacce come \texttt{IssueService}, \texttt{IssueRepository}) e non da implementazioni concrete, coerentemente con il principio di Dependency Inversion (SOLID). Questo permette di sostituire un'implementazione (es. \texttt{IssueServiceImpl}) senza modificare le classi che la utilizzano. \index{Principi SOLID}
+    \textbf{Testabilità:} la possibilità di iniettare mock delle interfacce al posto delle implementazioni reali ha semplificato la scrittura di test di unità (es. testare IssueServiceImpl iniettando il mock \texttt{IssueRepository}, senza necessità di un database reale). \index{Database}
+    \textbf{Been di Spring} il ciclo di vita e la creazione delle istanze (bean) sono gestiti da Spring, evitando la duplicazione di logica di istanziazione sparsa nel codice.
+    \item \textbf{Singleton:} Il pattern Singleton viene utilizzato per la classe \texttt{AuthSession} del \textit{frontend}. Crea una istanza della classe alla quale è possibile accedere dall'esterno per ottenere il tocken necessario per costruire una corretta chiamata API al \textit{backend}. Naturalmente espone un costruttore privato per evitare la creazione di ulteriori istanze della classe. \index{Singleton}
+    \item \textbf{Event-Listener}: L'\textit{Event-Listener} è un pattern architetturale peculiare di Spring. È stato scelto in sostituzione del design pattern Observer, di cui è una specializzazione in chiave tecnologica Spring. Si occupa della gestione degli eventi, disaccoppiando il componente che genera un evento (\textit{publisher}) da quello che deve gestire le conseguenze (\textit{listener}), senza che il primo debba conoscere direttamente il secondo.\index{Event-Listener / Observer}
+
+    Nel sistema, questo meccanismo è utilizzato per la gestione delle notifiche. Quando un amministratore assegna una \textit{Issue} ad un utente, l'\texttt{IssueService} non invoca direttamente il servizio di notifica, ma pubblica un evento (es. \texttt{IssueAssignedEvent}) tramite \texttt{ApplicationEventPublisher}, contenente i riferimenti necessari (identificativo della issue e dell'utente assegnatario). Un componente listener dedicato (es. \texttt{NotificationEventListener}), registrato tramite l'annotazione \texttt{@EventListener}, intercetta l'evento e si occupa di creare la relativa notifica nel model e nel database. \index{Database}Questa scelta comporta due importanti vantaggi. In primo luogo genera un \textbf{basso accoppiamento}. L'\texttt{IssueService} non ha alcuna dipendenza diretta dal servizio di notifica, rispettando il principio SOLID di \textit{Single Responsibility}: la logica di assegnazione della issue resta separata dalla logica di generazione delle notifiche. Inoltre, è possibile aggiungere ulteriori listener per lo stesso evento senza modificare il codice del componente publisher.\index{Principi SOLID}
+\end{itemize}
+
+Oltre ai Pattern appena mostrati, nel sistema \textit{Bugboard26} sono state prese alcune scelte di Design per rispettare i principi SOLID e per ottenere un \textbf{basso accoppiamento e un'alta coesione}.Tra le principali spiccano l'utilizzo di classi \textbf{DTO} (\texttt{Data Transfer Object}) utilizzati per disaccoppiare il Model dallo strato di trasferimento dei dati (la View del backend è il serializzatore/deserializzatore di Spring). Inoltre, è usato per mascherare i Model mostrando al richiedente solamente i dati a cui ha effettivamente accesso. Le classi \textbf{Mapper} si occupano della conversione tra i Model e i DTO.\index{DTO}
+
+Le classi \texttt{Services} sono organizzate secondo una gerarchia che parte dall'interfaccia Service. Essa ci permette di mantenere il disaccoppiamento tra i \textit{Controller} e le classi \textit{Service} concrete. Oltre a questa gerarchia, si è progettata una struttra divisa per tipologia di richiesta ai \texttt{Repositories}: lettura (\textit{read}) e scrittura (\textit{write}). Questa distinzione netta permette un'alta manutenibilità del codice data la semplicità nella localizzazione di eventuali errori. 
+
+La classe \texttt{IssueSpecification} svolge un ruolo cruciale per la manutenibilità e la scalabilità del codice. Introducendo questo componente, è stato possibile evitare una complessa struttura di \textit{if-else} nidificati per la gestione dei filtri di ricerca, delegando la logica di filtraggio delle issue a un'architettura più snella e facilmente estendibile.
+
+Nel \textit{frontend} non è possibile utilizzare una semplice Dependency Injection perchè i \texttt{ViewController} di JavaFX non hanno costruttore. Il primo metodo eseguito è il metodo \texttt{initialize()}, quindi si è deciso di usare un nuovo metodo \texttt{initDependency()} chiamato dal \texttt{DashboardViewController} in cui si settano le dipendenze esterne (Controller e Service), esso verrà eseguito subito dopo l'esecuzione del \texttt{initialize()} (nel quale ci sono solamente creazione di componenti grafici, ma non il caricamento dei dati al loro interno). \index{Dependency Injection} \index{JavaFX / FXML}
+
+Per avere un basso accoppiamento e un'alta coesione nelle classi \texttt{ViewController} del \textit{frontend} si è spostata la logica di presenzazione grafica ad alcune classi di supporto, alle quali i \texttt{ViewController} delegano la creazione di tabelle, grafici, badge, ect. Tutti gli stili grafici sono raggruppati in una classe CSS \texttt{style.css}. 
+ 
+
+\subsection{Strumento di Versioning} Abbiamo adottato un approccio di versioning basato su \textbf{Github}. Per la gestione del versionamento del codice sorgente e della documentazione è stato utilizzato GitHub. È stato adottato un unico repository per l'intero progetto, organizzato nelle seguenti directory principali:\index{GitHub}
+\begin{itemize}
+    \item \texttt{Backend/}: codice sorgente del server Spring Boot. \index{Spring Boot}
+    \item \texttt{Frontend/}: codice sorgente del client JavaFX.\index{JavaFX / FXML}
+    \item \texttt{Documentazione/}: documentazione di progetto (SRS, mockup, diagrammi).
+\end{itemize}
+
+Il repository è raggiungibile al seguente link: \url{https://github.com/ManuelMontuori/BugBoard26}
+
+Il report delle attività del team sono presentate in questa schermata estratta da GitHub. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/Github.png}
+    \caption{Report Github}
+    \label{fig:githubReport}
+\end{figure}
+
+\subsection{Containerizzazione, build automatica e Cloud Deploy} Il \textbf{backend} è stato containerizzato utilizzando \textit{Docker} e caricato su una macchina virtuale AWS (\textit{Amazon Web Services}). \index{Amazon Web Services (AWS)} \index{Docker}
 
 
-\subsection{Descrizione e motivazione delle scelte di software design adottate} Da fare
+\subsubsection{Build automatica}
+
+La build del back-end è automatizzata tramite \textbf{Maven} (file \texttt{pom.xml}), che gestisce la risoluzione delle dipendenze del progetto e la generazione dell'artefatto JAR eseguibile utilizzato dal Dockerfile (\texttt{mvn clean package}). \index{Maven}
+
+\subsubsection{Containerizzazione}
+
+Il back-end è distribuito tramite container \textbf{Docker}. Il file \texttt{Dockerfile} (\hyperref[lst:dockerfile]{Codice}) definisce un'immagine leggera basata su \texttt{eclipse-temurin:21-jre-alpine}, che include la sola JRE (Java Runtime Environment) necessaria all'esecuzione dell'applicazione, già pre-compilata come artefatto JAR tramite la build Maven descritta in precedenza. L'immagine copia il jar risultante dalla build (\texttt{target/api-0.0.1-SNAPSHOT.jar}), espone la porta 8080 (porta di default di Spring Boot) e avvia l'applicazione come processo principale del container. \index{Spring Boot}
+
+\begin{lstlisting}[caption={Docker File}, label={lst:dockerfile}]
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+COPY target/api-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+\end{lstlisting}
+
+Per orchestrare l'esecuzione del container in ambiente di produzione è stato definito un file \texttt{docker-compose.yml} (\hyperref[lst:dockercompose]{Codice}), che specifica:
+\index{Amazon Web Services (AWS)}
+\begin{itemize}
+    \item l'immagine da utilizzare, pubblicata su \textbf{Amazon ECR} (Elastic Container Registry);\index{Amazon Web Services (AWS)!ECR}
+    \item il mapping tra la porta 80 dell'host e la porta 8080 esposta dal container;
+    \item le variabili d'ambiente necessarie alla configurazione, tra cui l'URL di connessione al database \textbf{PostgreSQL} ospitato su \textbf{Amazon RDS} (Relational Database Service), e le credenziali di accesso ai servizi AWS;\index{Amazon Web Services (AWS)!RDS} \index{PostgreSQL} \index{Database}
+    \item la policy di riavvio automatico del container (\texttt{restart: always}) in caso di crash o riavvio dell'host.
+\end{itemize}
+
+\begin{lstlisting}[caption={Docker Compose per il deployment del back-end}, label={lst:dockercompose}]
+version: '3.8'
+services:
+  backend:
+    image: <ECR_REGISTRY>/bugboard26:latest
+    container_name: bugboard-backend
+    ports:
+      - "80:8080"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://<RDS_ENDPOINT>:5432/postgres"
+      SPRING_DATASOURCE_USERNAME: "postgres"
+      SPRING_DATASOURCE_PASSWORD: "***"
+      AWS_ACCESS_KEY_ID: "***"
+      AWS_SECRET_ACCESS_KEY: "***"
+      AWS_REGION: "eu-south-1"
+    restart: always
+\end{lstlisting}
+
+Questa configurazione consente il deployment del back-end su infrastruttura Cloud (AWS), rendendolo accessibile via rete Internet. Per motivi di sicurezza le credenziali di accesso al database e le chiavi private aws sono state sostituite con ***.
+
+\subsubsection{Deploy AWS} Per il Deploy su AWS sono stati utilizzati i seguenti servizi Amazon:\index{Amazon Web Services (AWS)}
+\begin{itemize}
+    \item \textbf{Amazon ECR (Elastic Container Registry):} è stato usato per ospitare le immagini dockerizzate del backend. Il servizio è raggiungibile in un Server situato a Milano.\index{Amazon Web Services (AWS)!ECR}
+    \item \textbf{Amazon EC2:} è stato utilizzato per creare una macchina virtuale (basata su Linux) nella quale è stato installato Docker, creato il file \textit{docker-compose.yml} e fatto il pull dell'ultima immagine del backend presente su ECR.\index{Amazon Web Services (AWS)!EC2} \index{Docker}
+    \item \textbf{Amazon RDS (Relational Database Service):} è stato utilizzato per ospitare il Database del sistema Bugboard26, impostato per essere accessibile tramite internet dal backend. \index{Amazon Web Services (AWS)!ECR} \index{Database}
+    \item \textbf{Amazon Cognito:} il servizio Cognito è stato centrale nella progettazione dell'applicativo, tramite esso è stato possibile sviluppare un software con un sistema di autenticazione semplice e sicuro. All'attributo email di Cognito sono stati aggiunti gli attributi custom: uuid e role. \index{Amazon Web Services (AWS)!Cognito}
+\end{itemize}
+I servizi Amazon ECR e Amazon EC2 sono stati configurati e utilizzati tramite terminale, grazie all'installazione del tool \textit{AmazonCLI}. 
+
+\subsubsection{Report di qualità del codice} Al fine di valutare la qualità del codice del back-end, è stata condotta un'analisi tramite \textbf{SonarQube}. L'analisi ha permesso di individuare potenziali problemi di affidabilità, sicurezza e manutenibilità del codice.
+Di seguito sono riportati i dati dell’ultima modifica effettuata sul Server. \index{SonarQube}
+\paragraph{Indice di duplicazione} -
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/SonarQube/SonarQubeDuplications.png}
+    \caption{SonarQube Report - Indice di duplicazione}
+    \label{fig:indiceDiDuplicazioneSQ}
+\end{figure}
+Come illustrato dal grafico, nel progetto non vi sono righe duplicate. L'assenza di codice ripetuto riflette un'architettura software efficiente, che previene l'aumento ingiustificato della complessità e garantisce un'ottima manutenibilità a lungo termine.
+
+
+\paragraph{Indice degli Errori} -
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/SonarQube/SonarQubeIssues.png}
+    \caption{SonarQube Report - Indice degli Errori}
+    \label{fig:indiceErroriSQ}
+\end{figure}
+Come illustrato dal grafico, all'inizio dello sviluppo sono stati trovati 20 errori. Il nuovo codice ne ha generato altri 15, ma alla fine dello sviluppo sono stati completamente azzerati. Ciò indica un processo di miglioramento continuo della qualità del codice, con un’attenta risoluzione dei problemi rilevati durante l’analisi.
+
+\paragraph{Report di qualità Overall} -
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/SonarQube/SonarQubeReportOverall.png}
+    \caption{SonarQube Report - Report Overall codice}
+    \label{fig:reportOverallSQ}
+\end{figure}
+
+\paragraph{Report di qualità NewCode} -
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/SonarQube/SonarQubeReportNewCode.png}
+    \caption{SonarQube Report - Report NewCode}
+    \label{fig:reportNewCodeSQ}
+\end{figure}
 
 
 

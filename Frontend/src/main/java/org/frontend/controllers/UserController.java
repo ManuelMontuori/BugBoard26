@@ -6,7 +6,7 @@ import org.frontend.models.User;
 import org.frontend.models.UserWorkload;
 import org.frontend.models.dtos.UserReportDTO;
 import org.frontend.services.UserService;
-import org.frontend.util.BackendServiceFactory;
+import org.frontend.util.BackendServiceUtil;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class UserController {
     private final ObservableList<User> users;
 
     public UserController() {
-        this.service = BackendServiceFactory.getInstance().getUserService();
+        this.service = BackendServiceUtil.getInstance().getUserService();
         this.users   = FXCollections.observableArrayList();
     }
 

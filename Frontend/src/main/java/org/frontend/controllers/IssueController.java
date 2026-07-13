@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.frontend.models.Issue;
 import org.frontend.services.IssueService;
-import org.frontend.util.BackendServiceFactory;
+import org.frontend.util.BackendServiceUtil;
 
 public class IssueController {
 
@@ -12,7 +12,7 @@ public class IssueController {
     private final ObservableList<Issue> issues;
 
     public IssueController() {
-        this.service = BackendServiceFactory.getInstance().getIssueService();
+        this.service = BackendServiceUtil.getInstance().getIssueService();
         this.issues = FXCollections.observableArrayList();
     }
 
