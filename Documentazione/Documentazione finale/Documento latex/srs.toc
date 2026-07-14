@@ -104,8 +104,8 @@
 \contentsline {subsubsection}{\numberline {6.2.1}Metodo sottoposto a test}{61}{subsubsection.6.2.1}%
 \contentsline {subsubsection}{\numberline {6.2.2}Strategia adottata}{61}{subsubsection.6.2.2}%
 \contentsline {subsubsection}{\numberline {6.2.3}Black box}{62}{subsubsection.6.2.3}%
-\contentsline {paragraph}{Parametro issueId}{62}{paragraph*.8}%
-\contentsline {paragraph}{Parametro userId}{62}{paragraph*.9}%
+\contentsline {paragraph}{Parametro issueUuid}{62}{paragraph*.8}%
+\contentsline {paragraph}{Parametro userUuid}{62}{paragraph*.9}%
 \contentsline {subsubsection}{\numberline {6.2.4}Casi di test progettati}{62}{subsubsection.6.2.4}%
 \contentsline {paragraph}{TC-AI1 -- Assegnazione corretta}{62}{paragraph*.10}%
 \contentsline {paragraph}{TC-AI2 -- Utente non trovato}{62}{paragraph*.11}%
@@ -116,24 +116,27 @@
 \contentsline {subsubsection}{\numberline {6.3.1}Metodo sottoposto a test}{64}{subsubsection.6.3.1}%
 \contentsline {subsubsection}{\numberline {6.3.2}Strategia adottata}{64}{subsubsection.6.3.2}%
 \contentsline {subsubsection}{\numberline {6.3.3}Black box}{64}{subsubsection.6.3.3}%
-\contentsline {paragraph}{Parametro Issue}{64}{paragraph*.13}%
-\contentsline {paragraph}{Parametro User}{64}{paragraph*.14}%
+\contentsline {paragraph}{Parametro Issue}{65}{paragraph*.13}%
+\contentsline {paragraph}{Parametro User}{65}{paragraph*.14}%
 \contentsline {paragraph}{Persistenza}{65}{paragraph*.15}%
 \contentsline {subsubsection}{\numberline {6.3.4}Casi di test progettati}{65}{subsubsection.6.3.4}%
 \contentsline {paragraph}{TC-CN1 -- Creazione notifica corretta}{65}{paragraph*.16}%
 \contentsline {paragraph}{TC-CN2 -- Errore del repository}{65}{paragraph*.17}%
-\contentsline {subsubsection}{\numberline {6.3.5}Oracle dei test}{65}{subsubsection.6.3.5}%
+\contentsline {subsubsection}{\numberline {6.3.5}Oracle dei test}{66}{subsubsection.6.3.5}%
 \contentsline {subsection}{\numberline {6.4}Test del metodo \texttt {getMonthlyReport} -- \texttt {UserReadService}}{66}{subsection.6.4}%
 \contentsline {subsubsection}{\numberline {6.4.1}Metodo sottoposto a test}{66}{subsubsection.6.4.1}%
-\contentsline {subsubsection}{\numberline {6.4.2}Strategia adottata}{66}{subsubsection.6.4.2}%
-\contentsline {subsubsection}{\numberline {6.4.3}Black box}{66}{subsubsection.6.4.3}%
+\contentsline {subsubsection}{\numberline {6.4.2}Strategia adottata}{67}{subsubsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.3}Black box}{67}{subsubsection.6.4.3}%
 \contentsline {paragraph}{Parametro year}{67}{paragraph*.18}%
 \contentsline {paragraph}{Parametro month}{67}{paragraph*.19}%
 \contentsline {paragraph}{Boundary Value Analysis (BVA)}{67}{paragraph*.20}%
-\contentsline {paragraph}{Stato dei dati nel repository}{67}{paragraph*.21}%
-\contentsline {subsubsection}{\numberline {6.4.4}Casi di test progettati}{67}{subsubsection.6.4.4}%
-\contentsline {paragraph}{TC-GMR1 -- Report mensile con dati presenti}{67}{paragraph*.22}%
-\contentsline {paragraph}{TC-GMR2 -- Nessun dato disponibile}{67}{paragraph*.23}%
-\contentsline {paragraph}{TC-GMR3 -- Mese non valido (boundary violation)}{68}{paragraph*.24}%
-\contentsline {subsubsection}{\numberline {6.4.5}Oracle dei test}{68}{subsubsection.6.4.5}%
-\contentsline {section}{Indice analitico}{69}{section*.25}%
+\contentsline {paragraph}{Stato dei dati nel repository}{68}{paragraph*.21}%
+\contentsline {subsubsection}{\numberline {6.4.4}Casi di test progettati}{68}{subsubsection.6.4.4}%
+\contentsline {paragraph}{TC-GMR1 -- Report mensile con dati presenti}{68}{paragraph*.22}%
+\contentsline {paragraph}{TC-GMR2 -- Nessun dato disponibile}{68}{paragraph*.23}%
+\contentsline {paragraph}{TC-GMR3 -- Mese non valido, limite superiore (BVA4)}{68}{paragraph*.24}%
+\contentsline {paragraph}{TC-GMR4 -- Mese non valido, limite inferiore (BVA3)}{68}{paragraph*.25}%
+\contentsline {paragraph}{TC-GMR5 -- Mese al limite inferiore valido (BVA1)}{69}{paragraph*.26}%
+\contentsline {paragraph}{TC-GMR6 -- Mese al limite superiore valido (BVA2)}{69}{paragraph*.27}%
+\contentsline {subsubsection}{\numberline {6.4.5}Oracle dei test}{69}{subsubsection.6.4.5}%
+\contentsline {section}{Indice analitico}{71}{section*.28}%

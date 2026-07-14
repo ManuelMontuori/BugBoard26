@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.16)  14 JUL 2026 13:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.16)  14 JUL 2026 22:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1728,7 +1728,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [60]
-Overfull \hbox (39.75246pt too wide) in paragraph at lines 1455--1456
+Overfull \hbox (39.75246pt too wide) in paragraph at lines 1469--1470
 \T1/ptm/m/n/12 mock per si-mu-la-re il com-por-ta-men-to del-le se-guen-ti clas
 -si: \T1/pcr/m/n/12 IssueRepository\T1/ptm/m/n/12 , \T1/pcr/m/n/12 UserReposito
 ry\T1/ptm/m/n/12 ,
@@ -1742,18 +1742,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [61]
-Underfull \hbox (badness 10000) in paragraph at lines 1484--1484
+Underfull \hbox (badness 10000) in paragraph at lines 1498--1498
 []|\T1/ptm/m/n/12 L'issue vie-ne as-se-gna-ta al-l'u-ten-te; il cam-po
  []
 
 
-Underfull \hbox (badness 4416) in paragraph at lines 1484--1484
+Underfull \hbox (badness 4416) in paragraph at lines 1498--1498
 \T1/pcr/m/n/12 assignedAt \T1/ptm/m/n/12 vie-ne va-lo-riz-za-to; lo sta-to del-
 la is-sue
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 1484--1484
+Underfull \hbox (badness 5475) in paragraph at lines 1498--1498
 \T1/ptm/m/n/12 pas-sa a \T1/pcr/m/n/12 IN_PROGRESS\T1/ptm/m/n/12 ; vie-ne pub-b
 li-ca-to un even-to
  []
@@ -1766,7 +1766,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [62]
-Overfull \hbox (49.97897pt too wide) in paragraph at lines 1562--1562
+Overfull \hbox (50.08289pt too wide) in paragraph at lines 1536--1537
+[]\T1/ptm/m/it/12 Nota: \T1/pcr/m/n/12 AuthService \T1/ptm/m/n/12 e \T1/pcr/m/n
+/12 IssueMapper \T1/ptm/m/n/12 so-no di-pen-den-ze del co-strut-to-re di \T1/pc
+r/m/n/12 IssueWriteService
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[63]
+Overfull \hbox (49.97897pt too wide) in paragraph at lines 1569--1569
 |[]\T1/ptm/b/n/14.4 Test del me-to-do \T1/pcr/b/n/14.4 createNotification \T1/p
 tm/b/n/14.4 -- \T1/pcr/b/n/14.4 NotificationWriteService| 
  []
@@ -1778,23 +1792,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[63]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
 [64]
-Underfull \hbox (badness 1748) in paragraph at lines 1615--1615
+Underfull \hbox (badness 1748) in paragraph at lines 1621--1621
 []|\T1/ptm/m/n/12 Il re-po-si-to-ry sal-va cor-ret-ta-men-te la no-ti-fi-ca; il
  map-per
  []
 
 
-Overfull \hbox (9.33641pt too wide) in paragraph at lines 1627--1627
-[]|\T1/pcr/m/n/12 testCreateNotification_repositoryFailure()| 
+Overfull \hbox (88.53638pt too wide) in paragraph at lines 1633--1633
+[]|\T1/pcr/m/n/12 testCreateNotificationWhenRepositoryThrowsException()| 
  []
 
 
@@ -1805,7 +1811,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [65]
-Overfull \hbox (46.95245pt too wide) in paragraph at lines 1683--1684
+Overfull \hbox (39.35237pt too wide) in paragraph at lines 1659--1661
+[]\T1/ptm/b/n/12 Controllo del-le in-te-ra-zio-ni con Re-po-si-to-ry e Map-per:
+ \T1/ptm/m/n/12 Il te-st rea-le uti-liz-za un \T1/pcr/m/n/12 ArgumentCaptor
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[66]
+Overfull \hbox (46.95245pt too wide) in paragraph at lines 1694--1695
 \T1/ptm/m/n/12 mock per si-mu-la-re il com-por-ta-men-to del-le se-guen-ti clas
 -si: \T1/pcr/m/n/12 UserRepository\T1/ptm/m/n/12 , \T1/pcr/m/n/12 UserReportMap
 per\T1/ptm/m/n/12 . 
@@ -1818,24 +1837,26 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[66]
-Underfull \hbox (badness 10000) in paragraph at lines 1731--1731
+[67]
+Underfull \hbox (badness 10000) in paragraph at lines 1742--1742
 []|\T1/ptm/m/n/12 Il re-po-si-to-ry re-sti-tui-sce al-me-no una
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1731--1731
+Underfull \hbox (badness 10000) in paragraph at lines 1742--1742
 \T1/pcr/m/n/12 UserReportProjection\T1/ptm/m/n/12 ; il map-per con-ver-te
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+Overfull \hbox (23.7364pt too wide) in paragraph at lines 1763--1763
+[]|\T1/pcr/m/n/12 testGetMonthlyReportInvalidMonthUpperBound()| 
+ []
 
-[67]
+
+Overfull \hbox (23.7364pt too wide) in paragraph at lines 1772--1772
+[]|\T1/pcr/m/n/12 testGetMonthlyReportInvalidMonthLowerBound()| 
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1844,9 +1865,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [68]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[69]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[70]
 runsystem(makeindex srs.idx)...executed safely (allowed).
 
- (srs.ind [69
+ (srs.ind [71
 
 ])
 
@@ -1856,7 +1893,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[70] (srs.aux)
+[72] (srs.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1866,16 +1903,16 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `srs.out' has not changed.
-(rerunfilecheck)             Checksum: 2964C5B80DC99D43375CEDC28871C0C7;23038.
+(rerunfilecheck)             Checksum: 627F128D567FDB1F5FCC4BA423A93523;23038.
  ) 
 Here is how much of TeX's memory you used:
- 15769 strings out of 474486
- 250500 string characters out of 5743754
- 2021542 words of memory out of 5000000
- 37458 multiletter control sequences out of 15000+600000
- 600005 words of font info for 97 fonts, out of 8000000 for 9000
+ 15804 strings out of 474486
+ 250900 string characters out of 5743754
+ 2025542 words of memory out of 5000000
+ 37478 multiletter control sequences out of 15000+600000
+ 602270 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,15n,79p,1187b,1243s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,1187b,1983s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi12.pfb><C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr12.pfb><C:/Users/mmont/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -1887,9 +1924,9 @@ grams/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/mmont/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/mmont/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/mmont/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on srs.pdf (70 pages, 2786036 bytes).
+Output written on srs.pdf (72 pages, 2793599 bytes).
 PDF statistics:
- 1456 PDF objects out of 1728 (max. 8388607)
- 365 named destinations out of 1000 (max. 500000)
+ 1479 PDF objects out of 1728 (max. 8388607)
+ 379 named destinations out of 1000 (max. 500000)
  1060 words of extra memory for PDF output out of 10000 (max. 10000000)
 

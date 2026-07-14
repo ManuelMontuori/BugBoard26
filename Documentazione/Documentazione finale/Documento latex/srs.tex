@@ -1292,6 +1292,7 @@ Come illustrato dal grafico, all'inizio dello sviluppo sono stati trovati 20 err
     \label{fig:reportNewCodeSQ}
 \end{figure}
 
+\newpage
 \section{Test Plan}
 \label{sec:pianoDiTest}
 \index{Test}
@@ -1434,30 +1435,44 @@ EC6 Non amministratore & TC7 \\ \hline
 \end{longtable}
 
 
+% ============================================================
+% Richiede nel preambolo: tabularx, longtable, amssymb, listings
+% (già presenti nel documento SRS)
+% ============================================================
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    columns=fullflexible,
+    frame=single,
+    language=Java,
+    literate=
+        {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+        {À}{{\`A}}1 {È}{{\`E}}1
+}
 
 \subsection{Test del metodo \texttt{assignIssue} -- \texttt{IssueWriteService}}
 \label{sec:testAssignIssueDoc}
 \index{Test!assignIssue}
 
 \subsubsection{Metodo sottoposto a test}
-È stato scelto il metodo \texttt{assignIssue(UUID issueId, UUID userId)} della classe \texttt{IssueWriteService}. Il metodo ha il compito di assegnare una issue ad un utente.
+È stato scelto il metodo \texttt{assignIssue(UUID issueUuid, UUID userUuid)} della classe \texttt{IssueWriteService}. Il metodo ha il compito di assegnare una issue ad un utente.
 
 Il comportamento previsto è:
 \begin{enumerate}
-    \item Recuperare l'issue tramite \texttt{issueId}
-    \item Recuperare l'utente tramite \texttt{userId}
+    \item Recuperare l'issue tramite \texttt{issueUuid}
+    \item Recuperare l'utente tramite \texttt{userUuid}
     \item Associare l'utente all'issue
     \item Aggiornare lo stato dell'issue e la data di assegnazione
     \item Pubblicare un evento di assegnazione
 \end{enumerate}
 
 \subsubsection{Strategia adottata}
-Per il testing è stato adottato un approccio di \textbf{unit testing} con Mockito. Sono stati utilizzati mock per simulare il comportamento delle seguenti classi: \texttt{IssueRepository}, \texttt{UserRepository}, \texttt{ApplicationEventPublisher}.
+Per il testing è stato adottato un approccio di \textbf{unit testing} con Mockito. Sono stati utilizzati mock per simulare il comportamento delle seguenti classi: \texttt{IssueRepository}, \texttt{UserRepository}, \texttt{AuthService}, \texttt{IssueMapper}, \texttt{ApplicationEventPublisher}.
 
 \subsubsection{Black box}
 Il Black box testing è basato solo su input/output. Sono state utilizzate le tecniche \textbf{Equivalence Class Partitioning (ECP)} e \textbf{Each Choice Coverage}.
 
-\paragraph{Parametro issueId}
+\paragraph{Parametro issueUuid}
 \begin{longtable}{|p{1.8cm}|p{5.3cm}|p{6.2cm}|}
 \hline
 \textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
@@ -1465,7 +1480,7 @@ CE1 & issue esistente & UUID valido presente nel repository \\ \hline
 CE2 & issue inesistente & UUID valido non presente nel repository \\ \hline
 \end{longtable}
 
-\paragraph{Parametro userId}
+\paragraph{Parametro userUuid}
 \begin{longtable}{|p{1.8cm}|p{5.3cm}|p{6.2cm}|}
 \hline
 \textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
@@ -1479,45 +1494,47 @@ CE4 & utente inesistente & UUID valido non presente nel repository \\ \hline
 \label{sec:TC-AI1}
 \begin{longtable}{|p{4cm}|p{10.3cm}|}
 \hline
-Input & issueId valido, userId valido \\ \hline
+Input & issueUuid valido, userUuid valido \\ \hline
 Precondizioni & Il repository issue restituisce un'issue; il repository utenti restituisce un utente \\ \hline
 Output atteso (Oracle) & L'issue viene assegnata all'utente; il campo \texttt{assignedAt} viene valorizzato; lo stato della issue passa a \texttt{IN\_PROGRESS}; viene pubblicato un evento \texttt{IssueAssignedEvent} \\ \hline
-Test JUnit & \texttt{testAssignIssue\_validUser()} \\ \hline
+Test JUnit & \texttt{testAssignIssueValidUser()} \\ \hline
 \end{longtable}
 
 \paragraph{TC-AI2 -- Utente non trovato}
 \label{sec:TC-AI2}
 \begin{longtable}{|p{4cm}|p{10.3cm}|}
 \hline
-Input & issueId valido, userId inesistente \\ \hline
+Input & issueUuid valido, userUuid inesistente \\ \hline
 Precondizioni & L'issue esiste; l'utente non viene trovato \\ \hline
 Output atteso (Oracle) & Il metodo deve lanciare \texttt{ResourceAccessException} \\ \hline
-Test JUnit & \texttt{testAssignIssue\_userNotFound()} \\ \hline
+Test JUnit & \texttt{testAssignIssueUserNotFound()} \\ \hline
 \end{longtable}
 
 \paragraph{TC-AI3 -- Issue non trovata}
 \label{sec:TC-AI3}
 \begin{longtable}{|p{4cm}|p{10.3cm}|}
 \hline
-Input & issueId inesistente, userId valido \\ \hline
+Input & issueUuid inesistente, userUuid valido \\ \hline
 Precondizioni & Il repository issue restituisce \texttt{Optional.empty()} \\ \hline
 Output atteso (Oracle) & Il metodo deve lanciare \texttt{ResourceAccessException} \\ \hline
-Test JUnit & \texttt{testAssignIssue\_issueNotFound()} \\ \hline
+Test JUnit & \texttt{testAssignIssueIssueNotFound()} \\ \hline
 \end{longtable}
 
 \subsubsection{White box}
-È stata adottata una copertura basata su branch coverage.
+Analizzando il codice sorgente di \texttt{assignIssue}, i soli punti di decisione (branch) presenti sono i due controlli \texttt{orElseThrow} su \texttt{issueRepository.findByUuid(...)} e \texttt{userRepository.findByUuid(...)}; il resto del metodo è codice sequenziale privo di condizioni.
 
 \begin{longtable}{|p{9cm}|p{2cm}|}
 \hline
 \textbf{Ramo} & \textbf{Coperto} \\ \hline
-Issue trovata & \checkmark \\ \hline
-Issue non trovata & \checkmark \\ \hline
-Utente trovato & \checkmark \\ \hline
-Utente non trovato & \checkmark \\ \hline
-Aggiornamento stato issue & \checkmark \\ \hline
-Pubblicazione evento & \checkmark \\ \hline
+Issue trovata (TC-AI1, TC-AI2) & \checkmark \\ \hline
+Issue non trovata (TC-AI3) & \checkmark \\ \hline
+Utente trovato (TC-AI1) & \checkmark \\ \hline
+Utente non trovato (TC-AI2) & \checkmark \\ \hline
 \end{longtable}
+
+I 3 casi di test esistenti raggiungono quindi la copertura completa dei branch effettivi del metodo (100\% branch coverage).
+
+\textit{Nota:} \texttt{AuthService} e \texttt{IssueMapper} sono dipendenze del costruttore di \texttt{IssueWriteService} (usate dal metodo \texttt{createIssue}, non documentato in questa sezione), ma \textbf{non vengono mai richiamate all'interno di \texttt{assignIssue}}. Sono mockate solo perché necessarie per istanziare la classe tramite \texttt{@InjectMocks}, non perché il metodo sotto test le utilizzi: non rappresentano quindi rami di codice non coperti, semplicemente non sono pertinenti a questo metodo.
 
 \subsubsection{Oracle dei test}
 Per determinare la correttezza del risultato sono controllati lo stato interno dell'oggetto \texttt{issue}, il lancio di eccezioni e la pubblicazione dell'evento.
@@ -1525,6 +1542,8 @@ Per determinare la correttezza del risultato sono controllati lo stato interno d
 \textbf{Controllo del comportamento in caso di successo:}
 \begin{lstlisting}
 assertEquals(user, issue.getAssignedTo());
+
+assertNotNull(issue.getAssignedAt());
 
 assertEquals(
     IssueStatus.IN_PROGRESS,
@@ -1547,17 +1566,6 @@ verify(eventPublisher)
 \end{lstlisting}
 
 % ============================================================
-% Richiede nel preambolo: tabularx, longtable, amssymb, listings
-% (già presenti nel documento SRS)
-% ============================================================
-\lstset{
-    basicstyle=\ttfamily\small,
-    breaklines=true,
-    columns=fullflexible,
-    frame=single,
-    language=Java
-}
-
 
 \subsection{Test del metodo \texttt{createNotification} -- \texttt{NotificationWriteService}}
 \label{sec:testCreateNotificationDoc}
@@ -1587,22 +1595,21 @@ Il Black box testing è basato sull'analisi input/output. Sono state utilizzate 
 \hline
 \textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
 CE1 & Issue valida con titolo e descrizione presenti & Issue completa e corretta \\ \hline
-CE2 & Errore nel salvataggio della notifica & Repository che lancia eccezione \\ \hline
 \end{longtable}
 
 \paragraph{Parametro User}
 \begin{longtable}{|p{1.8cm}|p{6cm}|p{5.5cm}|}
 \hline
 \textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
-CE3 & User valido esistente nel sistema & User presente e valido \\ \hline
+CE2 & User valido esistente nel sistema & User presente e valido \\ \hline
 \end{longtable}
 
 \paragraph{Persistenza}
 \begin{longtable}{|p{1.8cm}|p{6cm}|p{5.5cm}|}
 \hline
 \textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
-CE4 & Salvataggio corretto della notifica & Repository funzionante \\ \hline
-CE5 & Fallimento del salvataggio & \texttt{RuntimeException} dal repository \\ \hline
+CE3 & Salvataggio corretto della notifica & Repository funzionante \\ \hline
+CE4 & Fallimento del salvataggio & \texttt{RuntimeException} dal repository \\ \hline
 \end{longtable}
 
 \subsubsection{Casi di test progettati}
@@ -1614,7 +1621,7 @@ CE5 & Fallimento del salvataggio & \texttt{RuntimeException} dal repository \\ \
 Input & Issue valida (con titolo e descrizione), User valido \\ \hline
 Precondizioni & Il repository salva correttamente la notifica; il mapper converte correttamente l'entità salvata \\ \hline
 Output atteso (Oracle) & La notifica viene creata correttamente; l'utente viene associato alla notifica; il campo \texttt{read} è impostato a \texttt{false}; il messaggio viene generato correttamente; viene restituito il DTO corretto \\ \hline
-Test JUnit & \texttt{testCreateNotification\_success()} \\ \hline
+Test JUnit & \texttt{testCreateNotificationValid()} \\ \hline
 \end{longtable}
 
 \paragraph{TC-CN2 -- Errore del repository}
@@ -1624,7 +1631,7 @@ Test JUnit & \texttt{testCreateNotification\_success()} \\ \hline
 Input & Issue valida, User valido, repository che genera eccezione \\ \hline
 Precondizioni & Il salvataggio della notifica fallisce \\ \hline
 Output atteso (Oracle) & Il metodo deve lanciare \texttt{RuntimeException}; il mapper non deve essere invocato \\ \hline
-Test JUnit & \texttt{testCreateNotification\_repositoryFailure()} \\ \hline
+Test JUnit & \texttt{testCreateNotificationWhenRepositoryThrowsException()} \\ \hline
 \end{longtable}
 
 \subsubsection{Oracle dei test}
@@ -1637,7 +1644,7 @@ assertEquals(user, captured.getUser());
 assertFalse(captured.isRead());
 
 assertEquals(
-    "Ti e' stata assegnata la seguente Issue: Errore login\nDescrizione:L'utente non riesce ad accedere.",
+    "Ti è stata assegnata la seguente Issue: Errore login\nDescrizione:L'utente non riesce ad accedere.",
     captured.getMessage()
 );
 \end{lstlisting}
@@ -1651,9 +1658,12 @@ assertThrows(
 \end{lstlisting}
 
 \textbf{Controllo delle interazioni con Repository e Mapper:}
+Il test reale utilizza un \texttt{ArgumentCaptor} per catturare l'oggetto \texttt{Notification} istanziato internamente dal metodo, anziché un semplice \texttt{any()}:
 \begin{lstlisting}
 verify(notificationRepository)
-    .save(any(Notification.class));
+    .save(notificationCaptor.capture());
+
+Notification captured = notificationCaptor.getValue();
 
 verify(notificationMapper)
     .mapToDTO(savedNotification);
@@ -1662,6 +1672,7 @@ verify(notificationMapper, never())
     .mapToDTO(any());
 \end{lstlisting}
 
+% ============================================================
 
 \subsection{Test del metodo \texttt{getMonthlyReport} -- \texttt{UserReadService}}
 \label{sec:testGetMonthlyReportDoc}
@@ -1672,8 +1683,7 @@ verify(notificationMapper, never())
 
 Il comportamento previsto è:
 \begin{enumerate}
-    \item Validare i parametri di input (\texttt{year}, \texttt{month})
-    \item Calcolare il range temporale del mese (\texttt{startDate} = primo giorno del mese, \texttt{endDate} = primo giorno del mese successivo)
+    \item Calcolare il range temporale del mese tramite \texttt{LocalDateTime.of(year, month, 1, 0, 0)} (\texttt{startDate}) e \texttt{startDate.plusMonths(1)} (\texttt{endDate})
     \item Recuperare i dati dal repository nel range temporale
     \item Mappare il risultato in DTO
     \item Restituire una lista di \texttt{UserReportDTO}
@@ -1730,7 +1740,7 @@ CE7 & assenza di dati (lista vuota) \\ \hline
 Input & year = 2024, month = 5 \\ \hline
 Precondizioni & Il repository restituisce almeno una \texttt{UserReportProjection}; il mapper converte correttamente le projection \\ \hline
 Output atteso (Oracle) & Viene restituita una lista non vuota; il DTO è correttamente mappato; il repository viene chiamato con il range corretto; il mapper viene invocato \\ \hline
-Test JUnit & \texttt{testGetMonthlyReport\_valid()} \\ \hline
+Test JUnit & \texttt{testGetMonthlyReportValid()} \\ \hline
 \end{longtable}
 
 \paragraph{TC-GMR2 -- Nessun dato disponibile}
@@ -1739,17 +1749,46 @@ Test JUnit & \texttt{testGetMonthlyReport\_valid()} \\ \hline
 \hline
 Input & year = 2024, month = 5 \\ \hline
 Precondizioni & Il repository restituisce lista vuota \\ \hline
-Output atteso (Oracle) & Il metodo restituisce lista vuota; il repository viene comunque chiamato correttamente; nessuna eccezione viene lanciata \\ \hline
-Test JUnit & \texttt{testGetMonthlyReport\_emptyList()} \\ \hline
+Output atteso (Oracle) & Il metodo restituisce lista vuota; il repository viene comunque chiamato correttamente; il mapper non viene mai invocato; nessuna eccezione viene lanciata \\ \hline
+Test JUnit & \texttt{testGetMonthlyReportEmptyList()} \\ \hline
 \end{longtable}
 
-\paragraph{TC-GMR3 -- Mese non valido (boundary violation)}
+\paragraph{TC-GMR3 -- Mese non valido, limite superiore (BVA4)}
 \label{sec:TC-GMR3}
 \begin{longtable}{|p{4cm}|p{10.3cm}|}
 \hline
 Input & year = 2024, month = 13 \\ \hline
 Output atteso (Oracle) & Il metodo deve lanciare \texttt{DateTimeException} \\ \hline
-Test JUnit & \texttt{testGetMonthlyReport\_invalidMonth()} \\ \hline
+Test JUnit & \texttt{testGetMonthlyReportInvalidMonthUpperBound()} \\ \hline
+\end{longtable}
+
+\paragraph{TC-GMR4 -- Mese non valido, limite inferiore (BVA3)}
+\label{sec:TC-GMR4}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & year = 2024, month = 0 \\ \hline
+Output atteso (Oracle) & Il metodo deve lanciare \texttt{DateTimeException} \\ \hline
+Test JUnit & \texttt{testGetMonthlyReportInvalidMonthLowerBound()} \\ \hline
+\end{longtable}
+
+\paragraph{TC-GMR5 -- Mese al limite inferiore valido (BVA1)}
+\label{sec:TC-GMR5}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & year = 2024, month = 1 \\ \hline
+Precondizioni & Il repository restituisce lista vuota \\ \hline
+Output atteso (Oracle) & Il metodo non lancia eccezioni; viene restituita una lista vuota; il repository viene chiamato con il range corretto (1 gennaio -- 1 febbraio 2024) \\ \hline
+Test JUnit & \texttt{testGetMonthlyReportBoundaryMinMonth()} \\ \hline
+\end{longtable}
+
+\paragraph{TC-GMR6 -- Mese al limite superiore valido (BVA2)}
+\label{sec:TC-GMR6}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & year = 2024, month = 12 \\ \hline
+Precondizioni & Il repository restituisce lista vuota \\ \hline
+Output atteso (Oracle) & Il metodo non lancia eccezioni; viene restituita una lista vuota; il repository viene chiamato con il range corretto (1 dicembre 2024 -- 1 gennaio 2025) \\ \hline
+Test JUnit & \texttt{testGetMonthlyReportBoundaryMaxMonth()} \\ \hline
 \end{longtable}
 
 \subsubsection{Oracle dei test}
@@ -1764,9 +1803,13 @@ assertEquals(dto, result.get(0));
 \textbf{Controllo del caso lista vuota:}
 \begin{lstlisting}
 assertTrue(result.isEmpty());
+
+verify(userReportMapper, never())
+    .mapToDTO(any());
 \end{lstlisting}
 
 \textbf{Controllo del caso input non valido:}
+Lo stesso pattern è applicato sia al limite superiore (month = 13) sia al limite inferiore (month = 0):
 \begin{lstlisting}
 assertThrows(
     DateTimeException.class,
@@ -1782,6 +1825,7 @@ verify(userRepository)
 verify(userReportMapper)
     .mapToDTO(projection);
 \end{lstlisting}
+
 
 \printindex
 
