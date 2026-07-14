@@ -1,110 +1,125 @@
 \begin{theindex}
 
-  \item Amazon Web Services (AWS), \hyperpage{51, 52}
-    \subitem Cognito, \hyperpage{25}, \hyperpage{39}, \hyperpage{53}
-    \subitem EC2, \hyperpage{53}
-    \subitem ECR, \hyperpage{52, 53}
-    \subitem RDS, \hyperpage{52}
-  \item Assegna, \hyperpage{9}
-  \item Autenticazione, \hyperpage{5}, \hyperpage{9}, \hyperpage{11}
+  \item Amazon Web Services (AWS), \hyperpage{54--56}
+    \subitem Cognito, \hyperpage{42}, \hyperpage{56}
+    \subitem EC2, \hyperpage{56}
+    \subitem ECR, \hyperpage{55, 56}
+    \subitem RDS, \hyperpage{55}
+  \item Assegna, \hyperpage{12}
+  \item Autenticazione, \hyperpage{6}, \hyperpage{12}, \hyperpage{14}
 
   \indexspace
 
-  \item Class Diagram, \hyperpage{41}
-  \item Client-Server, \hyperpage{25}, \hyperpage{37}
-  \item Cockburn, \hyperpage{7}, \hyperpage{26}
+  \item Class Diagram, \hyperpage{44}
+  \item Client-Server, \hyperpage{40}
+  \item Cockburn, \hyperpage{9}, \hyperpage{29}
 
   \indexspace
 
-  \item Database, \hyperpage{38, 39}, \hyperpage{41}, \hyperpage{49}, 
-		\hyperpage{52, 53}
-  \item Dependency Injection, \hyperpage{49, 50}
-  \item Docker, \hyperpage{25}, \hyperpage{39}, \hyperpage{51}, 
-		\hyperpage{53}
-  \item DTO, \hyperpage{37}, \hyperpage{50}
+  \item Database, \hyperpage{41, 42}, \hyperpage{44}, \hyperpage{52}, 
+		\hyperpage{55, 56}
+  \item Dependency Injection, \hyperpage{52, 53}
+  \item Docker, \hyperpage{42}, \hyperpage{54}, \hyperpage{56}
+  \item DTO, \hyperpage{40}, \hyperpage{53}
 
   \indexspace
 
-  \item Event-Listener / Observer, \hyperpage{49}
+  \item Event-Listener / Observer, \hyperpage{52}
 
   \indexspace
 
-  \item Funzionalità, \hyperpage{5}, \hyperpage{9}
+  \item Funzionalità, \hyperpage{6}, \hyperpage{12}
 
   \indexspace
 
-  \item GitHub, \hyperpage{50}
-  \item Glossario, \hyperpage{5}
+  \item GitHub, \hyperpage{53}
+  \item Glossario, \hyperpage{7}
 
   \indexspace
 
-  \item IEEE Std 830-1998, \hyperpage{7}
-  \item Issue, \hyperpage{9}
-    \subitem Assegna, \hyperpage{27}
-    \subitem Assegnazione, \hyperpage{13}, \hyperpage{27}
-    \subitem Assegnazione issue, \hyperpage{5}
-    \subitem Filtra, \hyperpage{9}, \hyperpage{15}
-    \subitem Modifica, \hyperpage{9}
-    \subitem Ordina, \hyperpage{9}
-    \subitem Ordine, \hyperpage{16}
-    \subitem Ricerca, \hyperpage{9}, \hyperpage{17}
-    \subitem Segnalazione, \hyperpage{9}, \hyperpage{12}, 
-		\hyperpage{26}
+  \item IEEE Std 830-1998, \hyperpage{9}
+  \item Issue, \hyperpage{12}
+    \subitem Assegna, \hyperpage{30}
+    \subitem Assegnazione, \hyperpage{16}, \hyperpage{30}
+    \subitem Assegnazione issue, \hyperpage{6}
+    \subitem Filtra, \hyperpage{12}, \hyperpage{18}
+    \subitem Modifica, \hyperpage{12}
+    \subitem Ordina, \hyperpage{12}
+    \subitem Ordine, \hyperpage{19}
+    \subitem Ricerca, \hyperpage{12}, \hyperpage{20}
+    \subitem Segnalazione, \hyperpage{12}, \hyperpage{15}, 
+		\hyperpage{29}
 
   \indexspace
 
-  \item JavaFX / FXML, \hyperpage{40}, \hyperpage{50}
+  \item JavaFX / FXML, \hyperpage{43}, \hyperpage{53}
 
   \indexspace
 
-  \item Maven, \hyperpage{51}
-  \item Mockup, \hyperpage{28}, \hyperpage{32}
-  \item MVC, \hyperpage{37--39}
+  \item Maven, \hyperpage{54}
+  \item Mockup, \hyperpage{31}, \hyperpage{35}
+  \item MVC, \hyperpage{40--42}
 
   \indexspace
 
-  \item Notifiche, \hyperpage{10}
-    \subitem Invio, \hyperpage{10}
-    \subitem Lettura notifiche, \hyperpage{18}
-  \item Nuova utenza (Amministratore), \hyperpage{9}, \hyperpage{11}
+  \item Notifiche, \hyperpage{13}
+    \subitem Invio, \hyperpage{13}
+    \subitem Lettura notifiche, \hyperpage{21}
+  \item Nuova utenza (Amministratore), \hyperpage{12}, \hyperpage{14}
 
   \indexspace
 
-  \item PostgreSQL, \hyperpage{40}, \hyperpage{52}
-  \item Principi SOLID, \hyperpage{49}
-  \item Priorità, \hyperpage{6}, \hyperpage{9}, \hyperpage{13}, 
-		\hyperpage{16, 17}, \hyperpage{21}, \hyperpage{26}
+  \item PostgreSQL, \hyperpage{43}, \hyperpage{55}
+  \item Principi SOLID, \hyperpage{52}
+  \item Priorità, \hyperpage{7}, \hyperpage{12}, \hyperpage{16}, 
+		\hyperpage{19, 20}, \hyperpage{24}, \hyperpage{29}
 
   \indexspace
 
-  \item Singleton, \hyperpage{49}
-  \item SonarQube, \hyperpage{53}
-  \item Spring Boot, \hyperpage{39, 40}, \hyperpage{50, 51}
+  \item Singleton, \hyperpage{52}
+  \item SonarQube, \hyperpage{56}
+  \item Spring Boot, \hyperpage{42, 43}, \hyperpage{53}, \hyperpage{55}
 
   \indexspace
 
-  \item Use Case, \hyperpage{19}
-    \subitem Assegna issue, \hyperpage{22}
-    \subitem Autenticazione, \hyperpage{20}
-    \subitem Segnala issue, \hyperpage{21}
-    \subitem Visualizza issue assegnate, \hyperpage{22}
-    \subitem Visualizza Notifiche, \hyperpage{24}
-    \subitem Visualizza report team, \hyperpage{23}
-    \subitem Visualizza riepilogo, \hyperpage{23}
+  \item Test, \hyperpage{58}
+    \subitem Assegnazione corretta, \hyperpage{59}
+    \subitem Assegnazione da utente non amministratore, \hyperpage{61}
+    \subitem assignIssue, \hyperpage{61}
+    \subitem Classi di equivalenza, \hyperpage{59}
+    \subitem Copertura classi di equivalenza, \hyperpage{61}
+    \subitem createNotification, \hyperpage{64}
+    \subitem Creazione notifica, \hyperpage{60}
+    \subitem getMonthlyReport, \hyperpage{66}
+    \subitem Issue e utente inesistenti, \hyperpage{60}
+    \subitem Issue inesistente, \hyperpage{60}
+    \subitem Utente assegnatario inesistente, \hyperpage{59}
+    \subitem Visualizzazione bug assegnati, \hyperpage{60}
 
   \indexspace
 
-  \item Vista, \hyperpage{9}
-    \subitem Issue personali, \hyperpage{9}, \hyperpage{15}
-    \subitem Notifiche, \hyperpage{9}, \hyperpage{18}
-    \subitem Report mensile, \hyperpage{5}, \hyperpage{9}, 
-		\hyperpage{15}
-    \subitem Riepilogo issue, \hyperpage{5}, \hyperpage{9}, 
-		\hyperpage{14}
-    \subitem Workload, \hyperpage{5}
+  \item Use Case, \hyperpage{22}
+    \subitem Assegna issue, \hyperpage{25}
+    \subitem Autenticazione, \hyperpage{23}
+    \subitem Segnala issue, \hyperpage{24}
+    \subitem Visualizza issue assegnate, \hyperpage{25}
+    \subitem Visualizza Notifiche, \hyperpage{27}
+    \subitem Visualizza report team, \hyperpage{26}
+    \subitem Visualizza riepilogo, \hyperpage{26}
 
   \indexspace
 
-  \item Workload, \hyperpage{19}
+  \item Vista, \hyperpage{12}
+    \subitem Issue personali, \hyperpage{12}, \hyperpage{18}
+    \subitem Notifiche, \hyperpage{12}, \hyperpage{21}
+    \subitem Report mensile, \hyperpage{6}, \hyperpage{12}, 
+		\hyperpage{18}
+    \subitem Riepilogo issue, \hyperpage{6}, \hyperpage{12}, 
+		\hyperpage{17}
+    \subitem Workload, \hyperpage{6}, \hyperpage{8}
+
+  \indexspace
+
+  \item Workload, \hyperpage{22}
 
 \end{theindex}

@@ -46,7 +46,7 @@
                                 <Label styleClass="kpi-icon-label" text="⏱" />
                                 <Label styleClass="kpi-label" text="Issue risolte" />
                                 <Label fx:id="lblAvgTempo" styleClass="kpi-value" text="-" />
-                                <Label fx:id="lblTotRisolteDesc1" styleClass="kpi-sub" text="giorni in media" />
+                                <Label fx:id="lblTotRisolteDesc1" styleClass="kpi-sub" text="ore in media" />
                             </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" styleClass="kpi-card" HBox.hgrow="ALWAYS">

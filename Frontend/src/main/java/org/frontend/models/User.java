@@ -75,12 +75,10 @@ public class User {
         );
     }
 
-    // === METODI PER FIRST NAME ===
     public String getFirstName() {
         return firstName.get();
     }
 
-    // === METODI PER LAST NAME ===
     public String getLastName() {
         return lastName.get();
     }

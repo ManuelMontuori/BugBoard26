@@ -90,7 +90,7 @@ public class ReportViewController {
         lblTotAperte.setText(String.valueOf(summary.getTotAperte()));
         lblTotRisolte.setText(String.valueOf(summary.getTotRisolte()));
         lblAltaPriorita.setText(String.valueOf(summary.getAltaPriorita()));
-        lblAvgTempo.setText(String.format("%.1f gg", summary.getAvgTempo()));
+        lblAvgTempo.setText(String.format("%.1f h", summary.getAvgTempo()));
 
         lblTotAperteDesc.setText("nel periodo selezionato");
         lblTotRisolteDesc.setText(summary.getPercentualeRisolte() + "% del totale");
@@ -155,7 +155,7 @@ public class ReportViewController {
     private void mostraVuoto() {
         lblTotAperte.setText("0");
         lblTotRisolte.setText("0");
-        lblAvgTempo.setText("— gg");
+        lblAvgTempo.setText("— h");
         lblAltaPriorita.setText("0");
         barChartWorkload.getData().clear();
         pieChartStato.getData().clear();

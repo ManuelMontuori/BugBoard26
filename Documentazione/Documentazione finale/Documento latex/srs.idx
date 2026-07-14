@@ -1,109 +1,120 @@
-\indexentry{Funzionalità|hyperpage}{5}
-\indexentry{Autenticazione|hyperpage}{5}
-\indexentry{Vista!Riepilogo issue|hyperpage}{5}
-\indexentry{Issue!Assegnazione issue|hyperpage}{5}
-\indexentry{Vista!Workload|hyperpage}{5}
-\indexentry{Vista!Report mensile|hyperpage}{5}
-\indexentry{Glossario|hyperpage}{5}
-\indexentry{Priorità|hyperpage}{6}
-\indexentry{IEEE Std 830-1998|hyperpage}{7}
-\indexentry{Cockburn|hyperpage}{7}
-\indexentry{Funzionalità|hyperpage}{9}
-\indexentry{Autenticazione|hyperpage}{9}
-\indexentry{Autenticazione|hyperpage}{9}
-\indexentry{Nuova utenza (Amministratore)|hyperpage}{9}
-\indexentry{Issue|hyperpage}{9}
-\indexentry{Issue!Segnalazione|hyperpage}{9}
-\indexentry{Issue!Filtra|hyperpage}{9}
-\indexentry{Issue!Ordina|hyperpage}{9}
-\indexentry{Issue!Ricerca|hyperpage}{9}
-\indexentry{Priorità|hyperpage}{9}
-\indexentry{Assegna|hyperpage}{9}
-\indexentry{Issue!Modifica|hyperpage}{9}
-\indexentry{Vista|hyperpage}{9}
-\indexentry{Vista!Riepilogo issue|hyperpage}{9}
-\indexentry{Vista!Report mensile|hyperpage}{9}
-\indexentry{Vista!Issue personali|hyperpage}{9}
-\indexentry{Vista!Notifiche|hyperpage}{9}
-\indexentry{Notifiche|hyperpage}{10}
-\indexentry{Notifiche!Invio|hyperpage}{10}
-\indexentry{Autenticazione|hyperpage}{11}
-\indexentry{Nuova utenza (Amministratore)|hyperpage}{11}
+\indexentry{Funzionalità|hyperpage}{6}
+\indexentry{Autenticazione|hyperpage}{6}
+\indexentry{Vista!Riepilogo issue|hyperpage}{6}
+\indexentry{Issue!Assegnazione issue|hyperpage}{6}
+\indexentry{Vista!Workload|hyperpage}{6}
+\indexentry{Vista!Report mensile|hyperpage}{6}
+\indexentry{Glossario|hyperpage}{7}
+\indexentry{Priorità|hyperpage}{7}
+\indexentry{Vista!Workload|hyperpage}{8}
+\indexentry{IEEE Std 830-1998|hyperpage}{9}
+\indexentry{Cockburn|hyperpage}{9}
+\indexentry{Funzionalità|hyperpage}{12}
+\indexentry{Autenticazione|hyperpage}{12}
+\indexentry{Autenticazione|hyperpage}{12}
+\indexentry{Nuova utenza (Amministratore)|hyperpage}{12}
+\indexentry{Issue|hyperpage}{12}
 \indexentry{Issue!Segnalazione|hyperpage}{12}
-\indexentry{Priorità|hyperpage}{13}
-\indexentry{Issue!Assegnazione|hyperpage}{13}
-\indexentry{Vista!Riepilogo issue|hyperpage}{14}
-\indexentry{Vista!Report mensile|hyperpage}{15}
-\indexentry{Vista!Issue personali|hyperpage}{15}
-\indexentry{Issue!Filtra|hyperpage}{15}
+\indexentry{Issue!Filtra|hyperpage}{12}
+\indexentry{Issue!Ordina|hyperpage}{12}
+\indexentry{Issue!Ricerca|hyperpage}{12}
+\indexentry{Priorità|hyperpage}{12}
+\indexentry{Assegna|hyperpage}{12}
+\indexentry{Issue!Modifica|hyperpage}{12}
+\indexentry{Vista|hyperpage}{12}
+\indexentry{Vista!Riepilogo issue|hyperpage}{12}
+\indexentry{Vista!Report mensile|hyperpage}{12}
+\indexentry{Vista!Issue personali|hyperpage}{12}
+\indexentry{Vista!Notifiche|hyperpage}{12}
+\indexentry{Notifiche|hyperpage}{13}
+\indexentry{Notifiche!Invio|hyperpage}{13}
+\indexentry{Autenticazione|hyperpage}{14}
+\indexentry{Nuova utenza (Amministratore)|hyperpage}{14}
+\indexentry{Issue!Segnalazione|hyperpage}{15}
 \indexentry{Priorità|hyperpage}{16}
-\indexentry{Issue!Ordine|hyperpage}{16}
-\indexentry{Priorità|hyperpage}{17}
-\indexentry{Issue!Ricerca|hyperpage}{17}
-\indexentry{Vista!Notifiche|hyperpage}{18}
-\indexentry{Notifiche!Lettura notifiche|hyperpage}{18}
-\indexentry{Workload|hyperpage}{19}
-\indexentry{Use Case|hyperpage}{19}
-\indexentry{Use Case!Autenticazione|hyperpage}{20}
-\indexentry{Use Case!Segnala issue|hyperpage}{21}
-\indexentry{Priorità|hyperpage}{21}
-\indexentry{Use Case!Assegna issue|hyperpage}{22}
-\indexentry{Use Case!Visualizza issue assegnate|hyperpage}{22}
-\indexentry{Use Case!Visualizza riepilogo|hyperpage}{23}
-\indexentry{Use Case!Visualizza report team|hyperpage}{23}
-\indexentry{Use Case!Visualizza Notifiche|hyperpage}{24}
-\indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{25}
-\indexentry{Docker|hyperpage}{25}
-\indexentry{Client-Server|hyperpage}{25}
-\indexentry{Cockburn|hyperpage}{26}
-\indexentry{Issue!Segnalazione|hyperpage}{26}
-\indexentry{Priorità|hyperpage}{26}
-\indexentry{Issue!Assegna|hyperpage}{27}
-\indexentry{Issue!Assegnazione|hyperpage}{27}
-\indexentry{Mockup|hyperpage}{28}
-\indexentry{Mockup|hyperpage}{32}
-\indexentry{Client-Server|hyperpage}{37}
-\indexentry{DTO|hyperpage}{37}
-\indexentry{MVC|hyperpage}{37}
-\indexentry{Database|hyperpage}{38}
-\indexentry{MVC|hyperpage}{38}
-\indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{39}
-\indexentry{Database|hyperpage}{39}
-\indexentry{MVC|hyperpage}{39}
-\indexentry{Spring Boot|hyperpage}{39}
-\indexentry{Docker|hyperpage}{39}
-\indexentry{PostgreSQL|hyperpage}{40}
-\indexentry{Spring Boot|hyperpage}{40}
-\indexentry{JavaFX / FXML|hyperpage}{40}
+\indexentry{Issue!Assegnazione|hyperpage}{16}
+\indexentry{Vista!Riepilogo issue|hyperpage}{17}
+\indexentry{Vista!Report mensile|hyperpage}{18}
+\indexentry{Vista!Issue personali|hyperpage}{18}
+\indexentry{Issue!Filtra|hyperpage}{18}
+\indexentry{Priorità|hyperpage}{19}
+\indexentry{Issue!Ordine|hyperpage}{19}
+\indexentry{Priorità|hyperpage}{20}
+\indexentry{Issue!Ricerca|hyperpage}{20}
+\indexentry{Vista!Notifiche|hyperpage}{21}
+\indexentry{Notifiche!Lettura notifiche|hyperpage}{21}
+\indexentry{Workload|hyperpage}{22}
+\indexentry{Use Case|hyperpage}{22}
+\indexentry{Use Case!Autenticazione|hyperpage}{23}
+\indexentry{Use Case!Segnala issue|hyperpage}{24}
+\indexentry{Priorità|hyperpage}{24}
+\indexentry{Use Case!Assegna issue|hyperpage}{25}
+\indexentry{Use Case!Visualizza issue assegnate|hyperpage}{25}
+\indexentry{Use Case!Visualizza riepilogo|hyperpage}{26}
+\indexentry{Use Case!Visualizza report team|hyperpage}{26}
+\indexentry{Use Case!Visualizza Notifiche|hyperpage}{27}
+\indexentry{Cockburn|hyperpage}{29}
+\indexentry{Issue!Segnalazione|hyperpage}{29}
+\indexentry{Priorità|hyperpage}{29}
+\indexentry{Issue!Assegna|hyperpage}{30}
+\indexentry{Issue!Assegnazione|hyperpage}{30}
+\indexentry{Mockup|hyperpage}{31}
+\indexentry{Mockup|hyperpage}{35}
+\indexentry{Client-Server|hyperpage}{40}
+\indexentry{DTO|hyperpage}{40}
+\indexentry{MVC|hyperpage}{40}
 \indexentry{Database|hyperpage}{41}
-\indexentry{Class Diagram|hyperpage}{41}
-\indexentry{Dependency Injection|hyperpage}{49}
-\indexentry{Principi SOLID|hyperpage}{49}
-\indexentry{Database|hyperpage}{49}
-\indexentry{Singleton|hyperpage}{49}
-\indexentry{Event-Listener / Observer|hyperpage}{49}
-\indexentry{Database|hyperpage}{49}
-\indexentry{Principi SOLID|hyperpage}{49}
-\indexentry{DTO|hyperpage}{50}
-\indexentry{Dependency Injection|hyperpage}{50}
-\indexentry{JavaFX / FXML|hyperpage}{50}
-\indexentry{GitHub|hyperpage}{50}
-\indexentry{Spring Boot|hyperpage}{50}
-\indexentry{JavaFX / FXML|hyperpage}{50}
-\indexentry{Amazon Web Services (AWS)|hyperpage}{51}
-\indexentry{Docker|hyperpage}{51}
-\indexentry{Maven|hyperpage}{51}
-\indexentry{Spring Boot|hyperpage}{51}
-\indexentry{Amazon Web Services (AWS)|hyperpage}{52}
-\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{52}
-\indexentry{Amazon Web Services (AWS)!RDS|hyperpage}{52}
-\indexentry{PostgreSQL|hyperpage}{52}
+\indexentry{MVC|hyperpage}{41}
+\indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{42}
+\indexentry{Database|hyperpage}{42}
+\indexentry{MVC|hyperpage}{42}
+\indexentry{Spring Boot|hyperpage}{42}
+\indexentry{Docker|hyperpage}{42}
+\indexentry{PostgreSQL|hyperpage}{43}
+\indexentry{Spring Boot|hyperpage}{43}
+\indexentry{JavaFX / FXML|hyperpage}{43}
+\indexentry{Database|hyperpage}{44}
+\indexentry{Class Diagram|hyperpage}{44}
+\indexentry{Dependency Injection|hyperpage}{52}
+\indexentry{Principi SOLID|hyperpage}{52}
 \indexentry{Database|hyperpage}{52}
-\indexentry{Amazon Web Services (AWS)|hyperpage}{52}
-\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{52}
-\indexentry{Amazon Web Services (AWS)!EC2|hyperpage}{53}
-\indexentry{Docker|hyperpage}{53}
-\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{53}
-\indexentry{Database|hyperpage}{53}
-\indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{53}
-\indexentry{SonarQube|hyperpage}{53}
+\indexentry{Singleton|hyperpage}{52}
+\indexentry{Event-Listener / Observer|hyperpage}{52}
+\indexentry{Database|hyperpage}{52}
+\indexentry{Principi SOLID|hyperpage}{52}
+\indexentry{DTO|hyperpage}{53}
+\indexentry{Dependency Injection|hyperpage}{53}
+\indexentry{JavaFX / FXML|hyperpage}{53}
+\indexentry{GitHub|hyperpage}{53}
+\indexentry{Spring Boot|hyperpage}{53}
+\indexentry{JavaFX / FXML|hyperpage}{53}
+\indexentry{Amazon Web Services (AWS)|hyperpage}{54}
+\indexentry{Docker|hyperpage}{54}
+\indexentry{Maven|hyperpage}{54}
+\indexentry{Spring Boot|hyperpage}{55}
+\indexentry{Amazon Web Services (AWS)|hyperpage}{55}
+\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{55}
+\indexentry{Amazon Web Services (AWS)!RDS|hyperpage}{55}
+\indexentry{PostgreSQL|hyperpage}{55}
+\indexentry{Database|hyperpage}{55}
+\indexentry{Amazon Web Services (AWS)|hyperpage}{56}
+\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{56}
+\indexentry{Amazon Web Services (AWS)!EC2|hyperpage}{56}
+\indexentry{Docker|hyperpage}{56}
+\indexentry{Amazon Web Services (AWS)!ECR|hyperpage}{56}
+\indexentry{Database|hyperpage}{56}
+\indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{56}
+\indexentry{SonarQube|hyperpage}{56}
+\indexentry{Test|hyperpage}{58}
+\indexentry{Test!Classi di equivalenza|hyperpage}{59}
+\indexentry{Test!Assegnazione corretta|hyperpage}{59}
+\indexentry{Test!Utente assegnatario inesistente|hyperpage}{59}
+\indexentry{Test!Issue inesistente|hyperpage}{60}
+\indexentry{Test!Issue e utente inesistenti|hyperpage}{60}
+\indexentry{Test!Creazione notifica|hyperpage}{60}
+\indexentry{Test!Visualizzazione bug assegnati|hyperpage}{60}
+\indexentry{Test!Assegnazione da utente non amministratore|hyperpage}{61}
+\indexentry{Test!Copertura classi di equivalenza|hyperpage}{61}
+\indexentry{Test!assignIssue|hyperpage}{61}
+\indexentry{Test!createNotification|hyperpage}{64}
+\indexentry{Test!getMonthlyReport|hyperpage}{66}

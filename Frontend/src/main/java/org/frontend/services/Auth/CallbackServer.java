@@ -35,7 +35,7 @@ public class CallbackServer {
                     CognitoAuthService.exchangeCode(code);
                     htmlResponse = "<html><body style='text-align:center; font-family:sans-serif; paddingTop:50px;'>"
                             + "<h1>✅ Accesso Autorizzato!</h1>"
-                            + "<p>Puoi chiudere questa scheda e tornare all'applicazione.</p>"
+                            + "<p>Puoi chiudere questa scheda e tornare a BugBoard26.</p>"
                             + "</body></html>";
                 } else {
                     htmlResponse = "<html><body style='text-align:center; font-family:sans-serif; paddingTop:50px;'>"

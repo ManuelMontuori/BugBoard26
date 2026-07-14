@@ -62,6 +62,16 @@
 % per checkbox
 \usepackage{amssymb} 
 
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    columns=fullflexible,
+    frame=single,
+    language=Java
+}
+
+
 % ---------- Link e riferimenti ----------
 %\usepackage[hidelinks]{hyperref} questo era per il classico tutto nero
 % i due package sotto sono per impostare i link colorati
@@ -101,10 +111,11 @@ Manuel Montuori\\
 \section{Introduzione}
 \subsection{Scopo del documento}
 Questo documento si rivolge a membri e amministratori dei team di sviluppo
-di progetti software, oltre che a stakeholders esterni. Ha lo scopo di illustrare il funzionamento dell'applicativo al quale fa riferimento. Esso è una piattaforma di gestione di issue in progetti software.
+di progetti software, oltre che a stakeholders esterni. Il documento descrive \textit{BugBoard26}, una piattaforma per la gestione delle issue all'interno di progetti software.
 La piattaforma consente ad utenti autenticati di segnalare problemi in un progetto, 
 monitorarne lo stato, assegnarli a membri del team e tenere traccia delle attività di risoluzione. 
 I membri del team di sviluppo sono i soli a dover utilizzare il software.
+
 \subsection{Campo di applicazione del sistema}
 Il sistema software in fase di sviluppo sarà indicato come System Under Development (SUD) o semplicemente come \textit{BugBoard26}.
 \textit{BugBoard26} dovrà svolgere le seguenti funzionalità \index{Funzionalità}:
@@ -119,59 +130,83 @@ Il sistema software in fase di sviluppo sarà indicato come System Under Develop
     \item Il sistema genererà report mensili sull'attività del team.
     \item Il sistema permetterà agli amministratori di visualizzare
     \index{Vista!Report mensile} i report sul team.
-
 \end{enumerate}
+BugBoard26 non si occupa dello sviluppo o della risoluzione delle issue, ma esclusivamente della loro gestione, assegnazione e monitoraggio.
+
 \subsection{Definizioni, sinonimi adottati e abbreviazioni}
 \subsubsection{Definizioni (Glossario)}
 \index{Glossario}
 \begin{itemize}
-    \item Allegare: aggiungere un'immagine ad una issue, affinchè sia inclusa e consultabile assieme ad essa.
-    \item Amministratore: persona che gestisce il team. Può fare tutto ciò che può fare un utente con permessi aggiuntivi.
-    \item Attore: rappresenta un'entità esterna che sta interagendo con il SUD.
-    \item Bug: malfuznionamento tecnico del prodotto software.
+    \item \textbf{Amministratore}: utente con privilegi elevati che si occupa della gestione globale del team, dell'assegnazione delle issue e della visualizzazione dei report di performance mensili. Può eseguire qualsiasi operazione standard dei membri del team, oltre alla creazione esclusiva di nuove utenze all'interno del sistema.
+    
+    \item \textbf{Attore}: rappresenta un'entità esterna (umana o artificiale) che interagisce direttamente con il SUD per conseguire uno specifico obiettivo di business all'interno di un caso d'uso.
 
-    \item Issue: problema ad un software, viene segnalato da un utente e può essere di quattro tipologie: 
-      \begin{itemize}
-        \item Question: per richieste di chiarimenti.
-        \item Bug: per segnalare malfunzionamento del sistema.
-        \item Documentation: problemi relativi alla documentazione.
-        \item Feature: richiesta o suggerimento di nuove funzionalità.
-    \end{itemize}
-    \item Metrica: le metriche a cui si fa riferimento in questo documento sono: Numero di issue segnalate, numero di issue gestite, 
-    tempo di risoluzione medio.
-    \item Mock-up: rappresentazione visiva di un'interfaccia grafica o di una schermata del sistema.
-    \item Notifica: sistema con cui la piattaforma comunica ad utenti autenticati alcune informazioni.
-    \item Priorità: parametro di una issue. Se inserita in una issue richiede che la sua risoluzione debba essere considerata prioritaria dal team di sviluppo. \index{Priorità}
-    \item Report: visualizzazione che sintetizza dati o informazioni sulle attività svolte.
-    \item Scenario: sequenza di eventi che descrive l'interazione tra attori e sistema in un caso d'uso specifico.
-    \item Segretezza: garantisce che le informazioni, i dati sensibili e le risorse di un sistema siano accessibili esclusivamente agli utenti che dispongono dell'autorizzazione esplicita.
-    \item Semplice: intuituvo abbastanza da permette di interagire con il software senza la necessità di supporto.
-    \item Sicuro: soddisfa requisiti atti a proteggere l'accesso non autorizzato alle risorse e a garantire l'integrità dei dati.
-    \item Stakeholders: persona che ha un interesse nel prodotto software.
+    \item \textbf{Bug}: malfunzionamento tecnico del prodotto software; tipologia di issue indicante un difetto o un comportamento anomalo del codice sorgente che compromette il funzionamento programmato della piattaforma.
 
-    \item Stato: la condizine in un dato momento della issue. Lo stato può assumere i seguenti valori:
+    \item \textbf{Issue}: problema o attività relativa al software, viene segnalata da un utente, contiene obbligatoriamente un titolo e una descrizione e appartiene a una delle seguenti quattro categorie:
     \begin{itemize}
-        \item Todo: è inteso come stato inziale di una issue, è il valore dello stato nel momento della creazione. 
-        \item In Progress: è inteso come stato intermedio nella risoluzione di una issue. Lo stato è impostato a \textit{In Progress} quando è stato assegnato ad un utente che ci dovrà lavorare.
-        \item Done: è inteso come stato finale. Lo stato è impostato a \textit{Done} quanto la issue è stata risolta.
+        \item \textbf{Question}: per richieste di chiarimenti tecnici o funzionali.
+        \item \textbf{Bug}: per segnalare un malfunzionamento del sistema.
+        \item \textbf{Documentation}: problemi o modifiche relative alla documentazione tecnica o utente.
+        \item \textbf{Feature}: richiesta o suggerimento di nuove funzionalità o miglioramenti.
     \end{itemize}
-    \item System under development: riferimento al sistema software che si sta progettando.
-    \item Utente autenticato: persona membro del team autenticata nel sistema.
-    \item Utente generico: persona del team che non ha ancora effettuato l'accesso al sistema.
-    \item Vista: La vista è l'insieme di informazioni accessibile per il ogni utente.
+
+    \item \textbf{Metrica}: unità di misura quantitativa utilizzata per valutare l'efficienza complessiva del team di sviluppo. Le metriche integrate sono: Numero di issue segnalate, numero di issue gestite e tempo di risoluzione medio complessivo.
+
+    \item \textbf{Mock-up}: rappresentazione visiva statica a bassa o media fedeltà di un'interfaccia grafica o di una schermata del sistema per illustrare la disposizione di campi, pulsanti e menu.
+
+    \item \textbf{Notifica}: messaggio automatico generato asincronamente con cui la piattaforma comunica ad utenti autenticati alcune informazioni o eventi di interesse (es. l'avvenuta assegnazione di una issue).
+
+    \item \textbf{Priorità}: parametro facoltativo di una issue (\textit{High}, \textit{Medium}, \textit{Low}). Se inserito, definisce l'ordine di importanza e l'urgenza con cui il team di sviluppo deve prendere in carico e risolvere il problema. \index{Priorità}
+
+    \item \textbf{Report}: visualizzazione o documento di riepilogo generato mensilmente che sintetizza dati aggregati e statistiche sulle attività svolte e sulla produttività del team, riservato agli amministratori.
+
+    \item \textbf{Scenario}: sequenza di eventi che descrive l'interazione tra attori e sistema in un caso d'uso specifico.
+
+    \item \textbf{Segretezza}: garantisce che le informazioni, i dati sensibili e le risorse di un sistema siano accessibili esclusivamente agli utenti che dispongono dell'autorizzazione esplicita.
+
+    \item \textbf{Semplice}: intuitivo abbastanza da permettere di interagire con il software senza la necessità di supporto o documentazione aggiuntiva.
+
+    \item \textbf{Sicuro}: soddisfa requisiti atti a proteggere l'accesso non autorizzato alle risorse e a garantire l'integrità dei dati.
+
+    \item \textbf{Stakeholders}: persona o entità che ha un interesse nel prodotto software.
+
+    \item \textbf{Stato della Issue}: la condizione in un dato momento della issue che ne indica la fase del ciclo di vita. Lo stato può assumere i seguenti tre valori sequenziali:
+    \begin{itemize}
+        \item \textbf{Todo}: inteso come stato iniziale di una issue, inserito automaticamente al momento della creazione della segnalazione.
+        \item \textbf{In Progress}: inteso come stato intermedio nella risoluzione di una issue. Lo stato viene impostato quando un amministratore assegna la issue a un utente che dovrà lavorarci.
+        \item \textbf{Done}: inteso come stato finale che certifica la corretta e avvenuta risoluzione dell'issue.
+    \end{itemize}
+
+    \item \textbf{System Under Development (SUD)}: riferimento all'intero ecosistema applicativo software (frontend JavaFX, backend Spring Boot e database PostgreSQL) che si sta progettando e descrivendo nel documento SRS.
+
+    \item \textbf{Utente autenticato}: persona membro del team di sviluppo regolarmente registrata ed autenticata nel sistema tramite procedura di Login.
+
+    \item \textbf{Utente generico}: persona del team di sviluppo che non ha ancora effettuato l'accesso al sistema.
+
+    \item \textbf{Vista}: l'insieme di informazioni e schermate dell'interfaccia utente accessibili per ciascun utente in base al proprio ruolo.
+
+    \item \textbf{Workload}: indicatore quantitativo calcolato sul numero di issue in stato \textit{In Progress} assegnate a ogni singolo utente, utilizzato dal sistema per suggerire l'operatore più idoneo a ricevere una nuova assegnazione. \index{Vista!Workload}
 \end{itemize}
+
 \subsubsection{Sinonimi adottati}
 \begin{itemize}
-    \item Utente, utente generico, membro del team.
-    \item Lista, elenco
-    \item Ospite, stakeholder esterno.
-    \item Sistema software, applicativo software, prodotto software, sud, piattaforma. 
-    \item Autenticazione, log in
+    \item Membro del team, utente, utente generico, utente registrato.
+    \item Lista, elenco, vista delle issue, riepilogo issue.
+    \item Ospite, visitatore, stakeholder esterno, stakeholder generico.
+    \item Sistema software, applicativo software, prodotto software, SUD, piattaforma, BugBoard26.
+    \item Autenticazione, log in, accesso.
+    \item Amministratore, admin, utente con permessi aggiuntivi.
 \end{itemize}
+
 \subsubsection{Abbreviazioni}
 \begin{itemize}
-    \item Admin: abbreviazione di utente amministratore
-    \item SUD: System under development
+    \item \textbf{Admin}: abbreviazione di utente amministratore.
+    \item \textbf{SUD}: System Under Development.
+    \item \textbf{SRS}: Software Requirements Specifications.
+    \item \textbf{DBMS}: Database Management System.
+    \item \textbf{UML}: Unified Modeling Language.
+    \item \textbf{MU}: Mock-up.
 \end{itemize}
 \subsection{Riferimenti}
 Il presente documento è stato redatto in conformità allo standard IEEE Std 830-1998. \index{IEEE Std 830-1998}
@@ -183,7 +218,7 @@ Riferimenti bibliografici per la stesura del documento:
 \end{itemize}
 \subsection{Panoramica del documento}
 La restante parte di questo documento è suddivisa in due ulteriori capitoli che descrivono le caratteristiche funzionali di \textit{BugBoard26}.\\
-Il capitolo immediatamente seguente: "Descrizione generale" è composto dai seguenti paragrafi.
+\hyperref[sec:descrizioneGenerale]{\textbf{"2. Descrizione generale"}} è composto dai seguenti paragrafi.
 \begin{longtable}{|p{5cm}|p{9cm}|}
 \hline
 Prospettiva del prodotto & Illustra l'ambito in cui \textit{BugBoard26} si va ad inquadrare e sarà utilizzato\\ \hline
@@ -191,8 +226,9 @@ Funzionalità del prodotto & Esplicita le funzioni implementate da \textit{BugBo
 Utenti e attori del sistema & Individuazione e caratterizzazione di tutti gli utenti (attori) del sistema \\ \hline
 Vincoli generali e assunzioni & Indica ciò a cui deve essere vincolato il prodotto software \\ \hline
 \end{longtable}
-Nel terzo capitolo "Requisiti specifici" saranno dettagliate tutte le funzionalità che \textit{BugBoard26} realizza.
-Questo capitolo è composto dai seguenti paragrafi.
+
+In \hyperref[sec:requisitiSpecifici]{\textbf{"3. Requisiti specifici"}} saranno dettagliate tutte le funzionalità che \textit{BugBoard26} realizza.
+Il capitolo è composto dai seguenti paragrafi.
 \begin{longtable}{|p{5cm}|p{9cm}|}
 \hline
 Requisiti funzionali & Si scende ad un livello di maggior dettaglio nella descrizione delle funzioni del prodotto software.\\ \hline
@@ -203,7 +239,27 @@ utilizzando le tabelle di Cockburn. \\ \hline
 Prototipazione visuale & Si descriveranno visualmente le risposte del sistema nel suo utilizzo attraversando il flusso dei casi d'uso. \\ \hline
 \end{longtable}
 
+In \hyperref[sec:designSistema]{\textbf{"4. Documento di Design del Sistema"}} vengono illustrate l'architettura generale del sistema e le principali scelte tecnologiche adottate. 
+\begin{longtable}{|p{5cm}|p{9cm}|} 
+\hline 
+Analisi dell'architettura & Descrive la struttura architetturale del sistema, evidenziando i componenti Client, Server e Persistenza e le loro interazioni. \\ \hline 
+Scelte tecnologiche e motivazioni & Presenta le tecnologie adottate e le motivazioni che hanno guidato le decisioni progettuali. \\ \hline 
+\end{longtable} 
+
+In \hyperref[sec:designSoftware]{\textbf{"5. Documento di Design del Software"}} vengono descritti in dettaglio gli aspetti di progettazione software e di implementazione del sistema. 
+\begin{longtable}{|p{5cm}|p{9cm}|} 
+\hline 
+Schema di persistenza dei dati & Descrive la struttura del database e le relazioni tra le entità del sistema. \\ \hline 
+Class Diagram di Design & Presenta i diagrammi UML delle classi coinvolte nelle principali funzionalità del sistema. \\ \hline 
+Package Diagram Frontend & Mostra l'organizzazione dei package del client e le relative dipendenze. \\ \hline 
+Scelte di software design & Illustra i design pattern e i principi architetturali adottati durante lo sviluppo. \\ \hline 
+Strumento di Versioning & Descrive l'organizzazione del repository GitHub e il processo di versionamento. \\ \hline 
+Containerizzazione, build automatica e Cloud Deploy & Presenta la strategia di build, containerizzazione e distribuzione del sistema su infrastruttura cloud. \\ \hline 
+Report di qualità del codice & Riporta le metriche e i risultati dell'analisi della qualità del codice tramite SonarQube. \\ \hline 
+\end{longtable}
+
 \newpage
+\label{sec:descrizioneGenerale}
 \section{Descrizione generale}
 \subsection{Prospettiva del prodotto}
 Il sistema \textit{BugBoard26} è un prodotto software autonomo progettato per la gestione interna delle issue nei team di sviluppo software.
@@ -223,7 +279,7 @@ Tutti gli utenti devono autenticarsi prima di accedere alle funzionalità.
     \begin{itemize}
         \item \hyperref[sec:RE03]{Segnala issue:}\index{Issue!Segnalazione}\index{Issue!Filtra}\index{Issue!Ordina}\index{Issue!Ricerca} Un utente autenticato può segnalare una issue, della quale deve inserire un titolo e una descrizione. Può anche impostare una priorità e un tipo. \index{Priorità}
         \item \hyperref[sec:RE04]{Assegna issue:}\index{Assegna} Un amministratore può assegnare una issue ad un membro del team.
-        \item{Suggerimento utente:} Il sistema mostra una lista di utenti ordinati per carico di lavoro crescente. Il primo della lista viene suggerito esplicitamente all'amministratore.
+        \item\hyperref[sec:RE13]{Suggerimento utente:} Il sistema mostra una lista di utenti ordinati per carico di lavoro crescente. Il primo della lista viene suggerito esplicitamente all'amministratore.
         \item \hyperref[sec:RE04]{Modifica stato issue:} Quando una issue viene assegnata ad un utente il sistema ne modifica lo stato.\index{Issue!Modifica} 
     \end{itemize}
     \item Categoria visualizzazioni\index{Vista} -  \textit{BugBoard26} permette di visualizzare informazioni su issue e membri del team.
@@ -271,6 +327,7 @@ Effettuare il log in. \\ \hline
 
 \newpage
 \section{Requisiti specifici}
+\label{sec:requisitiSpecifici}
 
 \subsection{Requisiti funzionali}
 
@@ -529,7 +586,7 @@ Effetti collaterali & Nessuno \\ \hline
 Use Case & Incluso in \hyperref[sec:UC04]{Visualizza riepilogo issue - RE05} \\ \hline
 \end{tabularx}
 
-\subsubsection{RE010 - Ricerca issue}\index{Issue!Ricerca}
+\subsubsection{RE10 - Ricerca issue}\index{Issue!Ricerca}
 \label{sec:RE10}
 
 \begin{tabular}{|c|c|c|}
@@ -557,7 +614,7 @@ Effetti collaterali & Nessuno \\ \hline
 Use Case & Incluso in \hyperref[sec:UC04]{Visualizza riepilogo issue - RE05} \\ \hline
 \end{tabularx}
 
-\subsubsection{RE011 - Visualizza notifiche}\index{Vista!Notifiche}
+\subsubsection{RE11 - Visualizza notifiche}\index{Vista!Notifiche}
 \label{sec:RE11}
 
 \begin{tabular}{|c|c|c|}
@@ -580,7 +637,7 @@ Effetti collaterali & Nessuno \\ \hline
 Use Case & Incluso in \hyperref[sec:UC06]{Visualizza elenco notifiche - RE11} \\ \hline
 \end{tabularx}
 
-\subsubsection{RE012 - Lettura notifiche}\index{Notifiche!Lettura notifiche}
+\subsubsection{RE12 - Lettura notifiche}\index{Notifiche!Lettura notifiche}
 \label{sec:RE12}
 
 \begin{tabular}{|c|c|c|}
@@ -603,7 +660,7 @@ Effetti collaterali & Nessuno \\ \hline
 Use Case &  \\ \hline
 \end{tabularx}
 
-\subsubsection{RE013 - Workload}\index{Workload}
+\subsubsection{RE13 - Workload}\index{Workload}
 \label{sec:RE13}
 
 \begin{tabular}{|c|c|c|}
@@ -663,7 +720,7 @@ specificando una email il ruolo.
 \label{sec:UC02}
 Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
 In particolare, si pone l'attenzione sulla segnalazione di una issue. L'attore principale è un utente autenticato. Esso può segnalare una issue, specificando un titolo e una descrizione.
-Può anche impostare una priorità\index{Priorità} e allegare immagini. La issue verrà inserita nel sistema e sarà visibile nell'elenco delle issue. 
+Può anche impostare una priorità\index{Priorità} e un tipo. La issue verrà inserita nel sistema e sarà visibile nell'elenco delle issue. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_SegnalaIssue.jpg}
@@ -727,21 +784,20 @@ Di seguito sono elencati i requisiti non funzionali del sistema \textit{BugBoard
 Il sistema deve garantire la \textit{segretezza} e l'\textit{integrità} delle informazioni gestite, in quanto critiche per l'azienda. In particolare:
 \begin{itemize}
     \item L'accesso alle funzionalità del sistema deve essere consentito esclusivamente ad utenti autenticati, secondo i permessi associati al proprio ruolo (Utente o Amministratore).
-    \item Nessuna password deve essere memorizzata all'interno del sistema: la gestione delle credenziali è demandata ad un provider di identità esterno (\textit{Amazon Cognito}).\index{Amazon Web Services (AWS)!Cognito}
+    \item La gestione delle credenziali deve avvenire tramite un sistema che impedisca la memorizzazione delle password all'interno dell'applicazione.
     \item La creazione di nuove utenze non può avvenire in autonomia da parte degli utenti, ma richiede necessariamente l'intervento di un Amministratore.
 \end{itemize}
 
 \subsubsection{RNF02 - Affidabilità}
-Il sistema deve garantire la corretta e costante disponibilità delle proprie funzionalità. Il back-end, distribuito tramite container Docker su infrastruttura Cloud (AWS), è configurato con politiche di riavvio automatico in caso di arresto anomalo, al fine di minimizzare i tempi di interruzione del servizio.\index{Docker}
-
+Il sistema deve garantire la corretta e costante disponibilità delle proprie funzionalità e ripristino automatico in caso di malfunzionamenti.
 \subsubsection{RNF03 - Prestazioni}
-Il sistema deve garantire tempi di risposta rapidi durante l'interazione con l'utente, in particolare nelle operazioni più frequenti quali la visualizzazione, il filtraggio, l'ordinamento e la ricerca delle issue. La gestione asincrona di alcune operazioni (es. l'invio delle notifiche a seguito dell'assegnazione di una issue, contribuisce a non penalizzare i tempi di risposta percepiti dall'utente durante le richieste principali.
+Il sistema deve garantire tempi di risposta rapidi durante l'interazione con l'utente, in particolare nelle operazioni più frequenti quali la visualizzazione, il filtraggio, l'ordinamento e la ricerca delle issue. La gestione asincrona di alcune operazioni (es. l'invio delle notifiche a seguito dell'assegnazione di una issue), contribuisce a non penalizzare i tempi di risposta percepiti dall'utente durante le richieste principali.
 
 \subsubsection{RNF04 - Usabilità}
 L'interfaccia utente deve essere semplice ed intuitiva, tale da consentire l'utilizzo del sistema senza necessità di supporto o di una curva di apprendimento (vedi \hyperref[sec:attori]{Sezione 2.3 - Utenti e attori del sistema}).
 
 \subsubsection{RNF05 - Scalabilità}
-L'architettura client-server, organizzata su più livelli \hyperref[sec:analisiArchitettura]{(Sezione 4.1)}, deve consentire l'aggiunta di nuovi client o l'evoluzione del server senza richiedere modifiche sostanziali all'intero sistema.\index{Client-Server}
+Il sistema deve essere in grado di supportare un aumento del numero di utenti, issue e notifiche gestite senza richiedere modifiche sostanziali alle funzionalità offerte. Inoltre, deve essere possibile aumentare le risorse computazionali dedicate ai componenti del sistema al fine di sostenere carichi di lavoro maggiori.
 
 \subsubsection{RNF06 - Portabilità e indipendenza tra i componenti}
 Il front-end e il back-end devono essere componenti indipendenti, comunicanti esclusivamente tramite API REST esposte dal back-end. Deve essere possibile sostituire o modificare il front-end senza alcun impatto sul back-end, e viceversa.
@@ -942,8 +998,10 @@ Le seguenti figure rappresentano la prototipazione visuale via Mock-up delle rel
 
 \newpage
 \section{Documento di design del sistema}
-\label{sec:analisiArchitettura}
+\label{sec:designSistema}
+
 \subsection{Analisi dell'Architettura}
+\label{sec:analisiArchitettura}
 Il progetto BugBoard26 è stato sviluppato con un'architettura \textit{\textbf{client-server}} (fig. 1) organizzata su tre livelli che comunicano tramite API REST. Tale organizzazione è suddivisa in: \index{Client-Server}
 \begin{itemize}
     \item Presentation Layer (Client)
@@ -969,7 +1027,7 @@ Il sistema adotta un’architettura basata sul \textbf{pattern MVC} (Model-View-
 L'architettura appena illustrata è rappresentata dal seguente Component Diagram UML.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/Architettura/ComponentDiagramClient.png}
+    \includegraphics[width=1.0\textwidth]{images/Architettura/ComponentDiagramServer.png}
     \caption{Schema architetturale 2 - Component Diagram del backend}
     \label{fig:etichetta}
 \end{figure}
@@ -991,7 +1049,7 @@ L'architettura appena illustrata è rappresentata dal seguente Component Diagram
 
 
 \subsection{Scelte tecnologiche e motivazioni}
-La scelta tecnologica più rilevante, riferita all'intero sistema, riguarda la gestione dell'autenticazione. L'autenticazione è stata gestita interamente tramite \textbf{Amazon Cognito}, configurato su un server nella regione di Milano. Tramite un'apposita pagina UI del frontend, l'utente può richiedere di effettuare il login: la richiesta lo indirizza verso la \textit{Hosting UI} di Cognito, una pagina di autenticazione esterna al sistema \textit{BugBoard26}. Contestualmente, il frontend apre un server temporaneo in ascolto sulla porta 9090, in attesa della risposta (positiva o negativa) da parte di Cognito.\index{Amazon Web Services (AWS)!Cognito}
+La scelta tecnologica più rilevante, riferita all'intero sistema, riguarda la gestione dell'autenticazione. L'autenticazione è stata gestita interamente tramite \textbf{Amazon Cognito}, configurato su un server nella regione di Milano. Tramite un'apposita pagina UI del frontend, l'utente può richiedere di effettuare il login: la richiesta lo indirizza verso la \textit{Hosting UI} di Cognito, una pagina di autenticazione esterna al sistema \textit{BugBoard26}. Contestualmente, il frontend apre un server temporaneo in ascolto sulla porta \textit{9090}, in attesa della risposta (positiva o negativa) da parte di Cognito.\index{Amazon Web Services (AWS)!Cognito}
 
 Come indicato nel documento dei requisiti, il sistema non permette la registrazione spontanea a BugBoard26: la creazione di una nuova utenza richiede necessariamente l'intervento di un Amministratore. La registrazione di una nuova utenza (sia essa di ruolo Admin che User) avviene interamente all'interno di BugBoard26: il frontend acquisisce email e ruolo del nuovo utente, mentre il backend, oltre a persistere i dati nel database, invia una richiesta API a Cognito per aggiungere l'utente al pool di utenti già esistente. Cognito provvede quindi all'invio di un'email al nuovo utente contenente una password temporanea, forzando il cambio della password al primo accesso.\index{Database}
 
@@ -1016,6 +1074,7 @@ framework Spring Boot e tecnologie JPA/Hibernate. \index{PostgreSQL} \index{Spri
 
 \newpage
 \section{Documento di Design del Software}
+\label{sec:designSoftware}
 
 
 \subsection{Descrizione dello schema di persistenza dei dati}
@@ -1094,7 +1153,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database. \index{Database}
     \item \textbf{Dependency injection:} La DI è stata molto utilizzata nello sviluppo del sistema (sia lato Client che lato Server). Questa scelta comporta diversi vantaggi. \index{Dependency Injection}
     \textbf{Basso accoppiamento:} le classi dipendono da astrazioni (interfacce come \texttt{IssueService}, \texttt{IssueRepository}) e non da implementazioni concrete, coerentemente con il principio di Dependency Inversion (SOLID). Questo permette di sostituire un'implementazione (es. \texttt{IssueServiceImpl}) senza modificare le classi che la utilizzano. \index{Principi SOLID}
     \textbf{Testabilità:} la possibilità di iniettare mock delle interfacce al posto delle implementazioni reali ha semplificato la scrittura di test di unità (es. testare IssueServiceImpl iniettando il mock \texttt{IssueRepository}, senza necessità di un database reale). \index{Database}
-    \textbf{Been di Spring} il ciclo di vita e la creazione delle istanze (bean) sono gestiti da Spring, evitando la duplicazione di logica di istanziazione sparsa nel codice.
+    \textbf{Been di Spring:} il ciclo di vita e la creazione delle istanze (bean) sono gestiti da Spring, evitando la duplicazione di logica di istanziazione sparsa nel codice.
     \item \textbf{Singleton:} Il pattern Singleton viene utilizzato per la classe \texttt{AuthSession} del \textit{frontend}. Crea una istanza della classe alla quale è possibile accedere dall'esterno per ottenere il tocken necessario per costruire una corretta chiamata API al \textit{backend}. Naturalmente espone un costruttore privato per evitare la creazione di ulteriori istanze della classe. \index{Singleton}
     \item \textbf{Event-Listener}: L'\textit{Event-Listener} è un pattern architetturale peculiare di Spring. È stato scelto in sostituzione del design pattern Observer, di cui è una specializzazione in chiave tecnologica Spring. Si occupa della gestione degli eventi, disaccoppiando il componente che genera un evento (\textit{publisher}) da quello che deve gestire le conseguenze (\textit{listener}), senza che il primo debba conoscere direttamente il secondo.\index{Event-Listener / Observer}
 
@@ -1121,6 +1180,15 @@ Per avere un basso accoppiamento e un'alta coesione nelle classi \texttt{ViewCon
 
 Il repository è raggiungibile al seguente link: \url{https://github.com/ManuelMontuori/BugBoard26}
 
+La Repository GitHub è composta come segue.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/GithubRepo.png}
+    \caption{Repository Github}
+    \label{fig:githubRepsitory}
+\end{figure}
+
+
 Il report delle attività del team sono presentate in questa schermata estratta da GitHub. 
 \begin{figure}[H]
     \centering
@@ -1128,6 +1196,7 @@ Il report delle attività del team sono presentate in questa schermata estratta 
     \caption{Report Github}
     \label{fig:githubReport}
 \end{figure}
+
 
 \subsection{Containerizzazione, build automatica e Cloud Deploy} Il \textbf{backend} è stato containerizzato utilizzando \textit{Docker} e caricato su una macchina virtuale AWS (\textit{Amazon Web Services}). \index{Amazon Web Services (AWS)} \index{Docker}
 
@@ -1223,7 +1292,496 @@ Come illustrato dal grafico, all'inizio dello sviluppo sono stati trovati 20 err
     \label{fig:reportNewCodeSQ}
 \end{figure}
 
+\section{Test Plan}
+\label{sec:pianoDiTest}
+\index{Test}
 
+\subsection{Test della funzionalità RE04 -- Assegna issue}
+\label{sec:testRE04}
+Questo Test Plan è riferito alla funzionalità 4 della traccia: 
+
+
+\textit{"Ogni bug dovrebbe poter essere assegnato (da un amministratore) a un membro del team. Quando 
+viene assegnato un bug a un utente, quest’ultimo riceve una notifica. Gli utenti possono 
+visualizzare i bug loro assegnati."}
+
+
+Dato il requisito, il test verificherà l'assegnazione di una Issue ad un membro del team e la generazione della relativa notifica.
+\subsubsection{Analisi delle classi di equivalenza}
+\index{Test!Classi di equivalenza}
+
+\paragraph{Input 1 -- Issue UUID}
+\begin{description}
+    \item[Classe valida] EC1: Issue esistente
+    \item[Classe non valida] EC2: Issue inesistente
+\end{description}
+
+\paragraph{Input 2 -- User UUID}
+\begin{description}
+    \item[Classe valida] EC3: Utente esistente
+    \item[Classe non valida] EC4: Utente inesistente
+\end{description}
+
+\paragraph{Input 3 -- Ruolo utente che effettua l'operazione}
+\begin{description}
+    \item[Classe valida] EC5: Amministratore
+    \item[Classe non valida] EC6: Utente non amministratore
+\end{description}
+
+\subsubsection{TC1 -- Assegnazione corretta}
+\label{sec:TC1}
+\index{Test!Assegnazione corretta}
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+ID & TC1 \\ \hline
+Descrizione & Assegnazione di una issue esistente ad un utente esistente da parte di un amministratore \\ \hline
+Precondizioni & Esiste una Issue; esiste un User; l'utente loggato è amministratore \\ \hline
+Input & issueUuid valido, userUuid valido \\ \hline
+Output atteso & Operazione completata \\ \hline
+Postcondizioni & La Issue è assegnata all'utente; assignedAt valorizzato; status = In Progress; evento pubblicato; notifica creata \\ \hline
+\end{tabularx}
+
+\subsubsection{TC2 -- Utente assegnatario inesistente}
+\label{sec:TC2}
+\index{Test!Utente assegnatario inesistente}
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+ID & TC2 \\ \hline
+Descrizione & Tentativo di assegnazione ad un utente inesistente \\ \hline
+Precondizioni & Esiste una Issue \\ \hline
+Input & issueUuid valido, userUuid inesistente \\ \hline
+Output atteso & ResourceAccessException \\ \hline
+Postcondizioni & Nessuna modifica alla Issue; nessuna notifica \\ \hline
+\end{tabularx}
+
+\subsubsection{TC3 -- Issue inesistente}
+\label{sec:TC3}
+\index{Test!Issue inesistente}
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+ID & TC3 \\ \hline
+Descrizione & Tentativo di assegnazione di una Issue inesistente \\ \hline
+Precondizioni & Esiste l'utente destinatario \\ \hline
+Input & issueUuid inesistente, userUuid valido \\ \hline
+Output atteso & ResourceAccessException \\ \hline
+Postcondizioni & Nessuna assegnazione; nessuna notifica \\ \hline
+\end{tabularx}
+
+\subsubsection{TC4 -- Issue inesistente e utente inesistente}
+\label{sec:TC4}
+\index{Test!Issue e utente inesistenti}
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+ID & TC4 \\ \hline
+Descrizione & Entrambi gli input non sono validi \\ \hline
+Precondizioni & Nessuna \\ \hline
+Input & issueUuid inesistente, userUuid inesistente \\ \hline
+Output atteso & ResourceAccessException \\ \hline
+Postcondizioni & Nessuna modifica al sistema \\ \hline
+\end{tabularx}
+
+\subsubsection{TC5 -- Verifica creazione notifica}
+\label{sec:TC5}
+\index{Test!Creazione notifica}
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+ID & TC5 \\ \hline
+Descrizione & Verifica che venga generata una notifica dopo l'assegnazione \\ \hline
+Precondizioni & TC1 eseguito con successo \\ \hline
+Input & Issue valida, utente valido \\ \hline
+Output atteso & Notifica restituita correttamente \\ \hline
+Postcondizioni & Nel database è presente una nuova notifica associata all'utente \\ \hline
+\end{tabularx}
+
+\subsubsection{TC6 -- Visualizzazione dei bug assegnati}
+\label{sec:TC6}
+\index{Test!Visualizzazione bug assegnati}
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+ID & TC6 \\ \hline
+Descrizione & L'utente consulta i bug assegnati \\ \hline
+Precondizioni & Esiste almeno una Issue assegnata all'utente \\ \hline
+Input & Identificativo utente \\ \hline
+Output atteso & Lista delle Issue assegnate \\ \hline
+Postcondizioni & Nessuna modifica dei dati \\ \hline
+\end{tabularx}
+
+\subsubsection{TC7 -- Assegnazione tentata da utente non amministratore}
+\label{sec:TC7}
+\index{Test!Assegnazione da utente non amministratore}
+
+\begin{tabularx}{\textwidth}{p{5cm}|X}
+ID & TC7 \\ \hline
+Descrizione & Un utente non amministratore tenta di assegnare una Issue \\ \hline
+Precondizioni & Esiste una Issue; esiste un User; l'utente loggato non è amministratore \\ \hline
+Input & issueUuid valido, userUuid valido, ruolo = non amministratore \\ \hline
+Output atteso & Operazione rifiutata (eccezione di autorizzazione) \\ \hline
+Postcondizioni & Nessuna modifica alla Issue; nessuna notifica \\ \hline
+\end{tabularx}
+
+\subsubsection{Copertura delle classi di equivalenza}
+\index{Test!Copertura classi di equivalenza}
+
+\begin{longtable}{|p{5cm}|p{9cm}|}
+\hline
+\textbf{Classe} & \textbf{Coperta da} \\ \hline
+EC1 Issue valida & TC1, TC2, TC5 \\ \hline
+EC2 Issue non valida & TC3, TC4 \\ \hline
+EC3 Utente valido & TC1, TC3, TC5, TC6 \\ \hline
+EC4 Utente non valido & TC2, TC4 \\ \hline
+EC5 Amministratore & TC1, TC5 \\ \hline
+EC6 Non amministratore & TC7 \\ \hline
+\end{longtable}
+
+
+
+\subsection{Test del metodo \texttt{assignIssue} -- \texttt{IssueWriteService}}
+\label{sec:testAssignIssueDoc}
+\index{Test!assignIssue}
+
+\subsubsection{Metodo sottoposto a test}
+È stato scelto il metodo \texttt{assignIssue(UUID issueId, UUID userId)} della classe \texttt{IssueWriteService}. Il metodo ha il compito di assegnare una issue ad un utente.
+
+Il comportamento previsto è:
+\begin{enumerate}
+    \item Recuperare l'issue tramite \texttt{issueId}
+    \item Recuperare l'utente tramite \texttt{userId}
+    \item Associare l'utente all'issue
+    \item Aggiornare lo stato dell'issue e la data di assegnazione
+    \item Pubblicare un evento di assegnazione
+\end{enumerate}
+
+\subsubsection{Strategia adottata}
+Per il testing è stato adottato un approccio di \textbf{unit testing} con Mockito. Sono stati utilizzati mock per simulare il comportamento delle seguenti classi: \texttt{IssueRepository}, \texttt{UserRepository}, \texttt{ApplicationEventPublisher}.
+
+\subsubsection{Black box}
+Il Black box testing è basato solo su input/output. Sono state utilizzate le tecniche \textbf{Equivalence Class Partitioning (ECP)} e \textbf{Each Choice Coverage}.
+
+\paragraph{Parametro issueId}
+\begin{longtable}{|p{1.8cm}|p{5.3cm}|p{6.2cm}|}
+\hline
+\textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
+CE1 & issue esistente & UUID valido presente nel repository \\ \hline
+CE2 & issue inesistente & UUID valido non presente nel repository \\ \hline
+\end{longtable}
+
+\paragraph{Parametro userId}
+\begin{longtable}{|p{1.8cm}|p{5.3cm}|p{6.2cm}|}
+\hline
+\textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
+CE3 & utente esistente & UUID valido presente nel repository \\ \hline
+CE4 & utente inesistente & UUID valido non presente nel repository \\ \hline
+\end{longtable}
+
+\subsubsection{Casi di test progettati}
+
+\paragraph{TC-AI1 -- Assegnazione corretta}
+\label{sec:TC-AI1}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & issueId valido, userId valido \\ \hline
+Precondizioni & Il repository issue restituisce un'issue; il repository utenti restituisce un utente \\ \hline
+Output atteso (Oracle) & L'issue viene assegnata all'utente; il campo \texttt{assignedAt} viene valorizzato; lo stato della issue passa a \texttt{IN\_PROGRESS}; viene pubblicato un evento \texttt{IssueAssignedEvent} \\ \hline
+Test JUnit & \texttt{testAssignIssue\_validUser()} \\ \hline
+\end{longtable}
+
+\paragraph{TC-AI2 -- Utente non trovato}
+\label{sec:TC-AI2}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & issueId valido, userId inesistente \\ \hline
+Precondizioni & L'issue esiste; l'utente non viene trovato \\ \hline
+Output atteso (Oracle) & Il metodo deve lanciare \texttt{ResourceAccessException} \\ \hline
+Test JUnit & \texttt{testAssignIssue\_userNotFound()} \\ \hline
+\end{longtable}
+
+\paragraph{TC-AI3 -- Issue non trovata}
+\label{sec:TC-AI3}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & issueId inesistente, userId valido \\ \hline
+Precondizioni & Il repository issue restituisce \texttt{Optional.empty()} \\ \hline
+Output atteso (Oracle) & Il metodo deve lanciare \texttt{ResourceAccessException} \\ \hline
+Test JUnit & \texttt{testAssignIssue\_issueNotFound()} \\ \hline
+\end{longtable}
+
+\subsubsection{White box}
+È stata adottata una copertura basata su branch coverage.
+
+\begin{longtable}{|p{9cm}|p{2cm}|}
+\hline
+\textbf{Ramo} & \textbf{Coperto} \\ \hline
+Issue trovata & \checkmark \\ \hline
+Issue non trovata & \checkmark \\ \hline
+Utente trovato & \checkmark \\ \hline
+Utente non trovato & \checkmark \\ \hline
+Aggiornamento stato issue & \checkmark \\ \hline
+Pubblicazione evento & \checkmark \\ \hline
+\end{longtable}
+
+\subsubsection{Oracle dei test}
+Per determinare la correttezza del risultato sono controllati lo stato interno dell'oggetto \texttt{issue}, il lancio di eccezioni e la pubblicazione dell'evento.
+
+\textbf{Controllo del comportamento in caso di successo:}
+\begin{lstlisting}
+assertEquals(user, issue.getAssignedTo());
+
+assertEquals(
+    IssueStatus.IN_PROGRESS,
+    issue.getStatus()
+);
+\end{lstlisting}
+
+\textbf{Controllo del comportamento in caso di errore:}
+\begin{lstlisting}
+assertThrows(
+    ResourceAccessException.class,
+    () -> ...
+);
+\end{lstlisting}
+
+\textbf{Controllo della pubblicazione dell'evento:}
+\begin{lstlisting}
+verify(eventPublisher)
+    .publishEvent(any(IssueAssignedEvent.class));
+\end{lstlisting}
+
+% ============================================================
+% Richiede nel preambolo: tabularx, longtable, amssymb, listings
+% (già presenti nel documento SRS)
+% ============================================================
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    columns=fullflexible,
+    frame=single,
+    language=Java
+}
+
+
+\subsection{Test del metodo \texttt{createNotification} -- \texttt{NotificationWriteService}}
+\label{sec:testCreateNotificationDoc}
+\index{Test!createNotification}
+
+\subsubsection{Metodo sottoposto a test}
+È stato scelto il metodo \texttt{createNotification(Issue issue, User user)} della classe \texttt{NotificationWriteService}. Il metodo ha il compito di creare una notifica associata ad una issue e ad un utente, aggiungerla al database tramite repository e convertirla in DTO.
+
+Il comportamento previsto è:
+\begin{enumerate}
+    \item Creare un oggetto \texttt{Notification}
+    \item Impostare l'utente destinatario
+    \item Generare il messaggio della notifica a partire dai dati della Issue (titolo e descrizione)
+    \item Impostare lo stato iniziale della notifica (non letta)
+    \item Salvare la notifica tramite repository
+    \item Convertire la notifica salvata in DTO
+\end{enumerate}
+
+\subsubsection{Strategia adottata}
+Per il testing è stato adottato un approccio di \textbf{unit testing} con Mockito. Sono stati utilizzati mock per simulare il comportamento delle seguenti classi: \texttt{NotificationRepository}, \texttt{NotificationMapper}.
+
+\subsubsection{Black box}
+Il Black box testing è basato sull'analisi input/output. Sono state utilizzate le tecniche \textbf{Equivalence Class Partitioning (ECP)} e \textbf{Each Choice Coverage}.
+
+\paragraph{Parametro Issue}
+\begin{longtable}{|p{1.8cm}|p{6cm}|p{5.5cm}|}
+\hline
+\textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
+CE1 & Issue valida con titolo e descrizione presenti & Issue completa e corretta \\ \hline
+CE2 & Errore nel salvataggio della notifica & Repository che lancia eccezione \\ \hline
+\end{longtable}
+
+\paragraph{Parametro User}
+\begin{longtable}{|p{1.8cm}|p{6cm}|p{5.5cm}|}
+\hline
+\textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
+CE3 & User valido esistente nel sistema & User presente e valido \\ \hline
+\end{longtable}
+
+\paragraph{Persistenza}
+\begin{longtable}{|p{1.8cm}|p{6cm}|p{5.5cm}|}
+\hline
+\textbf{Classe} & \textbf{Descrizione} & \textbf{Valore rappresentativo} \\ \hline
+CE4 & Salvataggio corretto della notifica & Repository funzionante \\ \hline
+CE5 & Fallimento del salvataggio & \texttt{RuntimeException} dal repository \\ \hline
+\end{longtable}
+
+\subsubsection{Casi di test progettati}
+
+\paragraph{TC-CN1 -- Creazione notifica corretta}
+\label{sec:TC-CN1}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & Issue valida (con titolo e descrizione), User valido \\ \hline
+Precondizioni & Il repository salva correttamente la notifica; il mapper converte correttamente l'entità salvata \\ \hline
+Output atteso (Oracle) & La notifica viene creata correttamente; l'utente viene associato alla notifica; il campo \texttt{read} è impostato a \texttt{false}; il messaggio viene generato correttamente; viene restituito il DTO corretto \\ \hline
+Test JUnit & \texttt{testCreateNotification\_success()} \\ \hline
+\end{longtable}
+
+\paragraph{TC-CN2 -- Errore del repository}
+\label{sec:TC-CN2}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & Issue valida, User valido, repository che genera eccezione \\ \hline
+Precondizioni & Il salvataggio della notifica fallisce \\ \hline
+Output atteso (Oracle) & Il metodo deve lanciare \texttt{RuntimeException}; il mapper non deve essere invocato \\ \hline
+Test JUnit & \texttt{testCreateNotification\_repositoryFailure()} \\ \hline
+\end{longtable}
+
+\subsubsection{Oracle dei test}
+Per determinare la correttezza del risultato sono stati controllati lo stato interno dell'oggetto creato, il risultato finale del metodo e l'interazione con Repository e Mapper.
+
+\textbf{Controllo del comportamento in caso di successo:}
+\begin{lstlisting}
+assertEquals(user, captured.getUser());
+
+assertFalse(captured.isRead());
+
+assertEquals(
+    "Ti e' stata assegnata la seguente Issue: Errore login\nDescrizione:L'utente non riesce ad accedere.",
+    captured.getMessage()
+);
+\end{lstlisting}
+
+\textbf{Controllo del comportamento in caso di errore:}
+\begin{lstlisting}
+assertThrows(
+    RuntimeException.class,
+    () -> service.createNotification(issue, user)
+);
+\end{lstlisting}
+
+\textbf{Controllo delle interazioni con Repository e Mapper:}
+\begin{lstlisting}
+verify(notificationRepository)
+    .save(any(Notification.class));
+
+verify(notificationMapper)
+    .mapToDTO(savedNotification);
+
+verify(notificationMapper, never())
+    .mapToDTO(any());
+\end{lstlisting}
+
+
+\subsection{Test del metodo \texttt{getMonthlyReport} -- \texttt{UserReadService}}
+\label{sec:testGetMonthlyReportDoc}
+\index{Test!getMonthlyReport}
+
+\subsubsection{Metodo sottoposto a test}
+È stato scelto il metodo \texttt{getMonthlyReport(int year, int month)} della classe \texttt{UserReadService}. Il metodo ha il compito di recuperare i dati relativi agli utenti per un determinato mese e anno, costruendo un report mensile.
+
+Il comportamento previsto è:
+\begin{enumerate}
+    \item Validare i parametri di input (\texttt{year}, \texttt{month})
+    \item Calcolare il range temporale del mese (\texttt{startDate} = primo giorno del mese, \texttt{endDate} = primo giorno del mese successivo)
+    \item Recuperare i dati dal repository nel range temporale
+    \item Mappare il risultato in DTO
+    \item Restituire una lista di \texttt{UserReportDTO}
+\end{enumerate}
+
+\subsubsection{Strategia adottata}
+Per il testing è stato adottato un approccio di \textbf{unit testing} con Mockito. Sono stati utilizzati mock per simulare il comportamento delle seguenti classi: \texttt{UserRepository}, \texttt{UserReportMapper}.
+
+\subsubsection{Black box}
+Il Black box testing è basato sull'analisi input/output. Sono state utilizzate le tecniche \textbf{Equivalence Class Partitioning (ECP)}, \textbf{Boundary Value Analysis (BVA)} e \textbf{Each Choice Coverage}.
+
+\paragraph{Parametro year}
+\begin{longtable}{|p{1.8cm}|p{11.5cm}|}
+\hline
+\textbf{Classe} & \textbf{Descrizione} \\ \hline
+CE1 & anno valido (intero positivo, es. 2024) \\ \hline
+\end{longtable}
+
+\paragraph{Parametro month}
+Il dominio del parametro è $month \in [1, 12]$.
+
+\begin{longtable}{|p{1.8cm}|p{11.5cm}|}
+\hline
+\textbf{Classe} & \textbf{Descrizione} \\ \hline
+CE3 & mese valido (1--12) \\ \hline
+CE4 & mese non valido inferiore al range ($<1$) \\ \hline
+CE5 & mese non valido superiore al range ($>12$) \\ \hline
+\end{longtable}
+
+\paragraph{Boundary Value Analysis (BVA)}
+\begin{longtable}{|p{1.8cm}|p{2.5cm}|p{9cm}|}
+\hline
+\textbf{Tipo} & \textbf{Valore} & \textbf{Significato} \\ \hline
+BVA1 & 1 & limite inferiore valido \\ \hline
+BVA2 & 12 & limite superiore valido \\ \hline
+BVA3 & 0 & primo valore non valido \\ \hline
+BVA4 & 13 & primo valore oltre il limite \\ \hline
+\end{longtable}
+
+\paragraph{Stato dei dati nel repository}
+\begin{longtable}{|p{1.8cm}|p{11.5cm}|}
+\hline
+\textbf{Classe} & \textbf{Descrizione} \\ \hline
+CE6 & presenza di dati per il mese richiesto \\ \hline
+CE7 & assenza di dati (lista vuota) \\ \hline
+\end{longtable}
+
+\subsubsection{Casi di test progettati}
+
+\paragraph{TC-GMR1 -- Report mensile con dati presenti}
+\label{sec:TC-GMR1}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & year = 2024, month = 5 \\ \hline
+Precondizioni & Il repository restituisce almeno una \texttt{UserReportProjection}; il mapper converte correttamente le projection \\ \hline
+Output atteso (Oracle) & Viene restituita una lista non vuota; il DTO è correttamente mappato; il repository viene chiamato con il range corretto; il mapper viene invocato \\ \hline
+Test JUnit & \texttt{testGetMonthlyReport\_valid()} \\ \hline
+\end{longtable}
+
+\paragraph{TC-GMR2 -- Nessun dato disponibile}
+\label{sec:TC-GMR2}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & year = 2024, month = 5 \\ \hline
+Precondizioni & Il repository restituisce lista vuota \\ \hline
+Output atteso (Oracle) & Il metodo restituisce lista vuota; il repository viene comunque chiamato correttamente; nessuna eccezione viene lanciata \\ \hline
+Test JUnit & \texttt{testGetMonthlyReport\_emptyList()} \\ \hline
+\end{longtable}
+
+\paragraph{TC-GMR3 -- Mese non valido (boundary violation)}
+\label{sec:TC-GMR3}
+\begin{longtable}{|p{4cm}|p{10.3cm}|}
+\hline
+Input & year = 2024, month = 13 \\ \hline
+Output atteso (Oracle) & Il metodo deve lanciare \texttt{DateTimeException} \\ \hline
+Test JUnit & \texttt{testGetMonthlyReport\_invalidMonth()} \\ \hline
+\end{longtable}
+
+\subsubsection{Oracle dei test}
+Per la verifica della correttezza sono stati utilizzati: la verifica dello stato del risultato, la verifica delle interazioni con repository e mapper, la verifica delle eccezioni in caso di input non valido.
+
+\textbf{Controllo del comportamento in caso di successo:}
+\begin{lstlisting}
+assertEquals(1, result.size());
+assertEquals(dto, result.get(0));
+\end{lstlisting}
+
+\textbf{Controllo del caso lista vuota:}
+\begin{lstlisting}
+assertTrue(result.isEmpty());
+\end{lstlisting}
+
+\textbf{Controllo del caso input non valido:}
+\begin{lstlisting}
+assertThrows(
+    DateTimeException.class,
+    () -> userService.getMonthlyReport(2024, 13)
+);
+\end{lstlisting}
+
+\textbf{Controllo delle interazioni con le dipendenze:}
+\begin{lstlisting}
+verify(userRepository)
+    .getUserReports(startDate, endDate);
+
+verify(userReportMapper)
+    .mapToDTO(projection);
+\end{lstlisting}
 
 \printindex
 

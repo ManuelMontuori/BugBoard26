@@ -47,7 +47,7 @@ public class ReportRowService {
         wlBox.setPrefWidth(80);
         wlBox.setAlignment(Pos.CENTER_LEFT);
 
-        String tempoStr = r.averageResolutionTime() != null ? String.format("%.1f gg", r.averageResolutionTime()) : "—";
+        String tempoStr = r.averageResolutionTime() != null ? String.format("%.1f h", r.averageResolutionTime()) : "—";
         Label avg = new Label(tempoStr);
         avg.getStyleClass().add("report-td");
         avg.setPrefWidth(100);

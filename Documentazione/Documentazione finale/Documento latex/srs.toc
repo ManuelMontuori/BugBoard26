@@ -1,89 +1,139 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {section}{\numberline {1}Introduzione}{5}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Scopo del documento}{5}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Campo di applicazione del sistema}{5}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Definizioni, sinonimi adottati e abbreviazioni}{5}{subsection.1.3}%
-\contentsline {subsubsection}{\numberline {1.3.1}Definizioni (Glossario)}{5}{subsubsection.1.3.1}%
-\contentsline {subsubsection}{\numberline {1.3.2}Sinonimi adottati}{7}{subsubsection.1.3.2}%
-\contentsline {subsubsection}{\numberline {1.3.3}Abbreviazioni}{7}{subsubsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.4}Riferimenti}{7}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Panoramica del documento}{8}{subsection.1.5}%
-\contentsline {section}{\numberline {2}Descrizione generale}{9}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Prospettiva del prodotto}{9}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Funzionalità del prodotto}{9}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Utenti e attori del sistema}{10}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Requisiti specifici}{11}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Requisiti funzionali}{11}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}RE01 - Log in utente}{11}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}RE02 - Nuova utenza (Amministratore)}{11}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}RE03 - Segnala issue}{12}{subsubsection.3.1.3}%
-\contentsline {subsubsection}{\numberline {3.1.4}RE04 - Assegna issue}{13}{subsubsection.3.1.4}%
-\contentsline {subsubsection}{\numberline {3.1.5}RE05 - Visualizza riepilogo issue}{14}{subsubsection.3.1.5}%
-\contentsline {subsubsection}{\numberline {3.1.6}RE06 - Visualizza report team}{15}{subsubsection.3.1.6}%
-\contentsline {subsubsection}{\numberline {3.1.7}RE07 - Utente visualizza le proprie issue assegnate}{15}{subsubsection.3.1.7}%
-\contentsline {subsubsection}{\numberline {3.1.8}RE08 - Filtra issue}{15}{subsubsection.3.1.8}%
-\contentsline {subsubsection}{\numberline {3.1.9}RE09 - Ordina issue}{16}{subsubsection.3.1.9}%
-\contentsline {subsubsection}{\numberline {3.1.10}RE010 - Ricerca issue}{17}{subsubsection.3.1.10}%
-\contentsline {subsubsection}{\numberline {3.1.11}RE011 - Visualizza notifiche}{18}{subsubsection.3.1.11}%
-\contentsline {subsubsection}{\numberline {3.1.12}RE012 - Lettura notifiche}{18}{subsubsection.3.1.12}%
-\contentsline {subsubsection}{\numberline {3.1.13}RE013 - Workload}{19}{subsubsection.3.1.13}%
-\contentsline {subsection}{\numberline {3.2}Modellazione dei casi d'uso tramite Use Case Diagram}{19}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Use Case Diagram}{19}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Use Case Diagram parziale 1}{20}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Use Case Diagram parziale 2}{21}{subsubsection.3.2.3}%
-\contentsline {subsubsection}{\numberline {3.2.4}Use Case Diagram parziale 3}{22}{subsubsection.3.2.4}%
-\contentsline {subsubsection}{\numberline {3.2.5}Use Case Diagram parziale 4}{23}{subsubsection.3.2.5}%
-\contentsline {subsubsection}{\numberline {3.2.6}Use Case Diagram parziale 6}{24}{subsubsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.3}Requisiti non funzionali}{24}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}RNF01 - Sicurezza}{24}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}RNF02 - Affidabilità}{25}{subsubsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.3}RNF03 - Prestazioni}{25}{subsubsection.3.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.4}RNF04 - Usabilità}{25}{subsubsection.3.3.4}%
-\contentsline {subsubsection}{\numberline {3.3.5}RNF05 - Scalabilità}{25}{subsubsection.3.3.5}%
-\contentsline {subsubsection}{\numberline {3.3.6}RNF06 - Portabilità e indipendenza tra i componenti}{25}{subsubsection.3.3.6}%
-\contentsline {subsubsection}{\numberline {3.3.7}RNF07 - Manutenibilità}{26}{subsubsection.3.3.7}%
-\contentsline {subsection}{\numberline {3.4}Formalizzazione di casi d'uso significativi}{26}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Tabella di Cockburn 1}{26}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Tabella di Cockburn 2}{27}{subsubsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.5}Prototipazione visuale del caso d'uso 3.3.3 Segnala Issue}{28}{subsection.3.5}%
-\contentsline {subsubsection}{\numberline {3.5.1}Segnala Issue - Mockup 1}{29}{subsubsection.3.5.1}%
-\contentsline {subsubsection}{\numberline {3.5.2}Segnala Issue - Mockup 2}{30}{subsubsection.3.5.2}%
-\contentsline {subsubsection}{\numberline {3.5.3}Segnala Issue - Mockup 3}{31}{subsubsection.3.5.3}%
-\contentsline {subsubsection}{\numberline {3.5.4}Segnala Issue - Mockup 4}{32}{subsubsection.3.5.4}%
-\contentsline {subsection}{\numberline {3.6}Prototipazione visuale del caso d'uso Assegna Issue}{32}{subsection.3.6}%
-\contentsline {subsubsection}{\numberline {3.6.1}Assegna Issue - Mockup 1}{33}{subsubsection.3.6.1}%
-\contentsline {subsubsection}{\numberline {3.6.2}Assegna Issue - Mockup 2}{34}{subsubsection.3.6.2}%
-\contentsline {subsubsection}{\numberline {3.6.3}Assegna Issue - Mockup 3}{35}{subsubsection.3.6.3}%
-\contentsline {subsubsection}{\numberline {3.6.4}Assegna Issue - Mockup 4}{36}{subsubsection.3.6.4}%
-\contentsline {section}{\numberline {4}Documento di design del sistema}{37}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Analisi dell'Architettura}{37}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Server}{37}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Persistenza}{38}{subsubsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.3}Client}{38}{subsubsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.2}Scelte tecnologiche e motivazioni}{39}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Server}{39}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Persistenza}{39}{subsubsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.3}Client}{40}{subsubsection.4.2.3}%
-\contentsline {section}{\numberline {5}Documento di Design del Software}{41}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Descrizione dello schema di persistenza dei dati}{41}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Class Diagram di Design}{41}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Class Diagram 1- Model}{41}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Class Diagram 2- Funzionalità 2}{43}{subsubsection.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.2.3}Class Diagram 3- Funzionalità 3}{43}{subsubsection.5.2.3}%
-\contentsline {subsubsection}{\numberline {5.2.4}Class Diagram 4- Funzionalità 4 e 14}{44}{subsubsection.5.2.4}%
-\contentsline {subsubsection}{\numberline {5.2.5}Class Diagram 5- Funzionalità 11}{45}{subsubsection.5.2.5}%
-\contentsline {subsubsection}{\numberline {5.2.6}Class Diagram 6- Funzionalità 17}{46}{subsubsection.5.2.6}%
-\contentsline {subsection}{\numberline {5.3}Package Diagram Frontend}{48}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Descrizione e motivazione delle scelte di software design adottate}{49}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Strumento di Versioning}{50}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Containerizzazione, build automatica e Cloud Deploy}{51}{subsection.5.6}%
-\contentsline {subsubsection}{\numberline {5.6.1}Build automatica}{51}{subsubsection.5.6.1}%
-\contentsline {subsubsection}{\numberline {5.6.2}Containerizzazione}{51}{subsubsection.5.6.2}%
-\contentsline {subsubsection}{\numberline {5.6.3}Deploy AWS}{52}{subsubsection.5.6.3}%
-\contentsline {subsubsection}{\numberline {5.6.4}Report di qualità del codice}{53}{subsubsection.5.6.4}%
-\contentsline {paragraph}{Indice di duplicazione}{53}{paragraph*.1}%
-\contentsline {paragraph}{Indice degli Errori}{54}{paragraph*.2}%
-\contentsline {paragraph}{Report di qualità Overall}{54}{paragraph*.3}%
-\contentsline {paragraph}{Report di qualità NewCode}{54}{paragraph*.4}%
-\contentsline {section}{Indice analitico}{56}{section*.5}%
+\contentsline {section}{\numberline {1}Introduzione}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Scopo del documento}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Campo di applicazione del sistema}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Definizioni, sinonimi adottati e abbreviazioni}{7}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Definizioni (Glossario)}{7}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Sinonimi adottati}{9}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Abbreviazioni}{9}{subsubsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.4}Riferimenti}{9}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Panoramica del documento}{9}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Descrizione generale}{12}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Prospettiva del prodotto}{12}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Funzionalità del prodotto}{12}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Utenti e attori del sistema}{13}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Requisiti specifici}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Requisiti funzionali}{14}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}RE01 - Log in utente}{14}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}RE02 - Nuova utenza (Amministratore)}{14}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}RE03 - Segnala issue}{15}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}RE04 - Assegna issue}{16}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}RE05 - Visualizza riepilogo issue}{17}{subsubsection.3.1.5}%
+\contentsline {subsubsection}{\numberline {3.1.6}RE06 - Visualizza report team}{18}{subsubsection.3.1.6}%
+\contentsline {subsubsection}{\numberline {3.1.7}RE07 - Utente visualizza le proprie issue assegnate}{18}{subsubsection.3.1.7}%
+\contentsline {subsubsection}{\numberline {3.1.8}RE08 - Filtra issue}{18}{subsubsection.3.1.8}%
+\contentsline {subsubsection}{\numberline {3.1.9}RE09 - Ordina issue}{19}{subsubsection.3.1.9}%
+\contentsline {subsubsection}{\numberline {3.1.10}RE10 - Ricerca issue}{20}{subsubsection.3.1.10}%
+\contentsline {subsubsection}{\numberline {3.1.11}RE11 - Visualizza notifiche}{21}{subsubsection.3.1.11}%
+\contentsline {subsubsection}{\numberline {3.1.12}RE12 - Lettura notifiche}{21}{subsubsection.3.1.12}%
+\contentsline {subsubsection}{\numberline {3.1.13}RE13 - Workload}{22}{subsubsection.3.1.13}%
+\contentsline {subsection}{\numberline {3.2}Modellazione dei casi d'uso tramite Use Case Diagram}{22}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Use Case Diagram}{22}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Use Case Diagram parziale 1}{23}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Use Case Diagram parziale 2}{24}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Use Case Diagram parziale 3}{25}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Use Case Diagram parziale 4}{26}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Use Case Diagram parziale 6}{27}{subsubsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.3}Requisiti non funzionali}{27}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}RNF01 - Sicurezza}{27}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}RNF02 - Affidabilità}{28}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}RNF03 - Prestazioni}{28}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}RNF04 - Usabilità}{28}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}RNF05 - Scalabilità}{28}{subsubsection.3.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.6}RNF06 - Portabilità e indipendenza tra i componenti}{28}{subsubsection.3.3.6}%
+\contentsline {subsubsection}{\numberline {3.3.7}RNF07 - Manutenibilità}{29}{subsubsection.3.3.7}%
+\contentsline {subsection}{\numberline {3.4}Formalizzazione di casi d'uso significativi}{29}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Tabella di Cockburn 1}{29}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Tabella di Cockburn 2}{30}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}Prototipazione visuale del caso d'uso 3.3.3 Segnala Issue}{31}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Segnala Issue - Mockup 1}{32}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Segnala Issue - Mockup 2}{33}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Segnala Issue - Mockup 3}{34}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Segnala Issue - Mockup 4}{35}{subsubsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.6}Prototipazione visuale del caso d'uso Assegna Issue}{35}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Assegna Issue - Mockup 1}{36}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Assegna Issue - Mockup 2}{37}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Assegna Issue - Mockup 3}{38}{subsubsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.4}Assegna Issue - Mockup 4}{39}{subsubsection.3.6.4}%
+\contentsline {section}{\numberline {4}Documento di design del sistema}{40}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Analisi dell'Architettura}{40}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Server}{40}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Persistenza}{41}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Client}{41}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Scelte tecnologiche e motivazioni}{42}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Server}{42}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Persistenza}{42}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Client}{43}{subsubsection.4.2.3}%
+\contentsline {section}{\numberline {5}Documento di Design del Software}{44}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Descrizione dello schema di persistenza dei dati}{44}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Class Diagram di Design}{44}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Class Diagram 1- Model}{44}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Class Diagram 2- Funzionalità 2}{46}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Class Diagram 3- Funzionalità 3}{46}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Class Diagram 4- Funzionalità 4 e 14}{47}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}Class Diagram 5- Funzionalità 11}{48}{subsubsection.5.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.6}Class Diagram 6- Funzionalità 17}{49}{subsubsection.5.2.6}%
+\contentsline {subsection}{\numberline {5.3}Package Diagram Frontend}{51}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Descrizione e motivazione delle scelte di software design adottate}{52}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Strumento di Versioning}{53}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Containerizzazione, build automatica e Cloud Deploy}{54}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Build automatica}{54}{subsubsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.2}Containerizzazione}{54}{subsubsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.3}Deploy AWS}{56}{subsubsection.5.6.3}%
+\contentsline {subsubsection}{\numberline {5.6.4}Report di qualità del codice}{56}{subsubsection.5.6.4}%
+\contentsline {paragraph}{Indice di duplicazione}{56}{paragraph*.1}%
+\contentsline {paragraph}{Indice degli Errori}{57}{paragraph*.2}%
+\contentsline {paragraph}{Report di qualità Overall}{58}{paragraph*.3}%
+\contentsline {paragraph}{Report di qualità NewCode}{58}{paragraph*.4}%
+\contentsline {section}{\numberline {6}Test Plan}{58}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Test della funzionalità RE04 -- Assegna issue}{58}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Analisi delle classi di equivalenza}{59}{subsubsection.6.1.1}%
+\contentsline {paragraph}{Input 1 -- Issue UUID}{59}{paragraph*.5}%
+\contentsline {paragraph}{Input 2 -- User UUID}{59}{paragraph*.6}%
+\contentsline {paragraph}{Input 3 -- Ruolo utente che effettua l'operazione}{59}{paragraph*.7}%
+\contentsline {subsubsection}{\numberline {6.1.2}TC1 -- Assegnazione corretta}{59}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.3}TC2 -- Utente assegnatario inesistente}{59}{subsubsection.6.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.4}TC3 -- Issue inesistente}{60}{subsubsection.6.1.4}%
+\contentsline {subsubsection}{\numberline {6.1.5}TC4 -- Issue inesistente e utente inesistente}{60}{subsubsection.6.1.5}%
+\contentsline {subsubsection}{\numberline {6.1.6}TC5 -- Verifica creazione notifica}{60}{subsubsection.6.1.6}%
+\contentsline {subsubsection}{\numberline {6.1.7}TC6 -- Visualizzazione dei bug assegnati}{60}{subsubsection.6.1.7}%
+\contentsline {subsubsection}{\numberline {6.1.8}TC7 -- Assegnazione tentata da utente non amministratore}{61}{subsubsection.6.1.8}%
+\contentsline {subsubsection}{\numberline {6.1.9}Copertura delle classi di equivalenza}{61}{subsubsection.6.1.9}%
+\contentsline {subsection}{\numberline {6.2}Test del metodo \texttt {assignIssue} -- \texttt {IssueWriteService}}{61}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Metodo sottoposto a test}{61}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Strategia adottata}{61}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Black box}{62}{subsubsection.6.2.3}%
+\contentsline {paragraph}{Parametro issueId}{62}{paragraph*.8}%
+\contentsline {paragraph}{Parametro userId}{62}{paragraph*.9}%
+\contentsline {subsubsection}{\numberline {6.2.4}Casi di test progettati}{62}{subsubsection.6.2.4}%
+\contentsline {paragraph}{TC-AI1 -- Assegnazione corretta}{62}{paragraph*.10}%
+\contentsline {paragraph}{TC-AI2 -- Utente non trovato}{62}{paragraph*.11}%
+\contentsline {paragraph}{TC-AI3 -- Issue non trovata}{62}{paragraph*.12}%
+\contentsline {subsubsection}{\numberline {6.2.5}White box}{63}{subsubsection.6.2.5}%
+\contentsline {subsubsection}{\numberline {6.2.6}Oracle dei test}{63}{subsubsection.6.2.6}%
+\contentsline {subsection}{\numberline {6.3}Test del metodo \texttt {createNotification} -- \texttt {NotificationWriteService}}{64}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Metodo sottoposto a test}{64}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Strategia adottata}{64}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Black box}{64}{subsubsection.6.3.3}%
+\contentsline {paragraph}{Parametro Issue}{64}{paragraph*.13}%
+\contentsline {paragraph}{Parametro User}{64}{paragraph*.14}%
+\contentsline {paragraph}{Persistenza}{65}{paragraph*.15}%
+\contentsline {subsubsection}{\numberline {6.3.4}Casi di test progettati}{65}{subsubsection.6.3.4}%
+\contentsline {paragraph}{TC-CN1 -- Creazione notifica corretta}{65}{paragraph*.16}%
+\contentsline {paragraph}{TC-CN2 -- Errore del repository}{65}{paragraph*.17}%
+\contentsline {subsubsection}{\numberline {6.3.5}Oracle dei test}{65}{subsubsection.6.3.5}%
+\contentsline {subsection}{\numberline {6.4}Test del metodo \texttt {getMonthlyReport} -- \texttt {UserReadService}}{66}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Metodo sottoposto a test}{66}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Strategia adottata}{66}{subsubsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.3}Black box}{66}{subsubsection.6.4.3}%
+\contentsline {paragraph}{Parametro year}{67}{paragraph*.18}%
+\contentsline {paragraph}{Parametro month}{67}{paragraph*.19}%
+\contentsline {paragraph}{Boundary Value Analysis (BVA)}{67}{paragraph*.20}%
+\contentsline {paragraph}{Stato dei dati nel repository}{67}{paragraph*.21}%
+\contentsline {subsubsection}{\numberline {6.4.4}Casi di test progettati}{67}{subsubsection.6.4.4}%
+\contentsline {paragraph}{TC-GMR1 -- Report mensile con dati presenti}{67}{paragraph*.22}%
+\contentsline {paragraph}{TC-GMR2 -- Nessun dato disponibile}{67}{paragraph*.23}%
+\contentsline {paragraph}{TC-GMR3 -- Mese non valido (boundary violation)}{68}{paragraph*.24}%
+\contentsline {subsubsection}{\numberline {6.4.5}Oracle dei test}{68}{subsubsection.6.4.5}%
+\contentsline {section}{Indice analitico}{69}{section*.25}%
