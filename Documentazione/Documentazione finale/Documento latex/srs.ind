@@ -65,6 +65,7 @@
   \item Notifiche, \hyperpage{13}
     \subitem Invio, \hyperpage{13}
     \subitem Lettura notifiche, \hyperpage{21}
+    \subitem Leuttura, \hyperpage{13}
   \item Nuova utenza (Amministratore), \hyperpage{12}, \hyperpage{14}
 
   \indexspace
@@ -82,7 +83,7 @@
 
   \indexspace
 
-  \item Test, \hyperpage{58}
+  \item Test, \hyperpage{59}
     \subitem Assegnazione corretta, \hyperpage{59}
     \subitem Assegnazione da utente non amministratore, \hyperpage{61}
     \subitem assignIssue, \hyperpage{61}
@@ -90,11 +91,11 @@
     \subitem Copertura classi di equivalenza, \hyperpage{61}
     \subitem createNotification, \hyperpage{64}
     \subitem Creazione notifica, \hyperpage{60}
-    \subitem getMonthlyReport, \hyperpage{66}
+    \subitem getMonthlyReport, \hyperpage{67}
     \subitem Issue e utente inesistenti, \hyperpage{60}
     \subitem Issue inesistente, \hyperpage{60}
-    \subitem Utente assegnatario inesistente, \hyperpage{59}
-    \subitem Visualizzazione bug assegnati, \hyperpage{60}
+    \subitem Utente assegnatario inesistente, \hyperpage{60}
+    \subitem Visualizzazione bug assegnati, \hyperpage{61}
 
   \indexspace
 

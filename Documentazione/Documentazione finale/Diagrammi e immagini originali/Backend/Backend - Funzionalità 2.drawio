@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
   <diagram name="Pagina-1" id="enoDCJBWCiJGH16qNviD">
-    <mxGraphModel dx="802" dy="482" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1489" dy="894" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -180,14 +180,14 @@
         <mxCell id="4_JXvfvc2ievQTm_BiJA-100" connectable="0" parent="4_JXvfvc2ievQTm_BiJA-99" style="group;fillColor=#dae8fc;strokeColor=#6c8ebf;container=0;" value="" vertex="1">
           <mxGeometry height="60" width="260" as="geometry" />
         </mxCell>
-        <mxCell id="4_JXvfvc2ievQTm_BiJA-101" parent="4_JXvfvc2ievQTm_BiJA-99" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="" vertex="1">
+        <mxCell id="4_JXvfvc2ievQTm_BiJA-101" parent="4_JXvfvc2ievQTm_BiJA-99" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="-issueMapper: IssueMapper&lt;div&gt;-issueRepository: IssueRepository&lt;/div&gt;&lt;div&gt;-authService: AuthService&lt;/div&gt;" vertex="1">
           <mxGeometry height="70" width="260" y="60" as="geometry" />
         </mxCell>
         <mxCell id="4_JXvfvc2ievQTm_BiJA-102" parent="4_JXvfvc2ievQTm_BiJA-99" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b style=&quot;&quot;&gt;IssueWriteService&lt;br&gt;&lt;/b&gt;" vertex="1">
           <mxGeometry height="60" width="260" as="geometry" />
         </mxCell>
         <mxCell id="4_JXvfvc2ievQTm_BiJA-103" parent="4_JXvfvc2ievQTm_BiJA-99" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="+createIssue(dto:CreateIssueDTO):IssueDTO" vertex="1">
-          <mxGeometry height="120" width="260" y="90" as="geometry" />
+          <mxGeometry height="80" width="260" y="130" as="geometry" />
         </mxCell>
         <mxCell id="4_JXvfvc2ievQTm_BiJA-105" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;entryX=0.587;entryY=-0.035;entryDx=0;entryDy=0;entryPerimeter=0;" target="4_JXvfvc2ievQTm_BiJA-112">
           <mxGeometry relative="1" as="geometry">
@@ -349,6 +349,9 @@
           <mxGeometry relative="1" x="-0.7663" y="-1" as="geometry">
             <mxPoint x="44" y="-69" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="6i7CmGY_DGi2PXCckyrX-1" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=center;fillColor=#FFFF99;strokeColor=#B09500;fontColor=#000000;" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;La notazione &lt;/span&gt;&lt;i style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;lt;&amp;lt;DI&amp;gt;&amp;gt; indica una Dependency Injection&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="135" width="130" x="284" y="860" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

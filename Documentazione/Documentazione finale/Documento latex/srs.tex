@@ -258,6 +258,15 @@ Containerizzazione, build automatica e Cloud Deploy & Presenta la strategia di b
 Report di qualità del codice & Riporta le metriche e i risultati dell'analisi della qualità del codice tramite SonarQube. \\ \hline 
 \end{longtable}
 
+In \hyperref[sec:testPlan]{\textbf{"6. Test Plan"}} vengono descritti in dettaglio i test effettuati.
+\begin{longtable}{|p{5cm}|p{9cm}|} 
+\hline 
+Test per la funzioanlità 4 - Assegna Issue & Test Plan completo per l'intera funzioanlità \\ \hline 
+Test del metodo \texttt{AssignIssue} & Descrizione della classe di test per il metoso \texttt{AssignIssue} \\ \hline 
+Test del metodo \texttt{createNotification} & Descrizione della classe di test per il metodo \texttt{createNotification} \\ \hline 
+Test del metodo \texttt{getMonthlyReport} & Descrizione della classe di test per il metodo \texttt{createNotification} \\ \hline 
+\end{longtable}
+
 \newpage
 \label{sec:descrizioneGenerale}
 \section{Descrizione generale}
@@ -287,12 +296,12 @@ Tutti gli utenti devono autenticarsi prima di accedere alle funzionalità.
         \item \hyperref[sec:RE05]{Visualizza issue:}\index{Vista!Riepilogo issue} gli utenti autenticati possono visualizzare la lista delle issue.
         \item \hyperref[sec:RE06]{Visualizza report team:}\index{Vista!Report mensile} Gli amministratori hanno accesso ai report mensili del team.
         \item \hyperref[sec:RE07]{Visualizza issue utente:}\index{Vista!Issue personali} Gli utenti autenticati possono visualizzare le issue assegnategli da un amministratore.
-        \item{Visualizza notifiche:} \index{Vista!Notifiche} Il sistema fornisce una dashboard per la visualizzazione e gestione delle proprie notifiche.
+        \item\hyperref[sec:RE11]{Visualizza notifiche:} \index{Vista!Notifiche} Il sistema fornisce una dashboard per la visualizzazione e gestione delle proprie notifiche.
     \end{itemize}
     \item Categoria Notifiche\index{Notifiche} -  \textit{BugBoard26}  gestisce l'invio di notifiche agli utenti.
     \begin{itemize}
-        \item{Invio notifiche:}\index{Notifiche!Invio} Il sistema notifica un utente quando un amministratore gli assegna una nuova issue.
-        \item{Lettura notifiche:} Un utente può segnare le proprie notifiche come lette o come non lette.
+        \item \hyperref[sec:RE04]{Invio notifiche:} \index{Notifiche!Invio} Il sistema notifica un utente quando un amministratore gli assegna una nuova issue.
+        \item \hyperref[sec:RE12]{Lettura notifiche} \index{Notifiche!Leuttura} Un utente può segnare le proprie notifiche come lette o come non lette.
     \end{itemize}
 \end{itemize}
 
@@ -1294,7 +1303,7 @@ Come illustrato dal grafico, all'inizio dello sviluppo sono stati trovati 20 err
 
 \newpage
 \section{Test Plan}
-\label{sec:pianoDiTest}
+\label{sec:testPlan}
 \index{Test}
 
 \subsection{Test della funzionalità RE04 -- Assegna issue}

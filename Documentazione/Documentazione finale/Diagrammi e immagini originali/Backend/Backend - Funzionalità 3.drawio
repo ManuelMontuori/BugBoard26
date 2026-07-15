@@ -19,7 +19,7 @@
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-5" parent="EWcc6Fy7PLHwlRgdAxGv-2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;b&gt;IssueController&lt;/b&gt;" vertex="1">
           <mxGeometry height="60" width="390" as="geometry" />
         </mxCell>
-        <mxCell id="EWcc6Fy7PLHwlRgdAxGv-6" parent="EWcc6Fy7PLHwlRgdAxGv-2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" value="+getIssue(status: IssueStatur, priority: IssuePriority, type: IssueType):List&amp;lt;IssueDTO&amp;gt;" vertex="1">
+        <mxCell id="EWcc6Fy7PLHwlRgdAxGv-6" parent="EWcc6Fy7PLHwlRgdAxGv-2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" value="+getIssue(status: IssueStatus, priority: IssuePriority, type: IssueType):List&amp;lt;IssueDTO&amp;gt;" vertex="1">
           <mxGeometry height="60" width="390" y="90" as="geometry" />
         </mxCell>
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-7" connectable="0" parent="1" style="group;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
@@ -34,7 +34,7 @@
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-10" parent="EWcc6Fy7PLHwlRgdAxGv-7" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b style=&quot;&quot;&gt;IssueService&lt;/b&gt;" vertex="1">
           <mxGeometry height="60" width="375" as="geometry" />
         </mxCell>
-        <mxCell id="EWcc6Fy7PLHwlRgdAxGv-11" parent="EWcc6Fy7PLHwlRgdAxGv-7" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="+getIssues(status: IssueStatur, priority: IssuePriority, type: IssueType):List&amp;lt;IssueDTO&amp;gt;" vertex="1">
+        <mxCell id="EWcc6Fy7PLHwlRgdAxGv-11" parent="EWcc6Fy7PLHwlRgdAxGv-7" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="+getIssues(status: IssueStatus, priority: IssuePriority, type: IssueType):List&amp;lt;IssueDTO&amp;gt;" vertex="1">
           <mxGeometry height="60" width="375" y="90" as="geometry" />
         </mxCell>
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-12" edge="1" parent="1" source="EWcc6Fy7PLHwlRgdAxGv-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=open;endFill=0;" target="EWcc6Fy7PLHwlRgdAxGv-9">
@@ -64,7 +64,7 @@
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-18" parent="EWcc6Fy7PLHwlRgdAxGv-15" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b style=&quot;&quot;&gt;IssueServiceImpl&lt;br&gt;&lt;/b&gt;" vertex="1">
           <mxGeometry height="60" width="375.00000000000006" as="geometry" />
         </mxCell>
-        <mxCell id="EWcc6Fy7PLHwlRgdAxGv-19" parent="EWcc6Fy7PLHwlRgdAxGv-15" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="+getIssues(status: IssueStatur, priority: IssuePriority, type: IssueType):List&amp;lt;IssueDTO&amp;gt;" vertex="1">
+        <mxCell id="EWcc6Fy7PLHwlRgdAxGv-19" parent="EWcc6Fy7PLHwlRgdAxGv-15" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="+getIssues(status: IssueStatus, priority: IssuePriority, type: IssueType):List&amp;lt;IssueDTO&amp;gt;" vertex="1">
           <mxGeometry height="80" width="375.00000000000006" y="130" as="geometry" />
         </mxCell>
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-20" connectable="0" parent="1" style="group;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
@@ -370,7 +370,7 @@
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-92" parent="EWcc6Fy7PLHwlRgdAxGv-89" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b style=&quot;&quot;&gt;IssueReadService&lt;br&gt;&lt;/b&gt;" vertex="1">
           <mxGeometry height="60" width="260" as="geometry" />
         </mxCell>
-        <mxCell id="EWcc6Fy7PLHwlRgdAxGv-93" parent="EWcc6Fy7PLHwlRgdAxGv-89" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="+getIssues(status: IssueStatur, priority: IssuePriority, type: IssueType):List&amp;lt;IssueDTO&amp;gt;" vertex="1">
+        <mxCell id="EWcc6Fy7PLHwlRgdAxGv-93" parent="EWcc6Fy7PLHwlRgdAxGv-89" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" value="+getIssues(status: IssueStatus, priority: IssuePriority, type: IssueType):List&amp;lt;IssueDTO&amp;gt;" vertex="1">
           <mxGeometry height="80" width="260" y="130" as="geometry" />
         </mxCell>
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-94" edge="1" parent="1" source="EWcc6Fy7PLHwlRgdAxGv-92" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.519;entryY=1.018;entryDx=0;entryDy=0;exitX=0.575;exitY=-0.009;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;startArrow=open;startFill=0;" target="EWcc6Fy7PLHwlRgdAxGv-19" value="">
@@ -478,6 +478,9 @@
         </mxCell>
         <mxCell id="EWcc6Fy7PLHwlRgdAxGv-120" connectable="0" parent="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;i&gt;&amp;lt;&amp;lt;use&amp;gt;&amp;gt;&lt;/i&gt;" vertex="1">
           <mxGeometry x="1230" y="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="pHMxztwV_wcPlgKrAVRd-1" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=center;fillColor=#FFFF99;strokeColor=#B09500;fontColor=#000000;" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;La notazione &lt;/span&gt;&lt;i style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;lt;&amp;lt;DI&amp;gt;&amp;gt; indica una Dependency Injection&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="135" width="130" x="830" y="450" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -28,6 +28,7 @@
 \indexentry{Vista!Notifiche|hyperpage}{12}
 \indexentry{Notifiche|hyperpage}{13}
 \indexentry{Notifiche!Invio|hyperpage}{13}
+\indexentry{Notifiche!Leuttura|hyperpage}{13}
 \indexentry{Autenticazione|hyperpage}{14}
 \indexentry{Nuova utenza (Amministratore)|hyperpage}{14}
 \indexentry{Issue!Segnalazione|hyperpage}{15}
@@ -105,16 +106,16 @@
 \indexentry{Database|hyperpage}{56}
 \indexentry{Amazon Web Services (AWS)!Cognito|hyperpage}{56}
 \indexentry{SonarQube|hyperpage}{56}
-\indexentry{Test|hyperpage}{58}
+\indexentry{Test|hyperpage}{59}
 \indexentry{Test!Classi di equivalenza|hyperpage}{59}
 \indexentry{Test!Assegnazione corretta|hyperpage}{59}
-\indexentry{Test!Utente assegnatario inesistente|hyperpage}{59}
+\indexentry{Test!Utente assegnatario inesistente|hyperpage}{60}
 \indexentry{Test!Issue inesistente|hyperpage}{60}
 \indexentry{Test!Issue e utente inesistenti|hyperpage}{60}
 \indexentry{Test!Creazione notifica|hyperpage}{60}
-\indexentry{Test!Visualizzazione bug assegnati|hyperpage}{60}
+\indexentry{Test!Visualizzazione bug assegnati|hyperpage}{61}
 \indexentry{Test!Assegnazione da utente non amministratore|hyperpage}{61}
 \indexentry{Test!Copertura classi di equivalenza|hyperpage}{61}
 \indexentry{Test!assignIssue|hyperpage}{61}
 \indexentry{Test!createNotification|hyperpage}{64}
-\indexentry{Test!getMonthlyReport|hyperpage}{66}
+\indexentry{Test!getMonthlyReport|hyperpage}{67}
