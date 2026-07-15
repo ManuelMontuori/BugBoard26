@@ -38,7 +38,7 @@
 %\fancyhead[R]{}         % destra (vuoto)
 
 % Piè di pagina
-\fancyfoot[L]{\textcolor{gray}{Software Requirements Specifications - \textit{BugBoard26}} \hfill\thepage}
+\fancyfoot[L]{\textcolor{gray}{Documentazione - \textit{BugBoard26}} \hfill\thepage}
 \fancyfoot[C]{}
 \fancyfoot[R]{}
 
@@ -83,7 +83,7 @@
             urlcolor=DarkOrange3]{hyperref}
 
 
-\title{\textbf{Software Requirements Specifications (SRS)} \\ {\Huge BugBoard26} \\ \large Ver. 1.0  }
+\title{\textbf{Documentazione Bugboard26} \\ \large Progetto Ingegneria del Software 2025/2026  }
 \author{Gruppo di Progetto: ID25\\
 \begin{minipage}[t]{0.45\textwidth}
 \raggedright
@@ -151,17 +151,15 @@ BugBoard26 non si occupa dello sviluppo o della risoluzione delle issue, ma escl
         \item \textbf{Feature}: richiesta o suggerimento di nuove funzionalità o miglioramenti.
     \end{itemize}
 
-    \item \textbf{Metrica}: unità di misura quantitativa utilizzata per valutare l'efficienza complessiva del team di sviluppo. Le metriche integrate sono: Numero di issue segnalate, numero di issue gestite e tempo di risoluzione medio complessivo.
+    \item \textbf{Metrica}: unità di misura quantitativa utilizzata per valutare l'efficienza complessiva del team di sviluppo. Le metriche integrate sono: Numero di issue segnalate, numero di issue gestite, tempo di risoluzione medio e carico di lavoro attuale.
 
     \item \textbf{Mock-up}: rappresentazione visiva statica a bassa o media fedeltà di un'interfaccia grafica o di una schermata del sistema per illustrare la disposizione di campi, pulsanti e menu.
 
-    \item \textbf{Notifica}: messaggio automatico generato asincronamente con cui la piattaforma comunica ad utenti autenticati alcune informazioni o eventi di interesse (es. l'avvenuta assegnazione di una issue).
+    \item \textbf{Notifica}: messaggio automatico generato con cui la piattaforma comunica ad utenti autenticati l'avvenuta assegnazione di una issue.
 
     \item \textbf{Priorità}: parametro facoltativo di una issue (\textit{High}, \textit{Medium}, \textit{Low}). Se inserito, definisce l'ordine di importanza e l'urgenza con cui il team di sviluppo deve prendere in carico e risolvere il problema. \index{Priorità}
 
-    \item \textbf{Report}: visualizzazione o documento di riepilogo generato mensilmente che sintetizza dati aggregati e statistiche sulle attività svolte e sulla produttività del team, riservato agli amministratori.
-
-    \item \textbf{Scenario}: sequenza di eventi che descrive l'interazione tra attori e sistema in un caso d'uso specifico.
+    \item \textbf{Report}: visualizzazione di riepilogo generato mensilmente che sintetizza dati aggregati e statistiche sulle attività svolte e sulla produttività del team (riservato agli amministratori).
 
     \item \textbf{Segretezza}: garantisce che le informazioni, i dati sensibili e le risorse di un sistema siano accessibili esclusivamente agli utenti che dispongono dell'autorizzazione esplicita.
 
@@ -180,20 +178,19 @@ BugBoard26 non si occupa dello sviluppo o della risoluzione delle issue, ma escl
 
     \item \textbf{System Under Development (SUD)}: riferimento all'intero ecosistema applicativo software (frontend JavaFX, backend Spring Boot e database PostgreSQL) che si sta progettando e descrivendo nel documento SRS.
 
-    \item \textbf{Utente autenticato}: persona membro del team di sviluppo regolarmente registrata ed autenticata nel sistema tramite procedura di Login.
+    \item \textbf{Utente autenticato}:persona membro del team di sviluppo regolarmente registrata ed autenticata nel sistema tramite procedura di Login.
 
     \item \textbf{Utente generico}: persona del team di sviluppo che non ha ancora effettuato l'accesso al sistema.
 
     \item \textbf{Vista}: l'insieme di informazioni e schermate dell'interfaccia utente accessibili per ciascun utente in base al proprio ruolo.
 
-    \item \textbf{Workload}: indicatore quantitativo calcolato sul numero di issue in stato \textit{In Progress} assegnate a ogni singolo utente, utilizzato dal sistema per suggerire l'operatore più idoneo a ricevere una nuova assegnazione. \index{Vista!Workload}
+    \item \textbf{Workload}:indicatore quantitativo calcolato sul numero di issue in stato \textit{In Progress} assegnate a ogni singolo utente, utilizzato dal sistema per suggerire l'operatore più idoneo a ricevere una nuova assegnazione. \index{Vista!Workload}
 \end{itemize}
 
 \subsubsection{Sinonimi adottati}
 \begin{itemize}
-    \item Membro del team, utente, utente generico, utente registrato.
+    \item Membro del team, utente
     \item Lista, elenco, vista delle issue, riepilogo issue.
-    \item Ospite, visitatore, stakeholder esterno, stakeholder generico.
     \item Sistema software, applicativo software, prodotto software, SUD, piattaforma, BugBoard26.
     \item Autenticazione, log in, accesso.
     \item Amministratore, admin, utente con permessi aggiuntivi.
@@ -207,6 +204,7 @@ BugBoard26 non si occupa dello sviluppo o della risoluzione delle issue, ma escl
     \item \textbf{DBMS}: Database Management System.
     \item \textbf{UML}: Unified Modeling Language.
     \item \textbf{MU}: Mock-up.
+    \item \textbf{AWS}: Amazon Web Services.
 \end{itemize}
 \subsection{Riferimenti}
 Il presente documento è stato redatto in conformità allo standard IEEE Std 830-1998. \index{IEEE Std 830-1998}
@@ -217,7 +215,7 @@ Riferimenti bibliografici per la stesura del documento:
     \item \textit{Cockburn, A. (2001). Writing Effective Use Cases. Addison-Wesley.}
 \end{itemize}
 \subsection{Panoramica del documento}
-La restante parte di questo documento è suddivisa in due ulteriori capitoli che descrivono le caratteristiche funzionali di \textit{BugBoard26}.\\
+La restante parte di questo documento è suddivisa in cinque ulteriori capitoli che descrivono le caratteristiche funzionali di \textit{BugBoard26}.\\
 \hyperref[sec:descrizioneGenerale]{\textbf{"2. Descrizione generale"}} è composto dai seguenti paragrafi.
 \begin{longtable}{|p{5cm}|p{9cm}|}
 \hline
@@ -261,7 +259,7 @@ Report di qualità del codice & Riporta le metriche e i risultati dell'analisi d
 In \hyperref[sec:testPlan]{\textbf{"6. Test Plan"}} vengono descritti in dettaglio i test effettuati.
 \begin{longtable}{|p{5cm}|p{9cm}|} 
 \hline 
-Test per la funzioanlità 4 - Assegna Issue & Test Plan completo per l'intera funzioanlità \\ \hline 
+Test per la funzionalità 4 - Assegna Issue & Test Plan completo per l'intera funzionalità \\ \hline 
 Test del metodo \texttt{AssignIssue} & Descrizione della classe di test per il metoso \texttt{AssignIssue} \\ \hline 
 Test del metodo \texttt{createNotification} & Descrizione della classe di test per il metodo \texttt{createNotification} \\ \hline 
 Test del metodo \texttt{getMonthlyReport} & Descrizione della classe di test per il metodo \texttt{createNotification} \\ \hline 
@@ -278,27 +276,27 @@ Tutti gli utenti devono autenticarsi prima di accedere alle funzionalità.
 \subsection{Funzionalità del prodotto}
 \textit{BugBoard26} deve fornire le funzionalità \index{Funzionalità} di seguito riportate, che per motivi di chiarezza sono state organizzate in categorie:
 \begin{itemize}
-    \item Categoria Autenticazione\index{Autenticazione} - \textit{BugBoard26} consente l'autenticazione dell'utente, consentedogli di accedere solo alle funzionalità che gli competono.
+    \item \textbf{Categoria Autenticazione}\index{Autenticazione} - \textit{BugBoard26} consente l'autenticazione dell'utente, consentedogli di accedere solo alle funzionalità che gli competono.
     \begin{itemize}
-        \item \hyperref[sec:RE01]{Autenticazione:} \textit{BugBoard26} contente l'autenticazione dell'utente.
+        \item \hyperref[sec:RE01]{Autenticazione:} \textit{BugBoard26} consente l'autenticazione dell'utente.
         \index{Autenticazione}
         \item \hyperref[sec:RE02]{Registrazione nuova utenza (Amministratore):} Un amministratore registra una nuova utenza.\index{Nuova utenza (Amministratore)} 
     \end{itemize}
-    \item Categoria issue\index{Issue} - \textit{BugBoard26} gestisce la segnalazione e l'assegnazione di issue.
+    \item \textbf{Categoria issue}\index{Issue} - \textit{BugBoard26} gestisce la segnalazione e l'assegnazione di issue.
     \begin{itemize}
         \item \hyperref[sec:RE03]{Segnala issue:}\index{Issue!Segnalazione}\index{Issue!Filtra}\index{Issue!Ordina}\index{Issue!Ricerca} Un utente autenticato può segnalare una issue, della quale deve inserire un titolo e una descrizione. Può anche impostare una priorità e un tipo. \index{Priorità}
         \item \hyperref[sec:RE04]{Assegna issue:}\index{Assegna} Un amministratore può assegnare una issue ad un membro del team.
         \item\hyperref[sec:RE13]{Suggerimento utente:} Il sistema mostra una lista di utenti ordinati per carico di lavoro crescente. Il primo della lista viene suggerito esplicitamente all'amministratore.
         \item \hyperref[sec:RE04]{Modifica stato issue:} Quando una issue viene assegnata ad un utente il sistema ne modifica lo stato.\index{Issue!Modifica} 
     \end{itemize}
-    \item Categoria visualizzazioni\index{Vista} -  \textit{BugBoard26} permette di visualizzare informazioni su issue e membri del team.
+    \item \textbf{Categoria visualizzazioni}\index{Vista} -  \textit{BugBoard26} permette di visualizzare informazioni su issue e membri del team.
     \begin{itemize}
         \item \hyperref[sec:RE05]{Visualizza issue:}\index{Vista!Riepilogo issue} gli utenti autenticati possono visualizzare la lista delle issue.
         \item \hyperref[sec:RE06]{Visualizza report team:}\index{Vista!Report mensile} Gli amministratori hanno accesso ai report mensili del team.
         \item \hyperref[sec:RE07]{Visualizza issue utente:}\index{Vista!Issue personali} Gli utenti autenticati possono visualizzare le issue assegnategli da un amministratore.
         \item\hyperref[sec:RE11]{Visualizza notifiche:} \index{Vista!Notifiche} Il sistema fornisce una dashboard per la visualizzazione e gestione delle proprie notifiche.
     \end{itemize}
-    \item Categoria Notifiche\index{Notifiche} -  \textit{BugBoard26}  gestisce l'invio di notifiche agli utenti.
+    \item \textbf{Categoria Notifiche}\index{Notifiche} -  \textit{BugBoard26}  gestisce l'invio di notifiche agli utenti.
     \begin{itemize}
         \item \hyperref[sec:RE04]{Invio notifiche:} \index{Notifiche!Invio} Il sistema notifica un utente quando un amministratore gli assegna una nuova issue.
         \item \hyperref[sec:RE12]{Lettura notifiche} \index{Notifiche!Leuttura} Un utente può segnare le proprie notifiche come lette o come non lette.
@@ -643,7 +641,7 @@ Output & Elenco delle notifiche \\ \hline
 Azione & Il sistema deve mostrare l'elenco delle notifiche \\ \hline
 Precondizione & L'utente deve essere autenticato. \\ \hline
 Effetti collaterali & Nessuno \\ \hline
-Use Case & Incluso in \hyperref[sec:UC06]{Visualizza elenco notifiche - RE11} \\ \hline
+Use Case & Vedi Use case relativo a \hyperref[sec:UC06]{Visualizza elenco notifiche - RE11} \\ \hline
 \end{tabularx}
 
 \subsubsection{RE12 - Lettura notifiche}\index{Notifiche!Lettura notifiche}
@@ -657,6 +655,7 @@ Use Case & Incluso in \hyperref[sec:UC06]{Visualizza elenco notifiche - RE11} \\
 \hline
 \end{tabular} \\
 
+\label{sec:Workload}
 \begin{tabularx}{\textwidth}{p{5cm}|X}
 Funzione & Una notifica può essere impostata come letta \\ \hline
 Descrizione & Il sistema permette all'utente di impostare una notifica come letta o come non letta in qualsiasi momento. \\ \hline
@@ -666,7 +665,7 @@ Output & Parametro di lettura modificato \\ \hline
 Azione & Il sistema deve mostrare l'elenco aggiornato delle notifiche con i realitivi parametri di lettura\\ \hline
 Precondizione & L'utente deve essere autenticato. \\ \hline
 Effetti collaterali & Nessuno \\ \hline
-Use Case &  \\ \hline
+Use Case & Incluso in \hyperref[sec:UC06]{Leggi notifiche - RE12} \\ \hline
 \end{tabularx}
 
 \subsubsection{RE13 - Workload}\index{Workload}
@@ -689,7 +688,7 @@ Output & Lista ordinata di utenti per carico di lavoro \\ \hline
 Azione & Il sistema deve mostrare l'elenco degli utenti ordinata in base al carico di lavoro in ordine crescente \\ \hline
 Precondizione & L'utente deve essere autenticato come amministratore. \\ \hline
 Effetti collaterali & Nessuno \\ \hline
-Use Case &  \\ \hline
+Use Case & Incluso in \hyperref[sec:UC03]{Workload - RE13} \\ \hline
 \end{tabularx}
 
 \subsection{Modellazione dei casi d'uso tramite Use Case Diagram}
@@ -738,9 +737,9 @@ Può anche impostare una priorità\index{Priorità} e un tipo. La issue verrà i
 \end{figure}
 
 \subsubsection{Use Case Diagram parziale 3}\index{Use Case!Assegna issue} \index{Use Case!Visualizza issue assegnate}
-\label{sec:UC03}
 Il seguente Use Case è un estratto dello Use Case generale. Non aggiunge informazioni al caso d'uso specifico. Serve solamente a focalizzare l'attenzione sul caso/i d'uso specifico/i.
 I casi d'uso mostrati sono due: \textit{Segnala issue e Visualizza issue assegnate}. 
+\label{sec:UC03}
 \begin{itemize}
     \item \textit{Assegna issue}. L'attore principale è un amministratore. Esso può assegnare una issue a membri del team, ammesso che la issue non risulti già assegnata.
     Il sistema modificherà lo stato della issue da \textit{Todo} a \textit{In Progress} e invierà una notifica all'utente al quale è stata assegata la issue. 
@@ -749,7 +748,7 @@ I casi d'uso mostrati sono due: \textit{Segnala issue e Visualizza issue assegna
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Parziali/BugBoard26_Visualizza&Assegna.jpg}
-    \caption{Use Case3 - \hyperref[sec:RE04]{Requisito funzionale 3.1.4 - Assegna issue} e \hyperref[sec:RE07]{Requisito funzionale 3.1.7 - Visualizza issue assegnate}}
+    \caption{Use Case3 - \hyperref[sec:RE04]{Requisito funzionale 3.1.4 - Assegna issue}, \hyperref[sec:RE07]{Requisito funzionale 3.1.7 - Visualizza issue assegnate} e \hyperref[sec:UC03]{Requisito funzionale 3.1.13 - Workload}} 
     \label{fig:etichetta}
 \end{figure}
 
@@ -932,7 +931,7 @@ Extension \textit{\#2} - Errore di rete & \begin{minipage}[t]{\linewidth} \begin
 \end{minipage} \strut \\ \hline 
 \end{longtable}
 
-\subsection{Prototipazione visuale del caso d'uso 3.3.3 Segnala Issue}
+\subsection{Prototipazione visuale del caso d'uso Segnala Issue}
 \index{Mockup}
 Le seguenti figure rappresentano la prototipazione visuale via Mock-up delle relative interfacce utente. Non sono da intendersi come rappresentativi dell'aspetto finele 
 della schermata, ma solamente un mezzo per comunicare l'idea dell'interfaccia grafica del prodotto software.
@@ -1014,7 +1013,7 @@ Le seguenti figure rappresentano la prototipazione visuale via Mock-up delle rel
 Il progetto BugBoard26 è stato sviluppato con un'architettura \textit{\textbf{client-server}} (fig. 1) organizzata su tre livelli che comunicano tramite API REST. Tale organizzazione è suddivisa in: \index{Client-Server}
 \begin{itemize}
     \item Presentation Layer (Client)
-    \item Bussines Logic Layer (Server)
+    \item Business Logic Layer (Server)
     \item Data Layer (Persistenza)
 \end{itemize}
 
@@ -1070,13 +1069,13 @@ Nei paragrafi successivi vengono presentate le principali scelte tecnologiche ad
 
 
 \subsubsection{Server} 
-Per lo sviluppo del \textbf{backend} abbiamo utilizzato Spring Boot (v. 3.2.2), un framework Java che facilita la creazione di API REST grazie al supportos per la gestione di richieste HTTP e l'integrazioni di componenti Spring come Spring MVC. Grazie all'integrazione di Spring Data JPA (Jakarta Persistence API) e Hibernate, i Repositories si occupano delle operazione di lettura e scrittura dei dati (CRUD), delegando al sistema di persistenza la sola gestione fisica delle informazioni.
+Per lo sviluppo del \textbf{backend} abbiamo utilizzato Spring Boot (v. 3.2.2), un framework Java che facilita la creazione di API REST grazie al supporto per la gestione di richieste HTTP e l'integrazioni di componenti Spring come Spring MVC. Grazie all'integrazione di Spring Data JPA (Jakarta Persistence API) e Hibernate, i Repositories si occupano delle operazione di lettura e scrittura dei dati (CRUD), delegando al sistema di persistenza la sola gestione fisica delle informazioni.
 Tale approccio migliora la manutenibilità, la scalabilità e la chiarezza del codice. \index{MVC} \index{Spring Boot}
 
 Il Server è stato pensato e predisposto per essere containerizzato (con Docker) e messo in opera utilizzando servizi di Cloud Computing (Amazon Web Services). \index{Docker}
 
 
-\subsubsection{Persistenza} Per la persistenza dei dati è stato scelto PostgreSQL, un DBMS relazionale open-source, affidabile e altamente stabile. Questa scelta è coerente con la natura fortemente relazionale del dominio: le entità principali (Users, Issues, Notifications) sono legate da relazioni ben definite con vincoli di integrità referenziale (es. una Issue ha sempre un reporter e opzionalmente un assegnatario) PostgreSQL è stato scelto per diversi fattori. Inoltre, PostgreSQL si integra facilmente con il
+\subsubsection{Persistenza} Per la persistenza dei dati è stato scelto PostgreSQL, un DBMS relazionale open-source, affidabile e altamente stabile. Questa scelta è coerente con la natura fortemente relazionale del dominio: le entità principali (Users, Issues, Notifications) sono legate da relazioni ben definite con vincoli di integrità referenziale (es. una Issue ha sempre un reporter e opzionalmente un assegnatario). Inoltre, PostgreSQL si integra facilmente con il
 framework Spring Boot e tecnologie JPA/Hibernate. \index{PostgreSQL} \index{Spring Boot}
 
 \subsubsection{Client} Per lo sviluppo del front-end è stato scelto JavaFX, un framework per la realizzazione di applicazioni desktop in Java. Tale scelta è stata motivata da diversi fattori. Tra i principali motivi, essendo il \textit{backend} sviluppato in Java, l'utilizzo di JavaFX permette di avere \textbf{coerenza tecnologica} e di riutilizzare competenze e strumenti su entrambe le componenti del sistema. Altra motivazione decisiva è il supporto nativo di JavaFX con il pattern \textit{MVC}, che favorisce naturalmente la separazione tra interfaccia grafica e logica di presentazione, tramite il formato FXML. Inoltre, rispetto ad alternative come Swing, JavaFX offre un supporto più moderno per componenti grafici, tramite CSS, e gestione di layout responsive, mantentendo  la stessa capacità di comunicare con il back-end esclusivamente tramite chiamate HTTP verso le API REST esposte, senza alcuna dipendenza diretta dal codice del server.\index{JavaFX / FXML}
@@ -1108,7 +1107,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database. \index{Database}
 
 
 
-\subsubsection{Class Diagram 2- Funzionalità 2}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 2
+\subsubsection{Class Diagram 2- Funzionalità 2}Il seguente class diagram rappresenta le classi coninvolte nella funzionalità 2
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 2.png}
@@ -1116,7 +1115,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database. \index{Database}
     \label{fig:ClassDiagramFunz2}
 \end{figure}
 
-\subsubsection{Class Diagram 3- Funzionalità 3}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 3
+\subsubsection{Class Diagram 3- Funzionalità 3}Il seguente class diagram rappresenta le classi coninvolte nella funzionalità 3
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 3.png}
@@ -1124,7 +1123,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database. \index{Database}
     \label{fig:ClassDiagramFunz3}
 \end{figure}
 
-\subsubsection{Class Diagram 4- Funzionalità 4 e 14}Il seguente class diagram rappresenta le classi coninvolte nelle funzioanlità 4 e 14
+\subsubsection{Class Diagram 4- Funzionalità 4 e 14}Il seguente class diagram rappresenta le classi coninvolte nelle funzionalità 4 e 14
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 4 e 14.png}
@@ -1133,7 +1132,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database. \index{Database}
 \end{figure}
 
 
-\subsubsection{Class Diagram 5- Funzionalità 11}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 11
+\subsubsection{Class Diagram 5- Funzionalità 11}Il seguente class diagram rappresenta le classi coninvolte nella funzionalità 11
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 11.png}
@@ -1141,7 +1140,7 @@ Nella Figura 15 viene mostrato il diagramma UML del database. \index{Database}
     \label{fig:ClassDiagramFunz11}
 \end{figure}
 
-\subsubsection{Class Diagram 6- Funzionalità 17}Il seguente class diagram rappresenta le classi coninvolte nella funzioanlità 17
+\subsubsection{Class Diagram 6- Funzionalità 17}Il seguente class diagram rappresenta le classi coninvolte nella funzionalità 17
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/BackendCD/Funzionalità 17.png}
@@ -1163,24 +1162,22 @@ Nella Figura 15 viene mostrato il diagramma UML del database. \index{Database}
     \textbf{Basso accoppiamento:} le classi dipendono da astrazioni (interfacce come \texttt{IssueService}, \texttt{IssueRepository}) e non da implementazioni concrete, coerentemente con il principio di Dependency Inversion (SOLID). Questo permette di sostituire un'implementazione (es. \texttt{IssueServiceImpl}) senza modificare le classi che la utilizzano. \index{Principi SOLID}
     \textbf{Testabilità:} la possibilità di iniettare mock delle interfacce al posto delle implementazioni reali ha semplificato la scrittura di test di unità (es. testare IssueServiceImpl iniettando il mock \texttt{IssueRepository}, senza necessità di un database reale). \index{Database}
     \textbf{Been di Spring:} il ciclo di vita e la creazione delle istanze (bean) sono gestiti da Spring, evitando la duplicazione di logica di istanziazione sparsa nel codice.
-    \item \textbf{Singleton:} Il pattern Singleton viene utilizzato per la classe \texttt{AuthSession} del \textit{frontend}. Crea una istanza della classe alla quale è possibile accedere dall'esterno per ottenere il tocken necessario per costruire una corretta chiamata API al \textit{backend}. Naturalmente espone un costruttore privato per evitare la creazione di ulteriori istanze della classe. \index{Singleton}
-    \item \textbf{Event-Listener}: L'\textit{Event-Listener} è un pattern architetturale peculiare di Spring. È stato scelto in sostituzione del design pattern Observer, di cui è una specializzazione in chiave tecnologica Spring. Si occupa della gestione degli eventi, disaccoppiando il componente che genera un evento (\textit{publisher}) da quello che deve gestire le conseguenze (\textit{listener}), senza che il primo debba conoscere direttamente il secondo.\index{Event-Listener / Observer}
-
-    Nel sistema, questo meccanismo è utilizzato per la gestione delle notifiche. Quando un amministratore assegna una \textit{Issue} ad un utente, l'\texttt{IssueService} non invoca direttamente il servizio di notifica, ma pubblica un evento (es. \texttt{IssueAssignedEvent}) tramite \texttt{ApplicationEventPublisher}, contenente i riferimenti necessari (identificativo della issue e dell'utente assegnatario). Un componente listener dedicato (es. \texttt{NotificationEventListener}), registrato tramite l'annotazione \texttt{@EventListener}, intercetta l'evento e si occupa di creare la relativa notifica nel model e nel database. \index{Database}Questa scelta comporta due importanti vantaggi. In primo luogo genera un \textbf{basso accoppiamento}. L'\texttt{IssueService} non ha alcuna dipendenza diretta dal servizio di notifica, rispettando il principio SOLID di \textit{Single Responsibility}: la logica di assegnazione della issue resta separata dalla logica di generazione delle notifiche. Inoltre, è possibile aggiungere ulteriori listener per lo stesso evento senza modificare il codice del componente publisher.\index{Principi SOLID}
+    \item \textbf{Singleton:} Il pattern Singleton viene utilizzato per la classe \texttt{AuthSession} del \textit{frontend}. Crea una istanza della classe alla quale è possibile accedere dall'esterno per ottenere il token necessario per costruire una corretta chiamata API al \textit{backend}. Naturalmente espone un costruttore privato per evitare la creazione di ulteriori istanze della classe. \index{Singleton}
+    \item \textbf{Event-Listener}: L'\textit{Event-Listener} è un pattern architetturale peculiare di Spring. È stato scelto in sostituzione del design pattern Observer, di cui è una specializzazione in chiave tecnologica Spring. Si occupa della gestione degli eventi, disaccoppiando il componente che genera un evento (\textit{publisher}) da quello che deve gestire le conseguenze (\textit{listener}), senza che il primo debba conoscere direttamente il secondo.\index{Event-Listener / Observer}Nel sistema, questo meccanismo è utilizzato per la gestione delle notifiche. Quando un amministratore assegna una \textit{Issue} ad un utente, l'\texttt{IssueService} non invoca direttamente il servizio di notifica, ma pubblica un evento (\texttt{IssueAssignedEvent}) tramite \texttt{ApplicationEventPublisher}, contenente i riferimenti necessari (identificativo della issue e dell'utente assegnatario). Un componente listener dedicato (\texttt{NotificationEventListener}), registrato tramite l'annotazione \texttt{@EventListener}, intercetta l'evento e si occupa di creare la relativa notifica nel model e nel database. \index{Database}Questa scelta comporta due importanti vantaggi: in primo luogo genera un \textbf{basso accoppiamento}. L'\texttt{IssueService} non ha alcuna dipendenza diretta dal servizio di notifica, rispettando il principio SOLID di \textit{Single Responsibility}, la logica di assegnazione della issue resta separata dalla logica di generazione delle notifiche; inoltre, è possibile aggiungere ulteriori listener per lo stesso evento senza modificare il codice del componente publisher.\index{Principi SOLID}
 \end{itemize}
 
-Oltre ai Pattern appena mostrati, nel sistema \textit{Bugboard26} sono state prese alcune scelte di Design per rispettare i principi SOLID e per ottenere un \textbf{basso accoppiamento e un'alta coesione}.Tra le principali spiccano l'utilizzo di classi \textbf{DTO} (\texttt{Data Transfer Object}) utilizzati per disaccoppiare il Model dallo strato di trasferimento dei dati (la View del backend è il serializzatore/deserializzatore di Spring). Inoltre, è usato per mascherare i Model mostrando al richiedente solamente i dati a cui ha effettivamente accesso. Le classi \textbf{Mapper} si occupano della conversione tra i Model e i DTO.\index{DTO}
+Oltre ai Pattern appena mostrati, nel sistema \textit{Bugboard26} sono state prese alcune scelte di Design per rispettare i principi SOLID e per ottenere un \textbf{basso accoppiamento e un'alta coesione}. Tra le principali spiccano l'utilizzo di classi \textbf{DTO} (\texttt{Data Transfer Object}) utilizzati per disaccoppiare il Model dallo strato di trasferimento dei dati (la View del backend è il serializzatore/deserializzatore di Spring). Inoltre, è usato per mascherare i Model mostrando al richiedente solamente i dati a cui ha effettivamente accesso. Le classi \textbf{Mapper} si occupano della conversione tra i Model e i DTO.\index{DTO}
 
-Le classi \texttt{Services} sono organizzate secondo una gerarchia che parte dall'interfaccia Service. Essa ci permette di mantenere il disaccoppiamento tra i \textit{Controller} e le classi \textit{Service} concrete. Oltre a questa gerarchia, si è progettata una struttra divisa per tipologia di richiesta ai \texttt{Repositories}: lettura (\textit{read}) e scrittura (\textit{write}). Questa distinzione netta permette un'alta manutenibilità del codice data la semplicità nella localizzazione di eventuali errori. 
+Le classi \texttt{Services} sono organizzate secondo una gerarchia che parte dall'interfaccia Service. Essa ci permette di mantenere il disaccoppiamento tra i \textit{Controller} e le classi \textit{Service} concrete. Oltre a questa gerarchia, si è progettata una struttura divisa per tipologia di richiesta ai \texttt{Repositories}: lettura (\textit{read}) e scrittura (\textit{write}). Questa distinzione netta permette un'alta manutenibilità del codice data la semplicità nella localizzazione di eventuali errori. 
 
 La classe \texttt{IssueSpecification} svolge un ruolo cruciale per la manutenibilità e la scalabilità del codice. Introducendo questo componente, è stato possibile evitare una complessa struttura di \textit{if-else} nidificati per la gestione dei filtri di ricerca, delegando la logica di filtraggio delle issue a un'architettura più snella e facilmente estendibile.
 
-Nel \textit{frontend} non è possibile utilizzare una semplice Dependency Injection perchè i \texttt{ViewController} di JavaFX non hanno costruttore. Il primo metodo eseguito è il metodo \texttt{initialize()}, quindi si è deciso di usare un nuovo metodo \texttt{initDependency()} chiamato dal \texttt{DashboardViewController} in cui si settano le dipendenze esterne (Controller e Service), esso verrà eseguito subito dopo l'esecuzione del \texttt{initialize()} (nel quale ci sono solamente creazione di componenti grafici, ma non il caricamento dei dati al loro interno). \index{Dependency Injection} \index{JavaFX / FXML}
+Nel \textit{frontend} non è possibile utilizzare una semplice Dependency Injection perchè i \texttt{ViewController} di JavaFX non hanno costruttore. Il primo metodo eseguito è il metodo \texttt{initialize()}, quindi si è deciso di usare un nuovo metodo \texttt{initDependency()} chiamato dal \texttt{DashboardViewController} in cui si settano le dipendenze esterne (Controller e Service). Esso verrà eseguito subito dopo l'esecuzione del \texttt{initialize()} (nel quale ci sono solamente creazione di componenti grafici, ma non il caricamento dei dati al loro interno). \index{Dependency Injection} \index{JavaFX / FXML}
 
-Per avere un basso accoppiamento e un'alta coesione nelle classi \texttt{ViewController} del \textit{frontend} si è spostata la logica di presenzazione grafica ad alcune classi di supporto, alle quali i \texttt{ViewController} delegano la creazione di tabelle, grafici, badge, ect. Tutti gli stili grafici sono raggruppati in una classe CSS \texttt{style.css}. 
+Per avere un basso accoppiamento e un'alta coesione nelle classi \texttt{ViewController} del \textit{frontend} si è spostata la logica di presenzazione grafica ad alcune classi di supporto (\texttt{Utils}), alle quali i \texttt{ViewController} delegano la creazione di tabelle, grafici, badge, ect. Tutti gli stili grafici sono raggruppati in una classe CSS \texttt{style.css}. 
  
 
-\subsection{Strumento di Versioning} Abbiamo adottato un approccio di versioning basato su \textbf{Github}. Per la gestione del versionamento del codice sorgente e della documentazione è stato utilizzato GitHub. È stato adottato un unico repository per l'intero progetto, organizzato nelle seguenti directory principali:\index{GitHub}
+\subsection{Strumento di Versioning} Per la gestione del versionamento del codice sorgente e della documentazione è stato utilizzato \textbf{GitHub}. È stato adottato un unico repository per l'intero progetto, organizzato nelle seguenti directory principali:\index{GitHub}
 \begin{itemize}
     \item \texttt{Backend/}: codice sorgente del server Spring Boot. \index{Spring Boot}
     \item \texttt{Frontend/}: codice sorgente del client JavaFX.\index{JavaFX / FXML}
@@ -1189,7 +1186,7 @@ Per avere un basso accoppiamento e un'alta coesione nelle classi \texttt{ViewCon
 
 Il repository è raggiungibile al seguente link: \url{https://github.com/ManuelMontuori/BugBoard26}
 
-La Repository GitHub è composta come segue.
+La Repository GitHub è composta come segue:
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/GithubRepo.png}
@@ -1265,7 +1262,7 @@ Questa configurazione consente il deployment del back-end su infrastruttura Clou
 I servizi Amazon ECR e Amazon EC2 sono stati configurati e utilizzati tramite terminale, grazie all'installazione del tool \textit{AmazonCLI}. 
 
 \subsubsection{Report di qualità del codice} Al fine di valutare la qualità del codice del back-end, è stata condotta un'analisi tramite \textbf{SonarQube}. L'analisi ha permesso di individuare potenziali problemi di affidabilità, sicurezza e manutenibilità del codice.
-Di seguito sono riportati i dati dell’ultima modifica effettuata sul Server. \index{SonarQube}
+Di seguito sono riportati i dati dell’ultima modifica effettuata sul Server, il report si basa su un'indagine su un totale di 1.8k righe di codice. \index{SonarQube}
 \paragraph{Indice di duplicazione} -
 \begin{figure}[H]
     \centering
